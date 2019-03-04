@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/03 17:44:39 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/04 10:43:04 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void *get_file_buffer(char *file_path)
 	file_buffer = malloc(file_size);
 	read(fd, file_buffer, file_size);
 	if_errno_printerr_exit();
+	closefd(fd);
 	return (file_buffer);
 }
 
@@ -43,7 +44,8 @@ static void init_player(t_vm *vm, char *binary_path)
 	static nb = 0;
 	static t_player	player;
 
-	player.header = *((header_t*)get_file_buffer(binary_path));
+	player.file_buffer = get_file_buffer(binary_path);
+	player.header = *((header_t*)player.file_buffer);
 
 	ft_printf("header:\n");
 	ft_printf("\tmagic = %u\n", player.header.magic);

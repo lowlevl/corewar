@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/03 17:41:36 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/04 10:37:19 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct	s_player {
 	header_t	header;
-	void		*file_buff;
+	void		*file_buffer;
 }				t_player;
 
 typedef struct	s_vm {
