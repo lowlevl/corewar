@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/04 17:12:04 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/05 17:56:04 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 void init_player(t_vm *vm, char *binary_path)
 {
-	static t_player	player;
+	static int	player_count = 0;
+	t_player	player;
 
+	ft_bzero(&player, sizeof(player));
 	player.file_buffer = get_file_buffer(binary_path);
 	player.header = *((header_t*)player.file_buffer);
+	player.header.magic = little_to_big_endian(player.header.magic);
+	player.header.prog_size = little_to_big_endian(player.header.prog_size);
+	vm->players[player_count] = player;
 
-	/* debug */
-	print_header(&player);
+	print_header(&vm->players[player_count]);
+
+	player_count++;
 }
 
 void init_vm(t_vm *vm, int argc, char *argv[])

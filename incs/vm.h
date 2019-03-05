@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/04 17:08:55 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/05 17:41:56 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,25 @@
 /*
 ** Struct definition
 */
+typedef	struct	s_process {
+	uint8_t		player_id;
+	uint16_t	pc;
+	uint8_t		carry; // not sure the type is ok
+}				t_process;
+
 typedef struct	s_player {
 	header_t	header;
 	char		*file_buffer;
+	uint32_t	live_count;
+	uint32_t	processes_count;
+	t_process	*processes;
 }				t_player;
 
 typedef struct	s_vm {
-	t_player		players[MAX_PLAYERS];
-	uint8_t			memory[MEM_SIZE];
-	// pc;
-	// carry;
-	// unsigned int	regs[REG_NUMBER] : REG_SIZE;
+	uint8_t		players_count;
+	t_player	players[MAX_PLAYERS];
+	uint8_t		memory[MEM_SIZE];
+	uint32_t	regs[REG_NUMBER];
 }				t_vm;
 
 /*
@@ -54,8 +62,9 @@ void init_player(t_vm *vm, char *binary_path);
 ** Utils functions
 */
 int		get_fd(char *file_path);
-off_t	get_file_size(int fd, char *file_path);
+off_t	get_file_size(int fd);
 void	*get_file_buffer(char *file_path);
+size_t	little_to_big_endian(size_t n);
 
 /*
 ** Errors functions
