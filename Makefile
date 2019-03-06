@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
+#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/05 17:05:13 by glodi            ###   ########.fr        #
+#    Updated: 2019/03/06 10:13:37 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,11 @@ OBJDIR	:= objs
 INCDIR	:= incs
 
 SRCDIR	:= srcs
-SRCS	:= vm/main.c vm/debug.c vm/errors.c vm/file_utils.c
+SRCS	:= vm/main.c \
+	vm/debug.c \
+	vm/errors.c \
+	vm/file_utils.c \
+	vm/argv.c
 
 LIBDIR	:= libs
 LIBS	:= libft libpf
