@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 16:57:56 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 17:05:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <error.h>
 
 # define ERR_PROC_MALL "malloc processes"
+# define ERR_NEW_PROC_MALL "realloc new processes"
 
-void init_cursor(t_player *players, uint8_t count);
+void init_processes(t_player *players, uint8_t count);
+void add_processes(t_player *player, uint16_t pc);
 
 #endif // !CURSOR_H
