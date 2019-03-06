@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 12:08:34 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:20:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_fd(char *file_path)
 	int			fd;
 
 	fd = open(file_path, O_RDONLY);
-	if_errno_printerr_exit();
+	if_errno_printerr_exit(NULL);
 	return (fd);
 }
 
@@ -27,7 +27,7 @@ off_t	get_file_size(int fd)
 
 	file_size = lseek(fd, 0, SEEK_END);
 	lseek(fd, 0, SEEK_SET);
-	if_errno_printerr_exit();
+	if_errno_printerr_exit(NULL);
 	return (file_size);
 }
 
@@ -40,11 +40,11 @@ void *get_file_buffer(char *file_path)
 	fd = get_fd(file_path);
 	file_size = get_file_size(fd);
 	file_buffer = malloc(file_size);
-	if_errno_printerr_exit();
+	if_errno_printerr_exit(NULL);
 	read(fd, file_buffer, file_size);
-	if_errno_printerr_exit(); // need to free too...
+	if_errno_printerr_exit(NULL); // need to free too...
 	close(fd);
-	if_errno_printerr_exit(); // need to free too...
+	if_errno_printerr_exit(NULL); // need to free too...
 	return (file_buffer);
 }
 
