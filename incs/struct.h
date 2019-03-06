@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 10:15:36 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:27:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_player {
 	uint32_t	live_count;
 	uint32_t	processes_count;
 	t_process	*processes;
+	uint32_t	id;
 }				t_player;
 
 typedef struct	s_vm {
