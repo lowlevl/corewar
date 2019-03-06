@@ -6,11 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 10:14:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 10:54:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include <argv.h>
 
 void init_player(t_vm *vm, char *binary_path)
 {
@@ -36,6 +36,17 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 	/* We start from av[1] */
 	i = 0;
 	while (++i < argc) {
-		init_player(vm, argv[i]);
+		ft_printf("%s\n", argv[i]);
+		if (argv[i][0] == '-')
+		{
+			if (ft_strcmp("dump", argv[i] + 1) == 0) {
+				i++;
+				ft_printf("%s\n", argv[i]);
+			}
+		}
+		else
+		{
+			init_player(vm, argv[i]);
+		}
 	}
 }
