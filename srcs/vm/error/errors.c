@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:49:40 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 13:21:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:27:22 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	if_errno_printerr_exit(const char *error)
 {
-	if (errno || error)
+	if (errno)
 	{
 		if (error)
 			perror(error);
