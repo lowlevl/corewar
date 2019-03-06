@@ -6,14 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 10:09:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 10:12:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARGV_H
 # define ARGV_H
 
-# include <struct.h>
+# include "struct.h"
 
 void init_vm(t_vm *vm, int argc, char *argv[]);
 

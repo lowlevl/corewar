@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 10:09:24 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 10:11:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdint.h>
 
-# include <struct.h>
 # include <op.h>
 /*
 ** Struct definition
