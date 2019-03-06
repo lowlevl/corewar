@@ -1,6 +1,10 @@
   ---
 title: 'Title: '
   ---
-  # What Appen
-  # Expext behavior
-  # Version
+  # What happens
+  
+  # expected behavior
+  
+  # How to reproduce
+  
+  # Where
