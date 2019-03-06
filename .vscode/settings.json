@@ -4,6 +4,7 @@
 		"libft.h": "c",
 		"error.h": "c",
 		"argv.h": "c",
-		"debug.h": "c"
+		"debug.h": "c",
+		"cursor.h": "c"
 	}
 }
