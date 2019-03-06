@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 12:12:03 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:20:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 ** Debug functions
 */
 void	print_header(t_player *player);
+void	print_vm(t_vm *vm);
 
 #endif
