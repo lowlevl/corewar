@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 12:11:46 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:10:00 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <error.h>
 # include <debug.h>
 
+# define ERR_DUMP "missing number for -dump"
+# define ERR_N "missing argument for '-n'"
 /*
 ** Init functions
 */
