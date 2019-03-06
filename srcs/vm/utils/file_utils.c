@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 12:20:14 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 13:31:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_fd(char *file_path)
 	int			fd;
 
 	fd = open(file_path, O_RDONLY);
-	if_errno_printerr_exit(NULL);
+	if_errno_printerr_exit(file_path);
 	return (fd);
 }
 
