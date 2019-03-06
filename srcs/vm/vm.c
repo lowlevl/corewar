@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 16:24:41 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/06 16:29:02 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int main(int argc, char *argv[])
 	static t_vm	vm;
 
 	vm.dump = -1;
-	errno = 0;
 	init_vm(&vm, argc, argv);
 	load_players(&vm);
+	// if (vm.dump == 0)
+	print_dump(vm.memory);
 	return (0);
 }
 
@@ -63,3 +64,4 @@ void		*get_start_in_memory(t_vm *vm, int player_idx)
 	player_id = vm->players[player_idx].id;
 	return (vm->memory + ((MEM_SIZE / players_count) * player_id) );
 }
+

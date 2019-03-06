@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 15:34:25 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/06 16:25:57 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <error.h>
 # include <utils.h>
 # include <debug.h>
+# include <print.h>
 
 void		load_players(t_vm *vm);
 void		load_player(t_vm *vm, int player_idx);
