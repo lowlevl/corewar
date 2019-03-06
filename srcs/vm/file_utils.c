@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/05 17:03:25 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/06 12:08:34 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,10 @@ void *get_file_buffer(char *file_path)
 	return (file_buffer);
 }
 
+size_t	little_to_big_endian(size_t n)
+{
+	return ((n & 0xff) << 16
+		| (n & 0xff00) << 8
+		| (n & 0xff0000) >> 8
+		| (n & 0xff000000) >> 24);
+}
