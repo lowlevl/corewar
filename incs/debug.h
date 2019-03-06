@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 10:20:11 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/06 13:20:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#ifndef DEBUG_H
+# define DEBUG_H
 
-int main(int argc, char *argv[])
-{
-	static t_vm	vm;
+# include "struct.h"
+# include <libpf.h>
 
-	vm.dump = -1;
-	errno = 0;
-	init_vm(&vm, argc, argv);
-	return (0);
-}
+/*
+** Debug functions
+*/
+void	print_header(t_player *player);
+void	print_vm(t_vm *vm);
+
+#endif

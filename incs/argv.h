@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   argv.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 10:20:11 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/06 13:28:36 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#ifndef ARGV_H
+# define ARGV_H
 
-int main(int argc, char *argv[])
-{
-	static t_vm	vm;
+# include "struct.h"
+# include <libft.h>
+# include <libpf.h>
+# include <utils.h>
+# include <error.h>
+# include <debug.h>
 
-	vm.dump = -1;
-	errno = 0;
-	init_vm(&vm, argc, argv);
-	return (0);
-}
+# define ERR_DUMP "missing number for -dump"
+# define ERR_N "missing argument for '-n'"
+/*
+** Init functions
+*/
+void init_player(t_vm *vm, char *binary_path, int player_id);
+void init_vm(t_vm *vm, int argc, char *argv[]);
+
+#endif

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 10:20:11 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/06 12:03:51 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/06 12:04:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#ifndef UTILS_H
+# define UTILS_H
 
-int main(int argc, char *argv[])
-{
-	static t_vm	vm;
+# include <unistd.h>
 
-	vm.dump = -1;
-	errno = 0;
-	init_vm(&vm, argc, argv);
-	return (0);
-}
+/*
+** Utils functions
+*/
+int		get_fd(char *file_path);
+off_t	get_file_size(int fd);
+void	*get_file_buffer(char *file_path);
+size_t	little_to_big_endian(size_t n);
+
+#endif

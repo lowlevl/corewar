@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/05 17:55:44 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/06 13:19:56 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
-
-size_t	little_to_big_endian(size_t n)
-{
-	return ((n & 0xff) << 16
-		| (n & 0xff00) << 8
-		| (n & 0xff0000) >> 8
-		| (n & 0xff000000) >> 24);
-}
+#include <debug.h>
 
 void	print_header(t_player *player)
 {
@@ -30,3 +22,11 @@ void	print_header(t_player *player)
 	ft_printf("end.\n");
 }
 
+void	print_vm(t_vm *vm)
+{
+	ft_printf("vm:\n");
+	ft_printf("\tplayer_count: %u\n", vm->players_count);
+	ft_printf("\tplayers: %#x\n", vm->players);
+	ft_printf("\tdump: %u\n", vm->dump);
+	ft_printf("\tregs: %#x\n", vm->regs);
+}
