@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/05 17:56:04 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/06 10:06:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ void init_player(t_vm *vm, char *binary_path)
 	print_header(&vm->players[player_count]);
 
 	player_count++;
-}
-
-void init_vm(t_vm *vm, int argc, char *argv[])
-{
-	int i;
-
-	/* We start from av[1] */
-	i = 0;
-	while (++i < argc)
-		init_player(vm, argv[i]);
 }
 
 int main(int argc, char *argv[])
