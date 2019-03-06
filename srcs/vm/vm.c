@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 14:45:58 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:44:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ int main(int argc, char *argv[])
 
 	errno = 0;
 	init_vm(&vm, argc, argv);
+	// if (vm.dump == 0)
+	print_dump(vm.memory);
 	return (0);
 }
