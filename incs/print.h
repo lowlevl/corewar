@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 10:20:11 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/06 16:01:51 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#ifndef PRINT_H
+# define PRINT_H
 
-int main(int argc, char *argv[])
-{
-	static t_vm	vm;
+# include <stdint.h>
+# include <unistd.h>
+# include <libpf.h>
+# include <op.h>
 
-	vm.dump = -1;
-	errno = 0;
-	init_vm(&vm, argc, argv);
-	return (0);
-}
+# define BYTE_PER_LINE 64
+# define BYTE_PRINT_LENGTH 3
+# define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
+
+void	print_dump(uint8_t *mem);
+
+#endif
