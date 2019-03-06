@@ -15,11 +15,11 @@ Git flow work with branches, a lot of branches:
 - [release](#new-release)
 - [bug](#bug)
 
-### [Want to create a new feature](#new-feature)
+### <a name="new-feature"></a>Want to create a new feature
 
 When you want to add new feature, create a branch named `feature/NAME_OF_YOUR_BRANCH`. After finishing your feature, create a [Pull Request](https://github.com/doliG/corewar/pulls) to the `develop` branch
 
-### [Want to create a new release ?](#new-release)
+### <a name="new-release"></a>Want to create a new release ?
 
 After all the hard work, you will probably want to release a new version of your project.
 
@@ -29,7 +29,7 @@ When it's done, create a [Pull Request](https://github.com/doliG/corewar/pulls) 
 
 > Don't forget to create a tag for this version, see [git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
 
-### [Found a bug ?](#bug)
+### <a name="bug"></a>Found a bug ?
 
 When you find a bug, create a new `issue` [here](https://github.com/doliG/corewar/issues/new).
 
