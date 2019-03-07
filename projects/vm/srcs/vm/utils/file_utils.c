@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 13:31:16 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/07 16:45:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ off_t	get_file_size(int fd)
 	return (file_size);
 }
 
+static void check_file_size(const char *file_path, off_t file_size) {
+	if (file_size <= 0) {
+		ft_dprintf(2, "%s ", file_path);
+		errno = EINVAL;
+		if_errno_printerr_exit("file too small");
+	}
+	if (file_size >= CHAMP_MAX_SIZE) {
+		ft_dprintf(2, "%s ", file_path);
+		errno = EFBIG;
+		if_errno_printerr_exit(NULL);
+	}
+}
+
 void *get_file_buffer(char *file_path)
 {
 	int			fd;
@@ -39,6 +52,7 @@ void *get_file_buffer(char *file_path)
 
 	fd = get_fd(file_path);
 	file_size = get_file_size(fd);
+	check_file_size(file_path, file_size);
 	file_buffer = malloc(file_size);
 	if_errno_printerr_exit(NULL);
 	read(fd, file_buffer, file_size);
