@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/07 10:45:18 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/07 11:12:27 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,5 @@ uint32_t	get_champ_size(t_vm *vm, int player_idx)
 
 void		*get_start_in_memory(t_vm *vm, int player_idx)
 {
-	uint32_t	players_count;
-
-	players_count = vm->players_count;
-	return (vm->memory + ((MEM_SIZE / players_count) * player_idx) );
+	return (vm->memory + ((MEM_SIZE / vm->players_count) * player_idx));
 }
