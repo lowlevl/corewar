@@ -3,17 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lroux <lroux@student.42.fr>                +#+  +:+       +#+         #
+#    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/07 13:27:44 by lroux             #+#    #+#              #
-#    Updated: 2019/03/07 15:30:08 by lroux            ###   ########.fr        #
+#    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
+#    Updated: 2019/03/07 15:41:58 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SUBDIR	:= projects
-SUBS	:= vm assembly
+PROJECT	:= "📚 libpf :"
+NAME	:= libpf.a
 
-LIBDIR	:= $(SUBDIR)/libs
+SRCDIR	:= srcs
+OBJDIR	:= objs
+INCDIR	:= incs
+
+SRCS	:= wrappers.c handlers.c lexer.c map.c utils.c subst.c \
+		   handlers/char.c handlers/int.c handlers/ptr.c \
+		   handlers/oct.c handlers/hex.c handlers/bonus.c \
+		   handlers/float.c
+
+LIBS	:= libft
+LIBDIR	:= ..
 
 # Include core
-include $(LIBDIR)/multi.mk
+include ../lib.mk
+

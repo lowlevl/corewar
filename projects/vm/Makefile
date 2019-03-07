@@ -3,17 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lroux <lroux@student.42.fr>                +#+  +:+       +#+         #
+#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/07 13:27:44 by lroux             #+#    #+#              #
-#    Updated: 2019/03/07 15:30:08 by lroux            ###   ########.fr        #
+#    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
+#    Updated: 2019/03/07 15:44:29 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SUBDIR	:= projects
-SUBS	:= vm assembly
+PROJECT	:= "⚙️  vm :"
+NAME	:= build/corewar
+LNKNAME	:= ../../corewar
 
-LIBDIR	:= $(SUBDIR)/libs
+INCDIR	:= incs
+SRCDIR	:= srcs
+OBJDIR	:= build/obj
+
+SRCS	:= vm/vm.c \
+	vm/debug/debug.c \
+	vm/error/errors.c \
+	vm/utils/file_utils.c \
+	vm/argv/argv.c \
+	vm/dump/print.c \
+	vm/proc/proc.c \
+
+LIBDIR	:= ../libs
+LIBS	:= libft libpf
+
+DEBUG	:= 1
 
 # Include core
-include $(LIBDIR)/multi.mk
+include $(LIBDIR)/project.mk
