@@ -1,3 +1,11 @@
+---
+name: Pull Request Template
+about: Create a Pull Request to add a feature / fix a bug
+title: ''
+labels: ''
+assignees: ''
+---
+
 Examples of description :
 
 **Which issue does it solve ?**
