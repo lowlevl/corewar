@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/07 10:41:36 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/07 18:38:59 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Errors functions
 */
 void	if_errno_printerr_exit(const char *error);
-void	set_erno_and_print_error(const int err_val, const char *msg);
+void	set_errno_exit(const int err_val, const char *msg);
 void	exit_print_usage();
 
 #endif

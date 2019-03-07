@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/07 10:36:46 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/07 18:37:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void init_player(t_vm *vm, char *binary_path, int player_id)
 
 	ft_bzero(&player, sizeof(player));
 	player.file_buffer = get_file_buffer(binary_path);
+	player.file_name = binary_path;
 	player.header = *((header_t *)player.file_buffer);
 	player.header.magic = little_to_big_endian(player.header.magic);
 	player.header.prog_size = little_to_big_endian(player.header.prog_size);
@@ -42,7 +43,7 @@ static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 			vm->dump = ft_atoi(argv[*index]);
 		}
 		else
-			set_erno_and_print_error(EINVAL, ERR_DUMP);
+			set_errno_exit(EINVAL, ERR_DUMP);
 	}
 	else if (ft_strcmp("n", argv[*index] + 1) == 0)
 	{
@@ -53,7 +54,7 @@ static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 			*index = *index + 1;
 		}
 		else
-			set_erno_and_print_error(EINVAL, ERR_N);
+			set_errno_exit(EINVAL, ERR_N);
 	}
 }
 
