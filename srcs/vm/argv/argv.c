@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 15:12:47 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/07 10:36:46 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,14 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 	int i;
 
 	i = 0;
+	if (argc < 2)
+		exit_print_usage();
 	while (++i < argc)
 	{
 		if (argv[i][0] == '-')
-		{
 			handle_option(vm, argc, argv, &i);
-		}
 		else
-		{
 			init_player(vm, argv[i], -1);
-		}
 	}
-	print_vm(vm);
+	print_vm(vm); // Debug
 }

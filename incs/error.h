@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 13:13:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:41:36 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 */
 void	if_errno_printerr_exit(const char *error);
 void	set_erno_and_print_error(const int err_val, const char *msg);
+void	exit_print_usage();
 
 #endif

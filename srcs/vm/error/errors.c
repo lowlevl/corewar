@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:49:40 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 14:27:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:42:19 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@ void	set_erno_and_print_error(const int err_val, const char *msg)
 {
 	errno = err_val;
 	if_errno_printerr_exit(msg);
+}
+
+void	exit_print_usage()
+{
+	ft_printf("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]"
+			" ...\n");
+	exit(1);
 }
