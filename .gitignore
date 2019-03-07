@@ -3,5 +3,6 @@ asm
 
 *.o
 *.gch
+*.a
 
 .DS_Store
