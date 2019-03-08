@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 12:10:45 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:42:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_player {
 typedef struct	s_vm {
 	uint8_t		players_count;
 	t_player	players[MAX_PLAYERS];
+	uint8_t		sorted_players_idx[MAX_PLAYERS];
 	uint64_t	dump;
 	uint8_t		memory[MEM_SIZE];
 	uint32_t	regs[REG_NUMBER];
