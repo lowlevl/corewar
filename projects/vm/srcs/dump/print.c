@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:47:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:49:49 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 14:29:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static char get_hex_char(uint8_t val)
 
 static void print_line(uint8_t *mem, int current_line)
 {
-	char line[LINE_LENGTH + 1];
+	char	line[LINE_LENGTH + 1];
 	uint8_t val;
-	size_t col;
+	size_t  col;
 
 	col = 0;
 	while (col < BYTE_PER_LINE)
