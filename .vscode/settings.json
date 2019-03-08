@@ -5,6 +5,7 @@
 		"error.h": "c",
 		"argv.h": "c",
 		"debug.h": "c",
-		"cursor.h": "c"
+		"cursor.h": "c",
+		"proc.h": "c"
 	}
 }
