@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:55:26 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 11:56:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void init_processes(t_vm *vm)
 				.cursor_pos = 0,
 				.carry = 0,
 				.waiting = -1,
-				.cursor_start = get_start_in_memory(vm, i),
+				.cursor_start = (uint32_t)get_start_in_memory(vm, i),
 			};
 		i++;
 	}

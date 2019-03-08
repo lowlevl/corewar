@@ -6,18 +6,20 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:51:20 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 11:57:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_H
 # define PRINT_H
 
+# include <libft.h>
 # include <stdint.h>
 # include <unistd.h>
 # include <libpf.h>
 # include <errno.h>
 # include <op.h>
+# include "error.h"
 # include "struct.h"
 
 # define BYTE_PER_LINE 64
