@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 12:05:51 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 12:13:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,11 @@ void init_processes(t_vm *vm)
 		player->processes = (t_process*)malloc(sizeof(t_process));
 		if_errno_printerr_exit(ERR_PROC_MALL);
 		player->processes_count = 1;
-		player->processes[1]
-			= (t_process){
-				.player_id = player->id,
-				.cursor_pos = 0,
-				.carry = 0,
-				.waiting = -1,
-				.cursor_start = (uint32_t)get_start_in_memory(vm, i),
-			};
+		player->processes->carry = 0;
+		player->processes->player_id = player->id;
+		player->processes->waiting = -1;
+		player->processes->cursor_pos = 0;
+		player->processes->cursor_start = (uint32_t)get_start_in_memory(vm, i);
 		print_proc(player->processes);
 		i++;
 	}
