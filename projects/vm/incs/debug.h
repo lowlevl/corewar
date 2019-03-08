@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 13:20:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 12:03:49 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "struct.h"
 # include <libpf.h>
+# include <stdlib.h>
 
 /*
 ** Debug functions
 */
 void	print_header(t_player *player);
 void	print_vm(t_vm *vm);
+void	print_proc(t_process *proc);
 
 #endif

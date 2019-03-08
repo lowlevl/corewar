@@ -1,47 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
+/*   dump.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/08 11:49:42 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/08 11:57:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VM_H
-# define VM_H
+#ifndef PRINT_H
+# define PRINT_H
 
-/*
-** System includes
-*/
-# include <fcntl.h>
-# include <unistd.h>
-# include <errno.h>
-
-/*
-** Our includes
-*/
-# include <op.h>
 # include <libft.h>
+# include <stdint.h>
+# include <unistd.h>
 # include <libpf.h>
-# include <argv.h>
-# include <struct.h>
-# include <error.h>
-# include <utils.h>
-# include <debug.h>
-# include <dump.h>
-# include <proc.h>
+# include <errno.h>
+# include <op.h>
+# include "error.h"
+# include "struct.h"
 
-/*
-** Defines
-*/
-#define CHAMP_TOO_LARGE "code too large"
+# define BYTE_PER_LINE 64
+# define BYTE_PRINT_LENGTH 3
+# define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
 
-/*
-** Proto
-*/
+void	print_dump(uint8_t *mem);
 void		load_players(t_vm *vm);
 void		load_player(t_vm *vm, int player_idx);
 void		*get_champ_bin(t_vm *vm, int player_idx);
