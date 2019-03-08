@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 09:08:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 11:08:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 void init_player(t_vm *vm, char *binary_path, int player_id)
 {
-	t_player player;
+	t_player *player;
 
-	ft_bzero(&player, sizeof(player));
-	player.file_buffer = get_file_buffer(binary_path);
-	player.file_name = binary_path;
-	player.header = *((header_t *)player.file_buffer);
-	player.header.magic = little_to_big_endian(player.header.magic);
-	player.header.prog_size = little_to_big_endian(player.header.prog_size);
-	player.id = vm->players_count;
-	vm->players[vm->players_count] = player;
+	player = vm->players + vm->players_count ;
+	ft_bzero(player, sizeof(*player));
+	player->file_buffer = get_file_buffer(binary_path);
+	player->file_name = binary_path;
+	player->header = *((header_t *)player->file_buffer);
+	player->header.magic = little_to_big_endian(player->header.magic);
+	player->header.prog_size = little_to_big_endian(player->header.prog_size);
+	player->id = vm->players_count + 1;
 
 	if (player_id != -1)
-		player.id = player_id;
+		player->id = player_id;
 
-	print_header(&vm->players[vm->players_count]);
-
+	print_header(player);
 	vm->players_count++;
 }
 
