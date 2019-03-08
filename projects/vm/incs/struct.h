@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 16:54:55 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 17:13:20 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef	struct	s_process {
 	uint8_t		player_id;
 	uint16_t	cursor_pos;
 	uint8_t		carry; // not sure the type is ok
-	uint32_t	waiting;
+	int32_t		waiting;
 	uint32_t	cursor_start;
 }				t_process;
 
@@ -41,6 +41,7 @@ typedef struct	s_player {
 typedef struct	s_vm {
 	uint8_t		players_count;
 	t_player	players[MAX_PLAYERS];
+	uint8_t		sorted_players_idx[MAX_PLAYERS];
 	uint64_t	dump;
 	uint8_t		memory[MEM_SIZE];
 	uint32_t	regs[REG_NUMBER];

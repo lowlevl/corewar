@@ -6,12 +6,26 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/07 18:32:28 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 15:33:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+/*
+** Our includes
+*/
+# include <libft.h>
+# include <libpf.h>
+# include <dump.h>
+# include <op.h>
+# include <argv.h>
+# include <struct.h>
+# include <error.h>
+# include <utils.h>
+# include <debug.h>
+# include <proc.h>
 
 /*
 ** System includes
@@ -20,19 +34,6 @@
 # include <unistd.h>
 # include <errno.h>
 
-/*
-** Our includes
-*/
-# include <op.h>
-# include <libft.h>
-# include <libpf.h>
-# include <argv.h>
-# include <struct.h>
-# include <error.h>
-# include <utils.h>
-# include <debug.h>
-# include <print.h>
-# include <proc.h>
 
 /*
 ** Defines

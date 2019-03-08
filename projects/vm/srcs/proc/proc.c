@@ -6,26 +6,31 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 16:32:16 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 17:14:26 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <proc.h>
 
-void init_processes(t_player *players, uint8_t count)
+void init_processes(t_vm *vm)
 {
 	uint8_t i;
 	t_player *player;
 
+
 	i = 0;
-	while  (i < count)
+	while  (i < vm->players_count)
 	{
-		player = players + i;
+		player = vm->players + i;
 		player->processes = (t_process*)malloc(sizeof(t_process));
 		if_errno_printerr_exit(ERR_PROC_MALL);
 		player->processes_count = 1;
-		player->processes[1] = (t_process){ .player_id = player->id,
-			.cursor_pos = 0, .carry = 0 };
+		player->processes->carry = 0;
+		player->processes->player_id = player->id;
+		player->processes->waiting = -1;
+		player->processes->cursor_pos = 0;
+		player->processes->cursor_start = (uint32_t)get_start_in_memory(vm, i);
+		print_proc(player->processes);
 		i++;
 	}
 }
@@ -33,12 +38,17 @@ void init_processes(t_player *players, uint8_t count)
 void add_processes(t_player *player, uint16_t pc)
 {
 	size_t n;
+	t_process *proc;
 
 	n = player->processes_count;
 	player->processes
 		= (t_process*)realloc(player->processes, sizeof(t_process) * n);
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
 	player->processes_count++;
-	player->processes[n] = (t_process){ .player_id = player->id,
-		.cursor_pos = pc, .carry = 0 };
+	proc = player->processes + n;
+	proc->player_id = player->id;
+	proc->cursor_pos = 0;
+	proc->carry = 0;
+	proc->cursor_start = pc;
+	proc->waiting = -1;
 }
