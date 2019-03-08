@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/08 10:36:33 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 11:10:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	print_vm(t_vm *vm)
 	ft_printf("\tplayer_count = %u\n", vm->players_count);
 
 	ft_printf("\tplayers: %#x\n", vm->players);
-	ft_printf("\t\t[0] id = %d\n", vm->players[0].id);
+	if (vm->players[0].id)
+		ft_printf("\t\t[0] id = %d\n", vm->players[0].id);
 	if (vm->players[1].id)
 		ft_printf("\t\t[1]id = %d\n", vm->players[1].id);
 	if (vm->players[2].id)
