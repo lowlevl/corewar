@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:55:52 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 16:50:37 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <argv.h>
 
-void init_player(t_vm *vm, char *binary_path, int player_id)
+void	init_player(t_vm *vm, char *binary_path, int specified_id)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = vm->players + vm->players_count ;
 	ft_bzero(player, sizeof(*player));
-	player->file_buffer = get_file_buffer(binary_path);
 	player->file_name = binary_path;
+	player->file_buffer = get_file_buffer(binary_path);
 	player->header = *((header_t *)player->file_buffer);
 	player->header.magic = little_to_big_endian(player->header.magic);
 	player->header.prog_size = little_to_big_endian(player->header.prog_size);
-	player->default_id = vm->players_count + 1;
-
-	if (player_id != -1)
-		player->specified_id = player_id;
-
+	player->id = specified_id;
 	print_header(player);
 	vm->players_count++;
 }
@@ -69,5 +65,6 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 		else
 			init_player(vm, argv[i], -1);
 	}
+	init_default_ids(vm->players, vm->players_count);
 	print_vm(vm); // Debug
 }

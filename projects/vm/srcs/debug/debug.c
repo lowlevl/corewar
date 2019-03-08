@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/08 11:54:39 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 16:30:23 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,28 @@ void	print_vm(t_vm *vm)
 	ft_printf("vm:\n");
 	ft_printf("\tplayer_count = %u\n", vm->players_count);
 
-	ft_printf("\tplayers: %#x\n", vm->players);
+	print_players(vm->players);
 
-	if (vm->players[0].default_id)
-		ft_printf("\t\t[0] id = %d\n", vm->players[0].default_id);
-	else if (vm->players[0].specified_id)
-		ft_printf("\t\t[0] id = %d\n", vm->players[0].specified_id);
+	ft_printf("\tdump = %u\n", vm->dump);
+	ft_printf("\tregs = %#x\n", vm->regs);
+}
 
-	if (vm->players[1].default_id)
-		ft_printf("\t\t[1]id = %d\n", vm->players[1].default_id);
-	else if (vm->players[1].specified_id)
-		ft_printf("\t\t[1] id = %d\n", vm->players[1].specified_id);
+void	print_players(t_player *players)
+{
+	int i;
 
-	if (vm->players[2].default_id)
-		ft_printf("\t\t[2]id = %d\n", vm->players[2].default_id);
-	else if (vm->players[2].specified_id)
-		ft_printf("\t\t[2] id = %d\n", vm->players[2].specified_id);
+	ft_printf("\tPlayers[]:\n");
+	i = 0;
+	while (i < MAX_PLAYERS && players[i].file_name)
+	{
+		print_player(&players[i], "\t\t");
+		i++;
+	}
+}
 
-	if (vm->players[3].default_id)
-		ft_printf("\t\t[3]id = %d\n", vm->players[3].default_id);
-	else if (vm->players[2].specified_id)
-		ft_printf("\t\t[2] id = %d\n", vm->players[2].specified_id);
-
-	ft_printf("\tdump: %u\n", vm->dump);
-	ft_printf("\tregs: %#x\n", vm->regs);
+void	print_player(t_player *player, char *prefix)
+{
+	ft_printf("%s%p:\n", prefix, player);
+	ft_printf("%s\tfile_name = %s\n", prefix, player->file_name);
+	ft_printf("%s\tid = %d\n", prefix, player->id);
 }

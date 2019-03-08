@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 13:20:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 15:32:31 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 */
 void	print_header(t_player *player);
 void	print_vm(t_vm *vm);
+void	print_players(t_player *players);
+void	print_player(t_player *player, char *prefix);
 
 #endif
