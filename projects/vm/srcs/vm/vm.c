@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/07 16:35:45 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:43:37 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	load_players(&vm);
 	init_processes(vm.players, vm.players_count);
 	// if (vm.dump == 0)
-	print_dump(vm.memory);
+	// print_dump(vm.memory);
 	return (0);
 }
 
@@ -42,6 +42,9 @@ void		load_player(t_vm *vm, int player_idx)
 
 	champ_bin = get_champ_bin(vm, player_idx);
 	champ_size = get_champ_size(vm, player_idx);
+	ft_printf("champ_size = %d\n", champ_size);
+	if (champ_size > (uint32_t)CHAMP_MAX_SIZE)
+		set_errno_exit(EFBIG, vm->players[player_idx].file_name);
 	start_in_memory = get_start_in_memory(vm, player_idx);
 	ft_memcpy(start_in_memory, champ_bin, champ_size);
 }
@@ -60,3 +63,4 @@ void		*get_start_in_memory(t_vm *vm, int player_idx)
 {
 	return (vm->memory + ((MEM_SIZE / vm->players_count) * player_idx));
 }
+

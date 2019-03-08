@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:49:40 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/07 10:42:19 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/07 18:40:21 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	if_errno_printerr_exit(const char *error)
 	}
 }
 
-void	set_erno_and_print_error(const int err_val, const char *msg)
+void	set_errno_exit(const int err_val, const char *msg)
 {
 	errno = err_val;
 	if_errno_printerr_exit(msg);
@@ -36,3 +36,4 @@ void	exit_print_usage()
 			" ...\n");
 	exit(1);
 }
+

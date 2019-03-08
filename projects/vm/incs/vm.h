@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/06 17:07:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:32:28 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@
 # include <print.h>
 # include <proc.h>
 
+/*
+** Defines
+*/
+#define CHAMP_TOO_LARGE "code too large"
+
+/*
+** Proto
+*/
 void		load_players(t_vm *vm);
 void		load_player(t_vm *vm, int player_idx);
 void		*get_champ_bin(t_vm *vm, int player_idx);
