@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/08 12:02:14 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/08 15:26:58 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS	:= vm.c \
 	argv/argv.c \
 	dump/print.c \
 	dump/load_player.c \
+	dump/sort_player.c \
 	proc/proc.c \
 
 LIBDIR	:= ../libs
