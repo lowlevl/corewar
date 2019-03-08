@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/07 18:37:11 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 09:08:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 {
 	if (ft_strcmp("dump", argv[*index] + 1) == 0)
 	{
+		*index = *index + 1;
 		if (*index < argc)
-		{
-			*index = *index + 1;
 			vm->dump = ft_atoi(argv[*index]);
-		}
 		else
 			set_errno_exit(EINVAL, ERR_DUMP);
 	}
