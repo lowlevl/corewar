@@ -7,6 +7,7 @@
 		"debug.h": "c",
 		"cursor.h": "c",
 		"proc.h": "c",
-		"struct.h": "c"
+		"struct.h": "c",
+		"dump.h": "c"
 	}
 }
