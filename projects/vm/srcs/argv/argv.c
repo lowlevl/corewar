@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:08:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 11:55:52 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void init_player(t_vm *vm, char *binary_path, int player_id)
 	player->header = *((header_t *)player->file_buffer);
 	player->header.magic = little_to_big_endian(player->header.magic);
 	player->header.prog_size = little_to_big_endian(player->header.prog_size);
-	player->id = vm->players_count + 1;
+	player->default_id = vm->players_count + 1;
 
 	if (player_id != -1)
-		player->id = player_id;
+		player->specified_id = player_id;
 
 	print_header(player);
 	vm->players_count++;
