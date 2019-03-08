@@ -14,3 +14,4 @@ BraceWrapping:
   BeforeElse: true
 SpaceBeforeParens: ControlStatements
 MaxEmptyLinesToKeep: 1
+PointerAlignment: Right
