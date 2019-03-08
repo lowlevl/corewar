@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   procs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 12:01:15 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/08 11:59:17 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/08 12:01:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
+#include <debug.h>
 
-# include "struct.h"
-# include <libpf.h>
-
-/*
-** Debug functions
-*/
-void	print_header(t_player *player);
-void	print_vm(t_vm *vm);
-void	print_proc(t_process *proc);
-
-#endif
+void print_proc(t_process *proc)
+{
+}
