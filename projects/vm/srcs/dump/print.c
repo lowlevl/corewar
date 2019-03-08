@@ -6,11 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:47:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/06 16:02:46 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/08 11:49:49 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <print.h>
+#include <dump.h>
 
 static char get_hex_char(uint8_t val)
 {
