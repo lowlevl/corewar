@@ -13,3 +13,4 @@ BraceWrapping:
   BeforeCatch: true
   BeforeElse: true
 SpaceBeforeParens: ControlStatements
+MaxEmptyLinesToKeep: 1
