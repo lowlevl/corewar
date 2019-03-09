@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 17:13:20 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 14:21:18 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 
 typedef	struct	s_process {
 	uint8_t		player_id;
-	uint16_t	cursor_pos;
 	uint8_t		carry; // not sure the type is ok
 	int32_t		waiting;
 	uint32_t	cursor_start;
+	uint16_t	cursor_pos;
 }				t_process;
 
 typedef struct	s_player {

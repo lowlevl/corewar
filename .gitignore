@@ -2,6 +2,9 @@
 corewar
 asm
 
+# Ignore auto generated tag files
+tags
+
 # Created by https://www.gitignore.io/api/c,macos,linux,windows
 # Edit at https://www.gitignore.io/?templates=c,macos,linux,windows
 
