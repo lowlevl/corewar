@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
+#    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/08 15:26:58 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/08 17:12:42 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,14 @@ SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
 SRCS	:= vm.c \
+	debug/debug.c \
+	error/error.c \
 	debug/header.c \
 	debug/procs.c \
 	debug/vm.c \
-	error/errors.c \
 	utils/file_utils.c \
 	argv/argv.c \
+	argv/id.c \
 	dump/print.c \
 	dump/load_player.c \
 	dump/sort_player.c \

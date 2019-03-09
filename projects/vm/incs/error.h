@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/07 18:38:59 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/08 15:11:13 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdlib.h>
 # include <string.h>
 # include <libpf.h>
+
+# define ERR_DUMP "Missing number for -dump"
+# define ERR_N "Missing argument for '-n'"
+# define ERR_N_INVALID "Invalid value given to '-n'. It must be greater or equal than 0"
+# define ERR_N_DUPLICATE "Duplication of value given to '-n'. Each value must be unique"
 
 /*
 ** Errors functions
