@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 11:18:52 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 14:21:18 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCT_H
 
 # include <stdint.h>
-
 # include <op.h>
 
 /*
@@ -36,7 +35,7 @@ typedef struct	s_player {
 	uint32_t	live_count;
 	uint32_t	processes_count;
 	t_process	*processes;
-	uint32_t	id;
+	int32_t	id; // Start from 0,-1 if not set
 }				t_player;
 
 typedef struct	s_vm {
