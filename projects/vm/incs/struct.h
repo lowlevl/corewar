@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 14:21:18 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 15:13:49 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct	s_player {
 	header_t	header;
 	char		*file_name;
 	char		*file_buffer;
+	int32_t		id; // Start from 0,-1 if not set
 	uint32_t	live_count;
 	uint32_t	processes_count;
 	t_process	*processes;
-	int32_t	id; // Start from 0,-1 if not set
 }				t_player;
 
 typedef struct	s_vm {

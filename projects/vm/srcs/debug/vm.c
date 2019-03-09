@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/08 17:13:24 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 15:11:19 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,23 @@ void	print_player(t_player *player, char *prefix)
 	ft_printf("%s%p:\n", prefix, player);
 	ft_printf("%s\tfile_name = %s\n", prefix, player->file_name);
 	ft_printf("%s\tid = %d\n", prefix, player->id);
+}
+
+void	print_loaded_players(t_vm *vm)
+{
+	int	i;
+
+	i = 0;
+	while (i < vm->players_count)
+	{
+		print_loaded_player(&vm->players[i]);
+		i++;
+	}
+}
+
+void	print_loaded_player(t_player *player)
+{
+	ft_printf("* Player '%s' with id '%d' (from '%s')",
+			player->header.prog_name, player->id, player->file_name);
+	ft_printf(" sucessfully loaded in memory.\n");
 }

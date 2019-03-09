@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 14:20:58 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 15:33:31 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	init_process(t_vm *vm, int player_idx)
 		player->processes->cursor_pos = 0;
 		player->processes->cursor_start =
 			(uint32_t)(get_start_in_memory(vm, player_idx) - (void *)vm->memory);
-		print_proc(player->processes); // Debug
+		// print_proc(player->processes); // Debug
 }
 
-void add_processes(t_player *player, uint16_t pc)
+void	add_processes(t_player *player, uint16_t pc)
 {
 	size_t n;
 	t_process *proc;
@@ -57,4 +57,9 @@ void add_processes(t_player *player, uint16_t pc)
 	proc->carry = 0;
 	proc->cursor_start = pc;
 	proc->waiting = -1;
+}
+
+void	exec_processes(t_vm *vm)
+{
+	vm = (t_vm*)vm;
 }
