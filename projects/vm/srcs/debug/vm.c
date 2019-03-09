@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/09 15:11:19 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 20:18:16 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	print_vm(t_vm *vm)
 	print_players(vm->players);
 
 	ft_printf("\tdump = %u\n", vm->dump);
-	ft_printf("\tregs = %#x\n", vm->regs);
+	ft_printf("\tprocesses_count = %u\n", vm->processes_count);
+	ft_printf("\tcycle_count = %u\n", vm->cycle_count);
 }
 
 void	print_players(t_player *players)
