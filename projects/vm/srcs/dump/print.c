@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:47:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 16:19:13 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 10:08:05 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_dump(void *mem)
 {
-	print_memory(mem, MEM_SIZE, 64);
+	print_memory(mem, MEM_SIZE, BYTE_PER_LINE);
 }
 
 void	print_memory(void *mem, int size, int line_size)
