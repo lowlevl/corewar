@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 15:05:35 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 10:21:26 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_player(t_vm *vm, char *binary_path, int specified_id)
 
 static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 {
+	int id;
+
 	if (ft_strcmp("dump", argv[*index] + 1) == 0)
 	{
 		*index = *index + 1;
@@ -42,7 +44,10 @@ static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 		*index = *index + 1;
 		if (*index + 1 < argc)
 		{
-			init_player(vm, argv[*index + 1], ft_atoi(argv[*index]));
+			id = ft_atoi(argv[*index]);
+			if (!is_unique_id(vm->players, vm->players_count, id))
+				set_errno_exit(EINVAL, ERR_N_DUPLICATE);
+			init_player(vm, argv[*index + 1], id);
 			*index = *index + 1;
 		}
 		else
