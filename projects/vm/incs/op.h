@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/11 16:39:40 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 17:00:07 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef char	t_arg_type;
 #define T_IND					0x4
 #define T_LAB					0x8
 
-#define OC_REG 0b1
+#define OC_REG 0b01
 #define OC_IND 0b10
 #define OC_DIR 0b11
 
