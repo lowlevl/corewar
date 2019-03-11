@@ -6,7 +6,7 @@
 #    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/09 14:36:57 by glodi            ###   ########.fr        #
+#    Updated: 2019/03/11 12:01:48 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	:= vm.c \
 	dump/load_player.c \
 	dump/sort_player.c \
 	proc/proc.c \
+	dump/wrappers.c
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
