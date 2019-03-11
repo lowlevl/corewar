@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   wrappers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/11 13:10:09 by glodi            ###   ########.fr       */
+/*   Created: 2019/03/11 11:25:31 by glodi             #+#    #+#             */
+/*   Updated: 2019/03/11 12:02:48 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include <dump.h>
 
-int main(int argc, char *argv[])
+void	*get_pos_in_memory(void *mem, t_process *process)
 {
-	static t_vm	vm;
+	const int index = process->cursor_pos + process->cursor_start;
 
-	vm.dump = -1;
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	exec_cycle(&vm);
-	if (vm.dump == vm.cycle_count)
-		print_dump(vm.memory);
-	return (0);
+	return (mem + (index % MEM_SIZE));
 }

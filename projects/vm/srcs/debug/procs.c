@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 11:59:17 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 20:16:16 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 11:29:05 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void print_proc(t_process *proc)
 	if (proc != NULL)
 	{
 		ft_printf("\tcarry: %hhu\n", proc->carry);
-		ft_printf("\twaiting: %d\n", proc->waiting);
+		ft_printf("\texec_cycle: %d\n", proc->exec_cycle);
 		ft_printf("\tcursor_start: %u\n", proc->cursor_start);
 		ft_printf("\tcursor_pos: %hu\n", proc->cursor_pos);
 	}

@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   proc.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 20:22:32 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 13:35:20 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURSOR_H
-# define CURSOR_H
+#ifndef PROC_H
+# define PROC_H
 
 # include <dump.h>
 # include <error.h>
 # include <debug.h>
+# include <opcode.h>
 
 # include "struct.h"
 
@@ -25,9 +26,10 @@
 void	init_processes(t_vm *vm);
 void	init_process(t_vm *vm, int player_idx);
 
-void	add_processes(t_vm *vm, uint16_t pc);
-void	exec_cycle(t_vm *vm);
-void	exec_player_processes(t_vm *vm, t_player *player);
-void	exec_process(t_vm *vm, t_process *process);
+void	add_processes(t_vm *vm, uint16_t pc, int id);
 
-#endif // !CURSOR_H
+void	exec_cycle(t_vm *vm);
+void	exec_process(t_vm *vm, t_process *process);
+void	check_process(t_vm *vm, t_process *process);
+
+#endif // !PROC_H

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/06 15:45:08 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 16:39:40 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
+
 /*
 ** Toutes les tailles sont en octets.
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
@@ -56,10 +57,14 @@
 
 typedef char	t_arg_type;
 
-#define T_REG					1
-#define T_DIR					2
-#define T_IND					4
-#define T_LAB					8
+#define T_REG					0x1
+#define T_DIR					0x2
+#define T_IND					0x4
+#define T_LAB					0x8
+
+#define OC_REG 0b1
+#define OC_IND 0b10
+#define OC_DIR 0b11
 
 /*
 **

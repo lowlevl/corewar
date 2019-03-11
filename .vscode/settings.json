@@ -9,6 +9,7 @@
 		"proc.h": "c",
 		"struct.h": "c",
 		"dump.h": "c",
-		"g_op.h": "c"
+		"g_op.h": "c",
+		"opcode.h": "c"
 	}
 }
