@@ -6,7 +6,7 @@
 #    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/08 17:12:42 by glodi            ###   ########.fr        #
+#    Updated: 2019/03/09 14:36:57 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
 SRCS	:= vm.c \
-	debug/debug.c \
 	error/error.c \
 	debug/header.c \
 	debug/procs.c \

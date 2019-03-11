@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 14:20:58 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 20:23:07 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,42 @@ void init_processes(t_vm *vm)
 
 void	init_process(t_vm *vm, int player_idx)
 {
-		t_player *player;
-
-		player = vm->players + player_idx;
-		player->processes = (t_process*)malloc(sizeof(t_process));
+		vm->processes = (t_process*)malloc(sizeof(t_process));
 		if_errno_printerr_exit(ERR_PROC_MALL);
-		player->processes_count = 1;
-		player->processes->carry = 0;
-		player->processes->player_id = player->id;
-		player->processes->waiting = -1;
-		player->processes->cursor_pos = 0;
-		player->processes->cursor_start =
+		vm->processes_count = 1;
+		vm->processes->carry = 0;
+		vm->processes->waiting = -1;
+		vm->processes->cursor_pos = 0;
+		vm->processes->cursor_start =
 			(uint32_t)(get_start_in_memory(vm, player_idx) - (void *)vm->memory);
-		print_proc(player->processes); // Debug
+		// print_proc(player->processes); // Debug
 }
 
-void add_processes(t_player *player, uint16_t pc)
+void	add_processes(t_vm *vm, uint16_t pc)
 {
 	size_t n;
 	t_process *proc;
 
-	n = player->processes_count;
-	player->processes
-		= (t_process*)realloc(player->processes, sizeof(t_process) * n);
+	n = vm->processes_count;
+	vm->processes
+		= (t_process*)realloc(vm->processes, sizeof(t_process) * n);
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
-	player->processes_count++;
-	proc = player->processes + n;
-	proc->player_id = player->id;
+	vm->processes_count++;
+	proc = vm->processes + n;
 	proc->cursor_pos = 0;
 	proc->carry = 0;
 	proc->cursor_start = pc;
 	proc->waiting = -1;
 }
+
+void	exec_cycle(t_vm *vm)
+{
+	int i;
+
+	i = 0;
+	while (i < vm->processes_count)
+	{
+		i++;
+	}
+}
+

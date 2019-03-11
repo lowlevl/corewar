@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 16:50:37 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/09 15:05:35 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_player(t_vm *vm, char *binary_path, int specified_id)
 	player->header.magic = little_to_big_endian(player->header.magic);
 	player->header.prog_size = little_to_big_endian(player->header.prog_size);
 	player->id = specified_id;
-	print_header(player);
 	vm->players_count++;
 }
 
@@ -66,5 +65,5 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 			init_player(vm, argv[i], -1);
 	}
 	init_default_ids(vm->players, vm->players_count);
-	print_vm(vm); // Debug
+	// print_vm(vm); // Debug
 }

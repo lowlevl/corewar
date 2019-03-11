@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 11:48:50 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 11:50:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/09 17:41:13 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void		load_player(t_vm *vm, int player_idx)
 
 	champ_bin = get_champ_bin(vm, player_idx);
 	champ_size = get_champ_size(vm, player_idx);
-	ft_printf("champ_size = %d\n", champ_size);
 	if (champ_size > (uint32_t)CHAMP_MAX_SIZE)
 		set_errno_exit(EFBIG, vm->players[player_idx].file_name);
 	start_in_memory = get_start_in_memory(vm, player_idx);
