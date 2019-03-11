@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/11 10:12:07 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/11 10:42:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_loaded_players(t_vm *vm)
 	i = 0;
 	while (i < vm->players_count)
 	{
-		print_loaded_player(&vm->players[i]);
+		print_loaded_player(&vm->players[vm->sorted_players_idx[i]]);
 		i++;
 	}
 }

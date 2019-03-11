@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:10:50 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 16:56:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/11 10:30:16 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ static void sort_arr(t_player *players, uint8_t *arr, uint8_t count)
 {
 	uint8_t i;
 	uint8_t j;
+
 	i = -1;
 	while (++i < count)
 	{
-		j = 0;
-		while (j < i)
+		j = -1;
+		while (++j < i)
 		{
 			if (players[arr[i]].id > players[arr[j]].id)
+			{
 				ft_swap(arr + i, arr + j);
-			j++;
+				j = 0;
+			}
 		}
+
 	}
 }
 
