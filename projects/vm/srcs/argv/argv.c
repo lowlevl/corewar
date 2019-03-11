@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/09 15:05:35 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 10:09:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_player(t_vm *vm, char *binary_path, int specified_id)
 	player->file_name = binary_path;
 	player->file_buffer = get_file_buffer(binary_path);
 	player->header = *((header_t *)player->file_buffer);
-	player->header.magic = little_to_big_endian(player->header.magic);
-	player->header.prog_size = little_to_big_endian(player->header.prog_size);
+	player->header.magic = bswap_32(player->header.magic);
+	player->header.prog_size = bswap_32(player->header.prog_size);
 	player->id = specified_id;
 	vm->players_count++;
 }
