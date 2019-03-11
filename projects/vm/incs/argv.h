@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argv.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/08 16:52:36 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 10:08:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <utils.h>
 # include <error.h>
 # include <debug.h>
+# include <bswap.h>
 
 /*
 ** Init functions
