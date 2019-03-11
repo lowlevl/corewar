@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 13:33:50 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/09 20:18:16 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/11 10:12:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	print_loaded_players(t_vm *vm)
 
 void	print_loaded_player(t_player *player)
 {
-	ft_printf("* Player '%s' with id '%d' (from '%s')",
-			player->header.prog_name, player->id, player->file_name);
-	ft_printf(" sucessfully loaded in memory.\n");
+	ft_printf(
+		"* Player '%s' with id '%d' (from '%s')"
+		" sucessfully loaded in memory.\n",
+		player->header.prog_name, player->id, player->file_name
+	);
 }
