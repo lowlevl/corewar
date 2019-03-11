@@ -8,6 +8,7 @@
 		"cursor.h": "c",
 		"proc.h": "c",
 		"struct.h": "c",
-		"dump.h": "c"
+		"dump.h": "c",
+		"g_op.h": "c"
 	}
 }
