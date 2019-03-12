@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 11:57:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:03:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ typedef struct s_vm
 	uint8_t  sorted_players_idx[MAX_PLAYERS];
 
 	int64_t dump;
-	uint8_t  memory[MEM_SIZE];
+	uint8_t memory[MEM_SIZE];
 
 	t_process *processes;
 	int		   processes_count;
-	int64_t   cycle_count;
+	int64_t	cycle_count;
 } t_vm;
 
 typedef struct s_op
@@ -65,5 +65,11 @@ typedef struct s_op
 	uint8_t  has_opt;
 	uint8_t  direct_size; // Need verif
 } t_op;
+
+typedef struct s_ops
+{
+	char *name;
+	void (*f)(t_vm *vm, t_process *process, const t_op *op);
+} t_ops;
 
 #endif
