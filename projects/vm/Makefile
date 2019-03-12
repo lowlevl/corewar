@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/12 13:35:33 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/12 16:07:41 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	:= vm.c \
 	dump/load_player.c \
 	dump/sort_player.c \
 	proc/proc.c \
+	proc/cursor.c \
 	dump/wrappers.c \
 	opcode/sti.c \
 	opcode/utils.c \
