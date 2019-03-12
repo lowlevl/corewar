@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 13:59:48 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:13:19 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	uint16_t adr;
 	uint8_t *cpy_to;
 
+	(void)op;
 	process->exec_cycle = -1;
 	ft_bzero(args, sizeof(args));
 	pos = (uint8_t *)get_pos_in_memory(vm->memory, process);
