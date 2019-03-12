@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 11:03:06 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 15:37:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void	add_processes(t_vm *vm, uint16_t pc, int id);
 void	exec_cycle(t_vm *vm);
 void	exec_process(t_vm *vm, t_process *process);
 void	check_process(t_vm *vm, t_process *process);
+
+void	process_move_cursor(t_process *process, off_t off);
 
 #endif // !PROC_H
