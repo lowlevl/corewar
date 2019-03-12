@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 10:42:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 11:57:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_process
 {
 	uint8_t  carry; // not sure the type is ok
-	uint64_t  exec_cycle;
+	int64_t  exec_cycle;
 	uint16_t cursor_start;
 	uint16_t cursor_pos; // pc
 	uint32_t regs[REG_NUMBER];
@@ -46,12 +46,12 @@ typedef struct s_vm
 	t_player players[MAX_PLAYERS];
 	uint8_t  sorted_players_idx[MAX_PLAYERS];
 
-	uint64_t dump;
+	int64_t dump;
 	uint8_t  memory[MEM_SIZE];
 
 	t_process *processes;
 	int		   processes_count;
-	uint64_t   cycle_count;
+	int64_t   cycle_count;
 } t_vm;
 
 typedef struct s_op
