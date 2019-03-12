@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 14:13:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:38:06 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	uint8_t *pos;
 	uint32_t args[3];
 	uint16_t adr;
-	uint8_t *cpy_to;
+	uint8_t *save_pos;
 
 	(void)op;
 	process->exec_cycle = -1;
 	ft_bzero(args, sizeof(args));
 	pos = (uint8_t *)get_pos_in_memory(vm->memory, process);
-	cpy_to = pos;
+	save_pos = pos;
 	pos++;
 	oc = read_octet_code(&pos);
 	if (read_sti_arg(args, &pos, process, oc) == -1 ||
@@ -67,8 +67,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 	{
-		process->cursor_pos = pos - cpy_to;
-		cpy_to = cpy_to + adr % IDX_MOD;
-		copy_to((uint32_t *)cpy_to, args[0]);
+		copy_to((uint32_t *)save_pos + adr % IDX_MOD, args[0]);
 	}
+	process->cursor_pos = pos - save_pos;
 }
