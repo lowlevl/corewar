@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/11 11:44:30 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/12 15:00:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ uint32_t	get_champ_size(t_vm *vm, int player_idx);
 void		*get_start_in_memory(t_vm *vm, int player_idx);
 void		sort_player_by_index(t_vm *vm);
 void		*get_pos_in_memory(void *mem, t_process *process);
+size_t		get_idx_in_memory(t_process *process);
 
 #endif

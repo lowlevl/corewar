@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 11:25:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/11 12:02:48 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/12 15:00:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	*get_pos_in_memory(void *mem, t_process *process)
 {
-	const int index = process->cursor_pos + process->cursor_start;
+	return (mem + get_idx_in_memory(process));
+}
 
-	return (mem + (index % MEM_SIZE));
+size_t	get_idx_in_memory(t_process *process)
+{
+	return ((process->cursor_start + process->cursor_pos) % MEM_SIZE);
 }
