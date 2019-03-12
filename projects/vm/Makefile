@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
+#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/11 13:43:17 by glodi            ###   ########.fr        #
+#    Updated: 2019/03/12 13:35:33 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	:= vm.c \
 	proc/proc.c \
 	dump/wrappers.c \
 	opcode/sti.c \
+	opcode/utils.c \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
