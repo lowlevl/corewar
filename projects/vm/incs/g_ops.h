@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   procs.c                                            :+:      :+:    :+:   */
+/*   g_ops.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/08 11:59:17 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/11 11:29:05 by glodi            ###   ########.fr       */
+/*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/12 14:10:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
+#ifndef G_OPS_H
+# define G_OPS_H
 
-void print_proc(t_process *proc)
-{
-	ft_printf("proc: %p\n", proc);
-	if (proc != NULL)
-	{
-		ft_printf("\tcarry: %hhu\n", proc->carry);
-		ft_printf("\texec_cycle: %d\n", proc->exec_cycle);
-		ft_printf("\tcursor_start: %u\n", proc->cursor_start);
-		ft_printf("\tcursor_pos: %hu\n", proc->cursor_pos);
-	}
-}
+# include "opcode.h"
+# include "struct.h"
+
+const t_ops g_ops[17] = {
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{ "sti", exec_sti },
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+	{NULL, NULL},
+};
+
+#endif // !G_OPS_H

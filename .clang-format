@@ -15,3 +15,6 @@ BraceWrapping:
 SpaceBeforeParens: ControlStatements
 MaxEmptyLinesToKeep: 1
 PointerAlignment: Right
+AllowShortFunctionsOnASingleLine: Empty
+AlignAfterOpenBracket: DontAlign
+ContinuationIndentWidth: 4
