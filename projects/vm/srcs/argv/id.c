@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   id.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 16:03:49 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/08 16:54:13 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/12 12:15:20 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_default_ids(t_player *players, int players_count)
 {
 	int 		i;
-	static int	default_id = 0;
-	
+	static int	default_id = 1;
+
 	i = 0;
 	while (i < players_count)
 	{
