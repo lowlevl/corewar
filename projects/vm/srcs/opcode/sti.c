@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 13:39:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:59:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void copy_to(uint32_t *copy_to, uint32_t val)
 	*copy_to = val;
 }
 
-static int read_sti_arg(uint32_t *args, uint8_t **pos, t_process *process,
-						uint8_t oc)
+static int read_sti_arg(
+	uint32_t *args, uint8_t **pos, t_process *process, uint8_t oc)
 {
 	uint8_t type_arg;
 
@@ -53,16 +53,17 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	uint16_t adr;
 	uint8_t *cpy_to;
 
+	process->exec_cycle = -1;
 	ft_bzero(args, sizeof(args));
 	pos = (uint8_t *)get_pos_in_memory(vm->memory, process);
 	cpy_to = pos;
 	pos++;
 	oc = read_octet_code(&pos);
-	read_sti_arg(args, &pos, process, oc);
-
-	adr = args[1] + args[2];
-	if (adr == 0)
+	if (read_sti_arg(args, &pos, process, oc) == -1 ||
+		(adr = args[1] + args[2]) == 0)
+	{
 		process->carry = 1;
+	}
 	else
 	{
 		process->cursor_pos = pos - cpy_to;
