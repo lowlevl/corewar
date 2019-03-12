@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/11 17:00:07 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/12 10:30:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
 
+/**
+ * nb of bytes
+ * do not change this macro
+ */
 #define IND_SIZE				2
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
