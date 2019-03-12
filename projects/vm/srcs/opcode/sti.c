@@ -6,16 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 15:30:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:48:57 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
-
-static void copy_to(uint32_t *copy_to, uint32_t val)
-{
-	*copy_to = val;
-}
 
 static int read_sti_arg(
 	uint8_t *memory, t_process *process, uint32_t *args, uint8_t oc)
@@ -49,7 +44,6 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 {
 	uint8_t  oc;
 	size_t   pos;
-	size_t   save_pos;
 	uint32_t args[3];
 	uint16_t adr;
 
@@ -57,15 +51,14 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	process->exec_cycle = -1;
 	ft_bzero(args, sizeof(args));
 	pos = get_idx_in_memory(process);
+	process_move_cursor(process, 1);
 	oc = read_octet_code(process, vm->memory);
+	ft_printf("%x\n", oc);
 	if (read_sti_arg(vm->memory, process, args, oc) == -1 ||
 		(adr = args[1] + args[2]) == 0)
 	{
 		process->carry = 1;
 	}
 	else
-	{
-		copy_to((uint32_t *)save_pos + adr % IDX_MOD, args[0]);
-	}
-	process->cursor_pos = pos - save_pos;
+		write_in_memory(vm->memory, (uint8_t*)&args, sizeof(args[0]), pos + adr % IDX_MOD);
 }
