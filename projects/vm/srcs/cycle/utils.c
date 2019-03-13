@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 12:07:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 14:40:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void exec_process(t_vm *vm, t_process *process)
 			{
 				process->exec_cycle = -1;
 				process_move_cursor(process, 1);
-				ft_printf("Exec process %p %#x (%s)\n", pos - vm->memory,
+				ft_printf("\r\e[2KExec process %p %#x (%s)\n", pos - vm->memory,
 					op->opcode, op->name);
 				ops->f(vm, process, op);
 				ft_printf("pos: %.2hhx %.2hhx\n", get_idx_in_memory(process), vm->memory[get_idx_in_memory(process)]);
 			}
 			else
-				ft_printf("wait process %p %#x (%s)\n", pos - vm->memory,
+				ft_printf("wait process %p %#x (%s)\r", pos - vm->memory,
 					op->opcode, op->name);
 		}
 		else
