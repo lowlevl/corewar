@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/13 09:54:55 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/13 11:45:55 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS	:= vm.c \
 	error/error.c \
 	opcode/sti.c \
 	opcode/live.c \
+	opcode/and.c \
 	opcode/get.u.c \
 	opcode/read.u.c \
 	opcode/write.u.c \
