@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/13 11:45:55 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/13 13:20:23 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRCS	:= vm.c \
 	proc/proc.c \
 	proc/cursor.c \
 	utils/file_utils.c \
+	vm/init.c \
+	vm/winner.c \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
