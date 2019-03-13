@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 10:09:05 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 11:34:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	t_player *player;
 
 	(void)op;
+	process->exec_cycle = -1;
 	player_id = read_arg(process, vm->memory, T_DIR);
 	player = get_player(vm, player_id);
 	if (player)
