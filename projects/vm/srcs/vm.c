@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/11 13:10:09 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/13 10:18:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	print_loaded_players(&vm);
 	init_processes(&vm);
 	exec_cycle(&vm);
-	if (vm.dump == vm.cycle_count)
+	if (vm.dump != -1)
 		print_dump(vm.memory);
 	return (0);
 }
