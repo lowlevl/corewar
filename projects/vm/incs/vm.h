@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/09 15:15:10 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/13 09:55:17 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <utils.h>
 # include <debug.h>
 # include <proc.h>
+# include <cycle.h>
 
 /*
 ** System includes

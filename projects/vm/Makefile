@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/12 17:02:54 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/13 09:54:55 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,24 +19,26 @@ SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
 SRCS	:= vm.c \
-	error/error.c \
+	argv/argv.c \
+	argv/id.c \
+	cycle/cycle.c \
+	cycle/utils.c \
 	debug/header.c \
 	debug/procs.c \
 	debug/vm.c \
-	utils/file_utils.c \
-	argv/argv.c \
-	argv/id.c \
 	dump/print.c \
 	dump/load_player.c \
 	dump/sort_player.c \
-	proc/proc.c \
-	proc/cursor.c \
 	dump/wrappers.c \
+	error/error.c \
 	opcode/sti.c \
 	opcode/live.c \
 	opcode/get.u.c \
 	opcode/read.u.c \
 	opcode/write.u.c \
+	proc/proc.c \
+	proc/cursor.c \
+	utils/file_utils.c \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
