@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 11:22:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 12:07:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,36 @@ void exec_process(t_vm *vm, t_process *process)
 
 	pos = get_pos_in_memory(vm->memory, process);
 	op = get_opcode(*pos);
-	if (!op)
-		ft_printf("NOPE\n");
-	ops = g_ops + op->opcode - 1;
-	if (ops->name != NULL)
+	if (op)
 	{
-		if (process->exec_cycle == -1)
-			process->exec_cycle = vm->cycle_count + op->duration;
-		else if (process->exec_cycle == vm->cycle_count)
+		ops = g_ops + op->opcode - 1;
+		if (ops->name != NULL)
 		{
-			ft_printf("Exec process %p %#x (%s)\n", pos - vm->memory,
-				op->opcode, op->name);
-			ops->f(vm, process, op);
+			if (process->exec_cycle == -1)
+				process->exec_cycle = vm->cycle_count + op->duration;
+			if (process->exec_cycle == vm->cycle_count)
+			{
+				process->exec_cycle = -1;
+				process_move_cursor(process, 1);
+				ft_printf("Exec process %p %#x (%s)\n", pos - vm->memory,
+					op->opcode, op->name);
+				ops->f(vm, process, op);
+				ft_printf("pos: %.2hhx %.2hhx\n", get_idx_in_memory(process), vm->memory[get_idx_in_memory(process)]);
+			}
+			else
+				ft_printf("wait process %p %#x (%s)\n", pos - vm->memory,
+					op->opcode, op->name);
 		}
 		else
-			ft_printf("wait process %p %#x (%s)\n", pos - vm->memory,
-				op->opcode, op->name);
+		{
+			// ft_printf("opcode not set: %x (opcode: %s %d)\n", *pos, op->name, op->opcode - 1);
+			process_move_cursor(process, 1);
+		}
+	}
+	else
+	{
+		// ft_printf("opcode not found: %x\n", *pos);
+		process_move_cursor(process, 1);
 	}
 }
 
