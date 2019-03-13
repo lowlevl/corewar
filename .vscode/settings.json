@@ -12,6 +12,7 @@
 		"g_op.h": "c",
 		"opcode.h": "c",
 		"op.h": "c",
-		"cycle.h": "c"
+		"cycle.h": "c",
+		"vm_utils.h": "c"
 	}
 }
