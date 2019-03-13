@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:52 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 11:20:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 14:00:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define CYCLE_H
 
 #include "struct.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 void		exec_process(t_vm *vm, t_process *process);
 const t_op *get_opcode(uint8_t val);

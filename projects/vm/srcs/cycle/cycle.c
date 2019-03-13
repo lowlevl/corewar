@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:11:59 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 14:00:20 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,46 @@ void setup_for_next_cycle(t_vm *vm)
 	vm->nb_live_for_cycle = 0;
 }
 
-void check_players_have_live(t_vm *vm)
+size_t get_nb_process_have_live(t_process *process, size_t process_count)
 {
-	uint8_t i;
-	t_player *players;
+	size_t i;
+	size_t count;
 
 	i = 0;
-	players = vm->players;
-	while (i < vm->players_count)
+	count = 0;
+	while (i < process_count)
 	{
-		if (players[i].is_alive)
-		{
-			if (players[i].cycle_live_count == 0)
-			{
-				players[i].is_alive = 0;
-				vm->players_alive--;
-			}
-			else
-				players[i].cycle_live_count = 0;
+		if (process[i].have_live)
+			count++;
+		i++;
+	}
+	return count;
+}
+
+void filter_process_have_live(t_vm *vm)
+{
+	size_t i;
+	size_t p;
+	size_t nb;
+	t_process *process_filtered;
+	t_process *processes;
+
+	processes = vm->processes;
+	nb = get_nb_process_have_live(processes, vm->processes_count);
+	process_filtered = (t_process*)malloc(nb * sizeof(t_process));
+	i = 0;
+	p = 0;
+	while (i < nb)
+	{
+		if (processes[i].have_live) {
+			processes[i].have_live = 0;
+			process_filtered[p++] = processes[i];
 		}
 		i++;
 	}
+	free(vm->processes);
+	vm->processes_count = nb;
+	vm->processes = process_filtered;
 }
 
 void check_cycle(t_vm *vm)
@@ -51,7 +70,7 @@ void check_cycle(t_vm *vm)
 			vm->cycle_to_die -= CYCLE_DELTA;
 		else
 			vm->nb_check++;
-		check_players_have_live(vm);
+		filter_process_have_live(vm);
 		setup_for_next_cycle(vm);
 	}
 }
@@ -74,7 +93,7 @@ void exec_cycle(t_vm *vm)
 
 void cycle_until_death(t_vm *vm)
 {
-	while (vm->players_alive > 0)
+	while (vm->processes_count > 0)
 	{
 		exec_cycle(vm);
 	}
@@ -82,7 +101,7 @@ void cycle_until_death(t_vm *vm)
 
 void cycle_until_dump(t_vm *vm)
 {
-	while (vm->cycle_count < vm->dump && vm->players_alive > 0)
+	while (vm->cycle_count < vm->dump && vm->processes_count > 0)
 	{
 		exec_cycle(vm);
 	}
