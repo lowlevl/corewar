@@ -6,17 +6,17 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 10:17:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 10:43:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <argv.h>
 
-void	init_player(t_vm *vm, char *binary_path, int specified_id)
+void init_player(t_vm *vm, char *binary_path, int specified_id)
 {
-	t_player	*player;
+	t_player *player;
 
-	player = vm->players + vm->players_count ;
+	player = vm->players + vm->players_count;
 	ft_bzero(player, sizeof(*player));
 	player->file_name = binary_path;
 	player->file_buffer = get_file_buffer(binary_path);
@@ -62,6 +62,9 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 	int i;
 
 	i = 0;
+	vm->dump = -1;
+	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->next_check = CYCLE_TO_DIE;
 	if (argc < 2)
 		exit_print_usage();
 	while (++i < argc)
