@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/13 10:18:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 11:20:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int main(int argc, char *argv[])
 {
 	static t_vm	vm;
 
-	vm.dump = -1;
 	init_vm(&vm, argc, argv);
 	load_players(&vm);
 	sort_player_by_index(&vm);
 	print_loaded_players(&vm);
 	init_processes(&vm);
-	exec_cycle(&vm);
+	make_cycle(&vm);
 	if (vm.dump != -1)
 		print_dump(vm.memory);
 	return (0);
