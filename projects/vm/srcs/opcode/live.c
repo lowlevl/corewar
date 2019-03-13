@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:10:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 14:01:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,11 @@ static t_player *get_player(t_vm *vm, int32_t player_id)
 
 static void report_as_live(t_vm *vm, t_player *player)
 {
-	if (player->is_alive)
-	{
-		vm->last_player_report_as_live = player->id;
-		vm->nb_live_for_cycle++;
-		player->total_live_count++;
-		player->cycle_live_count++;
-		ft_printf("un processus a dit que le joueur %d(%s) est en vie\n",
-			player->id, player->header.prog_name);
-	}
-	else
-	{
-		ft_printf("un processus tente de res le joueur %d(%s)\n",
-			player->id, player->header.prog_name);
-	}
-
+	vm->last_player_report_as_live = player->id;
+	vm->nb_live_for_cycle++;
+	player->total_live_count++;
+	ft_printf("un processus a dit que le joueur %d(%s) est en vie\n",
+		player->id, player->header.prog_name);
 }
 
 void exec_live(t_vm *vm, t_process *process, const t_op *op)
@@ -56,6 +46,7 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	player_id = read_arg(process, vm->memory, T_DIR_4);
 	player = get_player(vm, player_id);
+	process->have_live = 1;
 	if (player)
 	{
 		report_as_live(vm, player);
