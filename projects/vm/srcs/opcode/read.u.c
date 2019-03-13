@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:08:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:00:55 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 		return bswap_32(*(uint32_t *)(mem + idx));
 	}
 	return -1;
+}
+
+uint16_t get_indirect(size_t pos, uint8_t *memory)
+{
+	return bswap_16(*(uint16_t *)(memory + (pos % MEM_SIZE)));
 }
