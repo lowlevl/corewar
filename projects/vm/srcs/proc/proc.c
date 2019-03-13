@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 14:10:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:49:51 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void init_processes(t_vm *vm)
 	vm->processes_count = vm->players_count;
 	while (i < vm->players_count)
 	{
-		start = (size_t)((uint8_t *)get_start_in_memory(vm, i) - vm->memory);
+		start = get_start_idx_in_memory(vm->players_count, i);
 		player_id = vm->players[vm->sorted_players_idx[i]].id;
 		init_process(vm, start, i, player_id);
 		i++;
