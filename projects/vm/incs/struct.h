@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 10:16:58 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 10:42:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,23 @@ typedef struct s_player
 
 typedef struct s_vm
 {
-	uint8_t	players_count;
-	uint8_t	players_alive;
-	t_player   players[MAX_PLAYERS];
-	uint8_t	sorted_players_idx[MAX_PLAYERS];
-	int64_t	dump;
-	uint8_t	memory[MEM_SIZE];
+	uint8_t  players_count;
+	uint8_t  players_alive;
+	t_player players[MAX_PLAYERS];
+	uint8_t  sorted_players_idx[MAX_PLAYERS];
+	uint32_t last_player_report_as_live;
+
+	int64_t dump;
+	uint8_t memory[MEM_SIZE];
+
 	t_process *processes;
 	uint64_t   processes_count;
-	int64_t	cycle_count;
-	uint64_t   nb_live_for_cycle;
-	uint32_t   last_player_report_as_live;
+
+	uint32_t nb_check;
+	int64_t  next_check;
+	uint32_t cycle_to_die;
+	int64_t  cycle_count;
+	uint64_t nb_live_for_cycle;
 } t_vm;
 
 typedef struct s_op
