@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/11 10:42:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 10:17:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	init_player(t_vm *vm, char *binary_path, int specified_id)
 	player->header.magic = bswap_32(player->header.magic);
 	player->header.prog_size = bswap_32(player->header.prog_size);
 	player->id = specified_id;
+	player->is_alive = 1;
 	vm->players_count++;
+	vm->players_alive++;
 }
 
 static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
