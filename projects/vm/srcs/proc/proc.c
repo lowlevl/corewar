@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 09:49:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 11:23:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void init_processes(t_vm *vm)
 void init_process(t_vm *vm, uint16_t cursor_start, int index, int32_t player_id)
 {
 	vm->processes[index].carry = 0;
-	vm->processes[index].exec_cycle = 0;
+	vm->processes[index].exec_cycle = -1;
 	vm->processes[index].cursor_pos = 0;
 	vm->processes[index].cursor_start = cursor_start;
 	vm->processes[index].player_id = player_id;
@@ -57,6 +57,6 @@ void add_process(t_vm *vm, uint16_t pc, int player_id)
 	proc->player_id = player_id;
 	proc->cursor_pos = 0;
 	proc->carry = 0;
-	proc->exec_cycle = 0;
+	proc->exec_cycle = -1;
 	proc->cursor_start = pc;
 }
