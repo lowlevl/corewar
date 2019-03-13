@@ -6,11 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:22:57 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 13:39:56 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "vm_utils.h"
 
 void print_winner(t_vm *vm)
 {

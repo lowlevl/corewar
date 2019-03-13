@@ -6,11 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:13:51 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:14:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 13:40:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "vm_utils.h"
 
 void init_vm(t_vm *vm, int argc, char *argv[])
 {
