@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 14:10:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:02:39 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "struct.h"
 
 const t_ops g_ops[17] = {
-	{NULL, NULL},
+	{ "live", exec_live },
 	{NULL, NULL},
 	{NULL, NULL},
 	{NULL, NULL},

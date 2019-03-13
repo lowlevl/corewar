@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 16:35:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:02:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	 write_in_memory(uint8_t *mem, uint8_t *content, size_t len, size_t at);
  * command
  */
 void exec_sti(t_vm *vm, t_process *process, const t_op *op);
+void exec_live(t_vm *vm, t_process *process, const t_op *op);
 
 #endif

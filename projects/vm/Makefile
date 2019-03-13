@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/12 16:26:30 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/12 17:02:54 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS	:= vm.c \
 	proc/cursor.c \
 	dump/wrappers.c \
 	opcode/sti.c \
+	opcode/live.c \
 	opcode/get.u.c \
 	opcode/read.u.c \
 	opcode/write.u.c \
