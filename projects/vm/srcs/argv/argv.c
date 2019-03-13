@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 10:43:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 13:21:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void init_player(t_vm *vm, char *binary_path, int specified_id)
 	vm->players_alive++;
 }
 
-static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
+void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 {
 	int id;
 
@@ -55,25 +55,4 @@ static void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 		else
 			set_errno_exit(EINVAL, ERR_N);
 	}
-}
-
-void init_vm(t_vm *vm, int argc, char *argv[])
-{
-	int i;
-
-	i = 0;
-	vm->dump = -1;
-	vm->cycle_to_die = CYCLE_TO_DIE;
-	vm->next_check = CYCLE_TO_DIE;
-	if (argc < 2)
-		exit_print_usage();
-	while (++i < argc)
-	{
-		if (argv[i][0] == '-')
-			handle_option(vm, argc, argv, &i);
-		else
-			init_player(vm, argv[i], -1);
-	}
-	init_default_ids(vm->players, vm->players_count);
-	// print_vm(vm); // Debug
 }
