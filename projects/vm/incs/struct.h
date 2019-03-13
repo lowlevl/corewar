@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 11:34:06 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/13 14:01:29 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_process
 	uint16_t cursor_pos; // pc
 	uint32_t regs[REG_NUMBER];
 	int		 player_id;
+	uint8_t  have_live;
 } t_process;
 
 typedef struct s_player
@@ -37,15 +38,12 @@ typedef struct s_player
 	char *   file_buffer;
 	int32_t  id; // Start from 0,-1 if not set
 	uint32_t total_live_count;
-	uint32_t cycle_live_count;
 	uint32_t processes_count;
-	uint8_t  is_alive;
 } t_player;
 
 typedef struct s_vm
 {
 	uint8_t  players_count;
-	uint8_t  players_alive;
 	t_player players[MAX_PLAYERS];
 	uint8_t  sorted_players_idx[MAX_PLAYERS];
 	uint32_t last_player_report_as_live;
