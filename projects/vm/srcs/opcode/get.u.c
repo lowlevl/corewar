@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:52:54 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 16:25:01 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 10:41:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int get_type_arg(uint8_t co, uint8_t arg_number)
 {
 	arg_number = (MAX_ARGS_NUMBER - arg_number - 1) * 2;
-	if ((co & 0b11 << arg_number) == (OC_REG << arg_number))
+	if ((co & 0b11 << arg_number) == (REG_CODE << arg_number))
 		return (T_REG);
-	else if ((co & 0b11 << arg_number) == (OC_IND << arg_number))
-		return (T_IND);
-	else if ((co & 0b11 << arg_number) == (OC_DIR << arg_number))
+	else if ((co & 0b11 << arg_number) == (DIR_CODE << arg_number))
 		return (T_DIR);
+	else if ((co & 0b11 << arg_number) == (IND_CODE << arg_number))
+		return (T_IND);
 	return -1;
 }
 
