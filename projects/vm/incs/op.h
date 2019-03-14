@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/13 13:04:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 10:41:22 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 #define DIR_SIZE 4
 #define DIR_4_SIZE 8
 
-#define REG_CODE 1
-#define DIR_CODE 2
-#define IND_CODE 3
+#define REG_CODE 0b01
+#define DIR_CODE 0b10
+#define IND_CODE 0b11
 
 #define MAX_ARGS_NUMBER 4
 #define MAX_PLAYERS 4
@@ -65,10 +65,6 @@ typedef char t_arg_type;
 #define T_IND 0x4
 #define T_LAB 0x8
 #define T_DIR_4 0xf
-
-#define OC_REG 0b01
-#define OC_IND 0b10
-#define OC_DIR 0b11
 
 /*
 **
