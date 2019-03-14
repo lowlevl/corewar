@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 16:57:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 10:43:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int read_and_arg(
 			get_idx_in_memory(process) + read_arg(process, memory, T_IND),
 			memory);
 	else if (type_arg == T_DIR)
-		args[0] = read_arg(process, memory, T_DIR);
+		args[0] = read_arg(process, memory, T_DIR_4);
 
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_REG)
@@ -35,7 +35,9 @@ static int read_and_arg(
 			get_idx_in_memory(process) + read_arg(process, memory, T_IND),
 			memory);
 	else if (type_arg == T_DIR)
-		args[1] = read_arg(process, memory, T_DIR);
+		args[1] = read_arg(process, memory, T_DIR_4);
+	else
+		return -1;
 
 	if (get_type_arg(oc, 2) == T_REG)
 		args[2] = read_arg(process, memory, T_REG);
@@ -53,6 +55,8 @@ void exec_and(t_vm *vm, t_process *process, const t_op *op)
 
 	ft_bzero(args, sizeof(args));
 	oc = read_octet_code(process, vm->memory);
+	ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
+		get_type_arg(oc, 2));
 	if (read_and_arg(vm->memory, process, args, oc) == -1 ||
 		(logic = args[0] & args[1]) == 0)
 	{
@@ -62,4 +66,7 @@ void exec_and(t_vm *vm, t_process *process, const t_op *op)
 	{
 		write_in_registre(process, args[2], logic);
 	}
+	ft_printf("args[0]: %u\n", args[0]);
+	ft_printf("args[1]: %u\n", args[1]);
+	ft_printf("args[2]: %u\n", args[2]);
 }
