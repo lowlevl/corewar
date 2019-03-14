@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 09:18:36 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 10:58:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
 
 uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 {
-	size_t idx;
+	size_t   idx;
 	uint32_t buff;
 
 	idx = get_idx_in_memory(process);
@@ -48,21 +48,21 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 	}
 	else if (type == T_IND)
 	{
-		process_move_cursor(process, 2);
-		read_in_memory(mem, (uint8_t*)&buff, 2, idx);
+		process_move_cursor(process, 4);
+		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
 		return bswap_16((uint16_t)buff);
 	}
 	else if (type == T_DIR)
 	{
 		process_move_cursor(process, 2);
-		read_in_memory(mem, (uint8_t*)&buff, 2, idx);
+		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
 		return bswap_16((uint16_t)buff);
 	}
 	else if (type == T_DIR_4)
 	{
 		process_move_cursor(process, 4);
-		read_in_memory(mem, (uint8_t*)&buff, 4, idx);
-		return bswap_32(buff);
+		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
+		return buff;
 	}
 	return -1;
 }
