@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 14:39:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:53:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,20 @@ void add_process(t_vm *vm, uint16_t pc, int player_id)
 	proc->carry = 0;
 	proc->exec_cycle = -1;
 	proc->cursor_start = pc;
+}
+
+void copy_process(t_vm *vm, t_process *process, size_t pos)
+{
+		size_t	 n;
+	t_process *proc;
+
+	n = vm->processes_count;
+	vm->processes =
+		(t_process *)realloc(vm->processes, sizeof(t_process) * (n + 1));
+	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
+	vm->processes_count++;
+	proc = vm->processes + n;
+	ft_printf("%p\n", proc);
+	ft_memcpy(proc, process, sizeof(*process));
+	proc->cursor_pos = pos;
 }
