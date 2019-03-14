@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 10:57:09 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:39:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void add_process(t_vm *vm, uint16_t pc, int player_id)
 	ft_printf("%p\n", proc);
 	proc->player_id = player_id;
 	proc->cursor_pos = 0;
+	proc->taunt_buffer[0] = 0;
+	proc->taunt_size = 0;
 	proc->carry = 0;
 	proc->exec_cycle = -1;
 	proc->cursor_start = pc;
