@@ -6,17 +6,18 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:27:38 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 15:26:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 15:38:19 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-void exec_aff(t_vm *vm, t_process *process, t_op *op)
+void exec_aff(t_vm *vm, t_process *process, const t_op *op)
 {
 	uint8_t oc;
 	uint8_t ch;
 
+	(void)op;
 	oc = read_octet_code(process, vm->memory);
 	if (get_type_arg(oc, 0) == T_REG)
 	{
