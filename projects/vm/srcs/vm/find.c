@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_utils.h                                         :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/13 13:36:29 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 15:00:40 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/14 14:57:23 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/14 15:00:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VM_UTILS_H
-#define VM_UTILS_H
+#include "vm_utils.h"
 
-#include "struct.h"
-#include "libpf.h"
-#include "argv.h"
-
-void print_winner(t_vm *vm);
-void init_vm(t_vm *vm, int argc, char *argv[]);
 t_player *find_player(t_player *players, size_t player_count, int32_t player_id)
+{
+	size_t i;
 
-#endif // !VM_UTILS_H
+	i = 0;
+	while (i < players_count)
+	{
+		if (players[i].id == player_id)
+			return players + i;
+		i++;
+	}
+	return NULL;
+}
