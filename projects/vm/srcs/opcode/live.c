@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 14:40:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 09:37:40 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,11 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	if (player)
 	{
 		report_as_live(vm, player);
+	}
+	else
+	{
+		ft_printf("un processus souhaite que le joueur avec l'id %d soit en "
+				  "vie,\n mais je ne connais de telle joueur\n",
+			player_id);
 	}
 }
