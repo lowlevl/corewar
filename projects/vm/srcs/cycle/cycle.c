@@ -6,21 +6,21 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 14:00:20 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 11:21:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cycle.h"
 #include "libpf.h"
 
-void setup_for_next_cycle(t_vm *vm)
+void setup_next_cycle(t_vm *vm)
 {
 	vm->next_check = vm->cycle_count + vm->cycle_to_die;
 	vm->nb_check = 0;
 	vm->nb_live_for_cycle = 0;
 }
 
-size_t get_nb_process_have_live(t_process *process, size_t process_count)
+size_t count_alive_processes(t_process *process, size_t process_count)
 {
 	size_t i;
 	size_t count;
@@ -45,7 +45,7 @@ void filter_process_have_live(t_vm *vm)
 	t_process *processes;
 
 	processes = vm->processes;
-	nb = get_nb_process_have_live(processes, vm->processes_count);
+	nb = count_alive_processes(processes, vm->processes_count);
 	process_filtered = (t_process*)malloc(nb * sizeof(t_process));
 	i = 0;
 	p = 0;
@@ -71,7 +71,7 @@ void check_cycle(t_vm *vm)
 		else
 			vm->nb_check++;
 		filter_process_have_live(vm);
-		setup_for_next_cycle(vm);
+		setup_next_cycle(vm);
 	}
 }
 
