@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 11:53:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 11:57:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 # include "struct.h"
 
 const t_ops g_ops[17] = {
-	{ "live", exec_live }, // 0
-	{NULL, NULL}, // 1
-	{NULL, NULL}, // 2
-	{NULL, NULL}, // 3
-	{NULL, NULL}, // 4
-	{ "and", exec_and }, // 5
-	{NULL, NULL}, // 6
-	{NULL, NULL}, // 7
-	{NULL, NULL}, // 8
-	{NULL, NULL}, // 9
-	{ "sti", exec_sti }, // 10
-	{NULL, NULL}, // 11
-	{NULL, NULL}, // 12
-	{NULL, NULL}, // 13
-	{NULL, NULL}, // 14
-	{NULL, NULL}, // 15
-	{NULL, NULL}, // 16
+	{ "live", exec_live }, // 0x1
+	{NULL, NULL}, // 0x2
+	{NULL, NULL}, // 0x3
+	{NULL, NULL}, // 0x4
+	{NULL, NULL}, // 0x5
+	{ "and", exec_and }, // 0x6
+	{NULL, NULL}, // 0x7
+	{NULL, NULL}, // 0x8
+	{ "zjump", exec_zjump }, // 0x9
+	{NULL, NULL}, // 0xa
+	{ "sti", exec_sti }, // 0xb
+	{NULL, NULL}, // 0xc
+	{NULL, NULL}, // 0xd
+	{NULL, NULL}, // 0xe
+	{NULL, NULL}, // 0xf
+	{NULL, NULL}, // 0x10
+	{NULL, NULL}, // 0x00
 };
 
 #endif // !G_OPS_H
