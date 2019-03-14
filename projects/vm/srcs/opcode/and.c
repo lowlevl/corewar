@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 10:43:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:06:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,19 @@ void exec_and(t_vm *vm, t_process *process, const t_op *op)
 	uint32_t args[3];
 	uint32_t logic;
 
+	(void)op;
 	ft_bzero(args, sizeof(args));
 	oc = read_octet_code(process, vm->memory);
 	ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
 		get_type_arg(oc, 2));
-	if (read_and_arg(vm->memory, process, args, oc) == -1 ||
-		(logic = args[0] & args[1]) == 0)
+	if (read_and_arg(vm->memory, process, args, oc) == -1)
 	{
 		process->carry = 1;
 	}
 	else
 	{
+		logic = args[0] & args[1];
+		process->carry = logic == 0;
 		write_in_registre(process, args[2], logic);
 	}
 	ft_printf("args[0]: %u\n", args[0]);

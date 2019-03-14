@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/14 10:46:56 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 14:13:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	oc = read_octet_code(process, vm->memory);
 	ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
 		get_type_arg(oc, 2));
-	if (read_sti_arg(vm->memory, process, args, oc) == -1 ||
-		(adr = args[1] + args[2]) == 0)
+	if (read_sti_arg(vm->memory, process, args, oc) == -1)
 	{
 		process->carry = 1;
 	}
 	else
+	{
+		adr = args[1] + args[2];
+		process->carry = args[1] + args[2];
 		write_in_memory(vm->memory, (uint8_t *)&args, sizeof(args[0]),
 			get_restrict_address(pos + adr));
+	}
 }

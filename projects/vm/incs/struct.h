@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 14:01:29 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 12:58:40 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_vm
 
 	uint32_t nb_check;
 	int64_t  next_check;
-	uint32_t cycle_to_die;
+	int32_t cycle_to_die;
 	int64_t  cycle_count;
 	uint64_t nb_live_for_cycle;
 } t_vm;

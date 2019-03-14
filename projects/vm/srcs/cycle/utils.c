@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 11:23:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 13:41:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void exec_process(t_vm *vm, t_process *process)
 		if (ops->name != NULL)
 		{
 			if (process->exec_cycle == -1)
-				process->exec_cycle = vm->cycle_count + op->duration;
-			if (process->exec_cycle == vm->cycle_count)
+				process->exec_cycle = vm->cycle_count + op->duration - 1;
+			if (process->exec_cycle <= vm->cycle_count)
 			{
 				process->exec_cycle = -1;
 				process_move_cursor(process, 1);
@@ -38,9 +38,9 @@ void exec_process(t_vm *vm, t_process *process)
 				ops->f(vm, process, op);
 				ft_printf("pos: %.2hhx %.2hhx\n", get_idx_in_memory(process), vm->memory[get_idx_in_memory(process)]);
 			}
-			else
-				ft_printf("wait process %p %#x (%s)\r", pos - vm->memory,
-					op->opcode, op->name);
+			// else
+			// 	ft_printf("wait process %p %#x (%s)\r", pos - vm->memory,
+			// 		op->opcode, op->name);
 		}
 		else
 		{
