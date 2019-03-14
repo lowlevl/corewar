@@ -6,7 +6,7 @@
 #    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/03 21:31:48 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/12 14:19:07 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,9 @@ SRCS	:= \
 			string/ft_strsplit.c \
 			string/ft_strstr.c \
 			string/ft_strsub.c \
+			string/ft_strrep.c \
 			string/ft_strtrim.c \
+			string/ft_strsep.c \
 			string/ft_strupr.c \
 
 LIBS	:=

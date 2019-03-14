@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:13:38 by lroux             #+#    #+#             */
-/*   Updated: 2019/02/24 22:31:23 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/14 16:07:34 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_strstr(const char *haystack, const char *needle);
 char			*ft_strnstr(const char *haystack,
 							const char *needle, size_t len);
+char			*ft_strrep(char *s, char search, char replace);
+char			*ft_strsep(char **stringp, const char *delim);
 
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
@@ -61,7 +63,7 @@ char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strnjoin(const char *s1, const char *s2, size_t n);
 char			*ft_strjoinfree(char *s1, const char *s2);
 char			*ft_strnjoinfree(char *s1, const char *s2, size_t n);
-char			*ft_strtrim(const char *s);
+char			*ft_strtrim(const char *s, int (*check)(int));
 char			**ft_strsplit(const char *s, char c);
 
 int				ft_strcc(const char *s, char c);
