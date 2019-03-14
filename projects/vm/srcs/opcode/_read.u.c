@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.u.c                                           :+:      :+:    :+:   */
+/*   _read.u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 10:58:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:26:57 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,9 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 uint16_t get_indirect(size_t pos, uint8_t *memory)
 {
 	return bswap_16(*(uint16_t *)(memory + (pos % MEM_SIZE)));
+}
+
+uint16_t get_indirect_restrict(size_t pos, uint8_t *memory)
+{
+	return get_indirect(pos % IDX_MOD, memory);
 }

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/14 15:38:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:40:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at);
 int		 get_type_arg(uint8_t co, uint8_t arg_number);
 uint32_t get_reg(t_process *process, uint8_t reg_idx);
 uint16_t get_indirect(size_t pos, uint8_t *memory);
+uint16_t get_indirect_restrict(size_t pos, uint8_t *memory)
 
 /**
  * utils write
@@ -54,5 +55,6 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op);
 void exec_and(t_vm *vm, t_process *process, const t_op *op);
 void exec_zjump(t_vm *vm, t_process *process, const t_op *op);
 void exec_aff(t_vm *vm, t_process *process, const t_op *op);
+void exec_ld(t_vm *vm, t_process *process, const t_op *op);
 
 #endif
