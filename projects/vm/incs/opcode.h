@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/14 09:23:14 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 11:54:46 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ size_t get_restrict_address(size_t pos);
 void exec_sti(t_vm *vm, t_process *process, const t_op *op);
 void exec_live(t_vm *vm, t_process *process, const t_op *op);
 void exec_and(t_vm *vm, t_process *process, const t_op *op);
+void exec_zjump(t_vm *vm, t_process *process, const t_op *op)
 
 #endif
