@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/13 17:00:05 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/14 12:05:18 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,14 @@ SRCS	:= vm.c \
 	dump/sort_player.c \
 	dump/wrappers.c \
 	error/error.c \
+	opcode/_get.u.c \
+	opcode/_read.u.c \
+	opcode/_write.u.c \
+	opcode/_other.u.c \
 	opcode/sti.c \
 	opcode/live.c \
 	opcode/and.c \
-	opcode/get.u.c \
-	opcode/read.u.c \
-	opcode/write.u.c \
-	opcode/other.u.c \
+	opcode/zjump.c \
 	proc/proc.c \
 	proc/cursor.c \
 	utils/file_utils.c \
