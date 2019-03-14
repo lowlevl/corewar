@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/14 12:04:44 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 15:01:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "libpf.h"
 #include "proc.h"
 #include "struct.h"
+#include "vm_utils.h"
 
 /**
  * utils read
