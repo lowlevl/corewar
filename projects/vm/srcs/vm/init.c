@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/13 13:22:03 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/13 13:13:51 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/13 13:40:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include "vm_utils.h"
 
-int main(int argc, char *argv[])
+void init_vm(t_vm *vm, int argc, char *argv[])
 {
-	static t_vm	vm;
+	int i;
 
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	make_cycle(&vm);
-	print_winner(&vm);
-	if (vm.dump != -1)
-		print_dump(vm.memory);
-	return (0);
+	i = 0;
+	vm->dump = -1;
+	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->next_check = CYCLE_TO_DIE;
+	if (argc < 2)
+		exit_print_usage();
+	while (++i < argc)
+	{
+		if (argv[i][0] == '-')
+			handle_option(vm, argc, argv, &i);
+		else
+			init_player(vm, argv[i], -1);
+	}
+	init_default_ids(vm->players, vm->players_count);
+	// print_vm(vm); // Debug
 }

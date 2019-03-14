@@ -6,16 +6,16 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/12 16:25:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 10:58:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "opcode.h"
+#include "opcode.h"
 
-uint8_t  read_octet_code(t_process *process, uint8_t *mem)
+uint8_t read_octet_code(t_process *process, uint8_t *mem)
 {
 	uint8_t octect_code;
-	size_t	idx;
+	size_t  idx;
 
 	idx = get_idx_in_memory(process);
 	octect_code = mem[idx];
@@ -23,10 +23,22 @@ uint8_t  read_octet_code(t_process *process, uint8_t *mem)
 	return octect_code;
 }
 
+void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
+{
+	uint8_t i;
+
+	i = 0;
+	while (i < len)
+	{
+		buffer[i] = memory[(i + at) % MEM_SIZE];
+		i++;
+	}
+}
+
 uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 {
-	uint16_t val;
-	size_t idx;
+	size_t   idx;
+	uint32_t buff;
 
 	idx = get_idx_in_memory(process);
 	if (type == T_REG)
@@ -36,15 +48,26 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 	}
 	else if (type == T_IND)
 	{
-		val = bswap_16(*(uint16_t *)(mem + idx));
-		process_move_cursor(process, sizeof(val));
-		return val;
+		process_move_cursor(process, 4);
+		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
+		return bswap_16((uint16_t)buff);
 	}
 	else if (type == T_DIR)
 	{
-		val = bswap_16(*(uint16_t *)(mem + idx));
-		process_move_cursor(process, sizeof(val));
-		return val;
+		process_move_cursor(process, 2);
+		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
+		return bswap_16((uint16_t)buff);
+	}
+	else if (type == T_DIR_4)
+	{
+		process_move_cursor(process, 4);
+		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
+		return buff;
 	}
 	return -1;
+}
+
+uint16_t get_indirect(size_t pos, uint8_t *memory)
+{
+	return bswap_16(*(uint16_t *)(memory + (pos % MEM_SIZE)));
 }

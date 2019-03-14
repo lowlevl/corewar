@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/09 15:15:10 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/13 13:39:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <utils.h>
 # include <debug.h>
 # include <proc.h>
+# include <cycle.h>
+# include <vm_utils.h>
 
 /*
 ** System includes
@@ -43,13 +45,5 @@
 /*
 ** Proto
 */
-void		load_players(t_vm *vm);
-void		load_player(t_vm *vm, int player_idx);
-void		*get_champ_bin(t_vm *vm, int player_idx);
-uint32_t	get_champ_size(t_vm *vm, int player_idx);
-void		*get_start_in_memory(t_vm *vm, int player_idx);
-
-void		print_loaded_players(t_vm *vm);
-void		print_loaded_player(t_player *player);
 
 #endif

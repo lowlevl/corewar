@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   other.u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/13 13:22:03 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/13 16:59:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include "opcode.h"
 
-int main(int argc, char *argv[])
+size_t get_restrict_address(size_t pos)
 {
-	static t_vm	vm;
-
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	make_cycle(&vm);
-	print_winner(&vm);
-	if (vm.dump != -1)
-		print_dump(vm.memory);
-	return (0);
+	return pos % IDX_MOD;
 }

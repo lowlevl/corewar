@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   cycle.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/13 13:22:03 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/13 09:48:52 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/13 14:00:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#ifndef CYCLE_H
+#define CYCLE_H
 
-int main(int argc, char *argv[])
-{
-	static t_vm	vm;
+#include "struct.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	make_cycle(&vm);
-	print_winner(&vm);
-	if (vm.dump != -1)
-		print_dump(vm.memory);
-	return (0);
-}
+void		exec_process(t_vm *vm, t_process *process);
+const t_op *get_opcode(uint8_t val);
+void		make_cycle(t_vm *vm);
+
+#endif // !CYCLE_H
