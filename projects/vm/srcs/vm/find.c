@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:57:23 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 15:00:33 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:43:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_player *find_player(t_player *players, size_t player_count, int32_t player_id)
 	size_t i;
 
 	i = 0;
-	while (i < players_count)
+	while (i < player_count)
 	{
 		if (players[i].id == player_id)
 			return players + i;

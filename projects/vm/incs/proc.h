@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 14:55:12 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:42:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_process(t_vm *vm, t_process *process);
 /**
  * Print
  */
-void process_print_taunt_buffer(t_player *player, t_process *process);
+void process_print_taunt_buffer(t_vm *vm, t_process *process);
 
 /**
  * Cursor

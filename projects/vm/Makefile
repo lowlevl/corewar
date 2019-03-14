@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/14 15:38:42 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/14 16:43:22 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS	:= vm.c \
 	opcode/and.c \
 	opcode/zjump.c \
 	opcode/aff.c \
+	opcode/ld.c \
 	proc/proc.c \
 	proc/print.c \
 	proc/cursor.c \
