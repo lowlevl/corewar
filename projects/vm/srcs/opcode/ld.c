@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 16:27:21 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 09:36:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-int	read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
+int read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 {
 	uint8_t type_arg;
 
@@ -20,9 +20,7 @@ int	read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 
 	if (type_arg == T_IND)
 		args[0] = get_indirect_restrict(
-			get_idx_in_memory(process) + read_arg(process, mem, T_IND),
-			mem
-		);
+			get_idx_in_memory(process), read_arg(process, mem, T_IND), mem);
 	else if (type_arg == T_DIR)
 		args[0] = read_arg(process, mem, T_DIR_4);
 	else
@@ -38,7 +36,7 @@ int	read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 
 void exec_ld(t_vm *vm, t_process *process, const t_op *op)
 {
-	uint8_t oc;
+	uint8_t  oc;
 	uint32_t args[2];
 
 	(void)op;
