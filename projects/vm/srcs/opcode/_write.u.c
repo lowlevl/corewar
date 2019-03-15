@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write.u.c                                          :+:      :+:    :+:   */
+/*   _write.u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 09:21:33 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:06:54 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ void write_in_memory(uint8_t *mem, uint8_t *content, size_t len, size_t at)
 	}
 }
 
+void write_in_memory_restrict(
+	uint8_t *mem, uint8_t *content, size_t len, size_t at)
+{
+	return write_in_memory(mem, content, len, at % IDX_MOD);
+}
+
 void write_in_registre(t_process *process, uint16_t reg_idx, uint32_t value)
 {
 	if (reg_idx < 1 || reg_idx > REG_NUMBER)
-		return ;
+		return;
 
 	process->regs[reg_idx - 1] = value;
 }
