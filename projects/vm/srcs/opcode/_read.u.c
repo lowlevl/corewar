@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 09:33:46 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 11:58:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 	return -1;
 }
 
-uint16_t get_indirect(size_t pos, uint8_t *memory)
+uint32_t get_indirect(size_t current, size_t relative, uint8_t *memory)
 {
-	return bswap_16(*(uint16_t *)(memory + (pos % MEM_SIZE)));
+	return bswap_32(*(uint32_t *)(memory + ((current + relative) % MEM_SIZE)));
 }
 
-uint16_t get_indirect_restrict(size_t current, size_t to_add, uint8_t *memory)
+uint32_t get_indirect_restrict(size_t current, size_t to_add, uint8_t *memory)
 {
-	return get_indirect(current + to_add % IDX_MOD, memory);
+	return get_indirect(current, to_add % IDX_MOD, memory);
 }
