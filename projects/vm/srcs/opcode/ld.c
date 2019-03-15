@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 13:08:54 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:03:39 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-int read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
+static int read_args_ld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 {
 	uint8_t type_arg;
 	size_t  pos;
