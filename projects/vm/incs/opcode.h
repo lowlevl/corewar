@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/14 17:02:07 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 09:28:20 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ void exec_aff(t_vm *vm, t_process *process, const t_op *op);
 void exec_ld(t_vm *vm, t_process *process, const t_op *op);
 void exec_fork(t_vm *vm, t_process *process, const t_op *op);
 void exec_lfork(t_vm *vm, t_process *process, const t_op *op);
+void exec_xor(t_vm *vm, t_process *process, const t_op *op);
+void exec_or(t_vm *vm, t_process *process, const t_op *op);
 
 #endif

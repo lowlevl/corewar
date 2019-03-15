@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 17:03:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 09:29:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ const t_ops g_ops[17] = {
 	{NULL, NULL}, // 0x4
 	{NULL, NULL}, // 0x5
 	{ "and", exec_and }, // 0x6
-	{NULL, NULL}, // 0x7
-	{NULL, NULL}, // 0x8
+	{ "or", exec_or }, // 0x7
+	{ "xor", exec_xor }, // 0x8
 	{ "zjump", exec_zjump }, // 0x9
 	{NULL, NULL}, // 0xa
 	{ "sti", exec_sti }, // 0xb
