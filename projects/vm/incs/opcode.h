@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/15 14:09:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:12:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void write_in_memory_restrict(
 /**
  * utils other
  */
-size_t get_restrict_address(size_t current, size_t plus)
+size_t get_restrict_address(size_t current, size_t plus);
 
 /**
  * command
@@ -66,5 +66,6 @@ void exec_sub(t_vm *vm, t_process *process, const t_op *op);
 void exec_add(t_vm *vm, t_process *process, const t_op *op);
 void exec_lldi(t_vm *vm, t_process *process, const t_op *op);
 void exec_ldi(t_vm *vm, t_process *process, const t_op *op);
+void exec_st(t_vm *vm, t_process *process, const t_op *op);
 
 #endif

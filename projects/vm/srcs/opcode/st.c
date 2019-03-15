@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 14:09:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 14:13:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 	uint8_t  oc;
 	size_t   pos;
 	uint32_t args[2];
-	size_t   type_args;
 
+	(void)op;
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
 	if (read_args_st(vm->memory, process, args, oc) == 0)
