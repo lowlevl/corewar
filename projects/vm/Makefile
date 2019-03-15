@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/15 14:13:08 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/15 15:05:04 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS	:= vm.c \
 	opcode/ldi.c \
 	opcode/lldi.c \
 	opcode/sub.c \
+	opcode/lld.c \
 	opcode/or.c \
 	opcode/xor.c \
 	opcode/zjump.c \

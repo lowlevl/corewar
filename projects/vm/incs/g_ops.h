@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 14:12:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:04:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ const t_ops g_ops[17] = {
 	{ "ldi", exec_ldi }, // 0xa
 	{ "sti", exec_sti }, // 0xb
 	{ "fork", exec_fork }, // 0xc
-	{NULL, NULL}, // 0xd
+	{ "lld", exec_lld }, // 0xd
 	{ "lldi", exec_lldi }, // 0xe
 	{ "lfork", exec_lfork }, // 0xf
 	{ "aff", exec_aff }, // 0x10
