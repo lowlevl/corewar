@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 12:52:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 13:09:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int read_args_exec(
 	size_t  pos;
 	uint8_t type_arg;
 
-	pos = get_idx_in_memory(process) - 1;
+	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
 	if (type_arg == T_REG)
 		args[0] = get_reg(process, read_arg(process, mem, T_REG));

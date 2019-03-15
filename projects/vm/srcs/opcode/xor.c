@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 09:34:52 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 13:11:47 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ static int read_arg_xor(
 	uint8_t *memory, t_process *process, uint32_t *args, uint8_t oc)
 {
 	uint8_t type_arg;
+	size_t  pos;
 
+	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
 	if (type_arg == T_REG)
 		args[0] = get_reg(process, read_arg(process, memory, T_REG));
 	else if (type_arg == T_IND)
-		args[0] = get_indirect_restrict(get_idx_in_memory(process),
-			read_arg(process, memory, T_IND), memory);
+		args[0] = get_indirect_restrict(
+			pos, read_arg(process, memory, T_IND), memory);
 	else if (type_arg == T_DIR)
 		args[0] = read_arg(process, memory, T_DIR_4);
 
@@ -30,8 +32,8 @@ static int read_arg_xor(
 	if (type_arg == T_REG)
 		args[1] = get_reg(process, read_arg(process, memory, T_REG));
 	else if (type_arg == T_IND)
-		args[1] = get_indirect_restrict(get_idx_in_memory(process),
-			read_arg(process, memory, T_IND), memory);
+		args[1] = get_indirect_restrict(
+			pos, read_arg(process, memory, T_IND), memory);
 	else if (type_arg == T_DIR)
 		args[1] = read_arg(process, memory, T_DIR_4);
 	else
