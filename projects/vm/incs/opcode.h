@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/15 15:04:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:05:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void exec_add(t_vm *vm, t_process *process, const t_op *op);
 void exec_lldi(t_vm *vm, t_process *process, const t_op *op);
 void exec_ldi(t_vm *vm, t_process *process, const t_op *op);
 void exec_st(t_vm *vm, t_process *process, const t_op *op);
-void exec_lld(t_vm *vm, t_process *process, const t_op *op)
+void exec_lld(t_vm *vm, t_process *process, const t_op *op);
 
 #endif
