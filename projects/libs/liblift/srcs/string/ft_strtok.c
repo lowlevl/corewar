@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsep.c                                        :+:      :+:    :+:   */
+/*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:04:20 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/14 18:07:38 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/16 15:43:39 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lift/string.h"
 
-char	*ft_strsep(char **stringp, const char *delim)
+char	*ft_strtok(char *str, const char *sep)
 {
-	char	*start;
-	int		i;
+	static char *p = 0;
 
-	if (!stringp || !*stringp || !**stringp)
+	if (str)
+		p = str;
+	else if (!p)
 		return (NULL);
-	start = *stringp;
-	while (**stringp)
+	str = p + ft_strspn(p, sep);
+	p = str + ft_strcspn(str, sep);
+	if (p == str)
+		return ((p = NULL));
+	if (*p)
 	{
-		i = -1;
-		while (delim[++i])
-		{
-			if (delim[i] == **stringp)
-			{
-				**stringp = '\0';
-				(*stringp)++;
-				return (start);
-			}
-		}
-		(*stringp)++;
+		*p = '\0';
+		++p;
 	}
-	*stringp = NULL;
-	return (start);
+	else
+		p = NULL;
+	return (str);
 }

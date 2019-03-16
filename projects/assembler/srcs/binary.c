@@ -6,13 +6,13 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/14 18:24:14 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/16 15:02:38 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libpf.h>
 #include <stdlib.h>
-#include "main.h"
+#include "assembler.h"
 
 t_op	g_op[17] =
 {
@@ -72,4 +72,3 @@ int	writebin(t_asm *env)
 	ft_printf("Everything's good :D");
 	return (0);
 }
-

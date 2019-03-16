@@ -1,6 +1,8 @@
-.name			"zork"
-.comment 		"I'M ALIIIIVE"
-###
+.name		"zorki
+fsfdsfs"
+ ##
+
+lol
 
 #   
 #
@@ -9,5 +11,3 @@
 
   	live:	live  %1 # gfd gdg                       
 		zjmp %:live
- lol %:live
-

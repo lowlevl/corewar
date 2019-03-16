@@ -6,7 +6,7 @@
 #    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/12 14:19:07 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/16 15:34:25 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
 SRCS	:= \
+			char/ft_inset.c \
 			char/ft_isalnum.c \
 			char/ft_isalpha.c \
 			char/ft_isascii.c \
@@ -96,8 +97,11 @@ SRCS	:= \
 			string/ft_strstr.c \
 			string/ft_strsub.c \
 			string/ft_strrep.c \
+			string/ft_strnrep.c \
+			string/ft_strspn.c \
+			string/ft_strcspn.c \
 			string/ft_strtrim.c \
-			string/ft_strsep.c \
+			string/ft_strtok.c \
 			string/ft_strupr.c \
 
 LIBS	:=

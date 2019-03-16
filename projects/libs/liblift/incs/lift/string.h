@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 06:13:38 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/14 16:07:34 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/16 15:25:10 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ char			*ft_strstr(const char *haystack, const char *needle);
 char			*ft_strnstr(const char *haystack,
 							const char *needle, size_t len);
 char			*ft_strrep(char *s, char search, char replace);
-char			*ft_strsep(char **stringp, const char *delim);
+char			*ft_strnrep(char *s, size_t size, char search, char replace);
+size_t			ft_strspn(const char *s, const char *charset);
+size_t			ft_strcspn(const char *s, const char *charset);
+char			*ft_strtok(char *str, const char *sep);
 
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);

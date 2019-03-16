@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strspn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:03:31 by lroux            ###   ########.fr       */
+/*   Created: 2019/03/16 15:25:27 by lroux             #+#    #+#             */
+/*   Updated: 2019/03/16 15:42:11 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "assembler.h"
+#include "lift/char.h"
+#include "lift/string.h"
 
-int	main(int ac, char **av)
+size_t	ft_strspn(const char *s, const char *charset)
 {
-	static t_asm	env;
+	char *start;
 
-	if (ac != 2)
-		return (perr(1, av[0]));
-	env.self = av[0];
-	if (!getfile(av[1], &env))
-		return (1); /* Free if error */
-//	if (!parse(&env))
-//		return (1); /* Free if error */
-	ast(&env);
-//	if (!backpatch(&env))
-//		return (1);
-//	if (!writebin(&env))
-//		return (1);
-	/* Free end */
-	return (0);
+	start = s;
+	while (*s)
+	{
+		if (!ft_inset(*s, charset))
+			break ;
+		++s;
+	}
+	return (s - start);
 }
