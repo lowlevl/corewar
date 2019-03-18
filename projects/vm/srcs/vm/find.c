@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write.u.c                                          :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 09:21:33 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/14 14:57:23 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/14 16:43:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "opcode.h"
+#include "vm_utils.h"
 
-static size_t get_index(size_t i)
-{
-	return i % MEM_SIZE;
-}
-
-void write_in_memory(uint8_t *mem, uint8_t *content, size_t len, size_t at)
+t_player *find_player(t_player *players, size_t player_count, int32_t player_id)
 {
 	size_t i;
 
 	i = 0;
-	while (i < len)
+	while (i < player_count)
 	{
-		mem[get_index(at + i)] = content[i];
+		if (players[i].id == player_id)
+			return players + i;
 		i++;
 	}
-}
-
-void write_in_registre(t_process *process, uint16_t reg_idx, uint32_t value)
-{
-	if (reg_idx < 1 || reg_idx > REG_NUMBER)
-		return ;
-
-	process->regs[reg_idx - 1] = value;
+	return NULL;
 }

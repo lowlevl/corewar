@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cursor.c                                           :+:      :+:    :+:   */
+/*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 15:34:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 12:02:07 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/14 16:57:48 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/15 12:58:41 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "proc.h"
+#include "opcode.h"
 
-void	process_move_cursor(t_process *process, off_t off)
+void exec_fork(t_vm *vm, t_process *process, const t_op *op)
 {
-	process->cursor_pos = (process->cursor_pos + off) % MEM_SIZE;
-}
+	uint16_t adr;
+	size_t   pos;
 
-void	process_set_cursor_pos(t_process *process, size_t pos)
-{
-	process->cursor_pos = pos % MEM_SIZE;
+	(void)op;
+	pos = get_idx_in_memory(process) - 1;
+	adr = read_arg(process, vm->memory, T_DIR);
+	copy_process(vm, process, pos + adr % IDX_MOD);
 }

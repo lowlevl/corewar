@@ -18,3 +18,5 @@ PointerAlignment: Right
 AllowShortFunctionsOnASingleLine: Empty
 AlignAfterOpenBracket: DontAlign
 ContinuationIndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false
+Language: Cpp

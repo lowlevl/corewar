@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   other.u.c                                          :+:      :+:    :+:   */
+/*   lfork.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 16:59:16 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/14 16:57:48 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/15 09:35:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-size_t get_restrict_address(size_t pos)
+void exec_lfork(t_vm *vm, t_process *process, const t_op *op)
 {
-	return pos % IDX_MOD;
+	uint16_t adr;
+	size_t   pos;
+
+	(void)op;
+	pos = get_idx_in_memory(process) - 1;
+	adr = read_arg(process, vm->memory, T_DIR);
+	copy_process(vm, process, pos + adr % MEM_SIZE);
 }

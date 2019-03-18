@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cursor.c                                           :+:      :+:    :+:   */
+/*   _other.u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 15:34:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 12:02:07 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/15 14:08:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "proc.h"
+#include "opcode.h"
 
-void	process_move_cursor(t_process *process, off_t off)
+size_t get_restrict_address(size_t current, size_t plus)
 {
-	process->cursor_pos = (process->cursor_pos + off) % MEM_SIZE;
-}
-
-void	process_set_cursor_pos(t_process *process, size_t pos)
-{
-	process->cursor_pos = pos % MEM_SIZE;
+	return current + plus % IDX_MOD;
 }
