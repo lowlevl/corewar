@@ -6,7 +6,7 @@
 #    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/16 15:34:25 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/20 19:48:40 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS	:= \
 			memory/ft_realloc.c \
 		   \
 			string/ft_strcc.c \
+			string/ft_strncc.c \
 			string/ft_strcw.c \
 			string/ft_strcat.c \
 			string/ft_strchr.c \
@@ -99,7 +100,9 @@ SRCS	:= \
 			string/ft_strrep.c \
 			string/ft_strnrep.c \
 			string/ft_strspn.c \
+			string/ft_strnspn.c \
 			string/ft_strcspn.c \
+			string/ft_strncspn.c \
 			string/ft_strtrim.c \
 			string/ft_strtok.c \
 			string/ft_strupr.c \

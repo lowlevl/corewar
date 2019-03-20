@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/16 15:25:27 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/20 16:57:34 by lroux            ###   ########.fr       */
+/*   Created: 2019/03/20 17:42:29 by lroux             #+#    #+#             */
+/*   Updated: 2019/03/20 20:01:38 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift/char.h"
-#include "lift/string.h"
+#ifndef LEXER_H
+# define LEXER_H
+# include "assembler.h"
 
-size_t	ft_strspn(const char *s, const char *charset)
-{
-	char *start;
+typedef struct	s_lexmap {
+	char	id;
+	int		type;
+}				t_lexmap;
 
-	start = (char*)s;
-	while (*s)
-	{
-		if (!ft_inset(*s, charset))
-			break ;
-		++s;
-	}
-	return (s - start);
-}
+enum {
+	CMDMARK,
+	COMMNTMARK,
+	LBLMARK,
+	DIRMARK,
+	QUOTE,
+	SEP,
+	NL,
+	UNKNOWN,
+	LITTERAL
+};
+
+static t_bool	lextok(t_asm *env, t_node **toks, char *tok, t_bool nolitteral);
+
+#endif

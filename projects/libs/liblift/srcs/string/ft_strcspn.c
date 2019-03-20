@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 15:25:45 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:43:10 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/20 16:57:45 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strcspn(const char *s, const char *charset)
 {
 	char *start;
 
-	start = s;
+	start = (char*)s;
 	while (*s)
 	{
 		if (ft_inset(*s, charset))

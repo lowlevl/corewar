@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   ft_strncc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/16 15:25:27 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/20 16:57:34 by lroux            ###   ########.fr       */
+/*   Created: 2019/03/20 19:21:00 by lroux             #+#    #+#             */
+/*   Updated: 2019/03/20 19:23:58 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift/char.h"
 #include "lift/string.h"
 
-size_t	ft_strspn(const char *s, const char *charset)
+int	ft_strncc(const char *s, size_t size, char c)
 {
-	char *start;
+	int count;
 
-	start = (char*)s;
-	while (*s)
-	{
-		if (!ft_inset(*s, charset))
-			break ;
-		++s;
-	}
-	return (s - start);
+	if (!s)
+		return (0);
+	count = 0;
+	while (*s && size--)
+		if (*s++ == c)
+			count++;
+	return (count);
 }

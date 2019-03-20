@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:16:26 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/20 20:00:52 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,20 @@ typedef struct	s_asm {
 
 	char		*sname;
 	char		*sstring;
-
+	const char	*scstring;
 
 	t_node		*symbols;
 	t_node		*references;
 	t_binary	data;
 }				t_asm;
+
+typedef struct	s_tok {
+	int		type;
+	char	*val;
+
+	size_t	x;
+	size_t	y;
+}				t_tok;
 
 /*
 ** Error management
@@ -48,18 +56,10 @@ typedef struct	s_asm {
 int				perr(int e, ...);
 
 /*
-** Utilities
+** Lexer & Parser
 */
-t_bool			getfile(char *name, t_asm *env);
-char			*gnline(t_asm *env);
-char			*gcline(t_asm *env);
-char			*gline(t_asm *env, size_t num);
-
-/*
-** Parser
-*/
-void			ast(t_asm *env);
-t_bool			parse(t_asm *env);
+t_bool			getfile(t_asm *env, char *name);
+t_bool			lexer(t_asm *env, t_node **toklist, char *file);
 
 /*
 ** Binary writing

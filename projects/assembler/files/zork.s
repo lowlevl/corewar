@@ -1,7 +1,6 @@
 .name		"zorki
 fsfdsfs"
  ##
-
 lol
 
 #   

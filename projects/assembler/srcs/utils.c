@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 19:01:02 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:10:36 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/20 19:25:14 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <lift/char.h>
 #include "assembler.h"
 
-t_bool	getfile(char *name, t_asm *env)
+t_bool	getfile(t_asm *env, char *name)
 {
 	ssize_t	filelen;
 	size_t	namelen;
@@ -38,6 +38,7 @@ t_bool	getfile(char *name, t_asm *env)
 	if (read(fd, content, filelen) != filelen)
 		return (!perr(6, name, strerror(errno)));
 	close(fd);
+	env->scstring = ft_strdup(content);
 	env->sstring = content;
 	return (true);
 }
