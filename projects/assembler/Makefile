@@ -6,11 +6,11 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/07 15:44:41 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/20 17:51:24 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= "⚙️  assembly :"
+PROJECT	:= "⚙️  assembler :"
 NAME	:= build/asm
 LNKNAME	:= ../../asm
 
@@ -18,10 +18,15 @@ INCDIR	:= incs
 SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
-SRCS	:= asm.c
+SRCS	:= \
+			main.c \
+			lexer.c \
+			binary.c \
+			error.c \
+			utils.c
 
 LIBDIR	:= ../libs
-LIBS	:= libft libpf
+LIBS	:= liblift libft libpf
 
 DEBUG	:= 1
 

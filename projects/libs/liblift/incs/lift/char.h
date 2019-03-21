@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 19:31:45 by lroux             #+#    #+#             */
-/*   Updated: 2019/02/19 17:44:46 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/16 15:33:22 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 **   - Char tests.
 **   - Char modifiers.
 */
+
+# define SPACE_CHARS "\t\n\v\f\r "
+
+int	ft_inset(int c, const char *charset);
 
 int	ft_isalpha(int c);
 int	ft_isdigit(int c);
