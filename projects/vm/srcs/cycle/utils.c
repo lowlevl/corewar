@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 13:41:26 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:46:05 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ void exec_process(t_vm *vm, t_process *process)
 			{
 				process->exec_cycle = -1;
 				process_move_cursor(process, 1);
-				ft_printf("\r\e[2KExec process %p %#x (%s) at %zd\n", pos - vm->memory,
-					op->opcode, op->name, vm->cycle_count);
+				DEBUG_EXE &&ft_printf(
+					"\r\e[2KExec process %p %#x (%s) at %zd\n",
+					pos - vm->memory, op->opcode, op->name, vm->cycle_count);
 				ops->f(vm, process, op);
-				ft_printf("pos: %.2hhx %.2hhx\n", get_idx_in_memory(process), vm->memory[get_idx_in_memory(process)]);
+				DEBUG_CR_P &&ft_printf("pos: %.2hhx %.2hhx\n",
+					get_idx_in_memory(process),
+					vm->memory[get_idx_in_memory(process)]);
 			}
 			// else
 			// 	ft_printf("wait process %p %#x (%s)\r", pos - vm->memory,
@@ -44,7 +47,8 @@ void exec_process(t_vm *vm, t_process *process)
 		}
 		else
 		{
-			// ft_printf("opcode not set: %x (opcode: %s %d)\n", *pos, op->name, op->opcode - 1);
+			// ft_printf("opcode not set: %x (opcode: %s %d)\n", *pos, op->name,
+			// op->opcode - 1);
 			process_move_cursor(process, 1);
 		}
 	}
