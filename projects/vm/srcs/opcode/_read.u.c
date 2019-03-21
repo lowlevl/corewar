@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 11:58:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:21:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
 	}
 }
 
-uint16_t read_arg(t_process *process, uint8_t *mem, int type)
+uint32_t read_arg(t_process *process, uint8_t *mem, int type)
 {
 	size_t   idx;
 	uint32_t buff;
 
 	idx = get_idx_in_memory(process);
+	DEBUG_READ &&ft_dprintf(2, "read mem: idx: %d, type: %d\n", idx, type);
 	if (type == T_REG)
 	{
 		process_move_cursor(process, 1);
@@ -62,7 +63,7 @@ uint16_t read_arg(t_process *process, uint8_t *mem, int type)
 	{
 		process_move_cursor(process, 4);
 		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
-		return buff;
+		return bswap_32(buff);
 	}
 	return -1;
 }

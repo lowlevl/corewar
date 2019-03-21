@@ -6,11 +6,11 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:52:54 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/15 09:58:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:22:05 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "opcode.h"
+#include "opcode.h"
 
 int get_type_arg(uint8_t octet_code, uint8_t arg_number)
 {
@@ -28,5 +28,7 @@ uint32_t get_reg(t_process *process, uint8_t reg_idx)
 {
 	if (reg_idx < 1 || reg_idx >= REG_SIZE)
 		return -1;
+	DEBUG_GET &&ft_dprintf(2, "get reg: id: %d, val: %x\n", reg_idx - 1,
+		process->regs[reg_idx - 1]);
 	return process->regs[reg_idx - 1];
 }
