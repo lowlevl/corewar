@@ -16,10 +16,17 @@ function test_outside() {
 	info "done"
 }
 
+function test_ind() {
+	info "test to load to indirect\n"
+	$1 load_ind.cor -dump 1500
+	info "done"
+}
+
 function run() {
 	title "\nTest ld opcode\n"
 	warning "corewar should be compiled with DEBUG_WRITE to 1"
 	test_load_1 $1
 	test_load_all $1
 	test_outside $1
+	test_ind $1
 }
