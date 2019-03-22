@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 09:55:24 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:17:32 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:27:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int read_args_exec(
 		return -1;
 
 	if (get_type_arg(oc, 0) == T_REG)
-		args[0] = get_reg(process, read_arg(process, mem, T_REG));
+		args[1] = get_reg(process, read_arg(process, mem, T_REG));
 	else
 		return -1;
 
 	if (get_type_arg(oc, 0) == T_REG)
-		args[0] = read_arg(process, mem, T_REG);
+		args[2] = read_arg(process, mem, T_REG);
 	else
 		return -1;
 
@@ -44,6 +44,8 @@ void exec_add(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		sum = args[0] + args[1];
+		DEBUG_R_FC &&ft_dprintf(
+			2, "add %%%d %%%d r%d\n", args[0], args[1], args[2]);
 		process->carry = sum == 0;
 		write_in_registre(process, args[2], sum);
 	}
