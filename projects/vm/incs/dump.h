@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:39:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:54:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 
 #define BYTE_PER_LINE 64
 #define BYTE_PRINT_LENGTH 3
-#define LINE_LENGTH BYTE_PER_LINE *BYTE_PRINT_LENGTH
+#define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
+#define LINE_PREFIX 8
 
 void		print_dump(void *mem);
-void		print_memory(void *mem, int size, int line_size);
+void		print_memory(uint8_t *mem);
 void		load_players(t_vm *vm);
 void		load_player(t_vm *vm, int player_idx);
 void		*get_champ_bin(t_vm *vm, int player_idx);
