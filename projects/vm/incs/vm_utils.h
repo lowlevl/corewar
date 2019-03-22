@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:36:29 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 16:41:52 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 13:12:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "struct.h"
 #include "libpf.h"
 #include "argv.h"
+#include "flags.h"
 
 void print_winner(t_vm *vm);
 void init_vm(t_vm *vm, int argc, char *argv[]);
