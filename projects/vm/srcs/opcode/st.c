@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 14:13:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 13:14:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,16 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 	{
 		process->carry = args[0] == 0;
 		if (get_type_arg(oc, 1) == T_REG)
+		{
+			DEBUG_R_FC &&ft_dprintf(2, "st %%%d r%d\n", args[0], args[1]);
 			write_in_registre(process, args[1], args[0]);
+		}
 		else
+		{
+			DEBUG_R_FC &&ft_dprintf(2, "st %%%d :%x\n", args[0], get_restrict_address(pos, args[1]));
+			args[0] = bswap_32(args[0]);
 			write_in_memory(vm->memory, (uint8_t *)args, sizeof(*args),
 				get_restrict_address(pos, args[1]));
+		}
 	}
 }
