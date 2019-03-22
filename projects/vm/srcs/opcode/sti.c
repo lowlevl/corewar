@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/22 13:46:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 13:49:54 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	ft_bzero(args, sizeof(args));
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
-	ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
-		get_type_arg(oc, 2));
+	DEBUG_TYPE &&ft_dprintf(2, "type: %d %d %d\n", get_type_arg(oc, 0),
+		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_sti_arg(vm->memory, process, args, oc) == -1)
 	{
 		process->carry = 1;
