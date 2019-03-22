@@ -1,14 +1,14 @@
 function test_ind() {
 	info "test with indirect"
 	warning "no live should be print"
-	$1 test_ind.cor
+	$1 test_ind.cor -dump 100
 	info "done"
 }
 
 function test_rg() {
 	info "test with reg"
 	warning "no live should be print"
-	$1 test_rg.cor
+	$1 test_rg.cor -dump 100
 	info "done"
 }
 

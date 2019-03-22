@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/22 13:49:54 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:41:21 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 		adr = args[1] + args[2];
 		process->carry = args[1] + args[2];
 		DEBUG_R_FC &&ft_dprintf(
-			2, "sti r%d :%x\n", args[0], get_restrict_address(pos, adr));
+			2, "sti r(%d) :%x\n", args[0], get_restrict_address(pos, adr));
 		write_in_memory(vm->memory, (uint8_t *)&args, sizeof(args[0]),
 			get_restrict_address(pos, adr));
 	}
