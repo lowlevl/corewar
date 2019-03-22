@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 15:24:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:16:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 # define DEBUG_EXE 0
 # define DEBUG_CYCLE 1
 # define DEBUG_TYPE 0
+# define DEBUG_CARRY 1
 
 #endif // !FALGS_H

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 15:04:16 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:18:05 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 		process->carry = args[0] == 0;
 		write_in_registre(process, args[1], args[0]);
 	}
+	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
 }

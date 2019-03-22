@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 15:38:59 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:18:24 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 				get_restrict_address(pos, args[1]));
 		}
 	}
+	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
 }

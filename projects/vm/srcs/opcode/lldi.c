@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 12:00:58 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:18:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 		write_in_registre(process, args[2],
 			get_indirect(pos, adr, vm->memory));
 	}
+	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
 }
