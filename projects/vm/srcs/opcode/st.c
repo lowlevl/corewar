@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 13:14:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:43:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int read_args_st(
 	if (type_arg == T_REG)
 		args[1] = read_arg(process, mem, T_REG);
 	else if (type_arg == T_IND)
-		args[1] = read_arg(process, mem, T_IND);
+		args[1] =
+			get_indirect_restrict(pos, read_arg(process, mem, T_IND), mem);
 	else
 		return -1;
 
@@ -55,7 +56,8 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 		}
 		else
 		{
-			DEBUG_R_FC &&ft_dprintf(2, "st %%%d :%x\n", args[0], get_restrict_address(pos, args[1]));
+			DEBUG_R_FC &&ft_dprintf(2, "st %%%d :%x\n", args[0],
+				get_restrict_address(pos, args[1]));
 			args[0] = bswap_32(args[0]);
 			write_in_memory(vm->memory, (uint8_t *)args, sizeof(*args),
 				get_restrict_address(pos, args[1]));
