@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]
 then
 	echo "missing asm generator"
-	exit
+	exit 1
 fi
 
 asm_file=$(find . -type f -regex '.*\.s')

@@ -30,6 +30,7 @@ done
 
 if [ "$COREWAR_PATH" == "" ]
 then
+	echo "missing corewar" 1>&2
 	usage
 fi
 
