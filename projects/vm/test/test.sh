@@ -19,7 +19,7 @@ for arg in "$@"
 do
 	case $arg in
 		--opcode=*)
-			OPCODE_TO_TEST="($( echo ${arg#*=} | tr ',' '|'))"
+			OPCODE_TO_TEST="($( echo ${arg#*=} | sed 's/\,/|/'))"
 			;;
 		*)
 			COREWAR_PATH=$arg
@@ -34,8 +34,8 @@ then
 	usage
 fi
 
-REGEX_FILE=".*\.test.sh"
-TEST_SCRIP=$(find . -type f -regex $REGEX_FILE | grep -E "$OPCODE_TO_TEST")
+REGEX_FILE=".*${OPCODE_TO_TEST}\.test.sh"
+TEST_SCRIP=$(find . -type f | grep -E $REGEX_FILE)
 COREWAR_PATH=$(realpath $COREWAR_PATH)
 
 echo "TEST_SCRIP     : $TEST_SCRIP"
