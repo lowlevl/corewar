@@ -13,7 +13,7 @@ function test_rg() {
 }
 
 function run() {
-	title "\nTets st opcode\n"
+	title "\nTest st opcode\n"
 	test_ind $1
 	test_rg $1
 }

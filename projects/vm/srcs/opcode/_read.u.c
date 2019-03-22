@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 11:57:15 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:23:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,35 @@ uint32_t read_arg(t_process *process, uint8_t *mem, int type)
 	uint32_t buff;
 
 	idx = get_idx_in_memory(process);
-	DEBUG_READ &&ft_dprintf(2, "read mem: idx: %d, type: %d\n", idx, type);
+	DEBUG_READ &&ft_dprintf(2, "read mem: idx: %d, type: %d", idx, type);
 	if (type == T_REG)
 	{
 		process_move_cursor(process, 1);
+		DEBUG_READ &&ft_dprintf(2, ", val: %x\n", mem[idx]);
 		return mem[idx];
 	}
 	else if (type == T_IND)
 	{
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
+		DEBUG_READ &&ft_dprintf(2, ", val: %x\n", bswap_16((uint16_t)buff));
 		return bswap_16((uint16_t)buff);
 	}
 	else if (type == T_DIR)
 	{
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
+		DEBUG_READ &&ft_dprintf(2, ", val: %x\n", bswap_16((uint16_t)buff));
 		return bswap_16((uint16_t)buff);
 	}
 	else if (type == T_DIR_4)
 	{
 		process_move_cursor(process, 4);
 		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
+		DEBUG_READ &&ft_dprintf(2, ", val: %x\n", bswap_32(buff));
 		return bswap_32(buff);
 	}
+	DEBUG_READ &&ft_dprintf(2, "type not found\n");
 	return -1;
 }
 
