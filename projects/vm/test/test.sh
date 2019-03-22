@@ -1,12 +1,6 @@
 #!/bin/bash
 
-CYAN="\e[36m"
-BOLD="\e[1m"
-RESET="\e[0m"
-YELLOW_L="\e[93m"
-
-TITLE="${CYAN}${BOLD}"
-INFO="${YELLOW_L}"
+source $(dirname $0)/utils.sh
 
 function usage() {
 	echo "$0 corewar" 1>&2
@@ -16,14 +10,6 @@ function usage() {
 
 function realpath() {
 	echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
-}
-
-function info() {
-	printf "${INFO}$*${RESET}\n"
-}
-
-function title() {
-	printf "${TITLE}$*${RESET}\n"
 }
 
 OPCODE_TO_TEST="."
