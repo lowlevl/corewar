@@ -3,14 +3,15 @@ BOLD="\e[1m"
 RESET="\e[0m"
 YELLOW_L="\e[93m"
 RED_L="\e[91m"
+BLUE_L="\e[94m"
 
 TITLE="${CYAN}${BOLD}"
-INFO="${YELLOW_L}"
+INFO="${BLUE_L}"
 WARN="${YELLOW_L}"
 ERROR="${BOLD}${RED_L}"
 
 function info() {
-	printf "${INFO}INFO:${RESET} $*\n"
+	printf "ℹ️  ${INFO}INFO:${RESET} $*\n"
 }
 
 function title() {
@@ -18,7 +19,7 @@ function title() {
 }
 
 function warning() {
-	printf "⚠️  ${WARN}WARN:$RESET $*\n"
+	printf "⚠️  ${WARN}WARNING:$RESET $*\n"
 }
 
 function error() {
