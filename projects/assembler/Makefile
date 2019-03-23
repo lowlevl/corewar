@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/20 17:51:24 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/21 21:29:41 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJDIR	:= build/obj
 SRCS	:= \
 			main.c \
 			lexer.c \
+			parser.c \
 			binary.c \
 			error.c \
 			utils.c

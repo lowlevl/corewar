@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/20 20:00:52 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/23 13:35:33 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_tok {
 
 	size_t	x;
 	size_t	y;
+	size_t	pos;
 }				t_tok;
 
 /*
@@ -58,8 +59,9 @@ int				perr(int e, ...);
 /*
 ** Lexer & Parser
 */
-t_bool			getfile(t_asm *env, char *name);
-t_bool			lexer(t_asm *env, t_node **toklist, char *file);
+char			*getfile(t_asm *env, char *name);
+t_node			*lexer(t_asm *env, char *name);
+t_bool			parser(t_asm *env, t_node **tokens);
 
 /*
 ** Binary writing
