@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:02:48 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/23 19:10:24 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,19 @@ static const char	*g_err[128] = {
 	[1] = "{under}Usage:{eoc} %s <input.s>\n\n"
 	"This program compiles only {under}pseudo-asm{eoc} for the project "
 	"{bold}corewar{eoc} at school {bold}42{eoc}.\n",
-	[2] = NULL,
-	[3] = "{bold}%s: {red}error:{eoc} %s\n",
-	[4] = "{bold}%s: {red}error:{eoc} Wrong extension. "
+	[2] = "{bold}%s: {red}error:{eoc} %s\n",
+	[3] = "{bold}%s: {red}error:{eoc} Wrong extension. "
 	"See usage => {bold}%s{eoc}.\n",
-	[5] = "{bold}%s: {red}error:{eoc} No support for infinite/special files "
+	[4] = "{bold}%s: {red}error:{eoc} No support for infinite/special files "
 	"{rev}{shrug}{eoc}.\n",
-	[6] = "{bold}%s: {red}error:{eoc} I/O Error: %s.",
-	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
+	[5] = "{bold}%s: {red}error:{eoc} I/O Error: %s.",
+	[6] = "{bold}%s:%d:%d: {red}error:{eoc} Unexpected token '%s':\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} You should double check for typing errors.\n",
+	[7] = "{bold}%s:%d:%d: {red}error:{eoc} Expected closing quote:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} You need to close this quote.\n",
+/*	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
 	"Unrecognized instruction {under}%s{eoc}.\n"
 	"%s\n"
 	"{bold}%*c-- Help:{eoc} You should double check for typo errors.\n",
@@ -46,6 +51,7 @@ static const char	*g_err[128] = {
 	"{bold}%*c-- Help:{eoc} You can't add instructions after commands.\n",
 	[11] = "{bold}%s:%d:%d: {red}error:{eoc} Given token '%s' "
 	"has no parameter.\n"
+*/
 };
 
 int					perr(int e, ...)

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/23 13:35:33 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/23 17:57:10 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,12 @@ int				perr(int e, ...);
 */
 char			*getfile(t_asm *env, char *name);
 t_node			*lexer(t_asm *env, char *name);
+
 t_bool			parser(t_asm *env, t_node **tokens);
+void			shift(t_node **tokens, int type);
+void			shiftb(t_node **tokens, int type);
+t_bool			accept(t_tok *tok, int type);
+void			shouterror(t_asm *env, t_tok *tok, t_node **tokens, int err);
 
 /*
 ** Binary writing
