@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:17:49 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/25 17:07:56 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int read_args_exec(
 	else
 		return -1;
 
+	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_DIR)
 		args[1] = read_arg(process, mem, T_DIR);
 	else if (type_arg == T_IND)
@@ -37,8 +38,6 @@ static int read_args_exec(
 			get_indirect_restrict(pos, read_arg(process, mem, T_IND), mem);
 	else
 		return -1;
-
-	type_arg = get_type_arg(oc, 1);
 
 	if (get_type_arg(oc, 2) == T_REG)
 		args[2] = read_arg(process, mem, T_REG);
@@ -57,10 +56,14 @@ void exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
+	DEBUG_TYPE &&ft_dprintf(2, "type: %d %d %d\n", get_type_arg(oc, 0),
+		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		adr = args[0] + args[1];
 		process->carry = adr == 0;
+		DEBUG_R_FC &&ft_dprintf(2, "ldi :(%x + %x = %x) r%d\n", args[0] % MEM_SIZE,
+			args[1] % MEM_SIZE, (args[0] + args[1]) % IDX_MOD, args[2]);
 		write_in_registre(
 			process, args[2], get_indirect_restrict(pos, adr, vm->memory));
 	}
