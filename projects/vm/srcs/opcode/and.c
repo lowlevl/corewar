@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:17:29 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/25 09:12:17 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void exec_and(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	ft_bzero(args, sizeof(args));
 	oc = read_octet_code(process, vm->memory);
-	ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
-		get_type_arg(oc, 2));
+	// ft_printf("type: %d %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1),
+	// 	get_type_arg(oc, 2));
 	if (read_and_arg(vm->memory, process, args, oc) == -1)
 	{
 		process->carry = 1;
@@ -68,7 +68,7 @@ void exec_and(t_vm *vm, t_process *process, const t_op *op)
 		process->carry = logic == 0;
 		write_in_registre(process, args[2], logic);
 	}
-	ft_printf("args[0]: %u\n", args[0]);
-	ft_printf("args[1]: %u\n", args[1]);
-	ft_printf("args[2]: %u\n", args[2]);
+	// ft_printf("args[0]: %u\n", args[0]);
+	// ft_printf("args[1]: %u\n", args[1]);
+	// ft_printf("args[2]: %u\n", args[2]);
 }
