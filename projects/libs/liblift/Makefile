@@ -6,13 +6,13 @@
 #    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/23 15:04:39 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/25 20:40:17 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= liblift
-NAME	:= build/$(PROJECT).a
-LNKNAME	:= $(PROJECT).a
+PROJECT	:= "📚 liblift :"
+NAME	:= build/liblift.a
+LNKNAME	:= liblift.a
 
 INCDIR	:= incs
 SRCDIR	:= srcs

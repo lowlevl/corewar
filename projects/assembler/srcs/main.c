@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/23 17:23:25 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:20:23 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int ac, char **av)
 	freeme = ll_dup(tokens);
 	if (!parser(&env, &tokens))
 		return (failure);
-//	if (!writebin(&env))
-//		return (failure);
+	if (!writebin(&env))
+		return (failure);
 	/* Free end */
 	free((void*)env.scstring);
 	while ((tok = ll_pop(&freeme, 0)))

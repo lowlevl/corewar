@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/23 19:10:24 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:04:03 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ static const char	*g_err[128] = {
 	"See usage => {bold}%s{eoc}.\n",
 	[4] = "{bold}%s: {red}error:{eoc} No support for infinite/special files "
 	"{rev}{shrug}{eoc}.\n",
-	[5] = "{bold}%s: {red}error:{eoc} I/O Error: %s.",
+	[5] = "{bold}%s: {red}error:{eoc} I/O Error: %s.\n",
 	[6] = "{bold}%s:%d:%d: {red}error:{eoc} Unexpected token '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} You should double check for typing errors.\n",
 	[7] = "{bold}%s:%d:%d: {red}error:{eoc} Expected closing quote:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} You need to close this quote.\n",
+	[8] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid char '%c' in given label:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Check the subject specifications for reference.\n",
 /*	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
 	"Unrecognized instruction {under}%s{eoc}.\n"
 	"%s\n"

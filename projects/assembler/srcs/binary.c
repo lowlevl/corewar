@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/16 15:02:38 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/25 18:27:23 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ t_op	g_op[17] =
 	{NULL, 0, 0, {0}, false}
 };
 
-int	writebin(t_asm *env)
+t_bool	writebin(t_asm *env)
 {
-	ft_printf("Everything's good :D");
-	return (0);
+	(void)env;
+	ft_printf(":<(O)>: {green}Building binary{eoc} :D\n");
+	return (true);
 }

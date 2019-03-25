@@ -6,13 +6,15 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:42:29 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/23 19:12:25 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/25 17:51:55 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 # include "assembler.h"
+
+# define LITTERALCHARS	LABEL_CHARS "ABCDEFGHIJKLMNOPQRSTUVWXYZ-"
 
 typedef struct	s_lexmap {
 	char	id;
