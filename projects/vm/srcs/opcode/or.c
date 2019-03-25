@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:19:14 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/25 11:29:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void exec_or(t_vm *vm, t_process *process, const t_op *op)
 	{
 		logic = args[0] | args[1];
 		process->carry = logic == 0;
+		DEBUG_R_FC &&ft_dprintf(
+			2, "or %%%b %%%b r%d\n", args[0], args[1], args[2]);
 		write_in_registre(process, args[2], logic);
 	}
 	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
