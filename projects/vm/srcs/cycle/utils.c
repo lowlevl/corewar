@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/21 16:46:05 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:40:58 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void exec_process(t_vm *vm, t_process *process)
 					"\r\e[2KExec process %p %#x (%s) at %zd\n",
 					pos - vm->memory, op->opcode, op->name, vm->cycle_count);
 				ops->f(vm, process, op);
-				DEBUG_CR_P &&ft_printf("pos: %.2hhx %.2hhx\n",
+				DEBUG_CR_P &&ft_printf("pos: %.2hhx, opcode: %.2hhx\n",
 					get_idx_in_memory(process),
 					vm->memory[get_idx_in_memory(process)]);
 			}
