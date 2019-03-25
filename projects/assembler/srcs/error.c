@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/25 18:04:03 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/25 21:20:54 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static const char	*g_err[128] = {
 	[8] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid char '%c' in given label:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Check the subject specifications for reference.\n",
+	[9] = "{bold}%s:%d:%d: {red}error:{eoc} Unknown instruction '%s':\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Did you mean to write that ?\n",
 /*	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
 	"Unrecognized instruction {under}%s{eoc}.\n"
 	"%s\n"
