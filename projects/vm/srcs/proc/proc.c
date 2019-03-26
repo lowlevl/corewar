@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 11:56:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 13:17:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,23 @@ void add_process(t_vm *vm, uint16_t pc, int player_id)
 
 void copy_process(t_vm *vm, t_process *process, size_t pos)
 {
-		size_t	 n;
+	size_t	 n;
 	t_process *proc;
+	t_process *nlist;
 
 	n = vm->processes_count;
-	ft_dprintf(2, "p:%p n:%zu l:%zu\n", vm->processes, n, sizeof(t_process) * (n + 1));
+	ft_dprintf(
+		2, "p:%p n:%zu l:%zu\n", vm->processes, n, sizeof(t_process) * (n + 1));
 	errno = 0;
-	proc =
-		(t_process *)malloc(sizeof(t_process) * (n + 1));
-	ft_memcpy(proc, vm->processes, sizeof(t_process) * (n));
-	free(vm->processes);
-	vm->processes = proc;
+	nlist = (t_process *)malloc(sizeof(t_process) * (n + 1));
+	memcpy(nlist, vm->processes, sizeof(t_process) * (n));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
-	vm->processes_count++;
-	proc = vm->processes + n;
-	ft_memcpy(proc, process, sizeof(*process));
+	proc = nlist + n;
+	memcpy(proc, process, sizeof(t_process));
 	proc->cursor_pos = pos;
+	print_proc(process);
 	print_proc(proc);
+	free(vm->processes);
+	// vm->processes_count++;
+	vm->processes = nlist;
 }
