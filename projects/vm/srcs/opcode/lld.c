@@ -6,13 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:18:05 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 14:13:12 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-static int read_args_lld(uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
+static int read_args_lld(
+	uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 {
 	uint8_t type_arg;
 	size_t  pos;
@@ -20,8 +21,7 @@ static int read_args_lld(uint8_t *mem, t_process *process, uint32_t *args, uint8
 	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
 	if (type_arg == T_IND)
-		args[0] =
-			get_indirect(pos, read_arg(process, mem, T_IND), mem);
+		args[0] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
 	else if (type_arg == T_DIR)
 		args[0] = read_arg(process, mem, T_DIR_4);
 	else
@@ -42,9 +42,12 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 
 	(void)op;
 	oc = read_octet_code(process, vm->memory);
+	DEBUG_TYPE &&ft_dprintf(
+		2, "type: %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1));
 	if (read_args_lld(vm->memory, process, args, oc) == 0)
 	{
 		process->carry = args[0] == 0;
+		DEBUG_R_FC &&ft_dprintf(2, "lld %%%x r%d\n", args[0], args[1]);
 		write_in_registre(process, args[1], args[0]);
 	}
 	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
