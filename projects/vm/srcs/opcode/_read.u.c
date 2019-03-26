@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/25 16:41:59 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:44:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,11 @@ uint32_t read_arg(t_process *process, uint8_t *mem, int type)
  */
 uint32_t get_indirect(size_t current, size_t relative, uint8_t *memory)
 {
-	return bswap_32(*(uint32_t *)(memory + ((current + relative) % MEM_SIZE)));
+	uint32_t value;
+
+	// value = *(uint32_t *)(memory + ((current + relative) % MEM_SIZE));
+	read_in_memory(memory, (uint8_t*)&value, 4, current + relative);
+	return bswap_32(value);
 }
 
 uint32_t get_indirect_restrict(size_t current, size_t to_add, uint8_t *memory)

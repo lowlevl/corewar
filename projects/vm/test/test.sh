@@ -34,7 +34,7 @@ then
 	usage
 fi
 
-REGEX_FILE=".*${OPCODE_TO_TEST}\.test.sh"
+REGEX_FILE=".*/${OPCODE_TO_TEST}\.test.sh"
 TEST_SCRIP=$(find . -type f | grep -E $REGEX_FILE)
 COREWAR_PATH=$(realpath $COREWAR_PATH)
 
