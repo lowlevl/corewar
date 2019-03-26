@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 15:26:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:52:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@
 
 typedef struct s_process
 {
-	uint8_t  carry; // not sure the type is ok
-	int64_t  exec_cycle;
-	uint16_t cursor_start;
-	uint16_t cursor_pos; // pc
-	uint32_t regs[REG_NUMBER];
-	char	 taunt_buffer[TAUNT_BUFFER_SIZE];
-	uint16_t taunt_size;
-	int		 player_id;
-	uint8_t  have_live;
+	uint8_t			  carry; // not sure the type is ok
+	int64_t			  exec_cycle;
+	uint16_t		  cursor_start;
+	uint16_t		  cursor_pos; // pc
+	uint32_t		  regs[REG_NUMBER];
+	char			  taunt_buffer[TAUNT_BUFFER_SIZE];
+	uint16_t		  taunt_size;
+	int				  player_id;
+	uint8_t			  have_live;
+	struct s_process *next;
 } t_process;
 
 typedef struct s_player
