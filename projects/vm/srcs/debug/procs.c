@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 11:59:17 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/11 11:29:05 by glodi            ###   ########.fr       */
+/*   Updated: 2019/03/26 11:22:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void print_proc(t_process *proc)
 	{
 		ft_printf("\tcarry: %hhu\n", proc->carry);
 		ft_printf("\texec_cycle: %d\n", proc->exec_cycle);
-		ft_printf("\tcursor_start: %u\n", proc->cursor_start);
-		ft_printf("\tcursor_pos: %hu\n", proc->cursor_pos);
+		ft_printf("\tcursor_start: %x\n", proc->cursor_start);
+		ft_printf("\tcursor_pos: %hx\n", proc->cursor_pos);
+		ft_printf("\tplayer_id: %hu\n", proc->player_id);
+		ft_printf("\thave_live: %hu\n", proc->have_live);
 	}
 }
