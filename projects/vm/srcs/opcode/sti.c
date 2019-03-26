@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/22 16:18:27 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 09:33:32 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	else
 	{
 		adr = args[1] + args[2];
-		process->carry = args[1] + args[2];
+		process->carry = adr == 0;
 		DEBUG_R_FC &&ft_dprintf(2, "sti r(%d) :(%.2x + %.2x = %.2x)\n", args[0],
 			pos, adr % IDX_MOD, get_restrict_address(pos, adr));
 		args[0] = bswap_32(args[0]);
