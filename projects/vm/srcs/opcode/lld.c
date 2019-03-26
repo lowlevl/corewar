@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 14:13:12 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 14:24:29 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int read_args_lld(
 		return -1;
 
 	if (get_type_arg(oc, 1) == T_REG)
-		args[1] = get_reg(process, read_arg(process, mem, T_REG));
+		args[1] = read_arg(process, mem, T_REG);
 	else
 		return -1;
 
@@ -50,5 +50,7 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 		DEBUG_R_FC &&ft_dprintf(2, "lld %%%x r%d\n", args[0], args[1]);
 		write_in_registre(process, args[1], args[0]);
 	}
+	else
+		process->carry = 1;
 	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
 }
