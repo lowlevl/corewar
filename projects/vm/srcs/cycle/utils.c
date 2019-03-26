@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 12:43:03 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 13:36:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void exec_process(t_vm *vm, t_process *process)
 					"\r\e[2KExec process %p %#x (%s) at %zd\n",
 					pos - vm->memory, op->opcode, op->name, vm->cycle_count);
 				ops->f(vm, process, op);
+				// causing invalid read bc of fork and lfork freeing the old array
 				DEBUG_CR_P &&ft_dprintf(2, "pos: %.2hhx, opcode: %.2hhx\n",
 					get_idx_in_memory(process),
 					vm->memory[get_idx_in_memory(process)]);
