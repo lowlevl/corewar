@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 09:36:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:04:55 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,21 @@ void exec_process(t_vm *vm, t_process *process)
 		if (ops->name != NULL)
 		{
 			if (process->exec_cycle == -1)
-				process->exec_cycle = vm->cycle_count + op->duration - 2;
+			{
+				process->exec_cycle = vm->cycle_count + op->duration - 1;
+				DEBUG_EXE &&ft_dprintf(2, EXE_NEXT_TEMPLATE, op->opcode,
+					op->name, process->exec_cycle);
+			}
 			if (process->exec_cycle <= vm->cycle_count)
 			{
 				process->exec_cycle = -1;
 				process_move_cursor(process, 1);
-				DEBUG_EXE &&ft_dprintf(2,
-					"\r\e[2KExec process %p %#x (%s) at %zd\n",
-					pos - vm->memory, op->opcode, op->name, vm->cycle_count);
+				DEBUG_EXE &&ft_dprintf(2, EXE_TEMPLATE, op->opcode, op->name,
+					vm->cycle_count, get_idx_in_memory(process) - 1);
 				ops->f(vm, process, op);
-				// causing invalid read bc of fork and lfork freeing the old array
-				DEBUG_CR_P &&ft_dprintf(2, "pos: %.2hhx, opcode: %.2hhx\n",
+				// causing invalid read bc of fork and lfork freeing the old
+				// array
+				DEBUG_CR_P &&ft_dprintf(2, CURSOR_TEMPLATE,
 					get_idx_in_memory(process),
 					vm->memory[get_idx_in_memory(process)]);
 			}

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 09:55:24 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:49:17 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:13:34 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static int read_args_exec(
 	else
 		return -1;
 
-	if (get_type_arg(oc, 0) == T_REG)
+	if (get_type_arg(oc, 1) == T_REG)
 		args[1] = get_reg(process, read_arg(process, mem, T_REG));
 	else
 		return -1;
 
-	if (get_type_arg(oc, 0) == T_REG)
+	if (get_type_arg(oc, 2) == T_REG)
 		args[2] = read_arg(process, mem, T_REG);
 	else
 		return -1;
@@ -41,6 +41,8 @@ void exec_sub(t_vm *vm, t_process *process, const t_op *op)
 
 	(void)op;
 	oc = read_octet_code(process, vm->memory);
+		DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
+		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		sub = args[0] - args[1];
@@ -51,5 +53,5 @@ void exec_sub(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 		process->carry = 1;
-	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

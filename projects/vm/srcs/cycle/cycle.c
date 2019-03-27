@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 16:45:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 10:59:54 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void setup_next_cycle(t_vm *vm)
 {
 	vm->nb_live_for_cycle = 0;
 	vm->next_check = vm->cycle_count + vm->cycle_to_die;
+	DEBUG_CHECK&&ft_dprintf(2, CHECK_TEMPLATE, vm->next_check);
 }
 
 void check_cycle(t_vm *vm)
@@ -25,7 +26,7 @@ void check_cycle(t_vm *vm)
 	{
 		if (vm->nb_live_for_cycle >= NBR_LIVE || vm->nb_check >= MAX_CHECKS)
 		{
-			vm->nb_check = 1;
+			vm->nb_check = 0;
 			vm->cycle_to_die -= CYCLE_DELTA;
 		}
 		else

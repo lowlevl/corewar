@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 14:24:29 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:10:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	oc = read_octet_code(process, vm->memory);
 	DEBUG_TYPE &&ft_dprintf(
-		2, "type: %d %d\n", get_type_arg(oc, 0), get_type_arg(oc, 1));
+		2, TYPE_TEMPLATE_2, get_type_arg(oc, 0), get_type_arg(oc, 1));
 	if (read_args_lld(vm->memory, process, args, oc) == 0)
 	{
 		process->carry = args[0] == 0;
@@ -52,5 +52,5 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 		process->carry = 1;
-	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
