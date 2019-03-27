@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/26 16:38:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:35:12 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int main(int argc, char *argv[])
 	if (vm.dump != -1)
 		print_dump(vm.memory);
 	delete_process(&vm.processes);
-	sleep(15);
+	// sleep(15);
 	return (0);
 }

@@ -6,11 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 16:33:31 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:34:54 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <proc.h>
+
+static int g_id = 0;
 
 void init_processes(t_vm *vm)
 {
@@ -20,7 +22,6 @@ void init_processes(t_vm *vm)
 
 	i = 0;
 	vm->processes = NULL;
-	if_errno_printerr_exit(ERR_PROC_MALL);
 	vm->processes_count = vm->players_count;
 	while (i < vm->players_count)
 	{
@@ -35,6 +36,7 @@ void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 {
 	t_process *proc;
 
+	errno = 0;
 	proc = (t_process *)malloc(sizeof(t_process));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
 	ft_memset(proc, 0, sizeof(t_process));
@@ -43,6 +45,8 @@ void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 	proc->player_id = player_id;
 	proc->regs[0] = player_id;
 	proc->next = (*head);
+	proc->id = g_id;
+	g_id++;
 	*head = proc;
 	print_proc(proc);
 }
@@ -68,11 +72,15 @@ void copy_process(t_vm *vm, t_process *process, size_t pos)
 {
 	t_process *dup;
 
+	errno = 0;
 	dup = (t_process *)malloc(sizeof(t_process));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
 	ft_memcpy(dup, process, sizeof(t_process));
 	dup->cursor_pos = pos;
 	vm->processes_count++;
 	dup->next = vm->processes;
+	dup->id = g_id;
+	g_id++;
+	dup->exec_cycle = -1;
 	vm->processes = dup;
 }

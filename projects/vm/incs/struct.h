@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 15:52:09 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:15:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <op.h>
 #include <stdint.h>
+#include <unistd.h>
 
 /*
 ** Struct definition
@@ -33,6 +34,7 @@ typedef struct s_process
 	uint16_t		  taunt_size;
 	int				  player_id;
 	uint8_t			  have_live;
+	size_t			  id;
 	struct s_process *next;
 } t_process;
 

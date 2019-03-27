@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 16:53:54 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 17:05:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "struct.h"
 
 #define ERR_PROC_MALL "malloc processes"
-#define ERR_NEW_PROC_MALL "realloc new processes"
+#define ERR_NEW_PROC_MALL "new processes"
 
 void init_processes(t_vm *vm);
 void init_process(

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 13:36:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:36:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void exec_process(t_vm *vm, t_process *process)
 		if (ops->name != NULL)
 		{
 			if (process->exec_cycle == -1)
-				process->exec_cycle = vm->cycle_count + op->duration - 1;
+				process->exec_cycle = vm->cycle_count + op->duration - 2;
 			if (process->exec_cycle <= vm->cycle_count)
 			{
 				process->exec_cycle = -1;
