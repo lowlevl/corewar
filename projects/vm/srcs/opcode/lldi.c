@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:12:49 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 		adr = args[0] + args[1];
 		process->carry = adr == 0;
 		DEBUG_R_FC &&ft_dprintf(
-			2, "lldi (%x + %x = %x), r%d\n", pos, adr, pos + adr, args[2]);
+			2, FUNC_PREFIX "lldi (%x + %x = %x), r%d\n", pos, adr, pos + adr, args[2]);
 		write_in_registre(process, args[2], get_indirect(pos, adr, vm->memory));
 	}
 	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);

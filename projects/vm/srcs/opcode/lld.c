@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:52:45 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:10:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void exec_lld(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_lld(vm->memory, process, args, oc) == 0)
 	{
 		process->carry = args[0] == 0;
-		DEBUG_R_FC &&ft_dprintf(2, "lld %%%x r%d\n", args[0], args[1]);
+		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "lld %%%x r%d\n", args[0], args[1]);
 		write_in_registre(process, args[1], args[0]);
 	}
 	else

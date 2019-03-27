@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:10:34 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void exec_xor(t_vm *vm, t_process *process, const t_op *op)
 		logic = args[0] ^ args[1];
 		process->carry = logic == 0;
 		DEBUG_R_FC &&ft_dprintf(
-			2, "xor %%%b %%%b r%d\n", args[0], args[1], args[2]);
+			2, FUNC_PREFIX "xor %%%b %%%b r%d\n", args[0], args[1], args[2]);
 		write_in_registre(process, args[2], logic);
 	}
 	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:10:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 	{
 		adr = args[0] + args[1];
 		process->carry = adr == 0;
-		DEBUG_R_FC &&ft_dprintf(2, "ldi :(%x + %x = %x) r%d\n", args[0] % MEM_SIZE,
+		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "ldi :(%x + %x = %x) r%d\n", args[0] % MEM_SIZE,
 			args[1] % MEM_SIZE, (args[0] + args[1]) % IDX_MOD, args[2]);
 		write_in_registre(
 			process, args[2], get_indirect_restrict(pos, adr, vm->memory));
