@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 13:12:34 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 14:02:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ void print_winner(t_vm *vm)
 	winner_id = vm->last_player_report_as_live;
 	players = vm->players;
 	i = 0;
-	DEBUG_CYCLE &&ft_printf("\e[2Kcycle: %zu\n", vm->cycle_count);
+	DEBUG_CYCLE &&ft_dprintf(2, CYCLE_PREFIX "cycle: %zu\n", vm->cycle_count);
 	while (i < vm->players_count)
 	{
 		if (players[i].id == winner_id)
 		{
 			ft_printf("Le Champion %zd (%s) a écrasé ces ennemies\n",
 				players[i].id, players[i].header.prog_name);
+			if (vm->players_count <= 1)
+				ft_printf("(en même temps, il était seul)\n");
 			return;
 		}
 		i++;

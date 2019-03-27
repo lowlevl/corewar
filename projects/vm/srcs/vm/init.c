@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:13:51 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 10:55:03 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 13:07:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->next_check = CYCLE_TO_DIE;
 	vm->nb_check = 0;
-	DEBUG_CHECK&&ft_dprintf(2, CHECK_TEMPLATE, vm->next_check);
 	if (argc < 2)
 		exit_print_usage();
 	while (++i < argc)
