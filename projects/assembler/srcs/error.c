@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/25 21:20:54 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/27 15:43:52 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ static const char	*g_err[128] = {
 	[9] = "{bold}%s:%d:%d: {red}error:{eoc} Unknown instruction '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Did you mean to write that ?\n",
+	[10] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid parameter for instruction '%s':\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Try another parameter type.\n",
+	[11] = "{bold}%s:%d:%d: {red}error:{eoc} Too many parameters for instruction '%s':\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Try removing this parameter.\n",
+	[12] = "{bold}%s:%d:%d: {red}error:{eoc} Expected token but found a newline instead:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Did you forgot something ?\n",
+	[13] = "{bold}%s:%d:%d: {red}error:{eoc} Not enought parameters for instruction '%s':\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Try adding a parameter.\n",
 /*	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
 	"Unrecognized instruction {under}%s{eoc}.\n"
 	"%s\n"

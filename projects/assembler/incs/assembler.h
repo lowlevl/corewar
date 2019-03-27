@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/25 20:34:46 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/27 15:48:34 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct	s_asm {
 	char		*sstring;
 	const char	*scstring;
 
+	int			skip;
+
 	t_node		*symbols;
 	t_node		*references;
 	t_binary	data;
@@ -62,8 +64,11 @@ int				perr(int e, ...);
 t_node			*lexer(t_asm *env, char *name);
 
 t_bool			parser(t_asm *env, t_node **tokens);
-t_bool			parsecmd(t_asm *env, int *skip, t_node **tokens);
+t_bool			parsecmd(t_asm *env, t_node **tokens);
 t_bool			parseinst(t_asm *env, t_node **tokens);
+t_bool			argind(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			argreg(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			argdir(t_asm *env, t_node **tokens, t_op op, int *i);
 
 /*
 ** Parsing utils

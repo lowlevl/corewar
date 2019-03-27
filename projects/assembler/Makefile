@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/25 18:45:10 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/27 15:49:34 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,12 @@ SRCS	:= \
 			main.c \
 			lexer.c \
 			parser/parser.c \
-			parser/parseutils.c \
-			parser/parseinst.c \
-			parser/parsecmd.c \
+			parser/utils.c \
+			parser/inst.c \
+			parser/cmd.c \
+			parser/args/dir.c \
+			parser/args/ind.c \
+			parser/args/reg.c \
 			binary.c \
 			error.c
 
