@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 13:07:01 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 14:32:51 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 ** 1 for on
 */
 
-#define DEBUG_READ 1
-#define DEBUG_WRITE 1
-#define DEBUG_GET 1
-#define DEBUG_TYPE 1
-#define DEBUG_R_FC 1
-#define DEBUG_CR_P 1
-#define DEBUG_EXE 1
-#define DEBUG_CYCLE 1
-#define DEBUG_CARRY 1
-#define DEBUG_CHECK 1
+#define DEBUG_READ  0
+#define DEBUG_WRITE 0
+#define DEBUG_GET   0
+#define DEBUG_TYPE  0
+#define DEBUG_R_FC  0
+#define DEBUG_CR_P  0
+#define DEBUG_EXE   0
+#define DEBUG_CYCLE 0
+#define DEBUG_CARRY 0
+#define DEBUG_CHECK 0
 
 #define READ_PREFIX "\e[31mREAD\e[0m   : "
 #define WRITE_PREFIX "\e[32mWRITE\e[0m  : "

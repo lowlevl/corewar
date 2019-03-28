@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:50:32 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:24:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,39 @@ void init_player(t_vm *vm, char *binary_path, int specified_id)
 	vm->players_count++;
 }
 
-void handle_option(t_vm *vm, const int argc, char **argv, int *index)
+static void unknow_option(char **argv, char *opt)
+{
+	ft_dprintf(2, "%s: %s unknow option\n", argv[0], opt);
+	exit(1);
+}
+
+void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
+{
+	char *ip;
+	int   port;
+
+	if (ft_strcmp(SOCKET_OPT, argv[*index]) == 0)
+	{
+		*index = *index + 1;
+		if (argv[*index])
+			ip = argv[*index];
+		else
+			return set_errno_exit(EINVAL, ERR_SOCKET_IP);
+		*index = *index + 1;
+		if (argv[*index])
+			port = ft_atoi(argv[*index]);
+		else
+			return set_errno_exit(EINVAL, ERR_SOCKET_PORT);
+	}
+	else
+		unknow_option(argv, argv[*index]);
+}
+
+void handle_option_1(t_vm *vm, const int argc, char **argv, int *index)
 {
 	int id;
 
-	if (ft_strcmp("dump", argv[*index] + 1) == 0)
-	{
-		*index = *index + 1;
-		if (*index < argc)
-			vm->dump = ft_atoi(argv[*index]);
-		else
-			set_errno_exit(EINVAL, ERR_DUMP);
-	}
-	else if (ft_strcmp("n", argv[*index] + 1) == 0)
+	if (ft_strcmp(N_OPT, argv[*index]) == 0)
 	{
 		*index = *index + 1;
 		if (*index + 1 < argc)
@@ -53,4 +73,20 @@ void handle_option(t_vm *vm, const int argc, char **argv, int *index)
 		else
 			set_errno_exit(EINVAL, ERR_N);
 	}
+	else
+		handle_option_2(vm, argc, argv, index);
+}
+
+void handle_option(t_vm *vm, const int argc, char **argv, int *index)
+{
+	if (ft_strcmp(DUMP_OPT, argv[*index]) == 0)
+	{
+		*index = *index + 1;
+		if (*index < argc)
+			vm->dump = ft_atoi(argv[*index]);
+		else
+			set_errno_exit(EINVAL, ERR_DUMP);
+	}
+	else
+		handle_option_1(vm, argc, argv, index);
 }
