@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/27 15:49:02 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:08:07 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,8 @@
 
 static t_bool	parselabels(t_asm *env, t_node **tokens)
 {
-	size_t	invalid;
-
-	invalid = ft_strspn(tok(tokens)->val, LABEL_CHARS);
-	if (tok(tokens)->val[invalid])
-	{
-		perr(8, env->sname, tok(tokens)->y, tok(tokens)->x + invalid,
-			tok(tokens)->val[invalid],
-			ft_strcspn(env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, "\n"),
-			env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, tok(tokens)->x + invalid, '^');
-		shiftb(tokens, NL);
+	if (!isvalidlabel(env, tokens))
 		return (false);
-	}
 	ft_printf(":<L>: Found {under}label{eoc}: '%s'.\n", tok(tokens)->val);
 	shift(tokens, LBLMARK);
 	return (true);
@@ -39,6 +29,14 @@ static t_bool	hasspaceafter(t_asm *env, t_tok *tok)
 {
 	if (ft_inset(env->scstring[tok->pos + ft_strlen(tok->val)], "\t\v\f\r "))
 		return (true);
+	return (false);
+}
+
+static t_bool	shouterror(t_asm *env, t_tok *tok, t_node **tokens, int err)
+{
+	shiftb(tokens, NL);
+	perr(err, env->sname, tok->y, tok->x, tok->val,
+			tok->ll, tok->ls, tok->x, '^');
 	return (false);
 }
 

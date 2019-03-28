@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/25 18:43:39 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/27 16:07:37 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ static t_tok	*newtok(t_asm *env, int type, char *val, size_t len)
 	tok->val = ft_strndup(val, len);
 	tok->pos = val - env->sstring;
 	tok->y = ft_strncc(env->scstring, tok->pos, '\n') + 1;
-	tok->x = tok->pos - ft_strncspn(env->scstring, tok->y - 1, "\n")
-		+ ((tok->y - 1) ? -1 : 0) + 1;
+	tok->x = tok->pos - ft_strncspn(env->scstring, tok->y - 1, "\n");
+	tok->ls = (char*)env->scstring + (tok->pos - tok->x) + 1;
+	tok->ll = ft_strcspn(tok->ls, "\n") + ((tok->y - 1) ? -1 : 0) + 1;
 	return (tok);
 }
 

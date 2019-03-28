@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/27 15:43:52 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:28:42 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,39 +37,25 @@ static const char	*g_err[128] = {
 	[9] = "{bold}%s:%d:%d: {red}error:{eoc} Unknown instruction '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Did you mean to write that ?\n",
-	[10] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid parameter for instruction '%s':\n"
+	[10] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Invalid parameter for instruction '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Try another parameter type.\n",
-	[11] = "{bold}%s:%d:%d: {red}error:{eoc} Too many parameters for instruction '%s':\n"
+	[11] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Too many parameters for instruction '%s':\n"
 	"%.*s\n"
-	"{bold}%*c-- Help:{eoc} Try removing this parameter.\n",
-	[12] = "{bold}%s:%d:%d: {red}error:{eoc} Expected token but found a newline instead:\n"
+	"{bold}%*c-- Help:{eoc} Try removing this t parameter.\n",
+	[12] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Expected token but found a newline instead:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Did you forgot something ?\n",
-	[13] = "{bold}%s:%d:%d: {red}error:{eoc} Not enought parameters for instruction '%s':\n"
+	[13] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Not enought parameters for instruction '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Try adding a parameter.\n",
-/*	[7] = "{bold}%s:%d:%d: {red}error:{eoc} "
-	"Unrecognized instruction {under}%s{eoc}.\n"
-	"%s\n"
-	"{bold}%*c-- Help:{eoc} You should double check for typo errors.\n",
-	[8] = "{bold}%s:%d:%d: {red}error:{eoc} "
-	"Expected token ('\"'); but found '%c'.\n"
-	"%s\n"
-	"{bold}%*c-- Help:{eoc} Commands requires opening quotes ('\"') "
-	"on param.\n",
-	[9] = "{bold}%s:%d:%d: {red}error:{eoc} "
-	"Expected token ('\"'); but none found\n"
-	"%s\n"
-	"{bold}%*c-- Help:{eoc} Commands requires closing quotes ('\"') "
-	"on param.\n",
-	[10] = "{bold}%s:%d:%d: {red}error:{eoc} "
-	"Expected new line ('\\n'); but found '%c' instead\n"
-	"%s\n"
-	"{bold}%*c-- Help:{eoc} You can't add instructions after commands.\n",
-	[11] = "{bold}%s:%d:%d: {red}error:{eoc} Given token '%s' "
-	"has no parameter.\n"
-*/
+	[14] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid char '%c' in given number:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Maybe try another base ?.\n",
 };
 
 int					perr(int e, ...)

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/27 15:48:34 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:29:46 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct	s_tok {
 	size_t	x;
 	size_t	y;
 	size_t	pos;
+
+	char	*ls;
+	size_t	ll;
 }				t_tok;
 
 /*
@@ -69,6 +72,9 @@ t_bool			parseinst(t_asm *env, t_node **tokens);
 t_bool			argind(t_asm *env, t_node **tokens, t_op op, int *i);
 t_bool			argreg(t_asm *env, t_node **tokens, t_op op, int *i);
 t_bool			argdir(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			isvalidarg(t_asm *env, t_node **tokens, t_op op, int *both);
+t_bool			isvalidnum(t_asm *env, t_node **tokens, size_t start);
+t_bool			isvalidlabel(t_asm *env, t_node **tokens);
 
 /*
 ** Parsing utils
@@ -78,7 +84,6 @@ void			shiftb(t_node **tokens, int type);
 t_tok			*next(t_node **tokens);
 t_tok			*tok(t_node **tokens);
 t_bool			accept(t_tok *tok, int type);
-t_bool			shouterror(t_asm *env, t_tok *tok, t_node **tokens, int err);
 
 /*
 ** Binary writing

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:47:01 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/27 15:47:10 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:36:49 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,23 @@
 
 t_bool	argind(t_asm *env, t_node **tokens, t_op op, int *i)
 {
-	size_t invalid;
-
-	if (!(op.argtypes[*i] & T_IND))
-	{
-		perr(10, env->sname, tok(tokens)->y, tok(tokens)->x, op.token,
-				ft_strcspn(env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, "\n"),
-				env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, tok(tokens)->x, '^');
-		shiftb(tokens, NL);
+	if (!isvalidarg(env, tokens, op, (int[2]){*i, T_IND}))
 		return (false);
-	}
 	ft_printf("    -> {under}type{eoc}: {blue}I{eoc} -> %s\n",
 			tok(tokens)->val);
 	if (accept(tok(tokens), LBLMARK))
 	{
 		next(tokens);
-		invalid = ft_strspn(tok(tokens)->val, LABEL_CHARS);
-		if (tok(tokens)->val[invalid])
-		{
-			perr(8, env->sname, tok(tokens)->y, tok(tokens)->x + invalid,
-						tok(tokens)->val[invalid],
-						ft_strcspn(env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, "\n"),
-						env->scstring + (tok(tokens)->pos - tok(tokens)->x) + 1, tok(tokens)->x + invalid, '^');
-			shiftb(tokens, NL);
+		if (!isvalidlabel(env, tokens))
 			return (false);
-		}
 		/* Case :label */
 	}
 	else
+	{
 		/* Case ind */
-		;
+		if (!isvalidnum(env, tokens, 0))
+			return (false);
+	}
 	next(tokens);
 	return (true);
 }
