@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:18:03 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:26:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_socket
 	int			 enable : 1;
 	t_sock_inter server;
 
-	t_sock_inter client[MAX_CLIENT_SOCKET];
+	t_sock_inter clients[MAX_CLIENT_SOCKET];
 	int			 nb_client;
 } t_socket;
 
