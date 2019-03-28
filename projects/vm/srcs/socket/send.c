@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:37:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:55:41 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "socket.h"
 
-int send_message_to(t_sock_inter *dest, void *msg, size_t len)
+int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 {
 	int rt;
 
@@ -22,14 +22,16 @@ int send_message_to(t_sock_inter *dest, void *msg, size_t len)
 	return rt;
 }
 
-int send_message_to_all(t_socket *socket, void *msg, size_t len)
+int send_message_to_all(t_socket *socket, void *msg, socklen_t len)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	while (socket->nb_client > i)
 	{
-		send_message_to(socket->clients + i, msg, len);
+		if (send_message_to(socket->clients + i, msg, len) < 0)
+			return -1;
 		i++;
 	}
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:37:48 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:54:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "error.h"
 #include "socket_inc.h"
 
-int send_message_to(t_sock_inter *dest, void *msg, size_t len);
-int send_message_to_all(t_socket *socket, void *msg, size_t len);
+int send_message_to(t_sock_inter *dest, void *msg, socklen_t len);
+int send_message_to_all(t_socket *socket, void *msg, socklen_t len);
 
 int accept_new_connexion(t_socket *socket);
 

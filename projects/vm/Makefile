@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/26 16:54:23 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/28 16:53:07 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,7 @@ INCDIR	:= incs
 SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
-SRCS	:= vm.c \
-	argv/argv.c \
-	argv/id.c \
-	cycle/cycle.c \
-	cycle/utils.c \
-	debug/header.c \
-	debug/procs.c \
-	debug/vm.c \
-	dump/print.c \
-	dump/load_player.c \
-	dump/sort_player.c \
-	dump/wrappers.c \
-	error/error.c \
-	opcode/_get.u.c \
+OPCODE_SRC := opcode/_get.u.c \
 	opcode/_read.u.c \
 	opcode/_write.u.c \
 	opcode/_other.u.c \
@@ -51,14 +38,49 @@ SRCS	:= vm.c \
 	opcode/ld.c \
 	opcode/fork.c \
 	opcode/lfork.c \
-	proc/proc.c \
+
+DUMP_SRC := dump/print.c \
+	dump/load_player.c \
+	dump/sort_player.c \
+	dump/wrappers.c \
+
+PROC_SRC := proc/proc.c \
 	proc/print.c \
 	proc/cursor.c \
-	proc/utils.c \
-	utils/file_utils.c \
-	vm/init.c \
+
+ARGV_SRC :=	argv/argv.c \
+	argv/id.c \
+
+CYCLE_SRC := cycle/cycle.c \
+	cycle/utils.c \
+
+DEBUG_SRC := debug/header.c \
+	debug/procs.c \
+	debug/vm.c \
+
+VM_SRC := 	vm/init.c \
 	vm/find.c \
 	vm/winner.c \
+
+SOCKET_SRC := socket/accept.c \
+	socket/bind.c \
+	socket/listen.c \
+	socket/send.c \
+	socket/socket.c \
+	socket/interface.c \
+
+SRCS	:= vm.c \
+	error/error.c \
+	proc/utils.c \
+	utils/file_utils.c \
+	$(OPCODE_SRC) \
+	$(DUMP_SRC) \
+	$(PROC_SRC) \
+	$(ARGV_SRC) \
+	$(CYCLE_SRC) \
+	$(DEBUG_SRC) \
+	$(VM_SRC) \
+	$(SOCKET_SRC) \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
