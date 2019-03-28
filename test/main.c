@@ -6,20 +6,21 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:53:50 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 16:39:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 14:22:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
-#include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/socket.h>
 #include <unistd.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
 
 #define PORT 8080
-#define HELLO "hello client\xff"
+#define HELLO "{ \"str\": \"hello client\", \"id\": 1 }\n"
 typedef struct sockaddr_in t_sockaddr_in;
 typedef struct sockaddr	t_sockaddr;
 
@@ -87,7 +88,7 @@ int setup_listen_socket(int sock)
 	return 0;
 }
 
-int accet_new_connexion(int sock, t_sockaddr_in *csin)
+int accept_new_connexion(int sock, t_sockaddr_in *csin)
 {
 	int		  csock;
 	socklen_t len = sizeof(*csin);
@@ -98,12 +99,19 @@ int accet_new_connexion(int sock, t_sockaddr_in *csin)
 		perror("accept()");
 		close_exit(sock, -1, errno);
 	}
+	printf(
+		"%x %x %x\n", csin->sin_addr.s_addr, csin->sin_port, csin->sin_family);
 	return csock;
 }
 
-int send_message_to(int sock, int csock, void *msg, int flags)
+int send_message_to(int sock, int csock, void *msg, size_t len, int flags)
 {
-	if (send(csock, msg, strlen(msg), flags) < 0)
+	char mem[2048];
+	char test[1024];
+
+	bzero(mem, 2048);
+	memcpy(mem, msg, len);
+	if (send(csock, mem, 2048, flags) < 0)
 	{
 		perror("send()");
 		close_exit(sock, csock, errno);
@@ -131,11 +139,16 @@ int main(void)
 	int			  csock_fd;
 	socklen_t	 size_csin = sizeof(csin);
 
-	csock_fd = accet_new_connexion(sock_fd, &csin);
-	send_message_to(sock_fd, csock_fd, HELLO, 0);
-	send_message_to(sock_fd, csock_fd, HELLO, 0);
-	send_message_to(sock_fd, csock_fd, HELLO, 0);
+	printf("waiting for connexion\n");
+	csock_fd = accept_new_connexion(sock_fd, &csin);
 
+	printf("%s %zu %zu\n", HELLO, sizeof(HELLO), sizeof(*HELLO));
+	for (int i = 0; i < 500; i++) {
+		send_message_to(sock_fd, csock_fd, HELLO, sizeof(HELLO), 0);
+	}
+
+	printf("sleep\n");
+	sleep(1);
 	// shutdown(sock_fd, SHUT_RDWR);
 	close_exit(sock_fd, csock_fd, 0);
 	return 0;
