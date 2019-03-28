@@ -6,22 +6,28 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 09:15:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:44:57 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#include <netinet/in.h>
 #include <op.h>
 #include <stdint.h>
+#include <sys/socket.h>
 #include <unistd.h>
 
 /*
 ** Struct definition
 */
 
+#define MAX_CLIENT_SOCKET 1
 #define TAUNT_BUFFER_SIZE 128
+
+typedef struct sockaddr_in t_sockaddr_in;
+typedef struct sockaddr	t_sockaddr;
 
 typedef struct s_process
 {
@@ -48,6 +54,23 @@ typedef struct s_player
 	uint32_t processes_count;
 } t_player;
 
+typedef struct s_sock_inter
+{
+	int			  sock;
+	t_sockaddr_in inter;
+} t_sock_inter;
+
+typedef struct s_socket
+{
+	char *		 ip;
+	int16_t		 port;
+	int			 enable : 1;
+	t_sock_inter server;
+
+	t_sock_inter client[MAX_CLIENT_SOCKET];
+	int			 nb_client;
+} t_socket;
+
 typedef struct s_vm
 {
 	uint8_t  players_count;
@@ -66,6 +89,8 @@ typedef struct s_vm
 	int32_t  cycle_to_die;
 	int64_t  cycle_count;
 	uint64_t nb_live_for_cycle;
+
+	t_socket socket;
 } t_vm;
 
 typedef struct s_op

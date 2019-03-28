@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 15:24:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:31:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,19 @@ static void unknow_option(char **argv, char *opt)
 
 void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 {
-	char *ip;
-	int   port;
-
 	if (ft_strcmp(SOCKET_OPT, argv[*index]) == 0)
 	{
 		*index = *index + 1;
 		if (argv[*index])
-			ip = argv[*index];
+			vm->socket.ip = argv[*index];
 		else
 			return set_errno_exit(EINVAL, ERR_SOCKET_IP);
 		*index = *index + 1;
 		if (argv[*index])
-			port = ft_atoi(argv[*index]);
+			vm->socket.port = ft_atoi(argv[*index]);
 		else
 			return set_errno_exit(EINVAL, ERR_SOCKET_PORT);
+		vm->socket.enable = 1;
 	}
 	else
 		unknow_option(argv, argv[*index]);
