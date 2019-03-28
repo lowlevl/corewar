@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 15:55:57 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:18:03 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
 
 #define MAX_CLIENT_SOCKET 1
 #define SOCK_SEND_FLAGS 0
+
+#define ALLOW_REUSE_ADDR 1
 
 typedef struct sockaddr_in t_sockaddr_in;
 typedef struct sockaddr	t_sockaddr;
