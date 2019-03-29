@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 16:04:57 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 08:59:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 10:39:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int bind_setup_inter(t_socket *sock)
 
 	if (sock->enable != ENABLE_SOCKET)
 		return 0;
+	DEBUG_SOCKET_SETUP&&ft_dprintf(2, SOCKET_BIND);
 	rt =
 		bind(sock->server.sock, (t_sockaddr *)&sock->server.inter, sizeof(t_sockaddr_in));
 	if (rt < 0)

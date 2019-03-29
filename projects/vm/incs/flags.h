@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:13:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 10:42:15 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 ** 1 for on
 */
 
+#define DEBUG_PROC 0
+#define DEBUG_VM 0
 #define DEBUG_READ  0
 #define DEBUG_WRITE 0
 #define DEBUG_GET   0
@@ -68,5 +70,10 @@
 
 #define SOCKET_SHUTDOWN SOCKET_SETUP_PREFIX "shutdown server socket\n"
 #define SOCKET_CLOSE SOCKET_SETUP_PREFIX "close client socket\n"
+#define SOCKET_CREATE SOCKET_SETUP_PREFIX "create server socket\n"
+#define SOCKET_SETUP SOCKET_SETUP_PREFIX "setup server socket\n"
+#define SOCKET_INTERFACE SOCKET_SETUP_PREFIX "setup server interface %s:%d (%x) (%x)\n"
+#define SOCKET_BIND SOCKET_SETUP_PREFIX "bind socket to interface\n"
+
 #define SOCKET_NEW_CO SOCKET_CO_PREFIX "waiting for connexion\n"
 #endif // !FALGS_H
