@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 12:19:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:52:12 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@
 #define SOCKET_WAITING SOCKET_CO_PREFIX "waiting for new connexion, timeout in (%u sec) (%u usec)\n"
 #define SOCKET_TIMEOUT SOCKET_CO_PREFIX "timeout new connexion\n"
 
+#define SOCKET_SEND SOCKET_SEND_PREFIX "%s\n"
 #define SOCKET_PLAYER SOCKET_SEND_PREFIX "player(%s)\n"
 #endif // !FALGS_H
