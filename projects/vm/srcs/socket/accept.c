@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:58:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 11:32:57 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 11:34:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int accept_all_client(t_socket *sock)
 	while (i < MAX_CLIENT_SOCKET)
 	{
 		rt = wrap_select(sock, &readfd);
-		if (rt > 1)
+		if (rt > 0)
 			accept_new_connexion(sock);
 		else
 		{
