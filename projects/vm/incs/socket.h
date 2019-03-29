@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 15:45:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 16:41:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int send_winner(t_player *player, t_socket *socket);
 int send_procs(t_vm *vm);
 int send_live(t_socket *socket, int32_t player_id);
 int send_taunt(t_socket *socket, t_process *process);
+int send_all_mem(t_vm *vm);
 
 #endif // !SOCKET_H

@@ -8,6 +8,7 @@ const OPT_XML = {
 	textNodeName: "_content",
 	ignoreAttributes: false,
 	allowBooleanAttributes : true,
+	trimValues: false,
 };
 
 const client = new net.Socket();
@@ -26,7 +27,7 @@ client.on('data', (data) => {
 	console.log('DATA')
 	console.log('raw :', data)
 	str = data.toString();
-	if (str.length > 50) {
+	if (str.length > 5000) {
 		console.log('str :', str.slice(0, 50));
 	} else {
 		console.log('str :', str);

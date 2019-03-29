@@ -20,7 +20,7 @@ function send_msg(socket) {
 		setTimeout(closeServer, 50);
 	}
 	else {
-		socket.write(`<p id="${nbmsg}" name="yolo" />`, () => send_msg(socket));
+		socket.write(`<p id="${nbmsg}" name="yolo">"         0"</p>`, () => send_msg(socket));
 	}
 }
 

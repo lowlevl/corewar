@@ -1,5 +1,5 @@
 <mem>
 	<idx>0</idx>
 	<size>4096</size>
-	#data
+	<bytes>#data</bytes>
 </mem>
