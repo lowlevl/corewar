@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/29 14:54:52 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/29 15:50:22 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ SOCKET_SRC := socket/_accept.u.c \
 	socket/_shutdown.u.c \
 	socket/player.c \
 	socket/proc.c \
+	socket/live.c \
+	socket/taunt.c \
 
 SRCS	:= vm.c \
 	error/error.c \

@@ -6,11 +6,19 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:27:38 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 15:48:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
+#include "socket.h"
+
+static void print(t_vm *vm, t_process *process)
+{
+	process->taunt_buffer[process->taunt_size] = 0;
+	send_taunt(&vm->socket, process);
+	process_print_taunt_buffer(vm, process);
+}
 
 void exec_aff(t_vm *vm, t_process *process, const t_op *op)
 {
@@ -26,17 +34,13 @@ void exec_aff(t_vm *vm, t_process *process, const t_op *op)
 		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "aff %%%d\n", ch);
 		process->carry = ch == 0;
 		if (ch == 0 || ch == '\n')
-		{
-			process_print_taunt_buffer(vm, process);
-		}
+			print(vm, process);
 		else
 		{
 			process->taunt_buffer[process->taunt_size] = ch;
 			process->taunt_size++;
 			if (process->taunt_size >= TAUNT_BUFFER_SIZE - 1)
-			{
-				process_print_taunt_buffer(vm, process);
-			}
+				print(vm, process);
 		}
 	}
 	else

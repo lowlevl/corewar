@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:23:10 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 15:29:56 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 15:47:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int send_taunt(t_socket *socket, t_process *process)
 
 	if (socket->enable != ENABLE_SOCKET)
 		return 0;
-	process->taunt_buffer[process->taunt_size] = 0;
 	len = ft_asprintf(
 		&s, FORMAT_TAUNT, process->player_id, process->taunt_buffer);
 	if (s && len > 0)
