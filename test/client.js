@@ -25,8 +25,13 @@ client.on('data', (data) => {
 	})
 	console.log('DATA')
 	console.log('raw :', data)
-	console.log('str :', data.toString());
-	console.log('xml :', xml.parse(data.toString(), OPT_XML))
+	str = data.toString();
+	if (str.length > 50) {
+		console.log('str :', str.slice(0, 50));
+	} else {
+		console.log('str :', str);
+		console.log('xml :', xml.parse(str, OPT_XML))
+	}
 	nb++;
 })
 

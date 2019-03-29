@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:33:16 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 15:36:27 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 16:03:19 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int send_live(t_socket *socket, int32_t player_id)
 
 	if (socket->enable != ENABLE_SOCKET)
 		return 0;
-	ft_asprintf(&s, FORMAT_LIVE, player_id);
+	len = ft_asprintf(&s, FORMAT_LIVE, player_id);
 	if (s && len > 0)
 	{
+		DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
 		send_message_to_all(socket, s, len);
 		free(s);
 	}
+	return 0;
 }
