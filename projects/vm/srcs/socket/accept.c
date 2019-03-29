@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:58:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 11:34:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 11:38:49 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int accept_new_connexion(t_socket *socket)
 	empty_inter = socket->clients + socket->nb_client;
 	empty_inter->sock =
 		accept(server->sock, (t_sockaddr *)&empty_inter->inter, &len);
-	DEBUG_SOCKET_CO &&ft_dprintf(2, SOCKET_NEW_CO);
+	DEBUG_SOCKET_CO &&ft_dprintf(2, SOCKET_NEW_CO, empty_inter->inter.sin_addr,
+			empty_inter->inter.sin_port);
 	if (empty_inter->sock < 0)
 		perror("accept()");
 	else
@@ -57,9 +58,9 @@ static int wrap_select(t_socket *sock, fd_set *readfd)
 
 int accept_all_client(t_socket *sock)
 {
-	int		  i;
-	fd_set	readfd;
-	int		  rt;
+	int	i;
+	fd_set readfd;
+	int	rt;
 
 	FD_ZERO(&readfd);
 	FD_SET(sock->server.sock, &readfd);

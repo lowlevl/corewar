@@ -1,5 +1,7 @@
 const net = require('net');
 
+const SYNC_SOCKET = false;
+
 const client = new net.Socket();
 
 client.connect(8080, '127.0.0.1', () => {
@@ -9,16 +11,16 @@ client.connect(8080, '127.0.0.1', () => {
 let nb = 0;
 
 client.on('data', (data) => {
-	client.write('ok', (err) => {
+	SYNC_SOCKET && client.write('ok', (err) => {
 		if (err) throw Error(err);
 		console.log('msg send');
 	})
 	console.log('DATA: ', data);
-	str = data.toString();
-	if (str.indexOf('\u0000') > 0)
-		str = str.slice(0, str.indexOf('\u0000'));
-	console.log(str, str.length);
-	console.log(JSON.parse(str, 'utf8'));
+	// str = data.toString();
+	// if (str.indexOf('\u0000') > 0)
+	// 	str = str.slice(0, str.indexOf('\u0000'));
+	// console.log(str, str.length);
+	// console.log(JSON.parse(str, 'utf8'));
 	nb++;
 })
 
