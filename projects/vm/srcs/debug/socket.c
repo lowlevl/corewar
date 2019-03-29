@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   socket.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/29 10:20:52 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/29 10:13:55 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/29 10:20:03 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include "debug.h"
 
-static int quit(t_vm *vm)
+void debug_socket(t_socket *sock)
 {
-	delete_process(&vm->processes);
-	disable_socket(&vm->socket);
-	return (0);
-}
-
-int main(int argc, char *argv[])
-{
-	static t_vm vm;
-
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	make_cycle(&vm);
-	print_winner(&vm);
-	if (vm.dump != -1)
-		print_dump(vm.memory);
-	return (quit(&vm));
+	if (sock)
+	{
+		ft_dprintf(2, "ip        : %s\n", sock->ip);
+		ft_dprintf(2, "port      : %hu\n", sock->port);
+		ft_dprintf(2, "enable    : %hhu\n", sock->enable);
+		ft_dprintf(2, "nb_client : %u\n", sock->nb_client);
+	}
 }

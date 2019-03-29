@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/21 16:19:56 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 10:16:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	print_vm(t_vm *vm);
 void	print_players(t_player *players);
 void	print_player(t_player *player, char *prefix);
 void	print_proc(t_process *proc);
+void	debug_socket(t_socket *sock);
 
 /*
 ** Used functions

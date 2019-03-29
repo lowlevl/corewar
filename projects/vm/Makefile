@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/29 09:25:44 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/29 10:16:43 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ CYCLE_SRC := cycle/cycle.c \
 DEBUG_SRC := debug/header.c \
 	debug/procs.c \
 	debug/vm.c \
+	debug/socket.c \
 
 VM_SRC := 	vm/init.c \
 	vm/find.c \
