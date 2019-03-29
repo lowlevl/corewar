@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 18:28:42 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/29 17:10:13 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static const char	*g_err[128] = {
 	[3] = "{bold}%s: {red}error:{eoc} Wrong extension. "
 	"See usage => {bold}%s{eoc}.\n",
 	[4] = "{bold}%s: {red}error:{eoc} No support for infinite/special files "
-	"{rev}{shrug}{eoc}.\n",
+	"{shrug}.\n",
 	[5] = "{bold}%s: {red}error:{eoc} I/O Error: %s.\n",
 	[6] = "{bold}%s:%d:%d: {red}error:{eoc} Unexpected token '%s':\n"
 	"%.*s\n"
@@ -44,7 +44,7 @@ static const char	*g_err[128] = {
 	[11] = "{bold}%s:%d:%d: "
 	"{red}error:{eoc} Too many parameters for instruction '%s':\n"
 	"%.*s\n"
-	"{bold}%*c-- Help:{eoc} Try removing this t parameter.\n",
+	"{bold}%*c-- Help:{eoc} Try removing this parameter.\n",
 	[12] = "{bold}%s:%d:%d: "
 	"{red}error:{eoc} Expected token but found a newline instead:\n"
 	"%.*s\n"
@@ -53,9 +53,18 @@ static const char	*g_err[128] = {
 	"{red}error:{eoc} Not enought parameters for instruction '%s':\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Try adding a parameter.\n",
-	[14] = "{bold}%s:%d:%d: {red}error:{eoc} Invalid char '%c' in given number:\n"
+	[14] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Invalid char '%c' in given number:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Maybe try another base ?.\n",
+	[15] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Given label is emtpy:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Don't try stupid things {tidy}.\n",
+	[16] = "{bold}%s:%d:%d: "
+	"{red}error:{eoc} Given number is empty:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Please don't bother me with those errors {flip}.\n",
 };
 
 int					perr(int e, ...)

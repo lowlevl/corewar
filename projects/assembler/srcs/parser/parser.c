@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 18:08:07 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 20:14:03 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static t_bool	hasspaceafter(t_asm *env, t_tok *tok)
 	return (false);
 }
 
-static t_bool	shouterror(t_asm *env, t_tok *tok, t_node **tokens, int err)
+static t_bool	shouterror(t_asm *env, t_tok *tok, t_node **tokens)
 {
-	shiftb(tokens, NL);
-	perr(err, env->sname, tok->y, tok->x, tok->val,
+	perr(6, env->sname, tok->y, tok->x, tok->val,
 			tok->ll, tok->ls, tok->x, '^');
+	shiftb(tokens, NL);
 	return (false);
 }
 
@@ -45,7 +45,7 @@ t_bool			parser(t_asm *env, t_node **tokens)
 	int		errors;
 
 	errors = 0;
-	while (tokens && *tokens)
+	while (tokens && *tokens && tok(tokens))
 	{
 		env->skip = (env->skip != 0) ? env->skip - 1 : 0;
 		if (accept(tok(tokens), COMMNTMARK))
@@ -62,7 +62,7 @@ t_bool			parser(t_asm *env, t_node **tokens)
 				&& accept(tok(&(*tokens)->next), LITTERAL))
 			errors += !parsecmd(env, tokens);
 		else
-			errors += !shouterror(env, tok(tokens), tokens, 6);
+			errors += !shouterror(env, tok(tokens), tokens);
 	}
 	return (!errors);
 }

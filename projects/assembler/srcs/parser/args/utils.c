@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:26:42 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 18:45:12 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/29 16:24:56 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ t_bool	isvalidlabel(t_asm *env, t_node **tokens)
 {
 	size_t	invalid;
 
+	if (tok(tokens)->type != LITTERAL)
+	{
+		perr(15, env->sname, tok(tokens)->y, tok(tokens)->x,
+			tok(tokens)->ll, tok(tokens)->ls,
+			tok(tokens)->x, '^');
+		shiftb(tokens, NL);
+		return (false);
+	}
 	invalid = ft_strspn(tok(tokens)->val, LABEL_CHARS);
 	if (tok(tokens)->val[invalid])
 	{
@@ -38,6 +46,14 @@ t_bool	isvalidnum(t_asm *env, t_node **tokens, size_t start)
 	size_t	invalid;
 	char	*end;
 
+	if (!tok(tokens)->val[start])
+	{
+		perr(16, env->sname, tok(tokens)->y, tok(tokens)->x + start,
+			tok(tokens)->ll, tok(tokens)->ls,
+			tok(tokens)->x + start, '^');
+		shiftb(tokens, NL);
+		return (false);
+	}
 	ft_strtoll(tok(tokens)->val + start, &end, 0);
 	invalid = end - tok(tokens)->val;
 	if (tok(tokens)->val[invalid])

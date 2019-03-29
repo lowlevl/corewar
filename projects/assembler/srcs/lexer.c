@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/27 16:07:37 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 21:30:26 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ static char		*getfile(t_asm *env, char *name)
 		return ((void*)(long)!perr(2, name, strerror(errno)));
 	if ((filelen = lseek(fd, 0, SEEK_END)) < 1 || lseek(fd, 0, SEEK_SET) != 0)
 		return ((void*)(long)!perr(4, name));
-	if (!(content = ft_calloc(filelen + 1, sizeof(*content))))
+	if (!(content = ft_calloc(filelen + 2, sizeof(*content))))
 		return (NULL);
 	if (read(fd, content, filelen) != filelen)
 		return ((void*)(long)!perr(5, name, strerror(errno)));
 	close(fd);
+	content[filelen] = '\n';
 	env->scstring = ft_strrep(ft_strndup(content, filelen), '\t', ' ');
 	return (content);
 }
@@ -64,9 +65,10 @@ static t_tok	*newtok(t_asm *env, int type, char *val, size_t len)
 	tok->val = ft_strndup(val, len);
 	tok->pos = val - env->sstring;
 	tok->y = ft_strncc(env->scstring, tok->pos, '\n') + 1;
-	tok->x = tok->pos - ft_strncspn(env->scstring, tok->y - 1, "\n");
+	tok->x = tok->pos - ft_strncspn(env->scstring, tok->y - 1, "\n")
+		+ ((tok->y - 1) ? 0 : 1);
 	tok->ls = (char*)env->scstring + (tok->pos - tok->x) + 1;
-	tok->ll = ft_strcspn(tok->ls, "\n") + ((tok->y - 1) ? -1 : 0) + 1;
+	tok->ll = ft_strcspn(tok->ls, "\n");
 	return (tok);
 }
 

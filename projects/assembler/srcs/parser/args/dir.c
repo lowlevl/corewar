@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:15 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 18:33:56 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 21:45:34 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ t_bool	argdir(t_asm *env, t_node **tokens, t_op op, int *i)
 		/* Case %dir */
 		if (!isvalidnum(env, tokens, 0))
 			return (false);
-
 	}
 	next(tokens);
 	return (true);
 }
-
