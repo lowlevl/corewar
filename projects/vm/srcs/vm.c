@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/29 11:18:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 12:10:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
 	accept_all_client(&vm.socket);
 	load_players(&vm);
 	sort_player_by_index(&vm);
+	send_player(&vm);
 	print_loaded_players(&vm);
 	init_processes(&vm);
 	make_cycle(&vm);

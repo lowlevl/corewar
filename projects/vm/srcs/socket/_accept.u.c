@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   accept.c                                           :+:      :+:    :+:   */
+/*   _accept.u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:58:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 11:38:49 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 12:14:41 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int accept_all_client(t_socket *sock)
 	fd_set readfd;
 	int	rt;
 
+	if (sock->enable != ENABLE_SOCKET)
+		return 0;
 	FD_ZERO(&readfd);
 	FD_SET(sock->server.sock, &readfd);
 	i = 0;

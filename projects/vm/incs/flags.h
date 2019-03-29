@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 11:39:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 12:19:43 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #define DEBUG_CYCLE 0
 #define DEBUG_CARRY 0
 #define DEBUG_CHECK 0
-#define DEBUG_SOCKET_WRITE 1
+#define DEBUG_SOCKET_SEND 1
 #define DEBUG_SOCKET_SETUP 1
 #define DEBUG_SOCKET_CO 1
 
@@ -44,7 +44,7 @@
 #define CYCLE_PREFIX        "\e[91mCYCLE\e[0m      │ "
 #define CARRY_PREFIX        "\e[92mCARRY\e[0m      │ "
 #define CHECK_PREFIX        "\e[93mCHECK\e[0m      │ "
-#define SOCKET_WRITE_PREFIX "\e[94mSOCK WRITE\e[0m │ "
+#define SOCKET_SEND_PREFIX  "\e[94mSOCK SEND\e[0m  │ "
 #define SOCKET_SETUP_PREFIX "\e[95mSOCK SETUP\e[0m │ "
 #define SOCKET_CO_PREFIX    "\e[96mSOCK CO\e[0m    │ "
 
@@ -80,4 +80,5 @@
 #define SOCKET_WAITING SOCKET_CO_PREFIX "waiting for new connexion, timeout in (%u sec) (%u usec)\n"
 #define SOCKET_TIMEOUT SOCKET_CO_PREFIX "timeout new connexion\n"
 
+#define SOCKET_PLAYER SOCKET_SEND_PREFIX "player(%s)\n"
 #endif // !FALGS_H

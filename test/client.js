@@ -15,7 +15,9 @@ client.on('data', (data) => {
 		if (err) throw Error(err);
 		console.log('msg send');
 	})
-	console.log('DATA: ', data);
+	console.log('DATA')
+	console.log('raw :', data)
+	console.log('str :', data.toString());
 	// str = data.toString();
 	// if (str.indexOf('\u0000') > 0)
 	// 	str = str.slice(0, str.indexOf('\u0000'));
