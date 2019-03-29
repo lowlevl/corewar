@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:55:41 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 09:01:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int send_message_to_all(t_socket *socket, void *msg, socklen_t len)
 {
 	int i;
 
+	if (socket->enable != ENABLE_SOCKET)
+		return 0;
 	i = 0;
 	while (socket->nb_client > i)
 	{
@@ -33,5 +35,5 @@ int send_message_to_all(t_socket *socket, void *msg, socklen_t len)
 			return -1;
 		i++;
 	}
-	return 0;
+	return socket->nb_client;
 }

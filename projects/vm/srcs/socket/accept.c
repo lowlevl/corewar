@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:58:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:55:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 08:57:31 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int accept_new_connexion(t_socket *socket)
 {
 	t_sock_inter *server;
 	t_sock_inter *empty_inter;
-	socklen_t len = sizeof(t_sockaddr_in);
+	socklen_t len;
 
+	if (socket->enable != ENABLE_SOCKET)
+		return 0;
 	len = sizeof(t_sockaddr_in);
 	server = &socket->server;
 	if (socket->nb_client >= MAX_CLIENT_SOCKET)

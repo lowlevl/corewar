@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 16:07:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 16:14:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 09:00:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int setup_server_interface(t_socket *socket)
 	t_sock_inter *server;
 	int			  rt;
 
+	if (socket->enable != ENABLE_SOCKET)
+		return 0;
 	server = &socket->server;
 	server->inter.sin_port = htons(socket->port);
 	rt = inet_aton(socket->ip, &server->inter.sin_addr);

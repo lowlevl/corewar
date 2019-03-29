@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 15:52:45 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 08:57:46 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 			vm->socket.port = ft_atoi(argv[*index]);
 		else
 			return set_errno_exit(EINVAL, ERR_SOCKET_PORT);
-		vm->socket.enable = 1;
+		vm->socket.enable = ENABLE_SOCKET;
 	}
 	else
 		unknow_option(argv, argv[*index]);
