@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 09:18:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 09:26:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 #define MAX_CLIENT_SOCKET 1
 #define SOCK_SEND_FLAGS 0

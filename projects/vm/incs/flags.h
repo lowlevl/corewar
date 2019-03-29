@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 14:32:51 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 10:09:48 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,21 @@
 #define DEBUG_CYCLE 0
 #define DEBUG_CARRY 0
 #define DEBUG_CHECK 0
+#define DEBUG_SOCKET_WRITE 1
+#define DEBUG_SOCKET_SETUP 1
 
-#define READ_PREFIX "\e[31mREAD\e[0m   : "
-#define WRITE_PREFIX "\e[32mWRITE\e[0m  : "
-#define GET_PREFIX "\e[33mGET\e[0m    : "
-#define TYPE_PREFIX "\e[34mTYPE\e[0m   : "
-#define FUNC_PREFIX "\e[35mFUNC\e[0m   : "
-#define CURSOR_PREFIX "\e[36mCURSOR\e[0m : "
-#define EXE_PREFIX "\e[37mEXE\e[0m    : "
-#define CYCLE_PREFIX "\e[91mCYCLE\e[0m  : "
-#define CARRY_PREFIX "\e[92mCARRY\e[0m  : "
-#define CHECK_PREFIX "\e[93mCHECK\e[0m  : "
+#define READ_PREFIX         "\e[31mREAD\e[0m       │ "
+#define WRITE_PREFIX        "\e[32mWRITE\e[0m      │ "
+#define GET_PREFIX          "\e[33mGET\e[0m        │ "
+#define TYPE_PREFIX         "\e[34mTYPE\e[0m       │ "
+#define FUNC_PREFIX         "\e[35mFUNC\e[0m       │ "
+#define CURSOR_PREFIX       "\e[36mCURSOR\e[0m     │ "
+#define EXE_PREFIX          "\e[37mEXE\e[0m        │ "
+#define CYCLE_PREFIX        "\e[91mCYCLE\e[0m      │ "
+#define CARRY_PREFIX        "\e[92mCARRY\e[0m      │ "
+#define CHECK_PREFIX        "\e[93mCHECK\e[0m      │ "
+#define SOCKET_WRITE_PREFIX "\e[94mSOCK WRITE\e[0m │ "
+#define SOCKET_SETUP_PREFIX "\e[95mSOCK SETUP\e[0m │ "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
@@ -60,4 +64,6 @@
 #define GET_TEMPLATE_REG GET_PREFIX "reg: reg_id(%d) val(%x)\n"
 #define GET_TEMPLATE_REG_NOT GET_PREFIX "reg: reg_id(%d) not in bound\n"
 
+#define SOCKET_SHUTDOWN SOCKET_SETUP_PREFIX "shutdown server socket\n"
+#define SOCKET_CLOSE SOCKET_SETUP_PREFIX "close client socket\n"
 #endif // !FALGS_H

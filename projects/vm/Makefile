@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/28 16:53:07 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/29 09:25:44 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SOCKET_SRC := socket/accept.c \
 	socket/send.c \
 	socket/socket.c \
 	socket/interface.c \
+	socket/shutdown.c \
 
 SRCS	:= vm.c \
 	error/error.c \
