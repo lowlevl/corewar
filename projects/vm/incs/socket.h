@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 14:54:21 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 15:11:57 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int accept_all_client(t_socket *sock);
  * other
  */
 int send_players(t_vm *vm);
+int send_winner(t_player *player, t_socket *socket);
 int send_procs(t_vm *vm);
 
 #endif // !SOCKET_H

@@ -7,6 +7,7 @@ const OPT_XML = {
 	attrNodeName: false,
 	textNodeName: "_content",
 	ignoreAttributes: false,
+	allowBooleanAttributes : true,
 };
 
 const client = new net.Socket();
