@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 09:05:51 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 09:24:00 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ int setup_server_interface(t_socket *sock);
 
 int setup_server_socket(t_socket *sock);
 int create_server_socket(t_socket *sock);
+
+int disable_socket(t_socket *sock);
+int close_clients(t_socket *sock);
 
 #endif // !SOCKET_H

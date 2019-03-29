@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 08:57:21 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 09:18:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define SOCK_SEND_FLAGS 0
 
 # define ENABLE_SOCKET 1
+# define DISABLE_SOCKET 0
 #define ALLOW_REUSE_ADDR 1
 
 typedef struct sockaddr_in t_sockaddr_in;

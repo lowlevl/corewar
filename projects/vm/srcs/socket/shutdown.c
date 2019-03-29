@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.c                                               :+:      :+:    :+:   */
+/*   shutdown.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/29 09:21:18 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/29 09:09:44 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/03/29 09:23:51 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vm.h>
+#include "socket.h"
 
-static int quit(t_vm *vm)
+int close_clients(t_socket *sock)
 {
-	delete_process(vm->processes);
-	disable_socket(&vm->socket);
+	int i;
+
+	i = 0;
+	while (i < sock->nb_client)
+	{
+		close(sock->clients[i].sock);
+		i++;
+	}
+	sock->nb_client = 0;
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int disable_socket(t_socket *sock)
 {
-	static t_vm vm;
 
-	init_vm(&vm, argc, argv);
-	load_players(&vm);
-	sort_player_by_index(&vm);
-	print_loaded_players(&vm);
-	init_processes(&vm);
-	make_cycle(&vm);
-	print_winner(&vm);
-	if (vm.dump != -1)
-		print_dump(vm.memory);
-	return (quit(&vm));
+	if (sock->enable != ENABLE_SOCKET)
+		return 0;
+	shutdown(sock->server.sock, SHUT_RDWR);
+	close_clients(sock);
+	close(sock->server.sock);
+	sock->enable = DISABLE_SOCKET;
+	return 0;
 }
