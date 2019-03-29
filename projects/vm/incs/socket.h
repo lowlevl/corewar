@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 09:26:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 11:17:32 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define SOCKET_H
 
 #include "error.h"
-#include "socket_inc.h"
 #include "flags.h"
+#include "socket_inc.h"
 
 int send_message_to(t_sock_inter *dest, void *msg, socklen_t len);
 int send_message_to_all(t_socket *sock, void *msg, socklen_t len);
@@ -33,5 +33,6 @@ int create_server_socket(t_socket *sock);
 
 int disable_socket(t_socket *sock);
 int close_clients(t_socket *sock);
+int accept_all_client(t_socket *sock);
 
 #endif // !SOCKET_H

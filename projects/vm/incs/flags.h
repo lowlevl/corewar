@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:42:15 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 11:33:29 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,9 @@
 #define SOCKET_INTERFACE SOCKET_SETUP_PREFIX "setup server interface %s:%d (%x) (%x)\n"
 #define SOCKET_BIND SOCKET_SETUP_PREFIX "bind socket to interface\n"
 
-#define SOCKET_NEW_CO SOCKET_CO_PREFIX "waiting for connexion\n"
+#define SOCKET_LISTEN SOCKET_CO_PREFIX "set listen incomming co to %u client\n"
+#define SOCKET_NEW_CO SOCKET_CO_PREFIX "accept new connexion\n"
+#define SOCKET_WAITING SOCKET_CO_PREFIX "waiting for new connexion, timeout in (%u sec) (%u usec)\n"
+#define SOCKET_TIMEOUT SOCKET_CO_PREFIX "timeout new connexion\n"
+
 #endif // !FALGS_H
