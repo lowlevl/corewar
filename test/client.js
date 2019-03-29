@@ -1,6 +1,13 @@
 const net = require('net');
+const xml = require('fast-xml-parser');
 
 const SYNC_SOCKET = false;
+const OPT_XML = {
+	attributeNamePrefix : "",
+	attrNodeName: false,
+	textNodeName: "_content",
+	ignoreAttributes: false,
+};
 
 const client = new net.Socket();
 
@@ -18,11 +25,7 @@ client.on('data', (data) => {
 	console.log('DATA')
 	console.log('raw :', data)
 	console.log('str :', data.toString());
-	// str = data.toString();
-	// if (str.indexOf('\u0000') > 0)
-	// 	str = str.slice(0, str.indexOf('\u0000'));
-	// console.log(str, str.length);
-	// console.log(JSON.parse(str, 'utf8'));
+	console.log('xml :', xml.parse(data.toString(), OPT_XML))
 	nb++;
 })
 

@@ -6,22 +6,24 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:53:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 12:22:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 14:36:12 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "socket.h"
+
+# define FORMAT_PLAYER "<player id=\"%d\" name=\"%s\" />"
 
 static void do_stuff(t_player *player, t_socket *socket)
 {
 	char * s;
 	size_t len;
 
-	len = ft_asprintf(&s, "P %d %s", player->id, player->header.prog_name);
+	len = ft_asprintf(&s, FORMAT_PLAYER, player->id, player->header.prog_name);
 	if (s && len > 0)
 	{
 		DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_PLAYER, s);
-		send_message_to_all(socket, s, len + 1);
+		send_message_to_all(socket, s, len);
 		free(s);
 	}
 }

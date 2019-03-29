@@ -11,8 +11,7 @@ server.listen(8080, '127.0.0.1', 5, () => {
 
 const connected = [];
 let nbmsg = 0;
-const MAX_MSG = 500;
-const MSG = "hello\n";
+const MAX_MSG = 5;
 
 function send_msg(socket) {
 	nbmsg++;
@@ -21,7 +20,7 @@ function send_msg(socket) {
 		setTimeout(closeServer, 50);
 	}
 	else {
-		socket.write(MSG, () => send_msg(socket));
+		socket.write(`<p id="${nbmsg}" name="yolo" />`, () => send_msg(socket));
 	}
 }
 
