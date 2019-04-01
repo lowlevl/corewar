@@ -6,13 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 11:00:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:32:19 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "heat_map.h"
 #include "opcode.h"
 
-static size_t get_index(size_t i)
+static inline size_t get_index(size_t i)
 {
 	return i % MEM_SIZE;
 }
@@ -37,11 +38,20 @@ void write_in_memory_restrict(
 
 void write_in_registre(t_process *process, uint16_t reg_idx, uint32_t value)
 {
-	if (reg_idx < 1 || reg_idx > REG_NUMBER) {
-		DEBUG_WRITE &&ft_dprintf(2, "write reg: id: %d not in bound\n", reg_idx - 1);
+	if (reg_idx < 1 || reg_idx > REG_NUMBER)
+	{
+		DEBUG_WRITE &&ft_dprintf(
+			2, "write reg: id: %d not in bound\n", reg_idx - 1);
 		return;
 	}
 	DEBUG_WRITE &&ft_dprintf(
 		2, "write reg: id: %d, val: %x\n", reg_idx - 1, value);
 	process->regs[reg_idx - 1] = value;
+}
+
+void write_in_mem_wrapper(
+	t_vm *vm, t_process *proc, uint8_t *content, t_coord coord)
+{
+	write_in_memory(vm->memory, content, coord.len, coord.at);
+	assign_player_to_area(vm->heat_map, 5, coord.at, coord.len);
 }

@@ -6,15 +6,27 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 09:34:08 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 10:12:57 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:25:31 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heat_map.h"
 
-void assign_player_to_area(t_vm *vm, int player_idx, size_t at, size_t len)
+static inline size_t get_index(size_t i)
 {
-	DEBUG_HEAT_MAP&&ft_dprintf(2, HEAT_ASSIGN, player_idx, at, len);
+	return i % MEM_SIZE;
+}
 
-	ft_memset(vm->heat_map + at, player_idx + 1, len);
+void assign_player_to_area(uint8_t *map, int player_idx, size_t at, size_t len)
+{
+	size_t i;
+
+	DEBUG_HEAT_MAP&&ft_dprintf(2, HEAT_ASSIGN, player_idx, at, len);
+	i = 0;
+	player_idx++;
+	while (i < len)
+	{
+		map[get_index(at + i)] = player_idx;
+		i++;
+	}
 }

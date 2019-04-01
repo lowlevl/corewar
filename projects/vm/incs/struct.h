@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 09:51:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:32:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 */
 
 #define TAUNT_BUFFER_SIZE 128
-
 
 typedef struct s_process
 {
@@ -59,7 +58,7 @@ typedef struct s_vm
 	uint32_t last_player_report_as_live;
 
 	int64_t dump;
-	uint8_t dump_heat: 1;
+	uint8_t dump_heat : 1;
 	uint8_t memory[MEM_SIZE];
 	uint8_t heat_map[MEM_SIZE];
 
@@ -92,5 +91,11 @@ typedef struct s_ops
 	char *name;
 	void (*f)(t_vm *vm, t_process *process, const t_op *op);
 } t_ops;
+
+typedef struct s_coord
+{
+	size_t at;
+	size_t len;
+} t_coord;
 
 #endif
