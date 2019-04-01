@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 09:54:45 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:01:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 
 #define SOCKET_OPT "--socket"
 # define SOCKET_HELP SOCKET_OPT " [ip] [port] - open a socket at ip [ip] on port [port]\n"
+
+#define H_OPT "-h"
+#define H_HELP H_OPT " - show this usage and exit\n"
 
 /*
 ** Init functions

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 09:56:17 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:02:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ static void unknow_option(char **argv, char *opt)
 	exit(1);
 }
 
+void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
+{
+	(void)argc;
+	if (ft_strcmp(HEAT_OPT, argv[*index]) == 0)
+	{
+		vm->dump_heat = 1;
+	}
+	else if (ft_strcmp(H_OPT, argv[*index]) == 0)
+	{
+		ft_usage();
+		exit(0);
+	}
+	else
+		unknow_option(argv, argv[*index]);
+}
+
 void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 {
 	if (ft_strcmp(SOCKET_OPT, argv[*index]) == 0)
@@ -51,7 +67,7 @@ void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 		vm->socket.enable = ENABLE_SOCKET;
 	}
 	else
-		unknow_option(argv, argv[*index]);
+		handle_option_3(vm, argc, argv, index);
 }
 
 void handle_option_1(t_vm *vm, const int argc, char **argv, int *index)
