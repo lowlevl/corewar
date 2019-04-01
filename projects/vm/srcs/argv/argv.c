@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:20:16 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 09:56:17 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void init_player(t_vm *vm, char *binary_path, int specified_id)
 static void unknow_option(char **argv, char *opt)
 {
 	ft_dprintf(2, "%s: %s unknow option\n", argv[0], opt);
+	ft_usage();
 	exit(1);
 }
 

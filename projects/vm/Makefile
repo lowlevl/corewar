@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/29 16:33:55 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/01 09:56:28 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ PROC_SRC := proc/proc.c \
 
 ARGV_SRC :=	argv/argv.c \
 	argv/id.c \
+	argv/usage.c \
 
 CYCLE_SRC := cycle/cycle.c \
 	cycle/utils.c \
@@ -77,6 +78,8 @@ SOCKET_SRC := socket/_accept.u.c \
 	socket/player_map.c \
 	socket/mem.c \
 
+HEAT_MAP := heat/write.c \
+
 SRCS	:= vm.c \
 	error/error.c \
 	proc/utils.c \
@@ -89,6 +92,7 @@ SRCS	:= vm.c \
 	$(DEBUG_SRC) \
 	$(VM_SRC) \
 	$(SOCKET_SRC) \
+	$(HEAT_MAP) \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf

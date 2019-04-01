@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/28 15:25:12 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 09:54:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,23 @@
 
 #define DUMP_OPT "--dump"
 #define DUMP_HELP                                                              \
-	"[number] - dump the ram on stdout when the game is finished or when the "   \
-	"cycle `number` is reached"
+	DUMP_OPT " [number] - dump the ram on stdout when the game is finished or when the "   \
+	"cycle `number` is reached\n"
 
 #define N_OPT "-n"
-#define N_HELP "[n] [champs] - set the id `n` to the player `champs`"
+#define N_HELP N_OPT " [n] [champs] - set the id `n` to the player `champs`\n"
+
+#define HEAT_OPT "--heat"
+#define HEAT_HELP HEAT_OPT " - dump the heat map at the end\n"
 
 #define SOCKET_OPT "--socket"
-# define SOCKET_HELP "[ip] [port] - open a socket at ip [ip] on port [port]"
+# define SOCKET_HELP SOCKET_OPT " [ip] [port] - open a socket at ip [ip] on port [port]\n"
 
 /*
 ** Init functions
 */
+
+void ft_usage(void);
 
 void handle_option(t_vm *vm, const int argc, char **argv, int *index);
 

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:14:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 09:51:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ typedef struct s_vm
 	uint32_t last_player_report_as_live;
 
 	int64_t dump;
+	uint8_t dump_heat: 1;
 	uint8_t memory[MEM_SIZE];
+	uint8_t heat_map[MEM_SIZE];
 
 	t_process *processes;
 	uint64_t   processes_count;

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 16:02:55 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 09:48:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #define DEBUG_PROC 0
 #define DEBUG_VM 0
 #define DEBUG_READ  0
-#define DEBUG_WRITE 0
-#define DEBUG_GET   0
+#define DEBUG_WRITE 1
+#define DEBUG_GET   1
 #define DEBUG_TYPE  0
 #define DEBUG_R_FC  0
 #define DEBUG_CR_P  0
@@ -33,20 +33,22 @@
 #define DEBUG_SOCKET_SEND 1
 #define DEBUG_SOCKET_SETUP 1
 #define DEBUG_SOCKET_CO 1
+#define DEBUG_HEAT_MAP 1
 
-#define READ_PREFIX         "\e[31mREAD\e[0m       │ "
-#define WRITE_PREFIX        "\e[32mWRITE\e[0m      │ "
-#define GET_PREFIX          "\e[33mGET\e[0m        │ "
-#define TYPE_PREFIX         "\e[34mTYPE\e[0m       │ "
-#define FUNC_PREFIX         "\e[35mFUNC\e[0m       │ "
-#define CURSOR_PREFIX       "\e[36mCURSOR\e[0m     │ "
-#define EXE_PREFIX          "\e[37mEXE\e[0m        │ "
-#define CYCLE_PREFIX        "\e[91mCYCLE\e[0m      │ "
-#define CARRY_PREFIX        "\e[92mCARRY\e[0m      │ "
-#define CHECK_PREFIX        "\e[93mCHECK\e[0m      │ "
-#define SOCKET_SEND_PREFIX  "\e[94mSOCK SEND\e[0m  │ "
-#define SOCKET_SETUP_PREFIX "\e[95mSOCK SETUP\e[0m │ "
-#define SOCKET_CO_PREFIX    "\e[96mSOCK CO\e[0m    │ "
+#define READ_PREFIX           "\e[31mREAD\e[0m       │ "
+#define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
+#define GET_PREFIX            "\e[33mGET\e[0m        │ "
+#define TYPE_PREFIX           "\e[34mTYPE\e[0m       │ "
+#define FUNC_PREFIX           "\e[35mFUNC\e[0m       │ "
+#define CURSOR_PREFIX         "\e[36mCURSOR\e[0m     │ "
+#define EXE_PREFIX            "\e[37mEXE\e[0m        │ "
+#define CYCLE_PREFIX          "\e[91mCYCLE\e[0m      │ "
+#define CARRY_PREFIX          "\e[92mCARRY\e[0m      │ "
+#define CHECK_PREFIX          "\e[93mCHECK\e[0m      │ "
+#define SOCKET_SEND_PREFIX    "\e[94mSOCK SEND\e[0m  │ "
+#define SOCKET_SETUP_PREFIX   "\e[95mSOCK SETUP\e[0m │ "
+#define SOCKET_CO_PREFIX      "\e[96mSOCK CO\e[0m    │ "
+#define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m | "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
@@ -82,4 +84,6 @@
 
 #define SOCKET_SEND SOCKET_SEND_PREFIX "%.*s\n"
 #define SOCKET_PLAYER SOCKET_SEND_PREFIX "player(%s)\n"
+
+#define HEAT_ASSIGN HEAT_PREFIX "player(%u) at(%zu) len(%zu)\n"
 #endif // !FALGS_H
