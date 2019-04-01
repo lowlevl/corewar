@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 10:32:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:52:41 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,14 @@ void write_in_mem_wrapper(
 {
 	write_in_memory(vm->memory, content, coord.len, coord.at);
 	assign_player_to_area(vm->heat_map, 5, coord.at, coord.len);
+}
+
+void write_in_mem_wrapper_restrict(
+	t_vm *vm, t_process *proc, uint8_t *content, t_coord coord)
+{
+	size_t at;
+
+	at = coord.at % IDX_MOD;
+	write_in_memory(vm->memory, content, coord.len, at);
+	assign_player_to_area(vm->heat_map, 5, at, coord.len);
 }
