@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 13:47:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:02:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 		else if (get_type_arg(oc, 1) == T_IND)
 		{
 			DEBUG_R_FC &&ft_dprintf(2,
-				FUNC_PREFIX "st %%%d :(%.2hx + %.2hx = %.2hx %.2hx)\n", args[0],
-				pos, args[1], pos + args[1] % IDX_MOD);
+				FUNC_PREFIX "st %%%d :(%.2hx + %.2hx = %.2hx)\n", args[0],
+				pos, args[1], get_restrict_address(pos, args[1]));
 
 			args[0] = bswap_32(args[0]);
-			write_in_memory(vm->memory, (uint8_t *)args, sizeof(*args),
-				get_restrict_address(pos, args[1]));
-			// write_in_mem_wrapper(vm, process, (uint8_t *)args,
-			// 	(t_coord){get_restrict_address(pos, args[1]), sizeof(*args)});
+			write_in_mem_wrapper(vm, process, (uint8_t *)args,
+				(t_coord){get_restrict_address(pos, args[1]), sizeof(*args)});
 		}
 	}
 	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
