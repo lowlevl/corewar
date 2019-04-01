@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 09:48:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 12:09:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@
 #define DEBUG_VM 0
 #define DEBUG_READ  0
 #define DEBUG_WRITE 1
-#define DEBUG_GET   1
+#define DEBUG_GET   0
 #define DEBUG_TYPE  0
-#define DEBUG_R_FC  0
+#define DEBUG_R_FC  1
 #define DEBUG_CR_P  0
 #define DEBUG_EXE   0
 #define DEBUG_CYCLE 0
 #define DEBUG_CARRY 0
 #define DEBUG_CHECK 0
-#define DEBUG_SOCKET_SEND 1
-#define DEBUG_SOCKET_SETUP 1
-#define DEBUG_SOCKET_CO 1
-#define DEBUG_HEAT_MAP 1
+#define DEBUG_SOCKET_SEND 0
+#define DEBUG_SOCKET_SETUP 0
+#define DEBUG_SOCKET_CO 0
+#define DEBUG_HEAT_MAP 0
 
 #define READ_PREFIX           "\e[31mREAD\e[0m       │ "
 #define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
@@ -48,7 +48,7 @@
 #define SOCKET_SEND_PREFIX    "\e[94mSOCK SEND\e[0m  │ "
 #define SOCKET_SETUP_PREFIX   "\e[95mSOCK SETUP\e[0m │ "
 #define SOCKET_CO_PREFIX      "\e[96mSOCK CO\e[0m    │ "
-#define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m | "
+#define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m │ "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
@@ -67,8 +67,15 @@
 #define READ_TEMPLATE READ_PREFIX "at(%x) type(%d) val(%x)\n"
 #define READ_TEMPLATE_NOT READ_PREFIX "%d not found\n"
 
-#define GET_TEMPLATE_REG GET_PREFIX "reg: reg_id(%d) val(%x)\n"
-#define GET_TEMPLATE_REG_NOT GET_PREFIX "reg: reg_id(%d) not in bound\n"
+#define REG "reg: reg_id(%d) val(%x)\n"
+#define REG_NOT "reg: reg_id(%d) not in bound\n"
+
+#define GET_TEMPLATE_REG GET_PREFIX REG
+#define GET_TEMPLATE_REG_NOT GET_PREFIX REG_NOT
+
+#define WRITE_REG WRITE_PREFIX REG
+#define WRITE_REG_NOT WRITE_PREFIX REG_NOT
+#define WRITE_MEM WRITE_PREFIX "at(%x) len(%zu) content(%zx)\n"
 
 #define SOCKET_SHUTDOWN SOCKET_SETUP_PREFIX "shutdown server socket\n"
 #define SOCKET_CLOSE SOCKET_SETUP_PREFIX "close client socket\n"
