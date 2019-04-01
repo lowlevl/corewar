@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:23:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 15:21:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:51:56 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int send_map_chunk(t_vm *vm, size_t idx, size_t chunk_size)
 	if (s && len > 0)
 	{
 		ft_memcpy(ft_strchr(s, '#') + 1, vm->heat_map + idx, chunk_size);
-		DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
 		send_message_to_all(&vm->socket, s, len);
 		free(s);
 	}

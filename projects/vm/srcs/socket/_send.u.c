@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   send.c                                             :+:      :+:    :+:   */
+/*   _send.u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 09:01:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:55:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 	int rt;
 
 	rt = send(dest->sock, msg, len, SOCK_SEND_FLAGS);
+	ft_dprintf(2, "send(%d)\n", rt);
 	if (rt < 0)
 		perror("send()");
 	return rt;
@@ -28,6 +29,7 @@ int send_message_to_all(t_socket *socket, void *msg, socklen_t len)
 
 	if (socket->enable != ENABLE_SOCKET)
 		return 0;
+	DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, msg);
 	i = 0;
 	while (socket->nb_client > i)
 	{

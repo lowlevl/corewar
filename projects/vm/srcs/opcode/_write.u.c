@@ -6,12 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 12:11:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:40:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heat_map.h"
 #include "opcode.h"
+#include "socket.h"
 
 static inline size_t get_index(size_t i)
 {
@@ -70,6 +71,7 @@ void write_in_mem_wrapper(
 			assign_player_to_area(vm->heat_map, players - vm->players, at, coord.len);
 		}
 	}
+	send_map_chunk(vm, at, coord.len);
 }
 
 void write_in_mem_wrapper_restrict(
@@ -92,4 +94,5 @@ void write_in_mem_wrapper_restrict(
 			assign_player_to_area(vm->heat_map, players - vm->players, at, coord.len);
 		}
 	}
+	send_map_chunk(vm, coord.at, coord.len);
 }

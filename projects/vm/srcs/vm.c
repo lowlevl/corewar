@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/01 10:04:41 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:54:29 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 	send_all_mem(&vm);
 	print_loaded_players(&vm);
 	init_processes(&vm);
+	send_all_map(&vm);
 	send_procs(&vm);
 	make_cycle(&vm);
 	print_winner(&vm);

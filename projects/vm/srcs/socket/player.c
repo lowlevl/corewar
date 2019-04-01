@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:53:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 16:03:45 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:52:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void do_stuff(t_player *player, t_socket *socket)
 	if (s && len > 0)
 	{
 		s[len] = 0;
-		DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
+		// DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
 		send_message_to_all(socket, s, len);
 		free(s);
 	}
@@ -55,7 +55,7 @@ int send_winner(t_player *player, t_socket *socket)
 	len = ft_asprintf(&s, FORMAT_WINNER, player->id, player->header.prog_name);
 	if (s && len > 0)
 	{
-		DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
+		// DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
 		send_message_to_all(socket, s, len);
 		free(s);
 	}

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 15:23:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 15:52:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 #define DEBUG_CARRY 0
 #define DEBUG_CHECK 0
 #define DEBUG_SOCKET_SEND 1
-#define DEBUG_SOCKET_SETUP 0
-#define DEBUG_SOCKET_CO 0
+#define DEBUG_SOCKET_SETUP 1
+#define DEBUG_SOCKET_CO 1
 #define DEBUG_HEAT_MAP 1
 
 #define READ_PREFIX           "\e[31mREAD\e[0m       │ "
