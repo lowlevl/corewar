@@ -1,7 +1,7 @@
 const net = require('net');
 const xml = require('fast-xml-parser');
 
-const SYNC_SOCKET = false;
+const SYNC_SOCKET = true;
 const OPT_XML = {
 	attributeNamePrefix : "",
 	attrNodeName: false,

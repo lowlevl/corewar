@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:58:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 12:14:41 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 16:37:46 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int accept_all_client(t_socket *sock)
 		return 0;
 	FD_ZERO(&readfd);
 	FD_SET(sock->server.sock, &readfd);
+	ft_printf("waiting for connection on %s:%d\n", sock->ip, sock->port);
 	i = 0;
 	while (i < MAX_CLIENT_SOCKET)
 	{
