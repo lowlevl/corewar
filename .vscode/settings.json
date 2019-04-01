@@ -17,6 +17,7 @@
 		"flags.h": "c",
 		"libpf.h": "c",
 		"socket.h": "c",
-		"socket_inc.h": "c"
+		"socket_inc.h": "c",
+		"heat_map.h": "c"
 	}
 }
