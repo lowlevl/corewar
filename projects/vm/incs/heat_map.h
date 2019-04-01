@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 09:34:22 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 09:50:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:04:15 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 #include <unistd.h>
 
 void assign_player_to_area(t_vm *vm, int player_idx, size_t at, size_t len);
+void dump_heat_map(uint8_t *heat_map);
 
 #endif // !HEAT_MAP_H

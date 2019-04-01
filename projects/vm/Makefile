@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/01 09:56:28 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/01 10:11:59 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SOCKET_SRC := socket/_accept.u.c \
 	socket/mem.c \
 
 HEAT_MAP := heat/write.c \
+	heat/dump.c \
 
 SRCS	:= vm.c \
 	error/error.c \
