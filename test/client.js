@@ -1,7 +1,7 @@
 const net = require('net');
 const xml = require('fast-xml-parser');
 
-const SYNC_SOCKET = true;
+const SYNC_SOCKET = false;
 const OPT_XML = {
 	attributeNamePrefix : "",
 	attrNodeName: false,
@@ -27,18 +27,22 @@ client.on('data', (data) => {
 	console.log('DATA')
 	console.log('raw :', data)
 	str = data.toString();
-	if (str.length > 5000) {
-		console.log('str :', str.slice(0, 50));
+	if (str.length > 6000) {
+		console.log('str :', str.slice(0, 50), 'len :', str.length);
 	} else {
 		console.log('str :', str);
-		console.log('xml :', xml.parse(str, OPT_XML))
 	}
+	console.log('xml :', xml.parse(str, OPT_XML))
 	nb++;
+})
+
+client.on('end', () => {
+	console.log('socket end');
 })
 
 client.on('close', () => {
 	console.log('connexion close');
-	console.log('recv', nb, 'msg')
-	client.destroy();
-	process.exit(0);
+	// console.log('recv', nb, 'msg')
+	// client.destroy();
+	// process.exit(0);
 })

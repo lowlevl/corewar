@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 16:56:47 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/02 10:26:39 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <sys/select.h>
 
 #define MAX_CLIENT_SOCKET 1
-#define SOCKET_SYNC 1
+#define SOCKET_SYNC 0
 #define SOCK_SEND_FLAGS 0
 
 #define ENABLE_SOCKET 1
