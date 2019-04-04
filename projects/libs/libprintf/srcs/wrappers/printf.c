@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:27:06 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/02 22:27:29 by lroux            ###   ########.fr       */
+/*   Created: 2018/11/24 11:48:40 by lroux             #+#    #+#             */
+/*   Updated: 2019/04/02 00:11:49 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift/memory.h"
-#include "lift/types.h"
-#include <stdlib.h>
+#include "libpf.intern.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int			ft_printf(const char *format, ...)
 {
-	while (n--)
-		if (*(t_u8*)s1++ != *(t_u8*)s2++)
-			return (*(t_u8*)(s1 - 1) - *(t_u8*)(s2 - 1));
-	return (0);
+	va_list	ap;
+	int		rt;
+
+	va_start(ap, format);
+	rt = ft_vprintf(format, ap);
+	va_end(ap);
+	return (rt);
+}
+
+int			ft_vprintf(const char *format, va_list ap)
+{
+	return (ft_vdprintf(stdout, format, ap));
 }
