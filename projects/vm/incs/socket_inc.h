@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:50:14 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/02 10:26:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:00:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 #include <sys/select.h>
 
 #define MAX_CLIENT_SOCKET 1
-#define SOCKET_SYNC 0
+#define SOCKET_SYNC 1
 #define SOCK_SEND_FLAGS 0
 
 #define ENABLE_SOCKET 1
 #define DISABLE_SOCKET 0
 #define ALLOW_REUSE_ADDR 1
 
-#define TIMEOUT_SEC 5
+#define TIMEOUT_SEC 10
 #define TIMEOUT_USEC 0
+
+#define HEADER_SOCKET "xxxx"
 
 typedef struct sockaddr_in t_sockaddr_in;
 typedef struct sockaddr	t_sockaddr;

@@ -6,17 +6,18 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 15:33:16 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 16:19:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:12:11 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "socket.h"
 
-#define FORMAT_LIVE "<live>%d</live>"
+#define FORMAT_LIVE HEADER_SOCKET "<live>%d</live>"
 
 int send_live(t_socket *socket, int32_t player_id)
 {
-	size_t len;
+	int32_t len;
 	char *s;
 
 	if (socket->enable != ENABLE_SOCKET)
@@ -24,7 +25,7 @@ int send_live(t_socket *socket, int32_t player_id)
 	len = ft_asprintf(&s, FORMAT_LIVE, player_id);
 	if (s && len > 0)
 	{
-		// DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
+		ft_memcpy(s, &len, sizeof(len));
 		send_message_to_all(socket, s, len);
 		free(s);
 	}
