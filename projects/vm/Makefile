@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/01 10:11:59 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/05 16:43:13 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ SOCKET_SRC := socket/_accept.u.c \
 	socket/taunt.c \
 	socket/player_map.c \
 	socket/mem.c \
+	socket/end.c \
+	socket/cycle.c \
 
 HEAT_MAP := heat/write.c \
 	heat/dump.c \

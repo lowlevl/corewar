@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/01 15:54:29 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:40:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int quit(t_vm *vm)
 {
+	send_end(&vm->socket);
 	delete_process(&vm->processes);
 	disable_socket(&vm->socket);
 	return (0);

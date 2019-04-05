@@ -6,12 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 14:26:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:59:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cycle.h"
 #include "libpf.h"
+#include "socket.h"
 
 void setup_next_cycle(t_vm *vm)
 {
@@ -46,6 +47,7 @@ void exec_cycle(t_vm *vm)
 	t_process *process;
 
 	process = vm->processes;
+	send_cycle(&vm->socket, vm);
 	while (process)
 	{
 		exec_process(vm, process);

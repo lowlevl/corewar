@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 16:32:12 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:37:51 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:43:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int send_cycle(t_socket *socket, t_vm *vm)
     len = ft_asprintf(&s, CYCLE_FORMAT, vm->cycle_count, vm->next_check);
     if (s && len > 0)
     {
-        ft_memset(s, &len, sizeof(len));
+        ft_memcpy(s, &len, sizeof(len));
         send_message_to_all(socket, s, len);
         free(s);
     }
