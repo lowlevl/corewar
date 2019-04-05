@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:23:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:12:08 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:17:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int send_mem_chunk(t_vm *vm, size_t idx, size_t chunk_size)
 	len = ft_asprintf(&s, FORMAT_MEM, idx, chunk_size, chunk_size, 0);
 	if (s && len > 0)
 	{
-		ft_memcpy(s, &len, sizeof(len));
 		ft_memcpy(ft_strchr(s, '#') + 1, vm->memory + idx, chunk_size);
+		ft_memcpy(s, &len, sizeof(len));
 		send_message_to_all(&vm->socket, s, len);
 		free(s);
 	}
