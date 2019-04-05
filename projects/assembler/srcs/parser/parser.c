@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 20:14:03 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/04 18:02:48 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_bool	shouterror(t_asm *env, t_tok *tok, t_node **tokens)
 
 t_bool			parser(t_asm *env, t_node **tokens)
 {
-	int		errors;
+	int errors;
 
 	errors = 0;
 	while (tokens && *tokens && tok(tokens))

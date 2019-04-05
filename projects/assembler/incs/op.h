@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/26 17:02:08 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/03 12:02:37 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct __attribute__((packed))	s_head {
 
 typedef struct	s_op {
 	char	*token;
-	int		op;
+	int		code;
 
 	int		argcount;
 	t_type	argtypes[MAX_ARGS_NUMBER];

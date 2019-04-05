@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 20:34:07 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/29 17:14:26 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/04 18:00:38 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 #include "assembler.h"
 #include "lexer.h"
 
-static t_bool	cmdquoted(t_asm *env, t_node **tokens)
+static t_bool	cmdquoted(t_asm *env, t_node **tokens, t_tok *ntok)
 {
 	size_t	startpos;
 	size_t	endpos;
 	t_tok	*ctok;
 
+	(void)ntok;
 	ctok = tok(tokens);
 	startpos = ctok->pos + 1;
 	shift(tokens, QUOTE);
@@ -38,33 +39,38 @@ static t_bool	cmdquoted(t_asm *env, t_node **tokens)
 	return (true);
 }
 
-static t_bool	cmdnum(t_asm *env, t_node **tokens)
+static t_bool	cmdnum(t_asm *env, t_node **tokens, t_tok *ntok)
 {
 	if (!isvalidnum(env, tokens, 0))
 		return (false);
-	ft_printf("    -> {under}value{eoc}: '%d'.\n",
-			(int)ft_strtoll(tok(tokens)->val, NULL, 0));
+	if (ft_strequ(ntok->val, "byte"))
+		pushbytes(env, ft_strtoll(tok(tokens)->val, NULL, 0), 1);
+	else
+		perr(18, env->sname, ntok->y, ntok->x, ntok->val,
+				ntok->ll, ntok->ls, ntok->x, '^');
 	next(tokens);
 	return (true);
 }
 
-static t_bool	cmdnull(t_asm *env)
+static t_bool	cmdnull(t_asm *env, t_tok *ntok)
 {
-	(void)env;
-	ft_printf("    -> {under}value{eoc}: '(null)'.\n");
+	perr(18, env->sname, ntok->y, ntok->x, ntok->val,
+			ntok->ll, ntok->ls, ntok->x, '^');
 	return (true);
 }
 
 t_bool			parsecmd(t_asm *env, t_node **tokens)
 {
+	t_tok *ntok;
+
 	env->skip = 2;
 	next(tokens);
-	ft_printf(":<C>: Found {under}command{eoc}: '%s'.\n", tok(tokens)->val);
+	ntok = tok(tokens);
 	next(tokens);
 	if (accept(tok(tokens), QUOTE))
-		return (cmdquoted(env, tokens));
+		return (cmdquoted(env, tokens, ntok));
 	else if (accept(tok(tokens), LITTERAL))
-		return (cmdnum(env, tokens));
+		return (cmdnum(env, tokens, ntok));
 	else
-		return (cmdnull(env));
+		return (cmdnull(env, ntok));
 }

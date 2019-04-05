@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/28 17:27:41 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/04 18:04:03 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS	:= \
 			error.c
 
 LIBDIR	:= ../libs
-LIBS	:= liblift libft libpf
+LIBS	:= liblift libprintf
 
 DEBUG	:= 1
 

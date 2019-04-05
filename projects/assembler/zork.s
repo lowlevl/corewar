@@ -11,10 +11,10 @@
 #live:	live %1
 #		zjmp %:live
 #
+zjmp %:live
 
 # Empty number
-and r1, -0, r0
+and r1, %0x0a, r0x0b
 
 # Empty label
-#zjmp %:
-#st r1, :
+st r12, :lol

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/29 17:10:13 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/04 16:31:54 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ static const char	*g_err[128] = {
 	"{red}error:{eoc} Given number is empty:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Please don't bother me with those errors {flip}.\n",
+	[17] = "{bold}%s: {red}error:{eoc} "
+	"Given file output is too large {shrug} (at least %dB of %dB max).\n",
+	[18] = "{bold}%s:%d:%d: "
+	"{magenta}warning:{eoc} Specified command '%s' is unknown:\n"
+	"%.*s\n"
+	"{bold}%*c-- Help:{eoc} Some requested features may not work.\n",
 };
 
 int					perr(int e, ...)
