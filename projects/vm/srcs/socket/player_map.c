@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:23:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:17:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:38:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int send_map_chunk(t_vm *vm, size_t idx, size_t chunk_size)
 		send_message_to_all(&vm->socket, s, len);
 		free(s);
 	}
-	return 0;
+	return len;
 }

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:45:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:01:40 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:38:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ int send_procs(t_vm *vm)
 		do_stuff(node, &vm->socket);
 		node = node->next;
 	}
-	return 0;
+	return 1;
 }

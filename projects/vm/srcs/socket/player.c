@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:53:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:11:52 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/05 16:38:19 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ int send_winner(t_player *player, t_socket *socket)
 		send_message_to_all(socket, s, len);
 		free(s);
 	}
-	return 0;
+	return len;
 }
