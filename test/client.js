@@ -3,11 +3,11 @@ const xml = require('fast-xml-parser');
 
 const SYNC_SOCKET = true;
 const OPT_XML = {
-	attributeNamePrefix : "",
+	attributeNamePrefix: "",
 	attrNodeName: false,
 	textNodeName: "_content",
 	ignoreAttributes: false,
-	allowBooleanAttributes : true,
+	allowBooleanAttributes: true,
 	trimValues: false,
 };
 
@@ -19,20 +19,49 @@ client.connect(8080, '127.0.0.1', () => {
 
 let nb = 0;
 
+function intFromBytes(bytes) {
+	val = 0;
+	bytes.forEach((byte, i) => {
+		val += byte;
+		if (i < bytes.length - 1) {
+			val = val << 8;
+		}
+	})
+	return val;
+}
+
+function getLengthMessage(bytes) {
+	return intFromBytes(bytes.slice(0, 4).reverse());
+}
+
+let buff = undefined;
+let leftToRead = -1;
+
+// read message from bytes buffer
+function readMessage(data, len) {
+	toRead = getLengthMessage(data);
+	if (toRead > len) {
+		buff = data;
+		leftToRead = toRead - len;
+	}
+}
+
+// complete missing part from last message
+function completeMessage(data, len) {
+	buff.concat
+}
+
 client.on('data', (data) => {
 	SYNC_SOCKET && client.write('ok', (err) => {
 		if (err) throw Error(err);
 		console.log('msg send');
 	})
-	console.log('DATA')
-	console.log('raw :', data)
-	str = data.toString();
-	if (str.length > 6000) {
-		console.log('str :', str.slice(0, 50), 'len :', str.length);
+	msgLen = data.length;
+	if (leftToRead === -1) {
+		readMessage(data, msgLen);
 	} else {
-		console.log('str :', str);
+		completeMessage(data, msgLen);
 	}
-	console.log('xml :', xml.parse(str, OPT_XML))
 	nb++;
 })
 

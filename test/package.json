@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "fast-xml-parser": "^3.12.16"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.2"
   }
 }

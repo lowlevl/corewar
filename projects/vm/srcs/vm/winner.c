@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 15:20:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/08 11:01:25 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-#define FORMAT_NO_WINNER "<winner noWinner><id>-1</id><name>NONE</name></winner>"
+#define FORMAT_NO_WINNER "\x3b\0\0\0<winner noWinner><id>-1</id><name>NONE</name></winner>"
 
 void print_winner(t_vm *vm)
 {
