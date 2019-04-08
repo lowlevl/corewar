@@ -96,5 +96,7 @@ t_bool			parseinst(t_asm *env, t_node **tokens)
 		return (false);
 	if (ins.ac != ins.op->argcount - 1)
 		return (errors(env, tokens, &ins, 1));
+	if (ins.ocp)
+		*ins.ocp <<= (3 - ins.op->argcount) * 2;
 	return (true);
 }

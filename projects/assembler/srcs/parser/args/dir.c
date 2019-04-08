@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:45:15 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/08 18:37:14 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 19:01:00 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool			argdir(t_asm *env, t_node **tokens, t_ins *ins)
 		return (false);
 	next(tokens);
 	if (ins->ocp)
-		*ins->ocp |= T_DIR;
+		*ins->ocp |= DIR_CODE;
 	if (ins->ocp)
 		*ins->ocp <<= 2;
 	if (accept(tok(tokens), LBLMARK))

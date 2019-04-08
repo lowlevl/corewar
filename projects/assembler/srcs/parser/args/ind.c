@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:47:01 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/08 18:38:03 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 18:59:04 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_bool			argind(t_asm *env, t_node **tokens, t_ins *ins)
 	if (!isvalidarg(env, tokens, ins, T_IND))
 		return (false);
 	if (ins->ocp)
-		*ins->ocp |= T_IND;
+		*ins->ocp |= IND_CODE;
 	if (ins->ocp)
 		*ins->ocp <<= 2;
 	if (accept(tok(tokens), LBLMARK))

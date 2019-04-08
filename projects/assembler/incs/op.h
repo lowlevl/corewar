@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/04/08 18:12:44 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 19:03:37 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define IND_SIZE				2
 # define REG_SIZE				1
 
-# define REG_CODE				1
-# define DIR_CODE				2
-# define IND_CODE				3
+# define REG_CODE				0b01
+# define DIR_CODE				0b10
+# define IND_CODE				0b11
 
 # define MAX_ARGS_NUMBER		4
 # define MAX_PLAYERS			4

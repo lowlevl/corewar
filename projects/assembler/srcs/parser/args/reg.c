@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:46:23 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 16:17:25 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 18:59:24 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	argreg(t_asm *env, t_node **tokens, t_ins *ins)
 			|| !isvalidnum(env, tokens, 1))
 		return (false);
 	if (ins->ocp)
-		*ins->ocp |= T_REG;
+		*ins->ocp |= REG_CODE;
 	if (ins->ocp)
 		*ins->ocp <<= 2;
 	pushbytes(env, ft_strtoll(tok(tokens)->val + 1, NULL, 0), REG_SIZE);
