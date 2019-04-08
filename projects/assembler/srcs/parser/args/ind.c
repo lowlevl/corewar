@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 15:47:01 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 16:17:00 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 18:38:03 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include "assembler.h"
 #include "lexer.h"
 
-static t_bool	indlbl(t_asm *env, t_node **tokens)
+static t_bool	indlbl(t_asm *env, t_node **tokens, t_ins *ins)
 {
 	next(tokens);
 	if (!isvalidlabel(env, tokens))
 		return (false);
-	ft_printf(":<L>: << to '%s' @ %#x \n", tok(tokens)->val,
-			env->data.size);
+	ll_add(&env->refs,
+		newsymref(tok(tokens)->val, env->data.size, IND_SIZE, ins->off));
 	pushbytes(env, 0, IND_SIZE);
 	return (true);
 }
@@ -37,7 +37,7 @@ t_bool			argind(t_asm *env, t_node **tokens, t_ins *ins)
 		*ins->ocp <<= 2;
 	if (accept(tok(tokens), LBLMARK))
 	{
-		if (!indlbl(env, tokens))
+		if (!indlbl(env, tokens, ins))
 			return (false);
 	}
 	else

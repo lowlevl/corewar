@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 16:31:54 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/05 17:07:21 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static const char	*g_err[128] = {
 	"{magenta}warning:{eoc} Specified command '%s' is unknown:\n"
 	"%.*s\n"
 	"{bold}%*c-- Help:{eoc} Some requested features may not work.\n",
+	[19] = "{bold}%s: "
+	"{color;8}linker:{eoc} Undefined reference to symbol '__%s'.\n"
 };
 
 int					perr(int e, ...)

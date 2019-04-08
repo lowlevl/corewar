@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 16:14:48 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 18:36:31 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ typedef struct __attribute__((__packed__))	s_binary {
 	size_t	size;
 }				t_binary;
 
-//typedef struct	s_symbol {
-//	char	*name;
-//	void	*value;
-//}				t_symbol;
+typedef struct	s_symref {
+	char	*name;
+	size_t	data;
+	size_t	size;
+	size_t	off;
+}				t_symref;
 
 typedef struct	s_asm {
 	char		*self;
@@ -40,8 +42,8 @@ typedef struct	s_asm {
 	int			skip;
 	t_bool		toolarge;
 
-	t_node		*symbols;
-	t_node		*references;
+	t_node		*syms;
+	t_node		*refs;
 	t_binary	data;
 }				t_asm;
 
@@ -62,6 +64,7 @@ typedef struct	s_ins {
 	t_byte	ac;
 
 	t_byte	*ocp;
+	size_t	off;
 }				t_ins;
 
 /*
@@ -96,6 +99,7 @@ t_bool			accept(t_tok *tok, int type);
 /*
 ** Binary writing
 */
+t_symref		*newsymref(char *name, size_t data, size_t size, size_t off);
 void			pushbytes(t_asm *env, t_u32 data, size_t size);
 t_bool			writebin(t_asm *env);
 

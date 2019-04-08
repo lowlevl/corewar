@@ -6,13 +6,14 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 20:34:07 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 18:00:38 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/05 17:40:08 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libpf.h>
 #include <lift/math.h>
 #include <lift/string.h>
+#include <lift/memory.h>
 #include "assembler.h"
 #include "lexer.h"
 
@@ -22,7 +23,6 @@ static t_bool	cmdquoted(t_asm *env, t_node **tokens, t_tok *ntok)
 	size_t	endpos;
 	t_tok	*ctok;
 
-	(void)ntok;
 	ctok = tok(tokens);
 	startpos = ctok->pos + 1;
 	shift(tokens, QUOTE);
@@ -33,8 +33,15 @@ static t_bool	cmdquoted(t_asm *env, t_node **tokens, t_tok *ntok)
 		return (false);
 	}
 	endpos = tok(tokens)->pos;
-	ft_printf("    -> {under}value{eoc}: '%.*s'.\n",
-			endpos - startpos, env->scstring + startpos);
+	if (ft_strequ(ntok->val, "name"))
+		ft_memcpy(env->data.head.name, env->scstring + startpos,
+				ft_min(endpos - startpos, PROG_NAME_LENGTH));
+	else if (ft_strequ(ntok->val, "comment"))
+		ft_memcpy(env->data.head.comment, env->scstring + startpos,
+				ft_min(endpos - startpos, COMMENT_LENGTH));
+	else
+		perr(18, env->sname, ntok->y, ntok->x, ntok->val,
+				ntok->ll, ntok->ls, ntok->x, '^');
 	next(tokens);
 	return (true);
 }

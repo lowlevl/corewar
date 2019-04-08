@@ -85,6 +85,7 @@ t_bool			parseinst(t_asm *env, t_node **tokens)
 	if (!ins.op->token)
 		return (errors(env, tokens, &ins, 0));
 	next(tokens);
+	ins.off = env->data.size;
 	pushbytes(env, ins.op->code, sizeof(t_byte));
 	ins.ocp = (ins.op->ocp && !env->toolarge)
 			? (env->data.code + env->data.size) : NULL;

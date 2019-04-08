@@ -6,7 +6,7 @@
 #    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/25 20:40:17 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/05 18:31:03 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ SRCS	:= \
 			memory/ft_memset.c \
 			memory/ft_mk2array.c \
 			memory/ft_realloc.c \
+			memory/ft_bswp16.c \
+			memory/ft_bswp32.c \
 		   \
 			string/ft_strcc.c \
 			string/ft_strncc.c \

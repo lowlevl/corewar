@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/04 18:02:48 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 18:36:51 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_bool	parselabels(t_asm *env, t_node **tokens)
 {
 	if (!isvalidlabel(env, tokens))
 		return (false);
-	ft_printf(":<L>: Found {under}label{eoc}: '%s'.\n", tok(tokens)->val);
+	ll_add(&env->syms, newsymref(tok(tokens)->val, env->data.size, 0, 0));
 	shift(tokens, LBLMARK);
 	return (true);
 }
