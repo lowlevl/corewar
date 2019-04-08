@@ -1,5 +1,6 @@
 import { Socket } from 'net';
-import { socketSync, port, host } from './client.config.json';
+import { optionXmlParser, socketSync, port, host } from './client.config.json';
+import { parse, X2jOptionsOptional } from 'fast-xml-parser';
 
 const client = new Socket();
 
@@ -31,6 +32,7 @@ function logMessage(buffer: Buffer) {
     console.log('raw :', buffer);
     console.log('len :', len);
     console.log('str :', str);
+    console.log('xml :', parse(str, optionXmlParser as X2jOptionsOptional))
     console.log('');
 }
 

@@ -1,6 +1,7 @@
 # Ignore our binaries
 corewar
 asm
+build
 
 # Ignore auto generated tag files
 tags
