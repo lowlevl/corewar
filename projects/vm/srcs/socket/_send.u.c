@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:08:20 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/08 13:34:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@ int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 {
 	int  rt;
 	int  rt_sync;
-	char test;
+	int test;
 
 	rt = send(dest->sock, msg, len, SOCK_SEND_FLAGS);
 	if (rt < 0)
 		perror("send()");
 	if (SOCKET_SYNC)
 	{
-		rt_sync = recv(dest->sock, &test, 1, 0);
+		dprintf(2, "waiting reply\n");
+		rt_sync = recv(dest->sock, &test, sizeof(test), 0);
 		if (rt_sync < 0)
 			perror("recv()");
+		dprintf(2, "get reply %d %x\n", rt_sync, test);
 	}
 	return rt;
 }
