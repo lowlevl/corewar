@@ -41,7 +41,7 @@ function readMessage(data: Buffer) {
     if (toRead > data.length) {
         leftToRead = toRead - data.length;
         saveBuff = data;
-        return ;
+        return;
     }
     let buff = data.slice(0, toRead);
     let left = data.slice(toRead, data.length);
@@ -53,17 +53,12 @@ function readMessage(data: Buffer) {
 function completeMessage(data: Buffer) {
     if (leftToRead > data.length) {
         leftToRead -= data.length;
-        saveBuff = Buffer.concat([ saveBuff, data ]);
-    } else {
-        let buff = data.slice(0, leftToRead);
-        let left = data.slice(leftToRead, data.length);
-        saveBuff = Buffer.concat([ saveBuff, buff ]);
-        leftToRead = -1;
-        readMessage(saveBuff);
-        if (left.length > 0)
-            readMessage(left);
-
-        }
+        saveBuff = Buffer.concat([saveBuff, data]);
+        return;
+    }
+    saveBuff = Buffer.concat([saveBuff, data]);
+    leftToRead = -1;
+    readMessage(saveBuff);
 }
 
 client.on('data', (data: Buffer) => {
