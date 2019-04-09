@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/08 18:39:29 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/09 21:15:50 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <lift/memory.h>
 #include <lift/string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "assembler.h"
 
 t_op	g_op[17] =
@@ -71,7 +74,6 @@ t_op	g_op[17] =
 
 void		pushbytes(t_asm *env, t_u32 data, size_t size)
 {
-//	ft_dprintf(2, "Size: %zu\n", size);
 	if (env->data.size + size > sizeof(env->data.code))
 		env->toolarge = true;
 	else
@@ -129,7 +131,7 @@ t_bool		resolverefs(t_asm *env)
 	int			errs;
 
 	errs = 0;
-	while((ref = ll_pop(&env->refs, 0)))
+	while ((ref = ll_pop(&env->refs, 0)))
 	{
 		if (!(sym = getsym(env, ref->name)))
 			errs += perr(19, env->sname, ref->name);
@@ -142,16 +144,18 @@ t_bool		resolverefs(t_asm *env)
 				*((t_u32*)&env->data.code[ref->data]) = ft_bswp32(sym->data
 						- ref->off);
 		}
+		free(ref);
 	}
 	return (!errs);
 }
 
-#include <unistd.h>
 t_bool		writebin(t_asm *env)
 {
+	int		fd;
+	size_t	wl;
+
 	if (env->toolarge)
-		return (!perr(17, env->sname,
-				env->data.size, CHAMP_MAX_SIZE));
+		return (!perr(17, env->sname, env->data.size, CHAMP_MAX_SIZE));
 	if (!resolverefs(env))
 		return (false);
 	if (ft_strlen(env->data.head.name) == 0)
@@ -160,7 +164,15 @@ t_bool		writebin(t_asm *env)
 		ft_strcpy(env->data.head.comment, "<No comment>");
 	env->data.head.magic = ft_bswp32(COREWAR_EXEC_MAGIC);
 	env->data.head.size = ft_bswp32(env->data.size);
-	ft_dprintf(2, ":<{O}>: {green}Building binary{eoc} %dB/%dB :D\n", env->data.size, CHAMP_MAX_SIZE);
-	write(1, &env->data, sizeof(env->data.head) + env->data.size);
-	return (true);
+	ft_strcpy(env->oname, env->sname);
+	ft_strcpy(env->oname + ft_strlen(env->sname) - 2, ".cor");
+	if ((fd = open(env->oname,
+			O_WRONLY | O_CREAT | O_TRUNC | O_EXLOCK, 0664)) == -1)
+		return (!perr(5, env->oname, strerror(errno)));
+	wl = write(fd, &env->data, sizeof(env->data.head) + env->data.size);
+	close(fd);
+	if (wl != sizeof(env->data.head) + env->data.size)
+		return
+		(!perr(21, env->oname, wl, sizeof(env->data.head) + env->data.size));
+	return (perr(20, env->sname, env->oname, env->data.size));
 }

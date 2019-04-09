@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/04 18:04:03 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/09 20:02:02 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRCS	:= \
 LIBDIR	:= ../libs
 LIBS	:= liblift libprintf
 
-DEBUG	:= 1
+#DEBUG	:= 1
 
 # Include core
 include $(LIBDIR)/project.mk
