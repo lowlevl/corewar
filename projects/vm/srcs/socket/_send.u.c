@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/08 13:34:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/08 16:23:08 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 	if (SOCKET_SYNC)
 	{
 		dprintf(2, "waiting reply\n");
+		test = 0;
 		rt_sync = recv(dest->sock, &test, sizeof(test), 0);
 		if (rt_sync < 0)
 			perror("recv()");
