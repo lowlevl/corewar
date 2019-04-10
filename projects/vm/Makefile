@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/05 16:43:13 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/10 10:46:42 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ VM_SRC := 	vm/init.c \
 
 SOCKET_SRC := socket/_accept.u.c \
 	socket/_bind.u.c \
+	socket/_other.u.c \
 	socket/_listen.u.c \
 	socket/_send.u.c \
 	socket/_socket.u.c \
