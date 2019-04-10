@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/10 11:17:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 11:18:22 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /**
  * utils
  */
-unsigned char *encode_base64(uint8_t *src, size_t len, size_t *out_len);
+unsigned char *encode_base64(void *src, size_t len, size_t *out_len);
 
 int send_message_to(t_sock_inter *dest, void *msg, socklen_t len);
 int send_message_to_all(t_socket *sock, void *msg, socklen_t len);
