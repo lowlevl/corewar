@@ -6,15 +6,15 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:53:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/08 11:00:14 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:16:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "socket.h"
 
-# define FORMAT_PLAYER HEADER_SOCKET "<player><id>%d</id><name>%s</name></player>"
-# define FORMAT_WINNER HEADER_SOCKET "<winner><id>%d</id><name>%s</name></winner>"
+# define FORMAT_PLAYER HEADER_SOCKET "<player> <id>%d</id> <name>%s</name> </player>"
+# define FORMAT_WINNER HEADER_SOCKET "<winner> <id>%d</id> <name>%s</name> </winner>"
 
 static void do_stuff(t_player *player, t_socket *socket)
 {

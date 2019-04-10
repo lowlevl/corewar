@@ -6,17 +6,17 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:45:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:38:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:17:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "proc.h"
+#include "libft.h"
 #include "socket.h"
 
 #define FORMAT_PROC                                                            \
-	HEADER_SOCKET "<proc><id>%d</id><playerId>%d</playerId><pos>%d</pos></"    \
-				  "proc>"
+	HEADER_SOCKET                                                              \
+	"<proc> <id>%d</id> <playerId>%d</playerId> <pos>%d</pos> </proc>"
 
 static void do_stuff(t_process *proc, t_socket *socket)
 {
@@ -28,7 +28,6 @@ static void do_stuff(t_process *proc, t_socket *socket)
 	if (s && len > 0)
 	{
 		ft_memcpy(s, &len, sizeof(len));
-		s[len] = 0;
 		// DEBUG_SOCKET_SEND &&ft_dprintf(2, SOCKET_SEND, len, s);
 		send_message_to_all(socket, s, len);
 		free(s);

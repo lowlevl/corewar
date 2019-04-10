@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:23:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/10 13:13:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:16:28 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "socket.h"
 
 // #define FORMAT_MAP HEADER_SOCKET "<map><idx>%zu</idx><size>%zu</size><heat>#%*d</heat></map>"
-#define FORMAT_MAP HEADER_SOCKET "<map><idx>%zu</idx><size>%zu</size><heat>%s</heat></map>"
+#define FORMAT_MAP HEADER_SOCKET "<map> <idx>%zu</idx> <size>%zu</size> <heat>%s</heat> </map>"
 
 int send_all_map(t_vm *vm)
 {

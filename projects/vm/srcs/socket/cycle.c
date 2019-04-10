@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 16:32:12 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/09 11:28:17 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:16:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "socket.h"
 
 #define CYCLE_FORMAT                                                           \
-	HEADER_SOCKET "<cycle><current>%d</current><check>%d</check></cycle>"
+	HEADER_SOCKET "<cycle> <current>%d</current> <check>%d</check> </cycle>"
 
 int send_cycle(t_socket *socket, t_vm *vm)
 {

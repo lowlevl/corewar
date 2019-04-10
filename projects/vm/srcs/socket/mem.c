@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:23:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/10 13:10:09 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:09:11 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "socket.h"
 
 
-#define FORMAT_MEM HEADER_SOCKET "<mem><idx>%zu</idx><size>%zu</size><bytes>%s</bytes></mem>"
+#define FORMAT_MEM HEADER_SOCKET "<mem> <idx>%zu</idx> <size>%zu</size> <bytes>%s</bytes> </mem>"
 // #define FORMAT_MEM HEADER_SOCKET "<mem><idx>%zu</idx><size>%zu</size><bytes>#%*d</bytes></mem>"
 
 int send_all_mem(t_vm *vm)
