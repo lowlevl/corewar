@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 20:46:03 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/10 16:49:47 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	cleanup(int r, t_asm *env, t_node **freeme)
 	t_tok	*tok;
 
 	free(env->oname);
+	free(env->sstring);
 	free((void*)env->scstring);
 	free(strerror(0));
 	while ((tok = ll_pop(&env->syms, 0)))
@@ -47,10 +48,11 @@ int	main(int ac, char **av)
 		return (perr(1, av[0]));
 	env.self = av[0];
 	if (!(env.tokens = lexer(&env, av[1]))
-			|| !(env.oname = ft_calloc(ft_strlen(av[1]) + 3, sizeof(char))))
+			|| !(env.oname = ft_calloc(ft_strlen(av[1]) + 3, sizeof(char)))
+			|| env.isbinary)
 		return (cleanup(failure, &env, &freeme));
 	freeme = ll_dup(env.tokens);
-	if (tok(&env.tokens->prev)->type != NL)
+	if (tok(&env.tokens->prev)->type != EOF)
 		return (cleanup(failure, &env, &freeme));
 	if (!parser(&env, &env.tokens))
 		return (cleanup(failure, &env, &freeme));

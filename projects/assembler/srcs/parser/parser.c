@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/08 18:36:51 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/10 16:39:09 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_bool			parser(t_asm *env, t_node **tokens)
 		env->skip = (env->skip != 0) ? env->skip - 1 : 0;
 		if (accept(tok(tokens), COMMNTMARK))
 			shift(tokens, NL);
-		else if (accept(tok(tokens), NL))
+		else if (accept(tok(tokens), NL) || accept(tok(tokens), EOF))
 			next(tokens);
 		else if (!env->skip && accept(tok(tokens), LITTERAL)
 				&& accept(tok(&(*tokens)->next), LBLMARK)

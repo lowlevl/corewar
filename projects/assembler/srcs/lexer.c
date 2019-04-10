@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 21:30:26 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/10 16:50:44 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,17 @@ static char		*getfile(t_asm *env, char *name)
 		return ((void*)(long)!perr(2, name, strerror(errno)));
 	if ((filelen = lseek(fd, 0, SEEK_END)) < 1 || lseek(fd, 0, SEEK_SET) != 0)
 		return ((void*)(long)!perr(4, name));
-	if (!(content = ft_calloc(filelen + 2, sizeof(*content))))
+	if (!(content = ft_calloc(filelen + 5, sizeof(*content))))
 		return (NULL);
 	if (read(fd, content, filelen) != filelen)
 		return ((void*)(long)!perr(5, name, strerror(errno)));
 	close(fd);
-	content[filelen] = '\n';
-	env->scstring = ft_strrep(ft_strndup(content, filelen), '\t', ' ');
+	ft_strcpy(content + filelen + 1, "EOF");
+	if (!(env->scstring = ft_strndup(content, filelen)))
+		return (NULL);
+	ft_strrep((char*)env->scstring, '\t', ' ');
+	if ((ssize_t)ft_strlen(content) != filelen)
+		env->isbinary = true;
 	return (content);
 }
 
@@ -129,7 +133,10 @@ t_node			*lexer(t_asm *env, char *name)
 	tok = ft_strtok(file, "\t\v\f\r ");
 	while (lextok(env, &toks, tok, false))
 		tok = ft_strtok(NULL, "\t\v\f\r ");
+	ll_add(&toks, newtok(env, EOF, file + ft_strlen(env->scstring) + 1, 3));
 	free(env->sstring);
 	env->sstring = NULL;
+	if ((toks && ((t_tok*)toks->data)->type == EOF) || env->isbinary)
+		env->isbinary = perr(22, env->sname);
 	return (toks);
 }

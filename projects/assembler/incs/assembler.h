@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 20:41:42 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/10 16:45:36 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_asm {
 
 	int			skip;
 	t_bool		toolarge;
+	t_bool		isbinary;
 
 	t_node		*tokens;
 	t_node		*syms;
