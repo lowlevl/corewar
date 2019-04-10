@@ -13,6 +13,7 @@ let nbReply = 0;
 let leftToRead = -1;
 let saveBuff: Buffer;
 let clientSync = socketSync;
+
 function getLengthFromMessage(data: Buffer): number {
     return data.readInt32LE(0);
 }
