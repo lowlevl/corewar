@@ -28,12 +28,17 @@ function logMessage(buffer: Buffer) {
     }
 
     nbMessage++;
-    let len = getLengthFromMessage(buffer);
-    let str = buffer.toString(undefined, 4);
+    const len = getLengthFromMessage(buffer);
+    const str = buffer.toString(undefined, 4);
+    const xml = parse(str, optionXmlParser as X2jOptionsOptional);
     console.log('raw :', buffer);
     console.log('len :', len);
     console.log('str :', str);
-    console.log('xml :', parse(str, optionXmlParser as X2jOptionsOptional))
+    console.log('xml :', xml)
+    if (xml.map && xml.map.heat) {
+        // convert base64 to ascii 😉
+        console.log('base :', Buffer.from(xml.map.heat, 'base64').toString('ascii'));
+    }
     console.log('');
 }
 
