@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/10 16:39:09 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/11 17:25:18 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 #include <lift/char.h>
 #include <libpf.h>
 
-static t_bool	parselabels(t_asm *env, t_node **tokens)
+static t_bool	parselabels(t_asm *env)
 {
-	if (!isvalidlabel(env, tokens))
+	if (!isvalidlabel(env))
 		return (false);
-	ll_add(&env->syms, newsymref(tok(tokens)->val, env->data.size, 0, 0));
-	shift(tokens, LBLMARK);
+	ll_add(&env->syms, newsymref(tok(env)->val, env->data.size, 0, 0));
+	shift(env, LBLMARK);
 	return (true);
 }
 
@@ -32,37 +32,37 @@ static t_bool	hasspaceafter(t_asm *env, t_tok *tok)
 	return (false);
 }
 
-static t_bool	shouterror(t_asm *env, t_tok *tok, t_node **tokens)
+t_bool			shouterror(t_asm *env, t_tok *tok)
 {
 	perr(6, env->sname, tok->y, tok->x, tok->val,
 			tok->ll, tok->ls, tok->x, '^');
-	shiftb(tokens, NL);
+	shiftb(env, NL);
 	return (false);
 }
 
-t_bool			parser(t_asm *env, t_node **tokens)
+t_bool			parser(t_asm *env)
 {
 	int errors;
 
 	errors = 0;
-	while (tokens && *tokens && tok(tokens))
+	while (tok(env)->type != EOF)
 	{
 		env->skip = (env->skip != 0) ? env->skip - 1 : 0;
-		if (accept(tok(tokens), COMMNTMARK))
-			shift(tokens, NL);
-		else if (accept(tok(tokens), NL) || accept(tok(tokens), EOF))
-			next(tokens);
-		else if (!env->skip && accept(tok(tokens), LITTERAL)
-				&& accept(tok(&(*tokens)->next), LBLMARK)
-				&& !hasspaceafter(env, tok(tokens)))
-			errors += !parselabels(env, tokens);
-		else if (!env->skip && accept(tok(tokens), LITTERAL))
-			errors += !parseinst(env, tokens);
-		else if (!env->skip && accept(tok(tokens), CMDMARK)
-				&& accept(tok(&(*tokens)->next), LITTERAL))
-			errors += !parsecmd(env, tokens);
+		if (accept(tok(env), COMMNTMARK))
+			shift(env, NL);
+		else if (accept(tok(env), NL))
+			next(env);
+		else if (!env->skip && accept(tok(env), LITTERAL)
+				&& accept(env->tokens->next->data, LBLMARK)
+				&& !hasspaceafter(env, tok(env)))
+			errors += !parselabels(env);
+		else if (!env->skip && accept(tok(env), LITTERAL))
+			errors += !parseinst(env);
+		else if (!env->skip && accept(tok(env), CMDMARK)
+				&& accept(env->tokens->next->data, LITTERAL))
+			errors += !parsecmd(env);
 		else
-			errors += !shouterror(env, tok(tokens), tokens);
+			errors += !shouterror(env, tok(env));
 	}
 	return (!errors);
 }
