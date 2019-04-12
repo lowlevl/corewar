@@ -6,13 +6,17 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/20 19:57:53 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 21:30:26 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libpf.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
 #include <lift/string.h>
 #include <lift/memory.h>
+#define INSIDE
 #include "lexer.h"
 
 static const t_lexmap	g_lexmap[128] = {
@@ -26,19 +30,45 @@ static const t_lexmap	g_lexmap[128] = {
 	{'\0', 0}
 };
 
+static char		*getfile(t_asm *env, char *name)
+{
+	ssize_t	filelen;
+	size_t	namelen;
+	char	*content;
+	int		fd;
+
+	namelen = ft_strlen(name);
+	if (namelen < 3 || !ft_strequ(&name[namelen - 2], ".s"))
+		return ((void*)(long)!perr(3, name, env->self));
+	env->sname = name;
+	if ((fd = open(env->sname, O_RDONLY)) == -1)
+		return ((void*)(long)!perr(2, name, strerror(errno)));
+	if ((filelen = lseek(fd, 0, SEEK_END)) < 1 || lseek(fd, 0, SEEK_SET) != 0)
+		return ((void*)(long)!perr(4, name));
+	if (!(content = ft_calloc(filelen + 2, sizeof(*content))))
+		return (NULL);
+	if (read(fd, content, filelen) != filelen)
+		return ((void*)(long)!perr(5, name, strerror(errno)));
+	close(fd);
+	content[filelen] = '\n';
+	env->scstring = ft_strrep(ft_strndup(content, filelen), '\t', ' ');
+	return (content);
+}
+
 static t_tok	*newtok(t_asm *env, int type, char *val, size_t len)
 {
 	t_tok	*tok;
-	size_t	pos;
 
 	if (!(tok = ft_calloc(1, sizeof(*tok))))
 		return (NULL);
 	tok->type = type;
 	tok->val = ft_strndup(val, len);
-	pos = val - env->sstring;
-	tok->y = ft_strncc(env->scstring, pos, '\n') + 1;
-	tok->x = pos - ft_strncspn(env->scstring, tok->y - 1, "\n")
-		+ ((tok->y - 1) ? -1 : 0) + 1;
+	tok->pos = val - env->sstring;
+	tok->y = ft_strncc(env->scstring, tok->pos, '\n') + 1;
+	tok->x = tok->pos - ft_strncspn(env->scstring, tok->y - 1, "\n")
+		+ ((tok->y - 1) ? 0 : 1);
+	tok->ls = (char*)env->scstring + (tok->pos - tok->x) + 1;
+	tok->ll = ft_strcspn(tok->ls, "\n");
 	return (tok);
 }
 
@@ -48,10 +78,11 @@ static void		lexlitteral(t_asm *env, t_node **toks, char *tok)
 
 	if (!*tok)
 		return ;
-	validlen = ft_strspn(tok, LABEL_CHARS);
+	validlen = ft_strspn(tok, LITTERALCHARS);
 	if (*(tok + validlen))
 	{
-		ll_add(toks, newtok(env, LITTERAL, tok, validlen));
+		if (validlen)
+			ll_add(toks, newtok(env, LITTERAL, tok, validlen));
 		lextok(env, toks, tok + validlen, true);
 	}
 	else
@@ -85,14 +116,20 @@ static t_bool	lextok(t_asm *env, t_node **toks, char *tok, t_bool nolitteral)
 	return (true);
 }
 
-t_bool			lexer(t_asm *env, t_node **toks, char *file)
+t_node			*lexer(t_asm *env, char *name)
 {
 	char	*tok;
+	char	*file;
+	t_node	*toks;
 
-	if (!getfile(env, file))
-		return (false);
-	tok = ft_strtok(env->sstring, "\t\v\f\r ");
-	while (lextok(env, toks, tok, false))
+	toks = 0;
+	if (!(file = getfile(env, name)))
+		return (NULL);
+	env->sstring = file;
+	tok = ft_strtok(file, "\t\v\f\r ");
+	while (lextok(env, &toks, tok, false))
 		tok = ft_strtok(NULL, "\t\v\f\r ");
-	return (true);
+	free(env->sstring);
+	env->sstring = NULL;
+	return (toks);
 }

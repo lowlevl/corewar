@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   reg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/20 17:42:29 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/25 17:51:55 by lroux            ###   ########.fr       */
+/*   Created: 2019/03/27 15:46:23 by lroux             #+#    #+#             */
+/*   Updated: 2019/03/28 18:36:39 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
-# include "assembler.h"
+#include <libpf.h>
+#include <lift/string.h>
+#include "assembler.h"
+#include "lexer.h"
 
-# define LITTERALCHARS	LABEL_CHARS "ABCDEFGHIJKLMNOPQRSTUVWXYZ-"
-
-typedef struct	s_lexmap {
-	char	id;
-	int		type;
-}				t_lexmap;
-
-enum {
-	CMDMARK,
-	COMMNTMARK,
-	LBLMARK,
-	DIRMARK,
-	QUOTE,
-	SEP,
-	NL,
-	UNKNOWN,
-	LITTERAL
-};
-
-# ifdef INSIDE
-
-static t_bool	lextok(t_asm *env, t_node **toks, char *tok, t_bool nolitteral);
-
-# endif
-#endif
+t_bool	argreg(t_asm *env, t_node **tokens, t_op op, int *i)
+{
+	if (!isvalidarg(env, tokens, op, (int[2]){*i, T_REG})
+			|| !isvalidnum(env, tokens, 1))
+		return (false);
+	ft_printf("    -> {under}type{eoc}: {blue}R{eoc} -> %s\n",
+			tok(tokens)->val + 1);
+	next(tokens);
+	return (true);
+}

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/20 20:00:52 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/28 18:29:46 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct	s_asm {
 	char		*sstring;
 	const char	*scstring;
 
+	int			skip;
+
 	t_node		*symbols;
 	t_node		*references;
 	t_binary	data;
@@ -48,6 +50,10 @@ typedef struct	s_tok {
 
 	size_t	x;
 	size_t	y;
+	size_t	pos;
+
+	char	*ls;
+	size_t	ll;
 }				t_tok;
 
 /*
@@ -58,12 +64,30 @@ int				perr(int e, ...);
 /*
 ** Lexer & Parser
 */
-t_bool			getfile(t_asm *env, char *name);
-t_bool			lexer(t_asm *env, t_node **toklist, char *file);
+t_node			*lexer(t_asm *env, char *name);
+
+t_bool			parser(t_asm *env, t_node **tokens);
+t_bool			parsecmd(t_asm *env, t_node **tokens);
+t_bool			parseinst(t_asm *env, t_node **tokens);
+t_bool			argind(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			argreg(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			argdir(t_asm *env, t_node **tokens, t_op op, int *i);
+t_bool			isvalidarg(t_asm *env, t_node **tokens, t_op op, int *both);
+t_bool			isvalidnum(t_asm *env, t_node **tokens, size_t start);
+t_bool			isvalidlabel(t_asm *env, t_node **tokens);
+
+/*
+** Parsing utils
+*/
+void			shift(t_node **tokens, int type);
+void			shiftb(t_node **tokens, int type);
+t_tok			*next(t_node **tokens);
+t_tok			*tok(t_node **tokens);
+t_bool			accept(t_tok *tok, int type);
 
 /*
 ** Binary writing
 */
-int				writebin(t_asm *env);
+t_bool			writebin(t_asm *env);
 
 #endif

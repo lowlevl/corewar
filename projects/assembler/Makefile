@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/20 17:51:24 by lroux            ###   ########.fr        #
+#    Updated: 2019/03/28 17:27:41 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,16 @@ OBJDIR	:= build/obj
 SRCS	:= \
 			main.c \
 			lexer.c \
+			parser/parser.c \
+			parser/utils.c \
+			parser/inst.c \
+			parser/cmd.c \
+			parser/args/utils.c \
+			parser/args/dir.c \
+			parser/args/ind.c \
+			parser/args/reg.c \
 			binary.c \
-			error.c \
-			utils.c
+			error.c
 
 LIBDIR	:= ../libs
 LIBS	:= liblift libft libpf
