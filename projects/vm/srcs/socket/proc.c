@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 14:45:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/12 15:20:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:46:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ int send_dead_proc(t_socket *sock, t_process *proc)
 	AUTO_CLEAN char *s;
 	int32_t			 len;
 
+	if (sock->enable != ENABLE_SOCKET)
+		return 0;
 	len = ft_asprintf(&s, DEAD_PROC, proc->id, proc->player_id);
 	if (s && len > 0) {
 		ft_memcpy(s, &len, sizeof(len));
-		send_message_to_all(sock, s, len);
+		return send_message_to_all(sock, s, len);
 	}
+	return 0;
 }
 
 int send_procs(t_vm *vm)
