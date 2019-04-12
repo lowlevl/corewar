@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/15 15:05:04 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/03/26 16:54:23 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS	:= vm.c \
 	proc/proc.c \
 	proc/print.c \
 	proc/cursor.c \
+	proc/utils.c \
 	utils/file_utils.c \
 	vm/init.c \
 	vm/find.c \

@@ -17,6 +17,7 @@ tags
 *.ko
 *.obj
 *.elf
+*.cor
 
 # Linker output
 *.ilk
@@ -142,4 +143,3 @@ $RECYCLE.BIN/
 Session.vim
 
 # End of https://www.gitignore.io/api/c,macos,linux,windows
-

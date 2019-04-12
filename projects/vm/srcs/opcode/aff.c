@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:27:38 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 15:38:19 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void exec_aff(t_vm *vm, t_process *process, const t_op *op)
 
 	(void)op;
 	oc = read_octet_code(process, vm->memory);
+	DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_1, get_type_arg(oc, 0));
 	if (get_type_arg(oc, 0) == T_REG)
 	{
 		ch = get_reg(process, read_arg(process, vm->memory, T_REG)) % 256;
+		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "aff %%%d\n", ch);
 		process->carry = ch == 0;
 		if (ch == 0 || ch == '\n')
 		{
@@ -39,4 +41,5 @@ void exec_aff(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 		process->carry = 1;
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

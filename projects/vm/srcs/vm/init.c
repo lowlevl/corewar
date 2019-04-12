@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:13:51 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/13 13:40:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 13:07:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 	vm->dump = -1;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->next_check = CYCLE_TO_DIE;
+	vm->nb_check = 0;
 	if (argc < 2)
 		exit_print_usage();
 	while (++i < argc)
@@ -30,5 +31,5 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 			init_player(vm, argv[i], -1);
 	}
 	init_default_ids(vm->players, vm->players_count);
-	// print_vm(vm); // Debug
+	print_vm(vm); // Debug
 }

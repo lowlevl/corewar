@@ -13,6 +13,8 @@
 		"opcode.h": "c",
 		"op.h": "c",
 		"cycle.h": "c",
-		"vm_utils.h": "c"
+		"vm_utils.h": "c",
+		"flags.h": "c",
+		"libpf.h": "c"
 	}
 }
