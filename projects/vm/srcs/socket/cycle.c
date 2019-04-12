@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 16:32:12 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/10 16:16:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:25:43 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 #include "socket.h"
 
 #define CYCLE_FORMAT                                                           \
-	HEADER_SOCKET "<cycle> <current>%d</current> <check>%d</check> </cycle>"
+	HEADER_SOCKET "<cycle> <current>%d</current> <check>%d</check> "           \
+				  "<live>%d</live> </cycle>"
 
 int send_cycle(t_socket *socket, t_vm *vm)
 {
-    int32_t len;
-    char *s;
+	int32_t len;
+	char *  s;
 
-    if (socket->enable != ENABLE_SOCKET)
-        return 0;
-    len = ft_asprintf(&s, CYCLE_FORMAT, vm->cycle_count, vm->next_check);
-    if (s && len > 0)
-    {
-        ft_memcpy(s, &len, sizeof(len));
-        send_message_to_all(socket, s, len);
-        free(s);
-    }
-    return len;
+	if (socket->enable != ENABLE_SOCKET)
+		return 0;
+	len = ft_asprintf(&s, CYCLE_FORMAT, vm->cycle_count, vm->next_check,
+		vm->nb_live_for_cycle);
+	if (s && len > 0)
+	{
+		ft_memcpy(s, &len, sizeof(len));
+		send_message_to_all(socket, s, len);
+		free(s);
+	}
+	return len;
 }
