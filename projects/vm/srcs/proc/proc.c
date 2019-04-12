@@ -6,11 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 13:17:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 09:34:54 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <proc.h>
+
+static int g_id = 0;
 
 void init_processes(t_vm *vm)
 {
@@ -19,70 +21,66 @@ void init_processes(t_vm *vm)
 	int32_t player_id;
 
 	i = 0;
-	vm->processes =
-		(t_process *)ft_calloc(vm->players_count, sizeof(t_process));
-	if_errno_printerr_exit(ERR_PROC_MALL);
+	vm->processes = NULL;
 	vm->processes_count = vm->players_count;
 	while (i < vm->players_count)
 	{
 		start = get_start_idx_in_memory(vm->players_count, i);
 		player_id = vm->players[vm->sorted_players_idx[i]].id;
-		init_process(vm, start, i, player_id);
+		init_process(&vm->processes, start, player_id);
 		i++;
 	}
 }
 
-void init_process(t_vm *vm, uint16_t cursor_start, int index, int32_t player_id)
+void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 {
-	vm->processes[index].carry = 0;
-	vm->processes[index].have_live = 0;
-	vm->processes[index].exec_cycle = -1;
-	vm->processes[index].cursor_pos = 0;
-	vm->processes[index].cursor_start = cursor_start;
-	vm->processes[index].player_id = player_id;
-	vm->processes[index].regs[0] = player_id;
-}
-
-void add_process(t_vm *vm, uint16_t pc, int player_id)
-{
-	size_t	 n;
 	t_process *proc;
 
-	n = vm->processes_count;
-	vm->processes =
-		(t_process *)realloc(vm->processes, sizeof(t_process) * (n + 1));
+	errno = 0;
+	proc = (t_process *)malloc(sizeof(t_process));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
-	vm->processes_count++;
-	proc = vm->processes + n;
-	ft_printf("%p\n", proc);
-	proc->player_id = player_id;
-	proc->cursor_pos = 0;
-	proc->taunt_buffer[0] = 0;
-	proc->taunt_size = 0;
-	proc->carry = 0;
+	ft_memset(proc, 0, sizeof(t_process));
 	proc->exec_cycle = -1;
-	proc->cursor_start = pc;
+	proc->cursor_start = cursor_start;
+	proc->player_id = player_id;
+	proc->regs[0] = player_id;
+	proc->next = (*head);
+	proc->id = g_id;
+	g_id++;
+	*head = proc;
+	print_proc(proc);
+}
+
+void delete_process(t_process **head)
+{
+	t_process *node;
+	t_process *tmp;
+
+	if (!head || !*head)
+		return;
+	node = *head;
+	while (node)
+	{
+		tmp = node;
+		node = node->next;
+		free(tmp);
+	}
+	*head = NULL;
 }
 
 void copy_process(t_vm *vm, t_process *process, size_t pos)
 {
-	size_t	 n;
-	t_process *proc;
-	t_process *nlist;
+	t_process *dup;
 
-	n = vm->processes_count;
-	ft_dprintf(
-		2, "p:%p n:%zu l:%zu\n", vm->processes, n, sizeof(t_process) * (n + 1));
 	errno = 0;
-	nlist = (t_process *)malloc(sizeof(t_process) * (n + 1));
-	memcpy(nlist, vm->processes, sizeof(t_process) * (n));
+	dup = (t_process *)malloc(sizeof(t_process));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
-	proc = nlist + n;
-	memcpy(proc, process, sizeof(t_process));
-	proc->cursor_pos = pos;
-	print_proc(process);
-	print_proc(proc);
-	free(vm->processes);
-	// vm->processes_count++;
-	vm->processes = nlist;
+	ft_memcpy(dup, process, sizeof(t_process));
+	dup->cursor_pos = pos;
+	vm->processes_count++;
+	dup->next = vm->processes;
+	dup->id = g_id;
+	g_id++;
+	dup->exec_cycle = -1;
+	vm->processes = dup;
 }

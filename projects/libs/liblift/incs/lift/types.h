@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:51:41 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/03 19:19:38 by lroux            ###   ########.fr       */
+/*   Updated: 2019/03/20 16:54:27 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,10 @@ typedef enum {
 	false = 0,
 	true = 1
 }	t_bool;
+
+typedef enum {
+	success = 0,
+	failure = 1
+}	t_status;
 
 #endif

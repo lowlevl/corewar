@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/25 11:29:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void exec_or(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	ft_bzero(args, sizeof(args));
 	oc = read_octet_code(process, vm->memory);
-	DEBUG_TYPE &&ft_dprintf(2, "type: %d %d %d\n", get_type_arg(oc, 0),
+	DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_arg_or(vm->memory, process, args, oc) == -1)
 	{
@@ -67,8 +67,8 @@ void exec_or(t_vm *vm, t_process *process, const t_op *op)
 		logic = args[0] | args[1];
 		process->carry = logic == 0;
 		DEBUG_R_FC &&ft_dprintf(
-			2, "or %%%b %%%b r%d\n", args[0], args[1], args[2]);
+			2, FUNC_PREFIX "or %%%b %%%b r%d\n", args[0], args[1], args[2]);
 		write_in_registre(process, args[2], logic);
 	}
-	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

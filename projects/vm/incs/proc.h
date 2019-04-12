@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/14 16:57:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/26 17:05:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@
 #include "struct.h"
 
 #define ERR_PROC_MALL "malloc processes"
-#define ERR_NEW_PROC_MALL "realloc new processes"
+#define ERR_NEW_PROC_MALL "new processes"
 
 void init_processes(t_vm *vm);
 void init_process(
-	t_vm *vm, uint16_t cursor_start, int index, int32_t player_id);
+	t_process **head, uint16_t cursor_start, int32_t player_id);
 
-void add_processes(t_vm *vm, uint16_t pc, int id);
 void copy_process(t_vm *vm, t_process *process, size_t pos);
+void delete_process(t_process **head);
 
 void exec_cycle(t_vm *vm);
 void exec_process(t_vm *vm, t_process *process);
 void check_process(t_vm *vm, t_process *process);
+void filter_process_have_live(t_vm *vm);
 
 /**
  * Print

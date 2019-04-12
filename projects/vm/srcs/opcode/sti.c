@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/26 09:33:32 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	ft_bzero(args, sizeof(args));
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
-	DEBUG_TYPE &&ft_dprintf(2, "type: %d %d %d\n", get_type_arg(oc, 0),
+	DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_sti_arg(vm->memory, process, args, oc) == -1)
 	{
@@ -68,11 +68,11 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	{
 		adr = args[1] + args[2];
 		process->carry = adr == 0;
-		DEBUG_R_FC &&ft_dprintf(2, "sti r(%d) :(%.2x + %.2x = %.2x)\n", args[0],
+		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "sti r(%d) :(%.2x + %.2x = %.2x)\n", args[0],
 			pos, adr % IDX_MOD, get_restrict_address(pos, adr));
 		args[0] = bswap_32(args[0]);
 		write_in_memory(vm->memory, (uint8_t *)args, sizeof(args[0]),
 			get_restrict_address(pos, adr));
 	}
-	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

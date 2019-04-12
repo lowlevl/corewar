@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/22 16:18:24 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:46:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,24 @@ void exec_st(t_vm *vm, t_process *process, const t_op *op)
 	(void)op;
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
+		DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_2, get_type_arg(oc, 0),
+		get_type_arg(oc, 1));
 	if (read_args_st(vm->memory, process, args, oc) == 0)
 	{
 		process->carry = args[0] == 0;
 		if (get_type_arg(oc, 1) == T_REG)
 		{
-			DEBUG_R_FC &&ft_dprintf(2, "st %%%d r%d\n", args[0], args[1]);
+			DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "st %%%d r%d\n", args[0], args[1]);
 			write_in_registre(process, args[1], args[0]);
 		}
 		else if (get_type_arg(oc, 1) == T_IND)
 		{
-			DEBUG_R_FC &&ft_dprintf(2, "st %%%d :(%.2x + %.2x = %.2x)\n", args[0],
+			DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "st %%%d :(%.2x + %.2x = %.2x)\n", args[0],
 				pos, args[1] % IDX_MOD, get_restrict_address(pos, args[1]));
 			args[0] = bswap_32(args[0]);
 			write_in_memory(vm->memory, (uint8_t *)args, sizeof(*args),
 				get_restrict_address(pos, args[1]));
 		}
 	}
-	DEBUG_CARRY &&ft_dprintf(2, "carry: %d\n", process->carry);
+	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
