@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:59:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/12 10:45:36 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void exec_cycle(t_vm *vm)
 	t_process *process;
 
 	process = vm->processes;
+	send_procs(vm);
 	send_cycle(&vm->socket, vm);
 	while (process)
 	{
