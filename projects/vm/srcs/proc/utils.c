@@ -6,11 +6,12 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:44:25 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 17:01:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:45:51 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "proc.h"
+#include "socket.h"
 
 size_t count_alive_processes(t_process *node)
 {
@@ -69,6 +70,7 @@ void filter_process_have_live(t_vm *vm)
 				prev->next = node->next;
 			else
 				vm->processes = node->next;
+			send_dead_proc(&vm->socket, node);
 			free_node(&node);
 		}
 		else
