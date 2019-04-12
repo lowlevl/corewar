@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:49:47 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/12 15:45:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:47:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int accept_all_client(t_socket *sock);
 /**
  * other
  */
-int send_dead_proc(t_socket *sock, t_process *proc)
+int send_dead_proc(t_socket *sock, t_process *proc);
 int send_players(t_vm *vm);
 int send_winner(t_player *player, t_socket *socket);
 int send_procs(t_vm *vm);
