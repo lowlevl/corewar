@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "socket.h"
 
-#define REPLY_MAX_LEN 50
+#define REPLY_MAX_LEN 2
 
 int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 {
@@ -31,7 +31,7 @@ int send_message_to(t_sock_inter *dest, void *msg, socklen_t len)
 
 int get_reply(t_sock_inter *dest)
 {
-	char reply[REPLY_MAX_LEN];
+	char reply[REPLY_MAX_LEN + 1];
 	int recv_bit;
 
 	if (dest->disable == 1)
@@ -43,7 +43,7 @@ int get_reply(t_sock_inter *dest)
 	}
 	reply[recv_bit] = 0;
 	DEBUG_SOCKET_RECV &&ft_dprintf(2, SOCKET_RECV, reply, recv_bit);
-	if (ft_strcmp("end", reply) == 0) {
+	if (ft_strcmp("ok", reply) == 0) {
 		dest->disable = 1;
 	}
 	return recv_bit;
