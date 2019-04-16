@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ptr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:27:06 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/02 22:27:29 by lroux            ###   ########.fr       */
+/*   Created: 2018/12/05 14:48:06 by lroux             #+#    #+#             */
+/*   Updated: 2019/03/03 21:37:12 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift/memory.h"
-#include "lift/types.h"
-#include <stdlib.h>
+#include "libpf.intern.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+t_ret		pfhandleptr(t_arg *arg, t_flag flag)
 {
-	while (n--)
-		if (*(t_u8*)s1++ != *(t_u8*)s2++)
-			return (*(t_u8*)(s1 - 1) - *(t_u8*)(s2 - 1));
-	return (0);
+	static char	num[MAXPRECISION + 1];
+	t_ret		ret;
+
+	ft_strcpy(ret.leading, "0x");
+	ft_utostrb(num, arg->l, 16, ft_min(MAXPRECISION, flag.precision));
+	ret.str = (!arg->p && flag.precision == 0) ? "" : num;
+	ret.size = ft_strlen(ret.str);
+	return (ret);
 }

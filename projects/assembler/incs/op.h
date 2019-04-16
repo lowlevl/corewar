@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/03/26 17:02:08 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/08 19:03:37 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
 
+# define DIR_SIZE				4
 # define IND_SIZE				2
-# define REG_SIZE				4
-# define DIR_SIZE				REG_SIZE
+# define REG_SIZE				1
 
-# define REG_CODE				1
-# define DIR_CODE				2
-# define IND_CODE				3
+# define REG_CODE				0b01
+# define DIR_CODE				0b10
+# define IND_CODE				0b11
 
 # define MAX_ARGS_NUMBER		4
 # define MAX_PLAYERS			4
@@ -69,9 +69,9 @@ typedef char	t_type;
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
-# define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC		0x00ea83f3
 
-typedef struct __attribute__((packed))	s_head {
+typedef struct	s_head {
 	unsigned int	magic;
 	char			name[PROG_NAME_LENGTH + 1];
 	unsigned int	size;
@@ -80,12 +80,13 @@ typedef struct __attribute__((packed))	s_head {
 
 typedef struct	s_op {
 	char	*token;
-	int		op;
+	int		code;
 
 	int		argcount;
 	t_type	argtypes[MAX_ARGS_NUMBER];
 
 	t_bool	ocp;
+	t_u8	ds;
 }				t_op;
 
 t_op	g_op[17];

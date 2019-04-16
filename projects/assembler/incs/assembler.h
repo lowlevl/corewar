@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 18:29:46 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/09 20:41:42 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 typedef struct __attribute__((__packed__))	s_binary {
 	t_head	head;
 	t_byte	code[CHAMP_MAX_SIZE];
-	size_t	codesize;
+	size_t	size;
 }				t_binary;
 
-typedef struct	s_symbol {
+typedef struct	s_symref {
 	char	*name;
-	void	*value;
-}				t_symbol;
+	size_t	data;
+	size_t	size;
+	size_t	off;
+}				t_symref;
 
 typedef struct	s_asm {
 	char		*self;
@@ -37,10 +39,14 @@ typedef struct	s_asm {
 	char		*sstring;
 	const char	*scstring;
 
-	int			skip;
+	char		*oname;
 
-	t_node		*symbols;
-	t_node		*references;
+	int			skip;
+	t_bool		toolarge;
+
+	t_node		*tokens;
+	t_node		*syms;
+	t_node		*refs;
 	t_binary	data;
 }				t_asm;
 
@@ -56,6 +62,14 @@ typedef struct	s_tok {
 	size_t	ll;
 }				t_tok;
 
+typedef struct	s_ins {
+	t_op	*op;
+	t_byte	ac;
+
+	t_byte	*ocp;
+	size_t	off;
+}				t_ins;
+
 /*
 ** Error management
 */
@@ -69,10 +83,10 @@ t_node			*lexer(t_asm *env, char *name);
 t_bool			parser(t_asm *env, t_node **tokens);
 t_bool			parsecmd(t_asm *env, t_node **tokens);
 t_bool			parseinst(t_asm *env, t_node **tokens);
-t_bool			argind(t_asm *env, t_node **tokens, t_op op, int *i);
-t_bool			argreg(t_asm *env, t_node **tokens, t_op op, int *i);
-t_bool			argdir(t_asm *env, t_node **tokens, t_op op, int *i);
-t_bool			isvalidarg(t_asm *env, t_node **tokens, t_op op, int *both);
+t_bool			argind(t_asm *env, t_node **tokens, t_ins *ins);
+t_bool			argreg(t_asm *env, t_node **tokens, t_ins *ins);
+t_bool			argdir(t_asm *env, t_node **tokens, t_ins *ins);
+t_bool			isvalidarg(t_asm *env, t_node **tokens, t_ins *ins, int type);
 t_bool			isvalidnum(t_asm *env, t_node **tokens, size_t start);
 t_bool			isvalidlabel(t_asm *env, t_node **tokens);
 
@@ -88,6 +102,8 @@ t_bool			accept(t_tok *tok, int type);
 /*
 ** Binary writing
 */
+t_symref		*newsymref(char *name, size_t data, size_t size, size_t off);
+void			pushbytes(t_asm *env, t_u32 data, size_t size);
 t_bool			writebin(t_asm *env);
 
 #endif

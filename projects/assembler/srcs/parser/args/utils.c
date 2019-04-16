@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:26:42 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/29 16:24:56 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/03 14:56:48 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ t_bool	isvalidnum(t_asm *env, t_node **tokens, size_t start)
 	return (true);
 }
 
-t_bool	isvalidarg(t_asm *env, t_node **tokens, t_op op, int *both)
+t_bool	isvalidarg(t_asm *env, t_node **tokens, t_ins *ins, int type)
 {
-	if (!(op.argtypes[both[0]] & both[1]))
+	if (!(ins->op->argtypes[ins->ac] & type))
 	{
-		perr(10, env->sname, tok(tokens)->y, tok(tokens)->x, op.token,
+		perr(10, env->sname, tok(tokens)->y, tok(tokens)->x, ins->op->token,
 				tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
 		shiftb(tokens, NL);
 		return (false);

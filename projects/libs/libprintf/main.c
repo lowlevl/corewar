@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:27:06 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/02 22:27:29 by lroux            ###   ########.fr       */
+/*   Created: 2019/03/02 17:07:57 by lroux             #+#    #+#             */
+/*   Updated: 2019/04/02 21:46:42 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift/memory.h"
-#include "lift/types.h"
-#include <stdlib.h>
+#include <libpf.h>
+#include <lift/string.h>
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+#define ARGS "%f\n", 1.42f
+
+int	main(void)
 {
-	while (n--)
-		if (*(t_u8*)s1++ != *(t_u8*)s2++)
-			return (*(t_u8*)(s1 - 1) - *(t_u8*)(s2 - 1));
-	return (0);
+	int r1, r2;
+
+	r1 = ft_printf(ARGS);
+	r2 = printf(ARGS);
+	ft_dprintf(2, "---\nReturn values: %d vs %d\n", r1, r2);
 }
