@@ -28,6 +28,7 @@ int	send_map_chunk(t_vm *vm, size_t idx, size_t chunk_size)
 	size_t			map64_len;
 	int32_t			len;
 
+	map64 = NULL;
 	if (vm->socket.enable != ENABLE_SOCKET)
 		return (0);
 	map64 = encode_base64(vm->heat_map + idx, chunk_size, &map64_len);
