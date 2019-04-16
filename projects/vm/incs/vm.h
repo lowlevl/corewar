@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 13:57:16 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/13 13:39:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:04:32 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # include <proc.h>
 # include <cycle.h>
 # include <vm_utils.h>
-
+# include "socket.h"
+# include "heat_map.h"
 /*
 ** System includes
 */

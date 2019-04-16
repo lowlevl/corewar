@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 09:15:28 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/01 10:32:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <op.h>
 #include <stdint.h>
 #include <unistd.h>
+
+#include "socket_inc.h"
 
 /*
 ** Struct definition
@@ -56,7 +58,9 @@ typedef struct s_vm
 	uint32_t last_player_report_as_live;
 
 	int64_t dump;
+	uint8_t dump_heat : 1;
 	uint8_t memory[MEM_SIZE];
+	uint8_t heat_map[MEM_SIZE];
 
 	t_process *processes;
 	uint64_t   processes_count;
@@ -66,6 +70,8 @@ typedef struct s_vm
 	int32_t  cycle_to_die;
 	int64_t  cycle_count;
 	uint64_t nb_live_for_cycle;
+
+	t_socket socket;
 } t_vm;
 
 typedef struct s_op
@@ -85,5 +91,11 @@ typedef struct s_ops
 	char *name;
 	void (*f)(t_vm *vm, t_process *process, const t_op *op);
 } t_ops;
+
+typedef struct s_coord
+{
+	size_t at;
+	size_t len;
+} t_coord;
 
 #endif

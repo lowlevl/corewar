@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/26 16:54:23 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/10 10:46:42 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,7 @@ INCDIR	:= incs
 SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
-SRCS	:= vm.c \
-	argv/argv.c \
-	argv/id.c \
-	cycle/cycle.c \
-	cycle/utils.c \
-	debug/header.c \
-	debug/procs.c \
-	debug/vm.c \
-	dump/print.c \
-	dump/load_player.c \
-	dump/sort_player.c \
-	dump/wrappers.c \
-	error/error.c \
-	opcode/_get.u.c \
+OPCODE_SRC := opcode/_get.u.c \
 	opcode/_read.u.c \
 	opcode/_write.u.c \
 	opcode/_other.u.c \
@@ -51,14 +38,65 @@ SRCS	:= vm.c \
 	opcode/ld.c \
 	opcode/fork.c \
 	opcode/lfork.c \
-	proc/proc.c \
+
+DUMP_SRC := dump/print.c \
+	dump/load_player.c \
+	dump/sort_player.c \
+	dump/wrappers.c \
+
+PROC_SRC := proc/proc.c \
 	proc/print.c \
 	proc/cursor.c \
-	proc/utils.c \
-	utils/file_utils.c \
-	vm/init.c \
+
+ARGV_SRC :=	argv/argv.c \
+	argv/id.c \
+	argv/usage.c \
+
+CYCLE_SRC := cycle/cycle.c \
+	cycle/utils.c \
+
+DEBUG_SRC := debug/header.c \
+	debug/procs.c \
+	debug/vm.c \
+	debug/socket.c \
+
+VM_SRC := 	vm/init.c \
 	vm/find.c \
 	vm/winner.c \
+
+SOCKET_SRC := socket/_accept.u.c \
+	socket/_bind.u.c \
+	socket/_other.u.c \
+	socket/_listen.u.c \
+	socket/_send.u.c \
+	socket/_socket.u.c \
+	socket/_interface.u.c \
+	socket/_shutdown.u.c \
+	socket/player.c \
+	socket/proc.c \
+	socket/live.c \
+	socket/taunt.c \
+	socket/player_map.c \
+	socket/mem.c \
+	socket/end.c \
+	socket/cycle.c \
+
+HEAT_MAP := heat/write.c \
+	heat/dump.c \
+
+SRCS	:= vm.c \
+	error/error.c \
+	proc/utils.c \
+	utils/file_utils.c \
+	$(OPCODE_SRC) \
+	$(DUMP_SRC) \
+	$(PROC_SRC) \
+	$(ARGV_SRC) \
+	$(CYCLE_SRC) \
+	$(DEBUG_SRC) \
+	$(VM_SRC) \
+	$(SOCKET_SRC) \
+	$(HEAT_MAP) \
 
 LIBDIR	:= ../libs
 LIBS	:= libft libpf

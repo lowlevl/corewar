@@ -15,6 +15,9 @@
 		"cycle.h": "c",
 		"vm_utils.h": "c",
 		"flags.h": "c",
-		"libpf.h": "c"
+		"libpf.h": "c",
+		"socket.h": "c",
+		"socket_inc.h": "c",
+		"heat_map.h": "c"
 	}
 }

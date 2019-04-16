@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 09:34:54 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/03/29 10:42:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 	proc->id = g_id;
 	g_id++;
 	*head = proc;
-	print_proc(proc);
+	DEBUG_PROC && print_proc(proc);
 }
 
 void delete_process(t_process **head)
