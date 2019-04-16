@@ -44,8 +44,8 @@ int	get_reply(t_sock_inter *dest)
 		return (recv_bit);
 	}
 	reply[recv_bit] = 0;
-	DEBUG_SOCKET_RECV && ft_dprintf(2, SOCKET_RECV, reply, recv_bit);
-	if (ft_strcmp("ok", reply) == 0)
+	DEBUG_SOCKET_RECV &&ft_dprintf(2, SOCKET_RECV, reply, recv_bit);
+	if (ft_strcmp("ok", reply))
 		dest->disable = 1;
 	return (recv_bit);
 }
