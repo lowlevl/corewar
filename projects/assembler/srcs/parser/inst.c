@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 17:27:59 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 21:14:20 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/11 17:32:47 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,77 +15,79 @@
 #include "assembler.h"
 #include "lexer.h"
 
-static t_bool	expectedtok(t_asm *env, t_node **tokens)
+static t_bool	expectedtok(t_asm *env)
 {
-	perr(12, env->sname, tok(tokens)->y, tok(tokens)->x,
-			tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
+	perr(12, env->sname, tok(env)->y, tok(env)->x,
+			tok(env)->ll, tok(env)->ls, tok(env)->x, '^');
 	return (false);
 }
 
-static t_bool	errors(t_asm *env, t_node **tokens, t_ins *ins, int num)
+static t_bool	errors(t_asm *env, t_ins *ins, int num)
 {
 	if (num == 0)
-		perr(9, env->sname, tok(tokens)->y, tok(tokens)->x, tok(tokens)->val,
-				tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
+		perr(9, env->sname, tok(env)->y, tok(env)->x, tok(env)->val,
+				tok(env)->ll, tok(env)->ls, tok(env)->x, '^');
 	else if (num == 1)
-		perr(13, env->sname, tok(tokens)->y, tok(tokens)->x, ins->op->token,
-				tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
+		perr(13, env->sname, tok(env)->y, tok(env)->x, ins->op->token,
+				tok(env)->ll, tok(env)->ls, tok(env)->x, '^');
 	else if (num == 2)
-		perr(11, env->sname, tok(tokens)->y, tok(tokens)->x, ins->op->token,
-				tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
-	shiftb(tokens, NL);
+		perr(11, env->sname, tok(env)->y, tok(env)->x, ins->op->token,
+				tok(env)->ll, tok(env)->ls, tok(env)->x, '^');
+	shiftb(env, NL);
 	return (false);
 }
 
-static t_bool	doparsearg(t_asm *env, t_node **tokens, t_ins *ins)
+static t_bool	doparsearg(t_asm *env, t_ins *ins)
 {
 	int e;
 
 	e = 0;
-	if (accept(tok(tokens), NL))
-		return (expectedtok(env, tokens));
+	if (accept(tok(env), NL))
+		return (expectedtok(env));
 	else if (ins->ac > ins->op->argcount - 1)
-		return (errors(env, tokens, ins, 2));
-	else if (ins->ac < ins->op->argcount && accept(tok(tokens), DIRMARK))
-		e += !argdir(env, tokens, ins);
-	else if (ins->ac < ins->op->argcount && accept(tok(tokens), LITTERAL)
-			&& *tok(tokens)->val == 'r')
-		e += !argreg(env, tokens, ins);
-	else if (ins->ac < ins->op->argcount && (accept(tok(tokens), LITTERAL)
-				|| accept(tok(tokens), LBLMARK)))
-		e += !argind(env, tokens, ins);
+		return (errors(env, ins, 2));
+	else if (ins->ac < ins->op->argcount && accept(tok(env), DIRMARK))
+		e += !argdir(env, ins);
+	else if (ins->ac < ins->op->argcount && accept(tok(env), LITTERAL)
+			&& *tok(env)->val == 'r')
+		e += !argreg(env, ins);
+	else if (ins->ac < ins->op->argcount && (accept(tok(env), LITTERAL)
+				|| accept(tok(env), LBLMARK)))
+		e += !argind(env, ins);
 	else
-		++e;
+		e += !shouterror(env, tok(env));
 	if (e)
 		return (false);
 	return (true);
 }
 
-static t_bool	parsearguments(t_asm *env, t_node **tokens, t_ins *ins)
+static t_bool	parsearguments(t_asm *env, t_ins *ins)
 {
-	while (tokens && *tokens)
+	while (tok(env)->type != EOF)
 	{
 		++ins->ac;
-		if (!doparsearg(env, tokens, ins))
+		if (!doparsearg(env, ins))
 			return (false);
-		if (!accept(tok(tokens), SEP))
+		if (!accept(tok(env), SEP))
 			break ;
-		next(tokens);
+		next(env);
+		if (accept(tok(env), EOF))
+			return (shouterror(env, tok(env)));
 	}
 	return (true);
 }
 
-t_bool			parseinst(t_asm *env, t_node **tokens)
+t_bool			parseinst(t_asm *env)
 {
 	t_ins	ins;
 
 	env->skip = 2;
 	ins.op = g_op - 1;
-	while ((++ins.op)->token && !ft_strequ(tok(tokens)->val, ins.op->token))
+	while ((++ins.op)->token && !ft_strequ(tok(env)->val, ins.op->token))
 		;
 	if (!ins.op->token)
-		return (errors(env, tokens, &ins, 0));
-	next(tokens);
+		return (errors(env, &ins, 0));
+	next(env);
 	ins.off = env->data.size;
 	pushbytes(env, ins.op->code, sizeof(t_byte));
 	ins.ocp = (ins.op->ocp && !env->toolarge)
@@ -93,10 +95,10 @@ t_bool			parseinst(t_asm *env, t_node **tokens)
 	if (ins.ocp)
 		pushbytes(env, 0, sizeof(t_byte));
 	ins.ac = -1;
-	if (!parsearguments(env, tokens, &ins))
+	if (!parsearguments(env, &ins))
 		return (false);
 	if (ins.ac != ins.op->argcount - 1)
-		return (errors(env, tokens, &ins, 1));
+		return (errors(env, &ins, 1));
 	if (ins.ocp)
 		*ins.ocp <<= (3 - ins.op->argcount) * 2;
 	return (true);

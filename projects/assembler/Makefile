@@ -6,13 +6,14 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/09 20:02:02 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/10 21:41:30 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= "⚙️  assembler :"
-NAME	:= build/asm
-LNKNAME	:= ../../asm
+PROJECT	:= "\>\< asm :"
+EX		:= asm
+NAME	:= build/$(EX)
+LNKNAME	:= ../../$(EX)
 
 INCDIR	:= incs
 SRCDIR	:= srcs

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 20:41:42 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/11 17:06:21 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_asm {
 
 	int			skip;
 	t_bool		toolarge;
+	t_bool		isbinary;
 
 	t_node		*tokens;
 	t_node		*syms;
@@ -80,23 +81,24 @@ int				perr(int e, ...);
 */
 t_node			*lexer(t_asm *env, char *name);
 
-t_bool			parser(t_asm *env, t_node **tokens);
-t_bool			parsecmd(t_asm *env, t_node **tokens);
-t_bool			parseinst(t_asm *env, t_node **tokens);
-t_bool			argind(t_asm *env, t_node **tokens, t_ins *ins);
-t_bool			argreg(t_asm *env, t_node **tokens, t_ins *ins);
-t_bool			argdir(t_asm *env, t_node **tokens, t_ins *ins);
-t_bool			isvalidarg(t_asm *env, t_node **tokens, t_ins *ins, int type);
-t_bool			isvalidnum(t_asm *env, t_node **tokens, size_t start);
-t_bool			isvalidlabel(t_asm *env, t_node **tokens);
+t_bool			parser(t_asm *env);
+t_bool			parsecmd(t_asm *env);
+t_bool			parseinst(t_asm *env);
+t_bool			argind(t_asm *env, t_ins *ins);
+t_bool			argreg(t_asm *env, t_ins *ins);
+t_bool			argdir(t_asm *env, t_ins *ins);
+t_bool			isvalidarg(t_asm *env, t_ins *ins, int type);
+t_bool			isvalidnum(t_asm *env, size_t start);
+t_bool			isvalidlabel(t_asm *env);
+t_bool			shouterror(t_asm *env, t_tok *tok);
 
 /*
 ** Parsing utils
 */
-void			shift(t_node **tokens, int type);
-void			shiftb(t_node **tokens, int type);
-t_tok			*next(t_node **tokens);
-t_tok			*tok(t_node **tokens);
+void			shift(t_asm *env, int type);
+void			shiftb(t_asm *env, int type);
+void			next(t_asm *env);
+t_tok			*tok(t_asm *env);
 t_bool			accept(t_tok *tok, int type);
 
 /*
