@@ -3,27 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
+#    By: lroux <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/07 15:44:41 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/10 21:39:16 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= "⚙️  assembly :"
-NAME	:= build/asm
-LNKNAME	:= ../../asm
+PROJECT	:= "\<\> libprintf :"
+EX		:= libprintf
+NAME	:= build/$(EX).a
+LNKNAME	:= $(EX).a
 
 INCDIR	:= incs
 SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
-SRCS	:= asm.c
+SRCS	:= \
+			wrappers/printf.c \
+			wrappers/dprintf.c \
+			wrappers/sdprintf.c \
+			wrappers/snprintf.c \
+			wrappers/asprintf.c \
+		   \
+			lexer.c map.c \
+			flag.c special.c \
+			entry.c \
+		   \
+			handlers/char.c handlers/int.c handlers/ptr.c \
+			handlers/oct.c handlers/hex.c handlers/bonus.c \
+			handlers/float.c
 
-LIBDIR	:= ../libs
-LIBS	:= libft libpf
+LIBS	:= liblift
+LIBDIR	:= ..
 
-DEBUG	:= 1
+#DEBUG	:= 1
 
 # Include core
-include $(LIBDIR)/project.mk
+include $(LIBDIR)/lib.mk
+

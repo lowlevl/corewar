@@ -6,24 +6,24 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 16:32:12 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/12 15:25:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:58:53 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "socket.h"
 
-#define CYCLE_FORMAT                                                           \
-	HEADER_SOCKET "<cycle> <current>%d</current> <check>%d</check> "           \
-				  "<live>%d</live> </cycle>"
+#define FU1 "<cycle> <current>%d</current> <check>%d</check> "
+#define FU2 "<live>%d</live> </cycle>"
+#define CYCLE_FORMAT HEADER_SOCKET FU1 FU2
 
-int send_cycle(t_socket *socket, t_vm *vm)
+int	send_cycle(t_socket *socket, t_vm *vm)
 {
-	int32_t len;
-	char *  s;
+	int32_t	len;
+	char	*s;
 
 	if (socket->enable != ENABLE_SOCKET)
-		return 0;
+		return (0);
 	len = ft_asprintf(&s, CYCLE_FORMAT, vm->cycle_count, vm->next_check,
 		vm->nb_live_for_cycle);
 	if (s && len > 0)
@@ -32,5 +32,5 @@ int send_cycle(t_socket *socket, t_vm *vm)
 		send_message_to_all(socket, s, len);
 		free(s);
 	}
-	return len;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:42:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:33:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int g_id = 0;
 
-void init_processes(t_vm *vm)
+void	init_processes(t_vm *vm)
 {
 	int		i;
 	size_t  start;
@@ -32,7 +32,7 @@ void init_processes(t_vm *vm)
 	}
 }
 
-void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
+void	init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 {
 	t_process *proc;
 
@@ -51,7 +51,7 @@ void init_process(t_process **head, uint16_t cursor_start, int32_t player_id)
 	DEBUG_PROC && print_proc(proc);
 }
 
-void delete_process(t_process **head)
+void	delete_process(t_process **head)
 {
 	t_process *node;
 	t_process *tmp;
@@ -68,7 +68,7 @@ void delete_process(t_process **head)
 	*head = NULL;
 }
 
-void copy_process(t_vm *vm, t_process *process, size_t pos)
+void	copy_process(t_vm *vm, t_process *process, size_t pos)
 {
 	t_process *dup;
 
