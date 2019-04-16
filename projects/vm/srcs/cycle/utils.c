@@ -35,33 +35,22 @@ void exec_process(t_vm *vm, t_process *process)
 			}
 			if (process->exec_cycle <= vm->cycle_count)
 			{
+				DEBUG_PROC&&ft_dprintf(2, PROC_PRE " proc id #%d\n", process->id);
 				process->exec_cycle = -1;
 				process_move_cursor(process, 1);
 				DEBUG_EXE &&ft_dprintf(2, EXE_TEMPLATE, op->opcode, op->name,
 					vm->cycle_count, get_idx_in_memory(process) - 1);
 				ops->f(vm, process, op);
-				// causing invalid read bc of fork and lfork freeing the old
-				// array
 				DEBUG_CR_P &&ft_dprintf(2, CURSOR_TEMPLATE,
 					get_idx_in_memory(process),
 					vm->memory[get_idx_in_memory(process)]);
 			}
-			// else
-			// 	ft_printf("wait process %p %#x (%s)\r", pos - vm->memory,
-			// 		op->opcode, op->name);
 		}
 		else
-		{
-			// ft_printf("opcode not set: %x (opcode: %s %d)\n", *pos, op->name,
-			// op->opcode - 1);
 			process_move_cursor(process, 1);
-		}
 	}
 	else
-	{
-		// ft_printf("opcode not found: %x\n", *pos);
 		process_move_cursor(process, 1);
-	}
 }
 
 const t_op *get_opcode(uint8_t val)

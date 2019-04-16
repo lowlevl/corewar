@@ -51,6 +51,7 @@
 #define SOCKET_CO_PREFIX      "\e[96mSOCK CO\e[0m    │ "
 #define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m │ "
 #define SOCKET_RE_PREFIX "\e[38;5;46mSOCK RECV\e[0m  │ "
+#define PROC_PRE         "\e[38;5;57mPROC\e[0m       │ "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"

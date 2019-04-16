@@ -45,7 +45,9 @@ void check_cycle(t_vm *vm)
 void exec_cycle(t_vm *vm)
 {
 	t_process *process;
+	size_t	 count;
 
+	count = 0;
 	process = vm->processes;
 	send_procs(vm);
 	send_cycle(&vm->socket, vm);
@@ -53,7 +55,9 @@ void exec_cycle(t_vm *vm)
 	{
 		exec_process(vm, process);
 		process = process->next;
+		count ++;
 	}
+	DEBUG_PROC && ft_dprintf(2, PROC_PRE "%d\n", count);
 	vm->cycle_count++;
 	check_cycle(vm);
 }
