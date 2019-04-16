@@ -28,6 +28,7 @@ int	send_mem_chunk(t_vm *vm, size_t idx, size_t chunk_size)
 	size_t			mem64_size;
 	int32_t			len;
 
+	mem64 = NULL;
 	if (vm->socket.enable != ENABLE_SOCKET)
 		return (0);
 	mem64 = encode_base64(vm->memory + idx, chunk_size, &mem64_size);

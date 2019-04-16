@@ -39,6 +39,7 @@ int			send_dead_proc(t_socket *sock, t_process *proc)
 	char	*s __attribute__((cleanup(clean_simple_ptr)));
 	int32_t	len;
 
+	s = NULL;
 	if (sock->enable != ENABLE_SOCKET)
 		return (0);
 	len = ft_asprintf(&s, DEAD_PROC, proc->id, proc->player_id);
