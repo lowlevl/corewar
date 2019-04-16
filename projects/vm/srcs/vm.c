@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/05 16:40:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 11:40:47 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vm.h>
 
-static int quit(t_vm *vm)
+static int	quit(t_vm *vm)
 {
 	send_end(&vm->socket);
 	delete_process(&vm->processes);
@@ -20,7 +20,7 @@ static int quit(t_vm *vm)
 	return (0);
 }
 
-static int init(t_vm *vm, int ac, char **av)
+static int	init(t_vm *vm, int ac, char **av)
 {
 	init_vm(vm, ac, av);
 	create_server_socket(&vm->socket);
@@ -28,10 +28,10 @@ static int init(t_vm *vm, int ac, char **av)
 	setup_server_interface(&vm->socket);
 	bind_setup_inter(&vm->socket);
 	set_listen_socket(&vm->socket);
-	return 0;
+	return (0);
 }
 
-int main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	static t_vm vm;
 

@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _shutdown.u.c                                      :+:      :+:    :+:   */
+/*   listen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 09:09:44 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/02 10:28:19 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/28 16:02:24 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/04/16 12:05:36 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "socket.h"
 
-int close_clients(t_socket *sock)
+int	set_listen_socket(t_socket *sock)
 {
-	int i;
+	int	rt;
 
-	DEBUG_SOCKET_SETUP &&ft_dprintf(2, SOCKET_CLOSE);
-	i = 0;
-	while (i < sock->nb_client)
-	{
-		close(sock->clients[i].sock);
-		i++;
-	}
-	sock->nb_client = 0;
-	return (0);
-}
-
-int disable_socket(t_socket *sock)
-{
 	if (sock->enable != ENABLE_SOCKET)
-		return 0;
-	DEBUG_SOCKET_SETUP && ft_dprintf(2, SOCKET_SHUTDOWN);
-	// shutdown(sock->server.sock, SHUT_RDWR);
-	close_clients(sock);
-	close(sock->server.sock);
-	sock->enable = DISABLE_SOCKET;
-	return 0;
+		return (0);
+	DEBUG_SOCKET_CO && ft_dprintf(2, SOCKET_LISTEN, MAX_CLIENT_SOCKET);
+	rt = listen(sock->server.sock, MAX_CLIENT_SOCKET);
+	if (rt < 0)
+		perror("listen()");
+	return (rt);
 }

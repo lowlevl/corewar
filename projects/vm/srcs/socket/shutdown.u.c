@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _bind.u.c                                          :+:      :+:    :+:   */
+/*   _shutdown.u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/28 16:04:57 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/02 13:59:09 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/03/29 09:09:44 by fbenneto          #+#    #+#             */
+/*   Updated: 2019/04/16 12:18:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "socket.h"
 
-int bind_setup_inter(t_socket *sock)
+int	close_clients(t_socket *sock)
 {
-	int rt;
+	int	i;
 
+	DEBUG_SOCKET_SETUP && ft_dprintf(2, SOCKET_CLOSE);
+	i = 0;
+	while (i < sock->nb_client)
+	{
+		close(sock->clients[i].sock);
+		i++;
+	}
+	sock->nb_client = 0;
+	return (0);
+}
+
+int	disable_socket(t_socket *sock)
+{
 	if (sock->enable != ENABLE_SOCKET)
-		return 0;
-	DEBUG_SOCKET_SETUP&&ft_dprintf(2, SOCKET_BIND);
-	rt =
-		bind(sock->server.sock, (t_sockaddr *)&sock->server.inter, sizeof(t_sockaddr_in));
-	if (rt < 0)
-		perror("bind()");
-	return rt;
+		return (0);
+	DEBUG_SOCKET_SETUP && ft_dprintf(2, SOCKET_SHUTDOWN);
+	close_clients(sock);
+	close(sock->server.sock);
+	sock->enable = DISABLE_SOCKET;
+	return (0);
 }

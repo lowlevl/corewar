@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/10 10:46:42 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/16 14:17:21 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,14 +64,14 @@ VM_SRC := 	vm/init.c \
 	vm/find.c \
 	vm/winner.c \
 
-SOCKET_SRC := socket/_accept.u.c \
-	socket/_bind.u.c \
-	socket/_other.u.c \
-	socket/_listen.u.c \
-	socket/_send.u.c \
-	socket/_socket.u.c \
-	socket/_interface.u.c \
-	socket/_shutdown.u.c \
+SOCKET_SRC := socket/accept.u.c \
+	socket/bind.u.c \
+	socket/other.u.c \
+	socket/listen.u.c \
+	socket/send.u.c \
+	socket/socket.u.c \
+	socket/interface.u.c \
+	socket/shutdown.u.c \
 	socket/player.c \
 	socket/proc.c \
 	socket/live.c \
