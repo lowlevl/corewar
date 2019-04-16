@@ -6,21 +6,21 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:52 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 16:54:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:32:43 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CYCLE_H
-#define CYCLE_H
+# define CYCLE_H
 
-#include "struct.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include "flags.h"
-#include "proc.h"
+# include "struct.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include "flags.h"
+# include "proc.h"
 
 void		exec_process(t_vm *vm, t_process *process);
-const t_op *get_opcode(uint8_t val);
+const t_op	*get_opcode(uint8_t val);
 void		make_cycle(t_vm *vm);
 
-#endif // !CYCLE_H
+#endif

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/12 10:45:36 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:25:19 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 #include "libpf.h"
 #include "socket.h"
 
-void setup_next_cycle(t_vm *vm)
-{
-	vm->nb_live_for_cycle = 0;
-	vm->next_check = vm->cycle_count + vm->cycle_to_die;
-	DEBUG_CHECK &&ft_dprintf(2, CHECK_PREFIX "next(%d) todie(%d)\n",
-		vm->next_check, vm->cycle_to_die);
-}
-
-void check_cycle(t_vm *vm)
+void	check_cycle(t_vm *vm)
 {
 	if (vm->next_check <= vm->cycle_count)
 	{
-		DEBUG_CHECK &&ft_dprintf(2,
+		DEBUG_CHECK && ft_dprintf(2,
 			CHECK_PREFIX "cycle(%d) live(%d) check(%d)\n", vm->cycle_count,
 			vm->nb_live_for_cycle, vm->nb_check);
 		vm->nb_check++;
@@ -34,15 +26,18 @@ void check_cycle(t_vm *vm)
 		{
 			vm->nb_check = 0;
 			vm->cycle_to_die -= CYCLE_DELTA;
-			DEBUG_CHECK &&ft_dprintf(
+			DEBUG_CHECK && ft_dprintf(
 				2, CHECK_PREFIX "dec todie(%d)\n", vm->cycle_to_die);
 		}
 		filter_process_have_live(vm);
-		setup_next_cycle(vm);
+		vm->nb_live_for_cycle = 0;
+		vm->next_check = vm->cycle_count + vm->cycle_to_die;
+		DEBUG_CHECK && ft_dprintf(2, CHECK_PREFIX "next(%d) todie(%d)\n",
+				vm->next_check, vm->cycle_to_die);
 	}
 }
 
-void exec_cycle(t_vm *vm)
+void	exec_cycle(t_vm *vm)
 {
 	t_process *process;
 
@@ -58,23 +53,19 @@ void exec_cycle(t_vm *vm)
 	check_cycle(vm);
 }
 
-void cycle_until_death(t_vm *vm)
+void	cycle_until_death(t_vm *vm)
 {
 	while (vm->processes_count > 0)
-	{
 		exec_cycle(vm);
-	}
 }
 
-void cycle_until_dump(t_vm *vm)
+void	cycle_until_dump(t_vm *vm)
 {
 	while (vm->cycle_count < vm->dump && vm->processes_count > 0)
-	{
 		exec_cycle(vm);
-	}
 }
 
-void make_cycle(t_vm *vm)
+void	make_cycle(t_vm *vm)
 {
 	if (vm->dump == -1)
 		cycle_until_death(vm);
