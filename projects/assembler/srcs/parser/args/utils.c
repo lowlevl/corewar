@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:26:42 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/03 14:56:48 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/11 17:06:41 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,63 +17,65 @@
 #include "assembler.h"
 #include "lexer.h"
 
-t_bool	isvalidlabel(t_asm *env, t_node **tokens)
+t_bool	isvalidlabel(t_asm *env)
 {
 	size_t	invalid;
 
-	if (tok(tokens)->type != LITTERAL)
+	if (tok(env)->type != LITTERAL)
 	{
-		perr(15, env->sname, tok(tokens)->y, tok(tokens)->x,
-			tok(tokens)->ll, tok(tokens)->ls,
-			tok(tokens)->x, '^');
-		shiftb(tokens, NL);
+		perr(15, env->sname, tok(env)->y, tok(env)->x,
+			tok(env)->ll, tok(env)->ls,
+			tok(env)->x, '^');
+		shiftb(env, NL);
 		return (false);
 	}
-	invalid = ft_strspn(tok(tokens)->val, LABEL_CHARS);
-	if (tok(tokens)->val[invalid])
+	invalid = ft_strspn(tok(env)->val, LABEL_CHARS);
+	if (tok(env)->val[invalid])
 	{
-		perr(8, env->sname, tok(tokens)->y, tok(tokens)->x + invalid,
-			tok(tokens)->val[invalid], tok(tokens)->ll, tok(tokens)->ls,
-			tok(tokens)->x + invalid, '^');
-		shiftb(tokens, NL);
+		perr(8, env->sname, tok(env)->y, tok(env)->x + invalid,
+			tok(env)->val[invalid], tok(env)->ll, tok(env)->ls,
+			tok(env)->x + invalid, '^');
+		shiftb(env, NL);
 		return (false);
 	}
 	return (true);
 }
 
-t_bool	isvalidnum(t_asm *env, t_node **tokens, size_t start)
+t_bool	isvalidnum(t_asm *env, size_t start)
 {
 	size_t	invalid;
 	char	*end;
 
-	if (!tok(tokens)->val[start])
+	if (tok(env)->type == EOF)
+		return (shouterror(env, tok(env)));
+	if (!tok(env)->val[start])
 	{
-		perr(16, env->sname, tok(tokens)->y, tok(tokens)->x + start,
-			tok(tokens)->ll, tok(tokens)->ls,
-			tok(tokens)->x + start, '^');
-		shiftb(tokens, NL);
+		perr(16, env->sname, tok(env)->y, tok(env)->x + start,
+			tok(env)->ll, tok(env)->ls,
+			tok(env)->x + start, '^');
+		shiftb(env, NL);
 		return (false);
 	}
-	ft_strtoll(tok(tokens)->val + start, &end, 0);
-	invalid = end - tok(tokens)->val;
-	if (tok(tokens)->val[invalid])
+	ft_strtoll(tok(env)->val + start, &end, 0);
+	invalid = end - tok(env)->val;
+	if (tok(env)->val[invalid])
 	{
-		perr(14, env->sname, tok(tokens)->y, tok(tokens)->x + invalid,
-			tok(tokens)->val[invalid], tok(tokens)->ll, tok(tokens)->ls,
-			tok(tokens)->x + invalid, '^');
-		shiftb(tokens, NL);
+		perr(14, env->sname, tok(env)->y, tok(env)->x + invalid,
+			tok(env)->val[invalid], tok(env)->ll, tok(env)->ls,
+			tok(env)->x + invalid, '^');
+		shiftb(env, NL);
 		return (false);
 	}
 	return (true);
 }
 
-t_bool	isvalidarg(t_asm *env, t_node **tokens, t_ins *ins, int type)
+t_bool	isvalidarg(t_asm *env, t_ins *ins, int type)
 {
 	if (!(ins->op->argtypes[ins->ac] & type))
 	{
-		perr(10, env->sname, tok(tokens)->y, tok(tokens)->x, ins->op->token,
-				tok(tokens)->ll, tok(tokens)->ls, tok(tokens)->x, '^');
-		shiftb(tokens, NL);
+		perr(10, env->sname, tok(env)->y, tok(env)->x, ins->op->token,
+				tok(env)->ll, tok(env)->ls, tok(env)->x, '^');
+		shiftb(env, NL);
 		return (false);
 	}
 	return (true);

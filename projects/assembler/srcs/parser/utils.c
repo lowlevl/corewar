@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 17:28:49 by lroux             #+#    #+#             */
-/*   Updated: 2019/03/28 17:56:12 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/11 16:50:55 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,43 @@
 #include <lift/string.h>
 #include <libpf.h>
 
-void	shift(t_node **tokens, int type)
+void	shift(t_asm *env, int type)
 {
-	t_tok	*tok;
+	t_tok	*tokn;
 
-	while ((tok = ll_pop(tokens, 0)) && tok->type != type)
-		;
+	if (tok(env)->type == EOF)
+		return ;
+	while ((tokn = tok(env)))
+	{
+		ll_shift(&env->tokens, 1);
+		if (tokn->type == type || tokn->type == EOF)
+			return ;
+	}
 }
 
-void	shiftb(t_node **tokens, int type)
+void	shiftb(t_asm *env, int type)
 {
-	t_tok	*tok;
+	t_tok	*tokn;
 
-	while ((tok = ll_pop(tokens, 0)) && tok->type != type)
-		;
-	ll_add(tokens, tok);
-	ll_shift(tokens, -1);
+	if (tok(env)->type == EOF)
+		return ;
+	while ((tokn = tok(env)))
+	{
+		if (tokn->type == type || tokn->type == EOF)
+			return ;
+		ll_shift(&env->tokens, 1);
+	}
 }
 
-t_tok	*next(t_node **tokens)
+void	next(t_asm *env)
 {
-	return (ll_pop(tokens, 0));
+	if (tok(env)->type != EOF)
+		ll_shift(&env->tokens, 1);
 }
 
-t_tok	*tok(t_node **tokens)
+t_tok	*tok(t_asm *env)
 {
-	return ((*tokens)->data);
+	return (env->tokens->data);
 }
 
 t_bool	accept(t_tok *tok, int type)

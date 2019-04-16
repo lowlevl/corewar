@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 21:15:50 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/16 11:41:01 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_op	g_op[17] =
 		3, {T_REG, T_REG, T_REG},
 		true, 0},
 	{"and", 0x06,
-		3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG},
+		3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
 		true, 4},
 	{"or", 0x07,
 		3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
