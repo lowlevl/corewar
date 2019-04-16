@@ -34,6 +34,7 @@
 #define DEBUG_SOCKET_SETUP 0
 #define DEBUG_SOCKET_CO 0
 #define DEBUG_HEAT_MAP 0
+#define DEBUG_SOCKET_RECV 0
 
 #define READ_PREFIX           "\e[31mREAD\e[0m       │ "
 #define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
@@ -49,6 +50,7 @@
 #define SOCKET_SETUP_PREFIX   "\e[95mSOCK SETUP\e[0m │ "
 #define SOCKET_CO_PREFIX      "\e[96mSOCK CO\e[0m    │ "
 #define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m │ "
+#define SOCKET_RE_PREFIX "\e[38;5;46mSOCK RECV\e[0m  │ "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
@@ -89,8 +91,10 @@
 #define SOCKET_WAITING SOCKET_CO_PREFIX "waiting for new connexion, timeout in (%u sec) (%u usec)\n"
 #define SOCKET_TIMEOUT SOCKET_CO_PREFIX "timeout new connexion\n"
 
-#define SOCKET_SEND SOCKET_SEND_PREFIX "%.*s\n"
+#define SOCKET_SEND SOCKET_SEND_PREFIX "msg(%.*s) len(%d)\n"
 #define SOCKET_PLAYER SOCKET_SEND_PREFIX "player(%s)\n"
 
 #define HEAT_ASSIGN HEAT_PREFIX "player(%u) at(%zu) len(%zu)\n"
+
+#define SOCKET_RECV SOCKET_RE_PREFIX "message(%s) len(%d)\n"
 #endif // !FALGS_H
