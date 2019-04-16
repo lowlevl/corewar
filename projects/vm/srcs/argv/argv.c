@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 10:02:14 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:44:24 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <argv.h>
 
-void init_player(t_vm *vm, char *binary_path, int specified_id)
+void		init_player(t_vm *vm, char *binary_path, int specified_id)
 {
 	t_player *player;
 
@@ -27,14 +27,7 @@ void init_player(t_vm *vm, char *binary_path, int specified_id)
 	vm->players_count++;
 }
 
-static void unknow_option(char **argv, char *opt)
-{
-	ft_dprintf(2, "%s: %s unknow option\n", argv[0], opt);
-	ft_usage();
-	exit(1);
-}
-
-void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
+void		handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 {
 	(void)argc;
 	if (ft_strcmp(HEAT_OPT, argv[*index]) == 0)
@@ -47,10 +40,14 @@ void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 		exit(0);
 	}
 	else
-		unknow_option(argv, argv[*index]);
+	{
+		ft_dprintf(2, "%s: %s unknow option\n", argv[0], argv[*index]);
+		ft_usage();
+		exit(1);
+	}
 }
 
-void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
+void		handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 {
 	if (ft_strcmp(SOCKET_OPT, argv[*index]) == 0)
 	{
@@ -58,19 +55,19 @@ void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
 		if (argc > *index)
 			vm->socket.ip = argv[*index];
 		else
-			return set_errno_exit(EINVAL, ERR_SOCKET_IP);
+			return (set_errno_exit(EINVAL, ERR_SOCKET_IP));
 		*index = *index + 1;
 		if (argc > *index)
 			vm->socket.port = ft_atoi(argv[*index]);
 		else
-			return set_errno_exit(EINVAL, ERR_SOCKET_PORT);
+			return (set_errno_exit(EINVAL, ERR_SOCKET_PORT));
 		vm->socket.enable = ENABLE_SOCKET;
 	}
 	else
 		handle_option_3(vm, argc, argv, index);
 }
 
-void handle_option_1(t_vm *vm, const int argc, char **argv, int *index)
+void		handle_option_1(t_vm *vm, const int argc, char **argv, int *index)
 {
 	int id;
 
@@ -92,7 +89,7 @@ void handle_option_1(t_vm *vm, const int argc, char **argv, int *index)
 		handle_option_2(vm, argc, argv, index);
 }
 
-void handle_option(t_vm *vm, const int argc, char **argv, int *index)
+void		handle_option(t_vm *vm, const int argc, char **argv, int *index)
 {
 	if (ft_strcmp(DUMP_OPT, argv[*index]) == 0)
 	{
