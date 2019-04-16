@@ -40,6 +40,7 @@ typedef struct s_sock_inter
 {
 	int			  sock;
 	t_sockaddr_in inter;
+	unsigned disable : 1;
 } t_sock_inter;
 
 typedef struct s_socket
