@@ -6,24 +6,24 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:10:50 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/26 16:14:31 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:53:07 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <dump.h>
 
-static void ft_swap(uint8_t *n1, uint8_t *n2)
+static void	ft_swap(uint8_t *n1, uint8_t *n2)
 {
-	uint8_t t;
+	uint8_t	t;
 
 	t = *n1;
 	*n1 = *n2;
 	*n2 = t;
 }
 
-static void init_sorted_array(uint8_t *arr, uint8_t max)
+static void	init_sorted_array(uint8_t *arr, uint8_t max)
 {
-	uint8_t i;
+	uint8_t	i;
 
 	i = 0;
 	while (++i < max)
@@ -32,10 +32,10 @@ static void init_sorted_array(uint8_t *arr, uint8_t max)
 	}
 }
 
-static void sort_arr(t_player *players, uint8_t *arr, uint8_t count)
+static void	sort_arr(t_player *players, uint8_t *arr, uint8_t count)
 {
-	uint8_t i;
-	uint8_t j;
+	uint8_t	i;
+	uint8_t	j;
 
 	i = -1;
 	while (++i < count)
@@ -49,11 +49,10 @@ static void sort_arr(t_player *players, uint8_t *arr, uint8_t count)
 				j = 0;
 			}
 		}
-
 	}
 }
 
-void sort_player_by_index(t_vm *vm)
+void		sort_player_by_index(t_vm *vm)
 {
 	init_sorted_array(vm->sorted_players_idx, vm->players_count);
 	sort_arr(vm->players, vm->sorted_players_idx, vm->players_count);

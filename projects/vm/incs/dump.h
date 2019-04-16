@@ -6,28 +6,28 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 10:09:30 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:55:07 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-#define PRINT_H
+#ifndef DUMP_H
+# define DUMP_H
 
-#include <libft.h>
-#include <libpf.h>
-#include "error.h"
-#include "struct.h"
-#include <errno.h>
-#include <op.h>
-#include <stdint.h>
-#include <unistd.h>
-#include "heat_map.h"
+# include <libft.h>
+# include <libpf.h>
+# include "error.h"
+# include "struct.h"
+# include <errno.h>
+# include <op.h>
+# include <stdint.h>
+# include <unistd.h>
+# include "heat_map.h"
 
-#define BYTE_PER_LINE 64
-#define BYTE_PRINT_LENGTH 3
-#define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
-#define LINE_PREFIX 8
-#define NB_LINE MEM_SIZE / BYTE_PER_LINE
+# define BYTE_PER_LINE 64
+# define BYTE_PRINT_LENGTH 3
+# define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
+# define LINE_PREFIX 8
+# define NB_LINE MEM_SIZE / BYTE_PER_LINE
 
 void		print_dump(void *mem);
 void		print_memory(uint8_t *mem);
