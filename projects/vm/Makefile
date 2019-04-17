@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/16 14:17:21 by glodi            ###   ########.fr        #
+#    Updated: 2019/04/17 14:22:18 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ INCDIR	:= incs
 SRCDIR	:= srcs
 OBJDIR	:= build/obj
 
-OPCODE_SRC := opcode/_get.u.c \
-	opcode/_read.u.c \
-	opcode/_write.u.c \
-	opcode/_other.u.c \
+OPCODE_SRC := opcode/get.u.c \
+	opcode/read.u.c \
+	opcode/write.u.c \
+	opcode/other.u.c \
 	opcode/sti.c \
 	opcode/live.c \
 	opcode/st.c \

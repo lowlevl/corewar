@@ -6,17 +6,17 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:46:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 13:42:02 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-static int read_args_exec(
+static int	read_args_exec(
 	uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 {
-	size_t  pos;
-	uint8_t type_arg;
+	size_t	pos;
+	uint8_t	type_arg;
 
 	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
@@ -28,8 +28,7 @@ static int read_args_exec(
 		args[0] =
 			get_indirect_restrict(pos, read_arg(process, mem, T_IND), mem);
 	else
-		return -1;
-
+		return (-1);
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_DIR)
 		args[1] = read_arg(process, mem, T_DIR);
@@ -37,35 +36,35 @@ static int read_args_exec(
 		args[1] =
 			get_indirect_restrict(pos, read_arg(process, mem, T_IND), mem);
 	else
-		return -1;
-
+		return (-1);
 	if (get_type_arg(oc, 2) == T_REG)
 		args[2] = read_arg(process, mem, T_REG);
 	else
-		return -1;
-	return 0;
+		return (-1);
+	return (0);
 }
 
-void exec_ldi(t_vm *vm, t_process *process, const t_op *op)
+void		exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 {
-	size_t   pos;
-	uint8_t  oc;
-	uint32_t args[3];
-	uint32_t adr;
+	size_t		pos;
+	uint8_t		oc;
+	uint32_t	args[3];
+	uint32_t	adr;
 
 	(void)op;
 	pos = get_idx_in_memory(process) - 1;
 	oc = read_octet_code(process, vm->memory);
-	DEBUG_TYPE &&ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
+	DEBUG_TYPE && ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		adr = args[0] + args[1];
 		process->carry = adr == 0;
-		DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "ldi :(%x + %x = %x) r%d\n", args[0] % MEM_SIZE,
-			args[1] % MEM_SIZE, (args[0] + args[1]) % IDX_MOD, args[2]);
+		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "ldi :(%x + %x = %x) r%d\n",
+				args[0] % MEM_SIZE, args[1] % MEM_SIZE,
+				(args[0] + args[1]) % IDX_MOD, args[2]);
 		write_in_registre(
 			process, args[2], get_indirect_restrict(pos, adr, vm->memory));
 	}
-	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
+	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
