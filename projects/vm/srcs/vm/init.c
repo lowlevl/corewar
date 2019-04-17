@@ -6,15 +6,15 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:13:51 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:40:15 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:36:04 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm_utils.h"
 
-void init_vm(t_vm *vm, int argc, char *argv[])
+void	init_vm(t_vm *vm, int argc, char *argv[])
 {
-	int i;
+	int	i;
 
 	i = 0;
 	vm->dump = -1;
@@ -31,5 +31,5 @@ void init_vm(t_vm *vm, int argc, char *argv[])
 			init_player(vm, argv[i], -1);
 	}
 	init_default_ids(vm->players, vm->players_count);
-	DEBUG_VM && print_vm(vm); // Debug
+	DEBUG_VM && print_vm(vm);
 }
