@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/17 14:33:49 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/17 15:05:42 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ off_t		get_file_size(int fd)
 
 static void	check_file_size(const char *file_path, off_t file_size)
 {
-	if (file_size < (off_t)sizeof(header_t))
+	if (file_size < (off_t)sizeof(t_header))
 	{
 		ft_dprintf(2, "%s ", file_path);
 		errno = EINVAL;

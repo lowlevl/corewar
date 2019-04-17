@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:00:28 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/17 15:09:26 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,23 @@ uint32_t	read_arg(t_process *process, uint8_t *mem, int type)
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
 		DEBUG_READ && ft_dprintf(
-			2, READ_TEMPLATE, idx, type, bswap_16((uint16_t)buff));
-		return (bswap_16((uint16_t)buff));
+			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
+		return (BSWAP_16((uint16_t)buff));
 	}
 	else if (type == T_DIR)
 	{
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
 		DEBUG_READ && ft_dprintf(
-			2, READ_TEMPLATE, idx, type, bswap_16((uint16_t)buff));
-		return (bswap_16((uint16_t)buff));
+			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
+		return (BSWAP_16((uint16_t)buff));
 	}
 	else if (type == T_DIR_4)
 	{
 		process_move_cursor(process, 4);
 		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
-		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, bswap_32(buff));
-		return (bswap_32(buff));
+		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, BSWAP_32(buff));
+		return (BSWAP_32(buff));
 	}
 	DEBUG_READ && ft_dprintf(2, READ_TEMPLATE_NOT, type);
 	return (-1);
@@ -85,7 +85,7 @@ uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 	uint32_t	value;
 
 	read_in_memory(memory, (uint8_t *)&value, 4, current + relative);
-	return (bswap_32(value));
+	return (BSWAP_32(value));
 }
 
 uint32_t	get_indirect_restrict(

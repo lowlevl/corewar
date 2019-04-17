@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:56:17 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/17 15:05:24 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_process
 
 typedef struct	s_player
 {
-	header_t	header;
+	t_header	header;
 	char		*file_name;
 	char		*file_buffer;
 	int32_t		id; // Start from 0,-1 if not set

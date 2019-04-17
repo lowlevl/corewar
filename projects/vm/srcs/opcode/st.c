@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 13:34:35 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/17 15:10:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		exec_st(t_vm *vm, t_process *process, const t_op *op)
 			DEBUG_R_FC && ft_dprintf(2,
 				FUNC_PREFIX "st %%%d :(%.2hx + %.2hx = %.2hx)\n", args[0],
 				pos, args[1], get_restrict_address(pos, args[1]));
-			args[0] = bswap_32(args[0]);
+			args[0] = BSWAP_32(args[0]);
 			write_in_mem_wrapper(vm, process, (uint8_t *)args,
 				(t_coord){get_restrict_address(pos, args[1]), sizeof(*args)});
 		}
