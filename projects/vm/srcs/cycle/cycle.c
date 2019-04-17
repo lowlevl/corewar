@@ -61,8 +61,11 @@ void exec_cycle(t_vm *vm)
 	}
 	DEBUG_PROC && ft_dprintf(2, PROC_PRE "total(%d)\n", count);
 	DEBUG_SET_JUMP && ft_dprintf(2, JUMP, vm->jump_to);
-	vm->cycle_count++;
-	// vm->cycle_count = vm->jump_to;
+	// vm->cycle_count++;
+	if (vm->cycle_count < vm->jump_to)
+		vm->cycle_count = vm->jump_to;
+	else
+		vm->cycle_count++;
 	check_cycle(vm);
 }
 
