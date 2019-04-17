@@ -49,6 +49,8 @@ void exec_cycle(t_vm *vm)
 
 	count = 0;
 	process = vm->processes;
+	vm->jump_to = vm->next_check;
+	DEBUG_STEP &&ft_dprintf(2, D_STEP, vm->cycle_count);
 	send_procs(vm);
 	send_cycle(&vm->socket, vm);
 	while (process)
@@ -57,8 +59,10 @@ void exec_cycle(t_vm *vm)
 		process = process->next;
 		count ++;
 	}
-	DEBUG_PROC && ft_dprintf(2, PROC_PRE "%d\n", count);
+	DEBUG_PROC && ft_dprintf(2, PROC_PRE "total(%d)\n", count);
+	DEBUG_SET_JUMP && ft_dprintf(2, JUMP, vm->jump_to);
 	vm->cycle_count++;
+	// vm->cycle_count = vm->jump_to;
 	check_cycle(vm);
 }
 

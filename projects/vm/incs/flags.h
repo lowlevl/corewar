@@ -18,7 +18,7 @@
 ** 1 for on
 */
 
-#define DEBUG_PROC 0
+#define DEBUG_PROC 1
 #define DEBUG_VM 0
 #define DEBUG_READ  0
 #define DEBUG_WRITE 0
@@ -26,15 +26,17 @@
 #define DEBUG_TYPE  0
 #define DEBUG_R_FC  0
 #define DEBUG_CR_P  0
-#define DEBUG_EXE   0
-#define DEBUG_CYCLE 0
+#define DEBUG_EXE   1
+#define DEBUG_CYCLE 1
 #define DEBUG_CARRY 0
-#define DEBUG_CHECK 0
+#define DEBUG_CHECK 1
 #define DEBUG_SOCKET_SEND 0
 #define DEBUG_SOCKET_SETUP 0
 #define DEBUG_SOCKET_CO 0
 #define DEBUG_HEAT_MAP 0
 #define DEBUG_SOCKET_RECV 0
+#define DEBUG_SET_JUMP 1
+#define DEBUG_STEP 1
 
 #define READ_PREFIX           "\e[31mREAD\e[0m       │ "
 #define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
@@ -52,6 +54,8 @@
 #define HEAT_PREFIX     "\e[38;5;202mHEAT MAP 🔥\e[0m │ "
 #define SOCKET_RE_PREFIX "\e[38;5;46mSOCK RECV\e[0m  │ "
 #define PROC_PRE         "\e[38;5;57mPROC\e[0m       │ "
+#define JUMP_PRE        "\e[38;5;127mJUMP\e[0m       │ "
+#define STEP_PRE         "\e[38;5;93mSTEP\e[0m       │ "
 
 #define CHECK_TEMPLATE                                                         \
 	CHECK_PREFIX "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
@@ -98,4 +102,8 @@
 #define HEAT_ASSIGN HEAT_PREFIX "player(%u) at(%zu) len(%zu)\n"
 
 #define SOCKET_RECV SOCKET_RE_PREFIX "message(%s) len(%d)\n"
+
+#define JUMP JUMP_PRE "to(%d)\n"
+
+#define D_STEP STEP_PRE "cycle(%d)\n"
 #endif // !FALGS_H
