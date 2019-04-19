@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/19 17:44:13 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:54:29 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void	print_winner(t_vm *vm)
 	send_message_to_all(&vm->socket, s, len);
 	free(s);
 	ft_printf("Aucun champion n'a gagné, du coup on pourrait dire que tout"
-			"le monde à perdu ? ...\n");
+			" le monde à perdu ? ...\n");
 }

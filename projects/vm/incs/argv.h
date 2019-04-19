@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 14:46:49 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:53:31 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 
 #define COMP_OPT "--disable-jump"
 #define COMP_HELP COMP_OPT " - disable jump counter\n"
+
+#define RANDOM_OPT "--random"
+#define RANDOM_HELP RANDOM_OPT " - INSANITY\n"
 
 /*
 ** Init functions
