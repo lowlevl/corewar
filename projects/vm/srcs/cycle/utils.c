@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:04:55 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:31:09 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ __attribute__((const)) inline const t_op *get_opcode(uint8_t val)
 	val--;
 	if (val >= 0 && val < sizeof(g_op) / sizeof(*g_op))
 	{
-		return g_op + val;
+		return (g_op + val);
 	}
 	errno = EINVAL;
-	return NULL;
+	return (NULL);
 }
 
 const t_op *get_op(t_vm *v, t_process *p)

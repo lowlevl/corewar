@@ -6,14 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 10:03:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/01 10:16:07 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 13:22:05 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dump.h"
 #include "heat_map.h"
 
-static inline void add_val_to_line(char *line, uint8_t val)
+static inline void	add_val_to_line(char *line, uint8_t val)
 {
 	line[0] = (val >> 4);
 	line[1] = (val & 0xf);
@@ -28,11 +28,11 @@ static inline void add_val_to_line(char *line, uint8_t val)
 	line[2] = ' ';
 }
 
-void dump_heat_map(uint8_t *heat_map)
+void				dump_heat_map(uint8_t *heat_map)
 {
-	char   line[LINE_LENGTH + 1];
-	size_t l;
-	size_t c;
+	char	line[LINE_LENGTH + 1];
+	size_t	l;
+	size_t	c;
 
 	l = 0;
 	while (l < NB_LINE)

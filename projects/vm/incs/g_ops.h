@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 14:01:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/15 15:04:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:51:34 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 # include "struct.h"
 
 const t_ops g_ops[17] = {
-	{ "live", exec_live }, // 0x1
-	{ "ld", exec_ld }, // 0x2
-	{ "st", exec_st }, // 0x3
-	{ "add", exec_add }, // 0x4
-	{ "sub", exec_sub }, // 0x5
-	{ "and", exec_and }, // 0x6
-	{ "or", exec_or }, // 0x7
-	{ "xor", exec_xor }, // 0x8
-	{ "zjump", exec_zjump }, // 0x9
-	{ "ldi", exec_ldi }, // 0xa
-	{ "sti", exec_sti }, // 0xb
-	{ "fork", exec_fork }, // 0xc
-	{ "lld", exec_lld }, // 0xd
-	{ "lldi", exec_lldi }, // 0xe
-	{ "lfork", exec_lfork }, // 0xf
-	{ "aff", exec_aff }, // 0x10
-	{NULL, NULL}, // 0x00
+	{ "live", exec_live },
+	{ "ld", exec_ld },
+	{ "st", exec_st },
+	{ "add", exec_add },
+	{ "sub", exec_sub },
+	{ "and", exec_and },
+	{ "or", exec_or },
+	{ "xor", exec_xor },
+	{ "zjump", exec_zjump },
+	{ "ldi", exec_ldi },
+	{ "sti", exec_sti },
+	{ "fork", exec_fork },
+	{ "lld", exec_lld },
+	{ "lldi", exec_lldi },
+	{ "lfork", exec_lfork },
+	{ "aff", exec_aff },
+	{NULL, NULL},
 };
 
-#endif // !G_OPS_H
+#endif

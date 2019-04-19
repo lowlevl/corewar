@@ -6,26 +6,27 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/27 11:36:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 15:09:26 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-uint8_t read_octet_code(t_process *process, uint8_t *mem)
+uint8_t		read_octet_code(t_process *process, uint8_t *mem)
 {
-	uint8_t octect_code;
-	size_t  idx;
+	uint8_t	octect_code;
+	size_t	idx;
 
 	idx = get_idx_in_memory(process);
 	octect_code = mem[idx];
 	process_move_cursor(process, 1);
-	return octect_code;
+	return (octect_code);
 }
 
-void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
+void		read_in_memory(
+		uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
 {
-	uint8_t i;
+	uint8_t	i;
 
 	i = 0;
 	while (i < len)
@@ -35,58 +36,60 @@ void read_in_memory(uint8_t *memory, uint8_t *buffer, uint8_t len, size_t at)
 	}
 }
 
-uint32_t read_arg(t_process *process, uint8_t *mem, int type)
+uint32_t	read_arg(t_process *process, uint8_t *mem, int type)
 {
-	size_t   idx;
-	uint32_t buff;
+	size_t		idx;
+	uint32_t	buff;
 
 	idx = get_idx_in_memory(process);
 	if (type == T_REG)
 	{
 		process_move_cursor(process, 1);
-		DEBUG_READ &&ft_dprintf(2, READ_TEMPLATE, idx, type, mem[idx]);
-		return mem[idx];
+		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, mem[idx]);
+		return (mem[idx]);
 	}
 	else if (type == T_IND)
 	{
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
-		DEBUG_READ &&ft_dprintf(
-			2, READ_TEMPLATE, idx, type, bswap_16((uint16_t)buff));
-		return bswap_16((uint16_t)buff);
+		DEBUG_READ && ft_dprintf(
+			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
+		return (BSWAP_16((uint16_t)buff));
 	}
 	else if (type == T_DIR)
 	{
 		process_move_cursor(process, 2);
 		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
-		DEBUG_READ &&ft_dprintf(
-			2, READ_TEMPLATE, idx, type, bswap_16((uint16_t)buff));
-		return bswap_16((uint16_t)buff);
+		DEBUG_READ && ft_dprintf(
+			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
+		return (BSWAP_16((uint16_t)buff));
 	}
 	else if (type == T_DIR_4)
 	{
 		process_move_cursor(process, 4);
 		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
-		DEBUG_READ &&ft_dprintf(2, READ_TEMPLATE, idx, type, bswap_32(buff));
-		return bswap_32(buff);
+		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, BSWAP_32(buff));
+		return (BSWAP_32(buff));
 	}
-	DEBUG_READ &&ft_dprintf(2, READ_TEMPLATE_NOT, type);
-	return -1;
+	DEBUG_READ && ft_dprintf(2, READ_TEMPLATE_NOT, type);
+	return (-1);
 }
 
-/**
- * TODO
- * utiliser in read memory
- */
-uint32_t get_indirect(size_t current, size_t relative, uint8_t *memory)
+/*
+** TODO
+** utiliser in read memory
+*/
+
+uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 {
-	uint32_t value;
+	uint32_t	value;
 
 	read_in_memory(memory, (uint8_t *)&value, 4, current + relative);
-	return bswap_32(value);
+	return (BSWAP_32(value));
 }
 
-uint32_t get_indirect_restrict(size_t current, size_t to_add, uint8_t *memory)
+uint32_t	get_indirect_restrict(
+		size_t current, size_t to_add, uint8_t *memory)
 {
-	return get_indirect(current, to_add % IDX_MOD, memory);
+	return (get_indirect(current, to_add % IDX_MOD, memory));
 }

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 16:45:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 13:33:11 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/17 14:27:41 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int g_id = 0;
 void	init_processes(t_vm *vm)
 {
 	int		i;
-	size_t  start;
-	int32_t player_id;
+	size_t	start;
+	int32_t	player_id;
 
 	i = 0;
 	vm->processes = NULL;
@@ -57,7 +57,7 @@ void	delete_process(t_process **head)
 	t_process *tmp;
 
 	if (!head || !*head)
-		return;
+		return ;
 	node = *head;
 	while (node)
 	{

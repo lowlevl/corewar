@@ -6,16 +6,16 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 16:44:25 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/12 15:45:51 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:25:41 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "proc.h"
 #include "socket.h"
 
-size_t count_alive_processes(t_process *node)
+size_t		count_alive_processes(t_process *node)
 {
-	size_t count;
+	size_t	count;
 
 	count = 0;
 	while (node)
@@ -24,10 +24,10 @@ size_t count_alive_processes(t_process *node)
 			count++;
 		node = node->next;
 	}
-	return count;
+	return (count);
 }
 
-void reset_process_have_live(t_process *node)
+void		reset_process_have_live(t_process *node)
 {
 	while (node)
 	{
@@ -36,14 +36,15 @@ void reset_process_have_live(t_process *node)
 	}
 }
 
-static void step_forward(t_process **prev, t_process **node)
+static void	step_forward(t_process **prev, t_process **node)
 {
 	*prev = *node;
 	(*node)->have_live = 0;
 	*node = (*node)->next;
 }
 
-static void free_node(t_process **node) {
+static void	free_node(t_process **node)
+{
 	t_process *tmp;
 
 	tmp = *node;
@@ -51,17 +52,17 @@ static void free_node(t_process **node) {
 	free(tmp);
 }
 
-void filter_process_have_live(t_vm *vm)
+void		filter_process_have_live(t_vm *vm)
 {
-	size_t	 nb;
-	t_process *node;
-	t_process *prev;
+	size_t		nb;
+	t_process	*node;
+	t_process	*prev;
 
 	node = vm->processes;
 	prev = NULL;
 	nb = count_alive_processes(node);
 	if (nb == vm->processes_count)
-		return reset_process_have_live(node);
+		return (reset_process_have_live(node));
 	while (node)
 	{
 		if (node->have_live == 0)

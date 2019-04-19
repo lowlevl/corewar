@@ -6,32 +6,32 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:08:42 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/03/29 10:42:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:43:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEBUG_H
-#define DEBUG_H
+# define DEBUG_H
 
-#include "struct.h"
-#include <libpf.h>
-#include <stdlib.h>
+# include "struct.h"
+# include <libpf.h>
+# include <stdlib.h>
 
 /*
 ** Debug functions
 */
-int print_header(t_player *player);
-int print_vm(t_vm *vm);
-int print_players(t_player *players);
-int print_player(t_player *player, char *prefix);
-int print_proc(t_process *proc);
-int debug_socket(t_socket *sock);
+int	print_header(t_player *player);
+int	print_vm(t_vm *vm);
+int	print_players(t_player *players);
+int	print_player(t_player *player, char *prefix);
+int	print_proc(t_process *proc);
+int	debug_socket(t_socket *sock);
 
 /*
 ** Used functions
 */
 
-int print_loaded_players(t_vm *vm);
-int print_loaded_player(t_player *player);
+int	print_loaded_players(t_vm *vm);
+int	print_loaded_player(t_player *player);
 
 #endif

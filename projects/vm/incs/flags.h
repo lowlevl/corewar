@@ -6,14 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/05 16:21:23 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:44:17 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FALGS_H
-#define FALGS_H
+#ifndef FLAGS_H
+# define FLAGS_H
 
-/**
+/*
 ** 0 for off
 ** 1 for on
 */

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 16:03:49 by glodi             #+#    #+#             */
-/*   Updated: 2019/03/12 12:15:20 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:35:28 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_default_ids(t_player *players, int players_count)
 {
-	int 		i;
+	int			i;
 	static int	default_id = 1;
 
 	i = 0;
@@ -31,7 +31,6 @@ void	init_default_ids(t_player *players, int players_count)
 			default_id++;
 	}
 }
-
 
 int		is_unique_id(t_player *players, int players_count, int id)
 {
