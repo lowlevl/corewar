@@ -18,7 +18,6 @@ void	exec_zjump(t_vm *vm, t_process *process, const t_op *op)
 	uint16_t	pos;
 
 	(void)op;
-	// pos = get_idx_in_memory(process) - 1;
 	pos = process->cursor_pos - 1;
 	move_to = read_arg(process, vm->memory, T_DIR);
 	if (process->carry == 1)
