@@ -15,9 +15,11 @@
 void	process_move_cursor(t_process *process, off_t off)
 {
 	process->cursor_pos = (process->cursor_pos + off) % MEM_SIZE;
+	DEBUG_PROC&& ft_dprintf(2, PROC_PRE "move to(%x)\n", process->cursor_pos);
 }
 
-void	process_set_cursor_pos(t_process *process, size_t pos)
+void	process_set_cursor_pos(t_process *process, uint16_t pos)
 {
 	process->cursor_pos = pos % MEM_SIZE;
+	DEBUG_PROC&& ft_dprintf(2, PROC_PRE "new pos(%x)\n", process->cursor_pos);
 }

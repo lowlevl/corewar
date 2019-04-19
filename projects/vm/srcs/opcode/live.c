@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/19 17:42:18 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:48:37 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	print_live(int random, int player_id, char *player_name)
 	ft_printf(template, player_id, player_name);
 }
 
-static void	report_as_live(t_vm *vm, t_player *player)
+static void report_as_live(t_vm *vm, t_player *player)
 {
 	vm->last_player_report_as_live = player->id;
 	vm->nb_live_for_cycle++;
@@ -72,5 +72,6 @@ void		exec_live(t_vm *vm, t_process *process, const t_op *op)
 	if (player)
 		report_as_live(vm, player);
 	else
-		ft_printf("Un champion inconnu (%d) a été signalé en vie.\n", player_id);
+		ft_printf("LIVE - Un champion inconnu (%d) a été signalé en vie.\n",
+				player_id);
 }

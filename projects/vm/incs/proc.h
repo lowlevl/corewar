@@ -38,14 +38,12 @@ void	filter_process_have_live(t_vm *vm);
 /*
 ** Print
 */
-
 void	process_print_taunt_buffer(t_vm *vm, t_process *process);
 
-/*
-** Cursor
-*/
-
+/**
+ * Cursor
+ */
 void	process_move_cursor(t_process *process, off_t off);
-void	process_set_cursor_pos(t_process *process, size_t pos);
+void	process_set_cursor_pos(t_process *process, uint16_t pos);
 
 #endif
