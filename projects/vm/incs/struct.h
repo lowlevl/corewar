@@ -70,6 +70,7 @@ typedef struct s_vm
 	int32_t  cycle_to_die;
 	int64_t  cycle_count;
 	int64_t  jump_to;
+	unsigned disable_jump : 1;
 	uint64_t nb_live_for_cycle;
 
 	t_socket socket;

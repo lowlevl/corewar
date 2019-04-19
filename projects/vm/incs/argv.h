@@ -38,6 +38,9 @@
 #define H_OPT "-h"
 #define H_HELP H_OPT " - show this usage and exit\n"
 
+#define COMP_OPT "--counter"
+#define COMP_HELP COMP_OPT " - disable jump counter"
+
 /*
 ** Init functions
 */

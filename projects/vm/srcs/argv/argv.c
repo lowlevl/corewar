@@ -46,6 +46,10 @@ void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 		ft_usage();
 		exit(0);
 	}
+	else if (ft_strcmp(COMP_OPT, argv[*index]) == 0)
+	{
+		vm->disable_jump = 1;
+	}
 	else
 		unknow_option(argv, argv[*index]);
 }
