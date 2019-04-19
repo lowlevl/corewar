@@ -12,6 +12,7 @@
 
 #include "opcode.h"
 #include "socket.h"
+#include "proc.h"
 
 static void	print(t_vm *vm, t_process *process)
 {
