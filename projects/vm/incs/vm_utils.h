@@ -21,5 +21,7 @@
 void print_winner(t_vm *vm);
 void init_vm(t_vm *vm, int argc, char *argv[]);
 t_player *find_player(t_player *players, size_t player_count, int32_t player_id);
+void clean_vm(t_vm *vm);
+int	quit(t_vm *vm);
 
 #endif // !VM_UTILS_H

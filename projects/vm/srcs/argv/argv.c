@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <argv.h>
+#include "vm_utils.h"
 
 void init_player(t_vm *vm, char *binary_path, int specified_id)
 {
@@ -27,10 +28,11 @@ void init_player(t_vm *vm, char *binary_path, int specified_id)
 	vm->players_count++;
 }
 
-static void unknow_option(char **argv, char *opt)
+static void unknow_option(t_vm *vm, char **argv, char *opt)
 {
 	ft_dprintf(2, "%s: %s unknow option\n", argv[0], opt);
 	ft_usage();
+	quit(vm);
 	exit(1);
 }
 
@@ -44,6 +46,7 @@ void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 	else if (ft_strcmp(H_OPT, argv[*index]) == 0)
 	{
 		ft_usage();
+		quit(vm);
 		exit(0);
 	}
 	else if (ft_strcmp(COMP_OPT, argv[*index]) == 0)
@@ -51,7 +54,7 @@ void handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 		vm->disable_jump = 1;
 	}
 	else
-		unknow_option(argv, argv[*index]);
+		unknow_option(vm, argv, argv[*index]);
 }
 
 void handle_option_2(t_vm *vm, const int argc, char **argv, int *index)
