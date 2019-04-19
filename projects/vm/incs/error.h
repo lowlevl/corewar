@@ -33,6 +33,7 @@
 */
 void	if_errno_printerr_exit(const char *error);
 void	set_errno_exit(const int err_val, const char *msg);
+void	print_usage(void);
 void	exit_print_usage(void);
 
 #endif

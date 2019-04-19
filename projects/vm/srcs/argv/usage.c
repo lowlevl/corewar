@@ -19,4 +19,5 @@ void	ft_usage(void)
 	ft_dprintf(2, HEAT_HELP);
 	ft_dprintf(2, SOCKET_HELP);
 	ft_dprintf(2, H_HELP);
+	ft_dprintf(2, COMP_HELP);
 }

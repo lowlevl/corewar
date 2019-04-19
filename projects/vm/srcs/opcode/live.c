@@ -13,14 +13,14 @@
 #include "opcode.h"
 #include "socket.h"
 
-static void	report_as_live(t_vm *vm, t_player *player)
+static void report_as_live(t_vm *vm, t_player *player, t_process *proc)
 {
 	vm->last_player_report_as_live = player->id;
 	vm->nb_live_for_cycle++;
 	player->total_live_count++;
 	send_live(&vm->socket, player->id);
-	ft_printf("un processus a dit que le joueur %d (%s) est en vie\n",
-		player->id, player->header.prog_name);
+	ft_printf("le proc #%d(%d) a dit que le joueur %d (%s) est en vie\n",
+		proc->id, proc->player_id, player->id, player->header.prog_name);
 }
 
 void		exec_live(t_vm *vm, t_process *process, const t_op *op)
@@ -34,11 +34,9 @@ void		exec_live(t_vm *vm, t_process *process, const t_op *op)
 	process->have_live = 1;
 	DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "live %%%d\n", player_id);
 	if (player)
-		report_as_live(vm, player);
+		report_as_live(vm, player, process);
 	else
-	{
 		ft_printf("un processus souhaite que le joueur avec l'id %x soit en "
-				"vie,\n mais je ne connais de telle joueur\n",
+				  "vie,\n mais je ne connais de tel joueur\n",
 			player_id);
-	}
 }

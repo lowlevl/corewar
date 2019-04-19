@@ -30,9 +30,14 @@ void	set_errno_exit(const int err_val, const char *msg)
 	if_errno_printerr_exit(msg);
 }
 
-void	exit_print_usage(void)
+void	print_usage()
 {
 	ft_printf("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]"
 			" ...\n");
+}
+
+void	exit_print_usage()
+{
+	print_usage();
 	exit(1);
 }

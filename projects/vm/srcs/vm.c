@@ -12,11 +12,12 @@
 
 #include <vm.h>
 
-static int	quit(t_vm *vm)
+int			quit(t_vm *vm)
 {
 	send_end(&vm->socket);
 	delete_process(&vm->processes);
 	disable_socket(&vm->socket);
+	clean_vm(vm);
 	return (0);
 }
 
@@ -29,6 +30,22 @@ static int	init(t_vm *vm, int ac, char **av)
 	bind_setup_inter(&vm->socket);
 	set_listen_socket(&vm->socket);
 	return (0);
+}
+
+void		clean_vm(t_vm *vm)
+{
+	uint32_t i;
+
+	i = 0;
+	if (vm && vm->players_count > 0)
+	{
+		ft_printf("clean vm %d\n", vm->players_count);
+		while (i < vm->players_count)
+		{
+			free(vm->players[i].file_buffer);
+			i++;
+		}
+	}
 }
 
 int			main(int argc, char *argv[])

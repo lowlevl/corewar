@@ -18,7 +18,7 @@ void	exec_lfork(t_vm *vm, t_process *process, const t_op *op)
 	size_t		pos;
 
 	(void)op;
-	pos = get_idx_in_memory(process) - 1;
+	pos = process->cursor_pos - 1;
 	adr = read_arg(process, vm->memory, T_DIR);
 	DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "lfork (%x + %x = %hx)\n", pos, adr,
 			(pos + adr) % IDX_MOD);
