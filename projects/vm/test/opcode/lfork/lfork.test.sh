@@ -10,8 +10,15 @@ function test_loop() {
 	info "done"
 }
 
+function test_loop1() {
+	info "test loop for lfork"
+	$1 test_loop.1.cor
+	info "done"
+}
+
 function run() {
 	title "\nTest lfork opcode\n"
 	test_basic $1
 	test_loop $1
+	test_loop1 $1
 }

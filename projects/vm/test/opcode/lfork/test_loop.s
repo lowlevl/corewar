@@ -16,6 +16,7 @@ sti r1, %:live11, %1
 sti r1, %:live12, %1
 sti r1, %:live13, %1
 sti r1, %:live14, %1
+and r5, r5, r5
 live: live %1
 live1: live %1
 live2: live %1
@@ -32,3 +33,4 @@ live12: live %1
 live13: live %1
 live14: live %1
 lfork %:live
+zjmp %:live
