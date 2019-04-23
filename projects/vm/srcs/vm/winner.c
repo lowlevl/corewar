@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/19 17:54:29 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/23 10:59:19 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static char *g_templates[] = {
 	TEMPLATE_BASE "Veni vidi easy.\"\n",
 	TEMPLATE_BASE "Fatality.\"\n",
 	TEMPLATE_BASE "Ha, trop facile !\"\n",
+	TEMPLATE_BASE "Easy peazy lemon squezy\n",
 };
 
 void	print_random_citation(int player_id, char *player_name) {
