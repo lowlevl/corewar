@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 15:10:25 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:50:54 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ void		handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 {
 	(void)argc;
 	if (ft_strcmp(HEAT_OPT, argv[*index]) == 0)
-	{
 		vm->dump_heat = 1;
-	}
 	else if (ft_strcmp(H_OPT, argv[*index]) == 0)
 	{
 		ft_usage();
@@ -50,9 +48,9 @@ void		handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 		exit(0);
 	}
 	else if (ft_strcmp(COMP_OPT, argv[*index]) == 0)
-	{
 		vm->disable_jump = 1;
-	}
+	else if (ft_strcmp(RANDOM_OPT, argv[*index]) == 0)
+		vm->random_talk = 1;
 	else
 		unknow_option(vm, argv, argv[*index]);
 }

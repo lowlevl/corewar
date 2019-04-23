@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 09:54:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 14:34:01 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/19 17:53:03 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	ft_usage(void)
 	ft_dprintf(2, SOCKET_HELP);
 	ft_dprintf(2, H_HELP);
 	ft_dprintf(2, COMP_HELP);
+	ft_dprintf(2, RANDOM_HELP);
 }
