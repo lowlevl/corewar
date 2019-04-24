@@ -18,7 +18,7 @@ function test_outside() {
 
 function test_ind() {
 	info "test to load to indirect\n"
-	$1 load_ind.cor -dump 1500
+	$1 load_ind.cor --dump 1500
 	info "done"
 }
 

@@ -12,6 +12,8 @@
 
 #include <proc.h>
 
+#define SET_OR_START 1
+
 static int g_id = 0;
 
 void	init_processes(t_vm *vm)
@@ -76,7 +78,13 @@ void	copy_process(t_vm *vm, t_process *process, size_t pos)
 	dup = (t_process *)malloc(sizeof(t_process));
 	if_errno_printerr_exit(ERR_NEW_PROC_MALL);
 	ft_memcpy(dup, process, sizeof(t_process));
-	dup->cursor_pos = pos;
+	if (SET_OR_START)
+		dup->cursor_pos = pos;
+	else
+	{
+		dup->cursor_start += pos;
+		dup->cursor_pos = 0;
+	}
 	vm->processes_count++;
 	dup->next = vm->processes;
 	dup->id = g_id;

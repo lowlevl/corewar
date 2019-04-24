@@ -85,6 +85,9 @@ uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 	uint32_t	value;
 
 	read_in_memory(memory, (uint8_t *)&value, 4, current + relative);
+	DEBUG_GET&&ft_dprintf(2,
+		GET_PREFIX "read mem at(%hhx + %hhx = %hhx) get(%x)\n",
+		current, relative, current + relative, value);
 	return (BSWAP_32(value));
 }
 
