@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/23 10:58:00 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:47:27 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 # define H_OPT "-h"
 # define H_HELP H_OPT " - show this usage and exit\n"
 
-#define COMP_OPT "--disable-jump"
-#define COMP_HELP COMP_OPT " - disable jump counter\n"
+# define COMP_OPT "--disable-jump"
+# define COMP_HELP COMP_OPT " - disable jump counter\n"
 
-#define RANDOM_OPT "--random"
-#define RANDOM_HELP RANDOM_OPT " - Sun Tzu, Coluche and more...\n"
+# define RANDOM_OPT "--random"
+# define RANDOM_HELP RANDOM_OPT " - Sun Tzu, Coluche and more...\n"
 
 /*
 ** Init functions

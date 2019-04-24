@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:09 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 18:31:09 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:56:02 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void exec_process(t_vm *vm, t_process *process)
 			set_jump_to(vm, process->exec_cycle);
 		return;
 	}
-	DEBUG_EXE &&ft_dprintf(2, EXE_PREFIX "skip\n");
+	DEBUG_EXE && ft_dprintf(2, EXE_PREFIX "skip\n");
 	process_move_cursor(process, 1);
 	set_jump_to(vm, vm->cycle_count + 1);
 }

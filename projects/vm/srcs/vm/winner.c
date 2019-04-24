@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/23 10:59:19 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:54:59 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static char *g_templates[] = {
 	TEMPLATE_BASE "Easy peazy lemon squezy\n",
 };
 
-void	print_random_citation(int player_id, char *player_name) {
+void	print_random_citation(int player_id, char *player_name)
+{
 	char *template;
 
 	template = g_templates[rand() % TEMPLATE_COUNT];

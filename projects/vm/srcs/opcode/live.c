@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/19 17:48:37 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:53:05 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char *g_templates[] = {
 	TEMPLATE_BASE "Que serait la vie, sans notre Maman.\"\n",
 	TEMPLATE_BASE "Quand on ne sait pas ce qu'est la vie, comment "
 	"pourrait-on savoir ce qu'est la mort ?\"\n",
-	TEMPLATE_BASE "Qui suis-je ? Où vais-je ? Qu'est-ce qu'on mange à midi ?\"\n",
+	TEMPLATE_BASE "Qui suis-je? Où vais-je? Qu'est-ce qu'on mange à midi?\"\n",
 	TEMPLATE_BASE "La bible ne fait pas le moine\"\n",
 	TEMPLATE_BASE "Un clavier azerty en vaut deux\"\n",
 	TEMPLATE_BASE "C'est en forgeant qu'on devient forgeron, mais ce n'est "
@@ -50,7 +50,7 @@ static void	print_live(int random, int player_id, char *player_name)
 	ft_printf(template, player_id, player_name);
 }
 
-static void report_as_live(t_vm *vm, t_player *player)
+static void	report_as_live(t_vm *vm, t_player *player)
 {
 	vm->last_player_report_as_live = player->id;
 	vm->nb_live_for_cycle++;

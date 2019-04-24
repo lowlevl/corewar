@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:49:40 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/17 13:18:31 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:52:09 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	set_errno_exit(const int err_val, const char *msg)
 	if_errno_printerr_exit(msg);
 }
 
-void	print_usage()
+void	print_usage(void)
 {
 	ft_printf("Usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor]"
 			" ...\n");
 }
 
-void	exit_print_usage()
+void	exit_print_usage(void)
 {
 	print_usage();
 	exit(1);
