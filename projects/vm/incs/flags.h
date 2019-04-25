@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:44:17 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 16:41:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define DEBUG_GET   1
 #define DEBUG_TYPE  0
 #define DEBUG_R_FC  1
-#define DEBUG_CR_P  0
+#define DEBUG_CR_P  1
 #define DEBUG_EXE   0
 #define DEBUG_CYCLE 0
 #define DEBUG_CARRY 1
