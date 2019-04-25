@@ -2,6 +2,10 @@
 corewar
 asm
 build
+bin
+*.log
+obj
+packages
 
 # Ignore auto generated tag files
 tags
