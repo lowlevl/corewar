@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Config -->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{6D7FBF68-D923-41F8-9B8B-33AFF6A66FD2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Visu</RootNamespace>
+    <AssemblyName>Visu</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <!-- Debug -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <!-- Release -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.1\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="src\OptionParser\Option.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\OptionParser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Visu.csproj" />
+    <Compile Include="src\Ncurse\ColorPair.cs" />
+    <Compile Include="src\Ncurse\Curse.cs" />
+    <Compile Include="src\Ncurse\Delegates.cs" />
+    <Compile Include="src\Ncurse\Methods.cs" />
+    <Compile Include="src\Ncurse\UnmanagedLib.cs" />
+    <Compile Include="src\Ncurse\Window.cs" />
+    <Compile Include="src\Ncurse\define\ColorCode.cs" />
+    <Compile Include="src\Ncurse\define\CursorMode.cs" />
+    <Compile Include="src\Ncurse\define\TextAttribute.cs" />
+    <Compile Include="src\Ncurse\define\WinAttribute.cs" />
+    <Compile Include="src\Com\Socket.cs" />
+    <Compile Include="src\Com\SocketMessageEventArgs.cs" />
+    <Compile Include="src\XmlParser\Parser.cs" />
+    <None Include="packages.config" />
+    <Compile Include="src\Display\DisplayVM.cs" />
+    <Compile Include="src\Display\Vm.cs" />
+    <Compile Include="src\XmlParser\parser\Map.cs" />
+    <Compile Include="src\XmlParser\parser\Mem.cs" />
+    <Compile Include="src\XmlParser\parser\Player.cs" />
+    <Compile Include="src\XmlParser\parser\Proc.cs" />
+    <Compile Include="src\XmlParser\parser\Winner.cs" />
+    <Compile Include="src\XmlParser\parser\Aff.cs" />
+    <Compile Include="src\XmlParser\parser\Cycle.cs" />
+    <Compile Include="src\XmlParser\parser\Live.cs" />
+    <Compile Include="src\XmlParser\parser\End.cs" />
+    <Compile Include="src\Display\Player.cs" />
+    <Compile Include="src\Display\Panel.cs" />
+    <Compile Include="src\XmlParser\parser\Dead.cs" />
+    <Compile Include="src\Display\Players.cs" />
+    <Compile Include="src\Display\Welcome.cs" />
+    <Compile Include="src\Display\Cycle.cs" />
+    <Compile Include="src\Display\End.cs" />
+    <Compile Include="src\Display\Symbol.cs" />
+    <Compile Include="src\Display\Command.cs" />
+    <Compile Include="src\OptionParser\OptionArgv.cs" />
+    <Compile Include="src\OptionParser\Exception.cs" />
+    <Compile Include="src\Log.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
