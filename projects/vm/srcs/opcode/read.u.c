@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _read.u.c                                          :+:      :+:    :+:   */
+/*   read.u.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 15:09:26 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 10:05:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,50 +35,6 @@ void		read_in_memory(
 		i++;
 	}
 }
-
-uint32_t	read_arg(t_process *process, uint8_t *mem, int type)
-{
-	size_t		idx;
-	uint32_t	buff;
-
-	idx = get_idx_in_memory(process);
-	if (type == T_REG)
-	{
-		process_move_cursor(process, 1);
-		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, mem[idx]);
-		return (mem[idx]);
-	}
-	else if (type == T_IND)
-	{
-		process_move_cursor(process, 2);
-		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
-		DEBUG_READ && ft_dprintf(
-			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
-		return (BSWAP_16((uint16_t)buff));
-	}
-	else if (type == T_DIR)
-	{
-		process_move_cursor(process, 2);
-		read_in_memory(mem, (uint8_t *)&buff, 2, idx);
-		DEBUG_READ && ft_dprintf(
-			2, READ_TEMPLATE, idx, type, BSWAP_16((uint16_t)buff));
-		return (BSWAP_16((uint16_t)buff));
-	}
-	else if (type == T_DIR_4)
-	{
-		process_move_cursor(process, 4);
-		read_in_memory(mem, (uint8_t *)&buff, 4, idx);
-		DEBUG_READ && ft_dprintf(2, READ_TEMPLATE, idx, type, BSWAP_32(buff));
-		return (BSWAP_32(buff));
-	}
-	DEBUG_READ && ft_dprintf(2, READ_TEMPLATE_NOT, type);
-	return (-1);
-}
-
-/*
-** TODO
-** utiliser in read memory
-*/
 
 uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 {

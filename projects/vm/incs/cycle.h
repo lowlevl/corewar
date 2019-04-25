@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:52 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 09:29:27 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/25 10:20:21 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ const t_op	*get_opcode(uint8_t val);
 void		make_cycle(t_vm *vm);
 void		set_jump_to(t_vm *vm, int64_t exec_cycle);
 int			setup_next_exec(
-    t_vm *vm, t_process *process, const t_op *op, off_t off);
+	t_vm *vm, t_process *process, const t_op *op, off_t off);
 
 #endif

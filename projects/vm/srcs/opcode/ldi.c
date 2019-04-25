@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 13:42:02 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 09:50:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,8 @@ static int	read_args_exec(
 
 	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
-	if (type_arg == T_REG)
-		args[0] = get_reg(process, read_arg(process, mem, T_REG));
-	else if (type_arg == T_DIR)
-		args[0] = read_arg(process, mem, T_DIR);
-	else if (type_arg == T_IND)
-		args[0] =
-			get_indirect_restrict(pos, read_arg(process, mem, T_IND), mem);
-	else
+	if (get_argument_all_restrict(
+		(size_t[2]){ type_arg, pos }, args, mem, process))
 		return (-1);
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_DIR)

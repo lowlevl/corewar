@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 15:10:11 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 10:01:22 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ static int	read_args_st(
 	return (0);
 }
 
+static void	exec_st_in(
+	t_process *process, uint32_t args[2], size_t info[2], t_vm *vm)
+{
+	process->carry = args[0] == 0;
+	if (get_type_arg(info[0], 1) == T_REG)
+	{
+		DEBUG_R_FC && ft_dprintf(
+			2, FUNC_PREFIX "st %%%d r%d\n", args[0], args[1]);
+		write_in_registre(process, args[1], args[0]);
+	}
+	else if (get_type_arg(info[0], 1) == T_IND)
+	{
+		DEBUG_R_FC && ft_dprintf(2,
+			FUNC_PREFIX "st %%%d :(%.2hx + %.2hx = %.2hx)\n", args[0], info[1],
+			args[1], get_restrict_address(info[1], args[1]));
+		args[0] = BSWAP_32(args[0]);
+		write_in_mem_wrapper(vm, process, (uint8_t *)args,
+			(t_coord){get_restrict_address(info[1], args[1]), sizeof(*args)});
+	}
+}
+
 void		exec_st(t_vm *vm, t_process *process, const t_op *op)
 {
 	uint8_t		oc;
@@ -46,22 +67,7 @@ void		exec_st(t_vm *vm, t_process *process, const t_op *op)
 		2, TYPE_TEMPLATE_2, get_type_arg(oc, 0), get_type_arg(oc, 1));
 	if (read_args_st(vm->memory, process, args, oc) == 0)
 	{
-		process->carry = args[0] == 0;
-		if (get_type_arg(oc, 1) == T_REG)
-		{
-			DEBUG_R_FC && ft_dprintf(
-				2, FUNC_PREFIX "st %%%d r%d\n", args[0], args[1]);
-			write_in_registre(process, args[1], args[0]);
-		}
-		else if (get_type_arg(oc, 1) == T_IND)
-		{
-			DEBUG_R_FC && ft_dprintf(2,
-				FUNC_PREFIX "st %%%d :(%.2hx + %.2hx = %.2hx)\n", args[0],
-				pos, args[1], get_restrict_address(pos, args[1]));
-			args[0] = BSWAP_32(args[0]);
-			write_in_mem_wrapper(vm, process, (uint8_t *)args,
-				(t_coord){get_restrict_address(pos, args[1]), sizeof(*args)});
-		}
+		exec_st_in(process, args, (size_t[2]){oc, pos}, vm);
 	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
