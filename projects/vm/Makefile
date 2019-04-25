@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/25 09:30:01 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/25 09:35:11 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ PROC_SRC := proc/proc.c \
 ARGV_SRC :=	argv/argv.c \
 	argv/id.c \
 	argv/usage.c \
+	argv/option.c \
 
 CYCLE_SRC := cycle/cycle.c \
 	cycle/utils.c \
