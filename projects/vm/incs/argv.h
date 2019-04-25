@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 10:55:04 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 13:01:11 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define HEAT_HELP HEAT_OPT " - dump the heat map at the end\n"
 
 # define SOCKET_OPT "--socket"
-
 # define YOLO " [ip] [port] - open a socket at ip [ip] on port [port]\n"
 # define SOCKET_HELP SOCKET_OPT YOLO
 

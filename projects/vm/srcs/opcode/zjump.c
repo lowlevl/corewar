@@ -24,6 +24,6 @@ void	exec_zjump(t_vm *vm, t_process *process, const t_op *op)
 	{
 		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "zjmp :(%hx + %hx = %hx)\n",
 				pos, move_to, (pos + move_to) % MEM_SIZE);
-		process_set_cursor_pos(process, pos + move_to);
+		process_set_cursor_pos(process, move_to);
 	}
 }
