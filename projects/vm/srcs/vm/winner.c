@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/24 13:54:59 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 09:38:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char *g_templates[] = {
 	TEMPLATE_BASE "Easy peazy lemon squezy\n",
 };
 
-void	print_random_citation(int player_id, char *player_name)
+void		print_random_citation(int player_id, char *player_name)
 {
 	char *template;
 
@@ -38,7 +38,23 @@ void	print_random_citation(int player_id, char *player_name)
 	ft_printf(template, player_id, player_name);
 }
 
-void	print_winner(t_vm *vm)
+static void	handle_winner(t_vm *vm, t_player *player, int64_t winner_id)
+{
+	if (vm->random_talk)
+		print_random_citation(winner_id, player->header.prog_name);
+	else
+	{
+		ft_printf("WINNER - Le Champion %zd (%s) a écrasé ses ennemis.",
+				player->id, player->header.prog_name);
+		if (vm->players_count <= 1)
+			ft_printf(" (en même temps, il était seul)\n");
+		else
+			ft_printf("\n");
+	}
+	send_winner(player, &vm->socket);
+}
+
+void		print_winner(t_vm *vm)
 {
 	uint8_t		i;
 	int64_t		winner_id;
@@ -54,19 +70,7 @@ void	print_winner(t_vm *vm)
 	{
 		if (players[i].id == winner_id)
 		{
-			if (vm->random_talk)
-				print_random_citation(winner_id, players[i].header.prog_name);
-			else
-			{
-				ft_printf("WINNER - Le Champion %zd (%s) a écrasé ses ennemis.",
-						players[i].id, players[i].header.prog_name);
-				if (vm->players_count <= 1)
-					ft_printf(" (en même temps, il était seul)\n");
-				else
-					ft_printf("\n");
-			}
-			send_winner(players + i, &vm->socket);
-			return ;
+			return (handle_winner(vm, players + i, winner_id));
 		}
 	}
 	len = ft_asprintf(&s, FORMAT_NO_WINNER);
