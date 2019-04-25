@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/17 14:22:18 by glodi            ###   ########.fr        #
+#    Updated: 2019/04/25 09:30:01 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ ARGV_SRC :=	argv/argv.c \
 
 CYCLE_SRC := cycle/cycle.c \
 	cycle/utils.c \
+	cycle/exec.u.c \
 
 DEBUG_SRC := debug/header.c \
 	debug/procs.c \
