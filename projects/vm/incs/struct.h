@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/19 11:32:32 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:49:24 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 
 typedef struct	s_process
 {
-	uint8_t				carry; // not sure the type is ok
+	uint8_t				carry;
 	int64_t				exec_cycle;
 	uint16_t			cursor_start;
-	uint16_t			cursor_pos; // pc
+	uint16_t			cursor_pos;
 	uint32_t			regs[REG_NUMBER];
 	char				taunt_buffer[TAUNT_BUFFER_SIZE];
 	uint16_t			taunt_size;
@@ -45,7 +45,7 @@ typedef struct	s_player
 	t_header	header;
 	char		*file_name;
 	char		*file_buffer;
-	int32_t		id; // Start from 0,-1 if not set
+	int32_t		id;
 	uint32_t	total_live_count;
 	uint32_t	processes_count;
 }				t_player;
@@ -86,7 +86,7 @@ typedef struct	s_op
 	uint32_t	duration;
 	char		*long_name;
 	uint8_t		has_opt;
-	uint8_t		direct_size; // Need verif
+	uint8_t		direct_size;
 }				t_op;
 
 typedef struct	s_ops

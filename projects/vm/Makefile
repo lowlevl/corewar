@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/17 14:22:18 by glodi            ###   ########.fr        #
+#    Updated: 2019/04/25 10:41:58 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJDIR	:= build/obj
 
 OPCODE_SRC := opcode/get.u.c \
 	opcode/read.u.c \
+	opcode/read.2.u.c \
 	opcode/write.u.c \
 	opcode/other.u.c \
 	opcode/sti.c \
@@ -51,9 +52,11 @@ PROC_SRC := proc/proc.c \
 ARGV_SRC :=	argv/argv.c \
 	argv/id.c \
 	argv/usage.c \
+	argv/option.c \
 
 CYCLE_SRC := cycle/cycle.c \
 	cycle/utils.c \
+	cycle/exec.u.c \
 
 DEBUG_SRC := debug/header.c \
 	debug/procs.c \

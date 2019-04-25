@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 12:15:15 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:54:05 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_reply(t_sock_inter *dest)
 		return (recv_bit);
 	}
 	reply[recv_bit] = 0;
-	DEBUG_SOCKET_RECV &&ft_dprintf(2, SOCKET_RECV, reply, recv_bit);
+	DEBUG_SOCKET_RECV && ft_dprintf(2, SOCKET_RECV, reply, recv_bit);
 	if (ft_strcmp("ok", reply))
 		dest->disable = 1;
 	return (recv_bit);

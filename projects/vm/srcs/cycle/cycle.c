@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 09:48:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 18:25:19 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/24 13:51:30 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ void	check_cycle(t_vm *vm)
 
 void	exec_cycle(t_vm *vm)
 {
-	t_process *process;
-	size_t	 count;
+	t_process	*process;
+	size_t		count;
 
 	count = 0;
 	process = vm->processes;
 	vm->jump_to = vm->next_check;
-	DEBUG_STEP &&ft_dprintf(2, D_STEP, vm->cycle_count);
+	DEBUG_STEP && ft_dprintf(2, D_STEP, vm->cycle_count);
 	send_procs(vm);
 	send_cycle(&vm->socket, vm);
 	while (process)
 	{
 		exec_process(vm, process);
 		process = process->next;
-		count ++;
+		count++;
 	}
 	DEBUG_PROC && ft_dprintf(2, PROC_PRE "total(%d)\n", count);
 	DEBUG_SET_JUMP && ft_dprintf(2, JUMP, vm->jump_to);
