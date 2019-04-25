@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/24 13:47:27 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/25 10:41:12 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define HEAT_OPT "--heat"
 # define HEAT_HELP HEAT_OPT " - dump the heat map at the end\n"
 
-# define SOCKET_OPT "--socket [ip] [port]"
-# define SOCKET_HELP SOCKET_OPT " - open a socket at ip [ip] on port [port]\n"
+# define SOCKET_OPT "--socket"
+# define SOCKET_HELP SOCKET_OPT " [ip] [port] - open a socket at ip [ip] on port [port]\n"
 
 # define H_OPT "-h"
 # define H_HELP H_OPT " - show this usage and exit\n"
