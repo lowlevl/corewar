@@ -6,7 +6,7 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/25 09:35:11 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/25 10:41:58 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJDIR	:= build/obj
 
 OPCODE_SRC := opcode/get.u.c \
 	opcode/read.u.c \
+	opcode/read.2.u.c \
 	opcode/write.u.c \
 	opcode/other.u.c \
 	opcode/sti.c \
