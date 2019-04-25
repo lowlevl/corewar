@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 10:05:01 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/25 14:46:52 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 	uint32_t	value;
 
 	read_in_memory(memory, (uint8_t *)&value, 4, current + relative);
-	DEBUG_GET&&ft_dprintf(2,
+	DEBUG_GET && ft_dprintf(2,
 		GET_PREFIX "read mem at(%hhx + %hhx = %hhx) get(%x)\n",
 		current, relative, current + relative, value);
 	return (BSWAP_32(value));
