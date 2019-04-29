@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:25:18 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/29 13:59:18 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,29 @@
 #include <lift/char.h>
 #include <libpf.h>
 
+static t_bool	labelneverappeared(t_asm *env)
+{
+	t_node *cur;
+
+	cur = env->syms;
+	while (cur)
+	{
+		if (ft_strequ(tok(env)->val, ((t_symref*)cur->data)->name))
+		{
+			perr(23, env->sname, tok(env)->y, tok(env)->x, tok(env)->val);
+			shiftb(env, NL);
+			return (false);
+		}
+		cur = cur->next;
+		if (cur == env->syms)
+			break ;
+	}
+	return (true);
+}
+
 static t_bool	parselabels(t_asm *env)
 {
-	if (!isvalidlabel(env))
+	if (!isvalidlabel(env) || !labelneverappeared(env))
 		return (false);
 	ll_add(&env->syms, newsymref(tok(env)->val, env->data.size, 0, 0));
 	shift(env, LBLMARK);

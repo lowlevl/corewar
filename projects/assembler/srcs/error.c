@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/09 21:46:01 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/29 14:01:03 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static const char	*g_err[128] = {
 	[12] = "{bold}%s:%d:%d: "
 	"{red}error:{eoc} Expected token but found a newline instead:\n"
 	"%.*s\n"
-	"{bold}%*c-- Help:{eoc} Did you forgot something ?\n",
+	"{bold}%*c-- Help:{eoc} Did you forget something ?\n",
 	[13] = "{bold}%s:%d:%d: "
 	"{red}error:{eoc} Not enought parameters for instruction '%s':\n"
 	"%.*s\n"
@@ -81,7 +81,9 @@ static const char	*g_err[128] = {
 	"or {under}entirely{eoc}(-1): %d/%d bytes to be written.\n",
 	[22] = "{bold}%s: {red}error:{eoc} "
 	"You {under}successfully{eoc} provided a binary file. Well played, "
-	"here is your gift:\n{doge}"
+	"here is your gift:\n{doge}",
+	[23] = "{bold}%s:%d:%d: {red}error:{eoc} "
+	"The label '%s' has already been defined.\n"
 };
 
 int					perr(int e, ...)

@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:06:21 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/29 13:42:47 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@
 # include <lift/list.h>
 # include "op.h"
 
-# define MAX_FILEOUT (sizeof(t_head) + CHAMP_MAX_SIZE)
+/*
+** Here lays good and maintainable code, fucked by the norm,
+**  once again this bloodthirsty monster killed good practices.
+**
+** # define MAX_FILEOUT (sizeof(t_head) + CHAMP_MAX_SIZE)
+*/
+# define MAX_FILEOUT 2874
 
 typedef struct __attribute__((__packed__))	s_binary {
 	t_head	head;
