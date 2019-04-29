@@ -80,7 +80,8 @@ namespace Display
             {
                 chunk.CopyTo(dump, at);
             }
-            // OnChange(at, len);
+            DumpMem();
+            OnChange(at, len);
         }
 
         public void SetOwnerZone(int at, int len, byte owner)
@@ -109,6 +110,12 @@ namespace Display
 
         public void SetOwnerZone(int at, byte[] heatMap)
         {
+            // StringBuilder st = new StringBuilder(string.Format("set owner at({0}) size({1})", at, heatMap.Length));
+            // for (int i = 0; i < heatMap.Length; i++)
+            // {
+            //     st.AppendFormat("{0} ", heatMap[i]);
+            // }
+            // Logger.Log.WriteLine(st.ToString());
             if (heatMap == null)
                 InitDump(heatMap.Length);
             heatMap.CopyTo(this.heatMap, at);
@@ -123,7 +130,7 @@ namespace Display
             {
                 stringBuilder.AppendFormat("{0} ", heatMap[i]);
             }
-            Console.Error.WriteLine(stringBuilder);
+            Logger.Log.WriteLine(stringBuilder.ToString());
         }
 
         public void DumpMem()
@@ -133,7 +140,7 @@ namespace Display
             {
                 stringBuilder.AppendFormat("{0} ", dump[i]);
             }
-            Console.Error.WriteLine(stringBuilder);
+            Logger.Log.WriteLine(stringBuilder.ToString());
         }
 
         protected virtual void OnChange(int at, int len)
@@ -159,6 +166,7 @@ namespace Display
                 ProcessusList.Add(e.Id, proc);
                 OnNewProc(ref proc);
             }
+            Logger.Log.WriteLine("proc id({0}) pos({1})", e.Id, e.Pos);
         }
     }
 }
