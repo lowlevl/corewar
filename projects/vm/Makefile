@@ -6,11 +6,11 @@
 #    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/25 10:41:58 by fbenneto         ###   ########.fr        #
+#    Updated: 2019/04/29 10:49:21 by lroux            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= "⚙️  vm :"
+PROJECT	:= "\>\< vm :"
 NAME	:= build/corewar
 LNKNAME	:= ../../corewar
 
@@ -104,7 +104,7 @@ SRCS	:= vm.c \
 LIBDIR	:= ../libs
 LIBS	:= libft libpf
 
-DEBUG	:= 1
+#DEBUG	:= 1
 
 # Include core
 include $(LIBDIR)/project.mk
