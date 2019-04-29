@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/16 11:40:47 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/26 09:12:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void		clean_vm(t_vm *vm)
 	i = 0;
 	if (vm && vm->players_count > 0)
 	{
-		ft_printf("clean vm %d\n", vm->players_count);
 		while (i < vm->players_count)
 		{
 			free(vm->players[i].file_buffer);

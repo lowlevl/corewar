@@ -20,5 +20,5 @@ function run() {
 	title "\nTest lfork opcode\n"
 	test_basic $1
 	test_loop $1
-	test_loop1 $1
+	# test_loop1 $1
 }
