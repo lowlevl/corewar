@@ -110,12 +110,6 @@ namespace Display
 
         public void SetOwnerZone(int at, byte[] heatMap)
         {
-            // StringBuilder st = new StringBuilder(string.Format("set owner at({0}) size({1})", at, heatMap.Length));
-            // for (int i = 0; i < heatMap.Length; i++)
-            // {
-            //     st.AppendFormat("{0} ", heatMap[i]);
-            // }
-            // Logger.Log.WriteLine(st.ToString());
             if (heatMap == null)
                 InitDump(heatMap.Length);
             heatMap.CopyTo(this.heatMap, at);
