@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/17 15:05:42 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 15:35:37 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,17 @@ static void	check_file_size(const char *file_path, off_t file_size)
 	}
 }
 
-void		*get_file_buffer(char *file_path)
+void		*get_file_buffer(char *file_path, off_t *file_size)
 {
 	int		fd;
 	void	*file_buffer;
-	off_t	file_size;
 
 	fd = get_fd(file_path);
-	file_size = get_file_size(fd);
-	check_file_size(file_path, file_size);
-	file_buffer = malloc(file_size);
+	*file_size = get_file_size(fd);
+	check_file_size(file_path, *file_size);
+	file_buffer = ft_calloc(1, *file_size + 1);
 	if_errno_printerr_exit(NULL);
-	read(fd, file_buffer, file_size);
+	read(fd, file_buffer, *file_size);
 	if_errno_printerr_exit(NULL);
 	close(fd);
 	if_errno_printerr_exit(NULL);

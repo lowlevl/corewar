@@ -6,7 +6,7 @@
 /*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 15:04:54 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 15:29:03 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ERR_SOCKET_IP "missing ip for --socket"
 # define ERR_SOCKET_PORT "missing port for --socket"
 # define ERR_TOO_MANY_PLAYERS "Too many players"
+# define ERR_INVALID_BINARY "The passed binary file is not a corewar file"
 
 /*
 ** Errors functions
