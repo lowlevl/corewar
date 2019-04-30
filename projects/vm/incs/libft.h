@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 20:02:32 by lroux             #+#    #+#             */
-/*   Updated: 2018/11/24 10:15:21 by lroux            ###   ########.fr       */
+/*   Created: 2019/04/30 14:37:16 by glodi             #+#    #+#             */
+/*   Updated: 2019/04/30 14:38:16 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t	len;
+# define NOWARN
+# include "lift.h"
 
-	len = ft_strlen(dst);
-	if (len >= size)
-		return (ft_strlen(src) + size);
-	ft_strncat(dst, src, size - len - 1);
-	return (ft_strlen(src) + len);
-}
+#endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+         #
+#    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/04/29 10:49:21 by lroux            ###   ########.fr        #
+#    Updated: 2019/04/30 14:07:46 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ SRCS	:= vm.c \
 	$(HEAT_MAP) \
 
 LIBDIR	:= ../libs
-LIBS	:= libft libpf
+LIBS	:= liblift libprintf
 
 #DEBUG	:= 1
 
