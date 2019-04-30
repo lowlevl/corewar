@@ -10,8 +10,17 @@ function test_loop() {
 	info "done"
 }
 
+function test_fork_g()
+{
+	info "test fork gui"
+	$1 test_fork_g.cor --dump 3000
+	info "done"
+}
+
 function run() {
 	title "\nTest fork opcode\n"
-	test_basic $1
+	echo $1
 	test_loop $1
+	test_basic $1
+	test_fork_g $1
 }

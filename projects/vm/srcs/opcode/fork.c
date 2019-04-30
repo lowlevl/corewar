@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:57:48 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:03:20 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 11:05:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	exec_fork(t_vm *vm, t_process *process, const t_op *op)
 {
 	uint16_t	adr;
-	size_t		pos;
+	uint16_t	pos;
 
 	(void)op;
 	pos = process->cursor_pos - 1;
