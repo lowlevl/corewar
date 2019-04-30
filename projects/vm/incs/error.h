@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 13:20:38 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 15:04:54 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define ERR_N_DUPLICATE ERR_N_DUPLICATE_HALF " Each value must be unique"
 # define ERR_SOCKET_IP "missing ip for --socket"
 # define ERR_SOCKET_PORT "missing port for --socket"
+# define ERR_TOO_MANY_PLAYERS "Too many players"
 
 /*
 ** Errors functions
