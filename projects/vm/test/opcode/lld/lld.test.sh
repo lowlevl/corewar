@@ -10,8 +10,15 @@ function test_ind() {
 	info "done"
 }
 
+function test_lld_g() {
+	info "test lld gui"
+	$1 test_lld_g.cor
+	info "done"
+}
+
 function run() {
 	title "\nTest lld opcode\n"
 	test_direct $1
 	test_ind $1
+	test_lld_g $1
 }
