@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:05:58 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 15:37:15 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:26:24 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include <argv.h>
 
 void		init_player(t_vm *vm, char *binary_path, int specified_id)
@@ -29,7 +30,7 @@ void		init_player(t_vm *vm, char *binary_path, int specified_id)
 	if (player->header.magic != COREWAR_EXEC_MAGIC)
 		set_errno_exit(EINVAL, ERR_INVALID_BINARY);
 	if (player->header.prog_size + sizeof(t_header) != size)
-		set_errno_exit(EBADEXEC, ERR_INVALID_BINARY);
+		set_errno_exit(ENOEXEC, ERR_INVALID_BINARY);
 	player->id = specified_id;
 	vm->players_count++;
 }

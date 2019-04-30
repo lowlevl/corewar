@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 15:00:51 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:43:55 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@
 
 int	cleanup(int r, t_asm *env)
 {
-	t_tok	*tok;
+	// t_tok	*tok;
 
-	free(env->oname);
-	free(env->sstring);
-	free((void*)env->scstring);
-	free(strerror(0));
-	while ((tok = ll_pop(&env->syms, 0)))
-		free(tok);
-	while ((tok = ll_pop(&env->refs, 0)))
-		free(tok);
-	while ((tok = ll_pop(&env->tokens, 0)))
-	{
-		free(tok->val);
-		free(tok);
-	}
+	(void)env;
+	// free(env->oname);
+	// free(env->sstring);
+	// free((void*)env->scstring);
+	// free(strerror(0));
+	// while ((tok = ll_pop(&env->syms, 0)))
+	// 	free(tok);
+	// while ((tok = ll_pop(&env->refs, 0)))
+	// 	free(tok);
+	// while ((tok = ll_pop(&env->tokens, 0)))
+	// {
+	// 	free(tok->val);
+	// 	free(tok);
+	// }
 	return (r);
 }
 

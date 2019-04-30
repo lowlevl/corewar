@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/29 10:28:54 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 21:23:23 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	read_sti_arg(
 void		exec_sti(t_vm *vm, t_process *process, const t_op *op)
 {
 	uint8_t		oc;
-	size_t		pos;
+	uint16_t		pos;
 	uint32_t	args[3];
 	uint16_t	adr;
 
@@ -58,7 +58,7 @@ void		exec_sti(t_vm *vm, t_process *process, const t_op *op)
 		adr = args[1] + args[2];
 		process->carry = adr == 0;
 		DEBUG_R_FC && ft_dprintf(2,
-			FUNC_PREFIX "sti r(%d) :(%.2x + %.2x = %.2x)\n", args[0], pos,
+			FUNC_PREFIX "sti r(%d) :(%.2hx + %.2hx = %.2hx)\n", args[0], pos,
 			adr, get_restrict_address(pos, adr));
 		args[0] = BSWAP_32(args[0]);
 		write_in_mem_wrapper(vm, process, (uint8_t *)args,

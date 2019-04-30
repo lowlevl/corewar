@@ -18,6 +18,7 @@
 		"libpf.h": "c",
 		"socket.h": "c",
 		"socket_inc.h": "c",
-		"heat_map.h": "c"
+		"heat_map.h": "c",
+		"errno.h": "c"
 	}
 }

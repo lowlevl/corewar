@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 14:46:52 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 21:31:13 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		read_in_memory(
 	}
 }
 
-uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
+uint32_t	get_indirect(int16_t current, int16_t relative, uint8_t *memory)
 {
 	uint32_t	value;
 
@@ -48,7 +48,7 @@ uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory)
 }
 
 uint32_t	get_indirect_restrict(
-		size_t current, size_t to_add, uint8_t *memory)
+		int16_t current, int16_t to_add, uint8_t *memory)
 {
 	return (get_indirect(current, to_add % IDX_MOD, memory));
 }

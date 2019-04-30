@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/29 14:01:03 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:35:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int					perr(int e, ...)
 	va_list ap;
 
 	va_start(ap, e);
-	ft_vdprintf(stderr, g_err[e], ap);
+	ft_vdprintf(STDERR, g_err[e], ap);
 	va_end(ap);
 	return (1);
 }

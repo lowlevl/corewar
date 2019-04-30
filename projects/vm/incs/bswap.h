@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 09:59:22 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 15:08:52 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:21:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # ifdef __linux__
 #  include <byteswap.h>
+#  define BSWAP_16 bswap_16
+#  define BSWAP_32 bswap_32
+#  define BSWAP_64 bswap_64
 
 # elif defined(__OpenBSD__)
 #  include <sys/endian.h>

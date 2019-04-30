@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 13:01:11 by glodi            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:22:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <bswap.h>
 # include <debug.h>
 # include <error.h>
+#include <errno.h>
 # include <utils.h>
 
 # define DUMP_OPT "--dump"

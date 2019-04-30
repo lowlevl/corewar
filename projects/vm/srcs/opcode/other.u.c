@@ -6,15 +6,24 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 09:48:54 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:27:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-size_t	get_restrict_address(size_t current, size_t plus)
+uint16_t	get_restrict_address(int16_t current, int16_t plus)
 {
-	return (current + plus % IDX_MOD);
+	if (current + plus < 0)
+		return (uint16_t)((current + plus % IDX_MOD + MEM_SIZE) % MEM_SIZE);
+	return (uint16_t)((current + plus % IDX_MOD) % MEM_SIZE);
+}
+
+uint16_t get_address(int16_t current, int16_t plus)
+{
+	if (current + plus < 0)
+		return (uint16_t)((current + plus + MEM_SIZE) % MEM_SIZE);
+	return (uint16_t)((current + plus) % MEM_SIZE);
 }
 
 int		get_argument_all_restrict_4(
