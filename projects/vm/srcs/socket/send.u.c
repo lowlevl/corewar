@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:55:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/29 16:48:50 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/04/30 11:22:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	send_message_to_all(t_socket *socket, void *msg, socklen_t len)
 
 	if (socket->enable != ENABLE_SOCKET)
 		return (0);
-	DEBUG_SOCKET_SEND && ft_dprintf(2, SOCKET_SEND, len - sizeof(HEADER_SOCKET), msg + sizeof(HEADER_SOCKET) - 1, len);
+	DEBUG_SOCKET_SEND && ft_dprintf(2, SOCKET_SEND, len - sizeof(HEADER_SOCKET),
+		msg + sizeof(HEADER_SOCKET) - 1, len);
 	i = 0;
 	while (socket->nb_client > i)
 	{
