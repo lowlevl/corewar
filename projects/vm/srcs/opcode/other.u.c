@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 11:17:10 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 15:49:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-uint16_t	get_restrict_address(int16_t current, int16_t plus)
+__attribute_const__ uint16_t get_restrict_address(int16_t current, int16_t plus)
 {
 	// if (current + plus < 0)
 	// 	return (uint16_t)((current + plus % IDX_MOD + MEM_SIZE) % MEM_SIZE);
@@ -20,14 +20,20 @@ uint16_t	get_restrict_address(int16_t current, int16_t plus)
 	return (get_address(current, plus % IDX_MOD));
 }
 
-uint16_t get_address(int16_t current, int16_t plus)
+__attribute_const__ uint16_t get_address(int16_t current, int16_t plus)
 {
-	if (current + plus < 0)
-		return (uint16_t)((current + plus + MEM_SIZE) % MEM_SIZE);
-	return (uint16_t)((current + plus) % MEM_SIZE);
+	int16_t val;
+
+	val = current + plus;
+	if (val < 0)
+		val += MEM_SIZE;
+	val %= MEM_SIZE;
+	ft_dprintf(2, "test %hd + %hd = %hd ret (%hd)\n", current, plus,
+		current + plus, val);
+	return (val);
 }
 
-int		get_argument_all_restrict_4(
+int get_argument_all_restrict_4(
 	size_t info[2], uint32_t *save, uint8_t *mem, t_process *proc)
 {
 	if (info[0] == T_REG)
@@ -41,7 +47,7 @@ int		get_argument_all_restrict_4(
 	return (0);
 }
 
-int		get_argument_all_restrict(
+int get_argument_all_restrict(
 	size_t info[2], uint32_t *save, uint8_t *mem, t_process *proc)
 {
 	if (info[0] == T_REG)
@@ -55,7 +61,7 @@ int		get_argument_all_restrict(
 	return (0);
 }
 
-int		get_argument_all(
+int get_argument_all(
 	size_t info[2], uint32_t *save, uint8_t *mem, t_process *proc)
 {
 	if (info[0] == T_REG)

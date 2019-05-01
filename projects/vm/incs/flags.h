@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 21:34:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 11:48:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # define DEBUG_PROC 0
 # define DEBUG_VM 0
 # define DEBUG_READ  0
-# define DEBUG_WRITE 0
+# define DEBUG_WRITE 1
 # define DEBUG_GET   0
 # define DEBUG_TYPE  0
-# define DEBUG_R_FC  0
-# define DEBUG_CR_P  0
+# define DEBUG_R_FC  1
+# define DEBUG_CR_P  1
 # define DEBUG_EXE   0
 # define DEBUG_CYCLE 0
 # define DEBUG_CARRY 0
