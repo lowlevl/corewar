@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 21:27:35 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 11:17:10 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 uint16_t	get_restrict_address(int16_t current, int16_t plus)
 {
-	if (current + plus < 0)
-		return (uint16_t)((current + plus % IDX_MOD + MEM_SIZE) % MEM_SIZE);
-	return (uint16_t)((current + plus % IDX_MOD) % MEM_SIZE);
+	// if (current + plus < 0)
+	// 	return (uint16_t)((current + plus % IDX_MOD + MEM_SIZE) % MEM_SIZE);
+	// return (uint16_t)((current + plus % IDX_MOD) % MEM_SIZE);
+	return (get_address(current, plus % IDX_MOD));
 }
 
 uint16_t get_address(int16_t current, int16_t plus)
