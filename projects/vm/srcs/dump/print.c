@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:47:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 10:14:52 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 11:01:41 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void		print_memory(uint8_t *mem, uint8_t *heat_map)
 	int		c;
 	char	line[LINE_PREFIX + LINE_LENGTH + 1];
 
+	(void)heat_map;
 	l = 0;
 	ft_printf("index : 00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f"
 			" 10 11 12 13 14 15 16 17 18 19 1a 1b 1c 1d 1e 1f"
