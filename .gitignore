@@ -8,6 +8,8 @@ obj
 packages
 code_resources*
 ipch
+vm/champs/*
+
 # Ignore auto generated tag files
 tags
 node_modules
