@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/01 16:38:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:08:26 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ int	cleanup(int r, t_asm *env)
 	t_tok	*tok;
 
 	(void)env;
-	// free(env->oname);
-	// free(env->sstring);
-	// free((void*)env->scstring);
-	// free(strerror(0));
+	free(env->oname);
+	free(env->sstring);
+	free((void*)env->scstring);
+	#ifndef __linux__
+		free(strerror(0));
+	#endif // !__linux__
 	while ((tok = ll_pop(&env->syms, 0)))
-		// free(tok);
-		;
+		free(tok);
 	while ((tok = ll_pop(&env->refs, 0)))
-		// free(tok);
-		;
+		free(tok);
 	while ((tok = ll_pop(&env->tokens, 0)))
 	{
-		// free(tok->val);
-		// free(tok);
+		free(tok->val);
+		free(tok);
 	}
 	return (r);
 }
