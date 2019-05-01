@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/24 13:49:24 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/01 11:11:01 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct	s_vm
 	uint32_t	last_player_report_as_live;
 
 	int64_t		dump;
-	uint8_t		dump_heat : 1;
+	unsigned	dump_heat : 1;
 	uint8_t		memory[MEM_SIZE];
 	uint8_t		heat_map[MEM_SIZE];
 
@@ -74,7 +74,8 @@ typedef struct	s_vm
 	uint64_t	nb_live_for_cycle;
 
 	t_socket	socket;
-	uint8_t		random_talk;
+	unsigned random_talk: 1;
+	unsigned print_live: 1;
 }				t_vm;
 
 typedef struct	s_op

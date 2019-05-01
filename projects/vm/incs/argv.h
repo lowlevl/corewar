@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:06:59 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 19:22:53 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 11:09:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define RANDOM_OPT "--random"
 # define RANDOM_HELP RANDOM_OPT " - Sun Tzu, Coluche and more...\n"
 
+# define LIVE_OPT "--live"
+# define LIVE_HELP LIVE_OPT " - print live\n"
 /*
 ** Init functions
 */
