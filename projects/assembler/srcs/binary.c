@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/30 19:35:20 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 10:16:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_symref	*getsym(t_asm *env, char *name)
 
 	ok = false;
 	sr = env->syms;
-	while (true)
+	while (sr)
 	{
 		if (ft_strequ(name, ((t_symref*)sr->data)->name))
 		{
