@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:55:19 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 18:55:07 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/01 10:13:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # include <unistd.h>
 # include "heat_map.h"
 
+# define BYTE_COLOR_LEN 4
 # define BYTE_PER_LINE 64
 # define BYTE_PRINT_LENGTH 3
 # define LINE_LENGTH BYTE_PER_LINE * BYTE_PRINT_LENGTH
 # define LINE_PREFIX 8
 # define NB_LINE MEM_SIZE / BYTE_PER_LINE
 
-void		print_dump(void *mem);
-void		print_memory(uint8_t *mem);
+void		print_memory(uint8_t *mem, uint8_t *heat_map);
 void		load_players(t_vm *vm);
 void		load_player(t_vm *vm, int player_idx);
 void		*get_champ_bin(t_vm *vm, int player_idx);

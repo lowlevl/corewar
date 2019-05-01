@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 09:53:43 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 09:53:31 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ void	write_in_memory(uint8_t *mem, uint8_t *content, size_t len, size_t at)
 		mem[(at + i) % MEM_SIZE] = content[i];
 		i++;
 	}
-}
-
-void	write_in_memory_restrict(
-	uint8_t *mem, uint8_t *content, size_t len, size_t at)
-{
-	return (write_in_memory(mem, content, len, at % IDX_MOD));
 }
 
 void	write_in_registre(t_process *process, uint16_t reg_idx, uint32_t value)
@@ -52,27 +46,6 @@ void	write_in_mem_wrapper(
 	t_player	*players;
 
 	at = coord.at;
-	write_in_memory(vm->memory, content, coord.len, at);
-	if (vm->players_count == 1)
-		assign_player_to_area(vm->heat_map, 0, at, coord.len);
-	else
-	{
-		players = find_player(vm->players, vm->players_count, proc->player_id);
-		if (players)
-			assign_player_to_area(
-					vm->heat_map, players - vm->players, at, coord.len);
-	}
-	send_mem_chunk(vm, at, coord.len);
-	send_map_chunk(vm, at, coord.len);
-}
-
-void	write_in_mem_wrapper_restrict(
-	t_vm *vm, t_process *proc, uint8_t *content, t_coord coord)
-{
-	size_t		at;
-	t_player	*players;
-
-	at = coord.at % IDX_MOD;
 	write_in_memory(vm->memory, content, coord.len, at);
 	if (vm->players_count == 1)
 		assign_player_to_area(vm->heat_map, 0, at, coord.len);

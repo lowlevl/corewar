@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 11:42:01 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/26 09:12:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 09:58:27 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			main(int argc, char *argv[])
 	make_cycle(&vm);
 	print_winner(&vm);
 	if (vm.dump != -1)
-		print_dump(vm.memory);
+		print_memory(vm.memory, vm.heat_map);
 	if (vm.dump_heat)
 		dump_heat_map(vm.heat_map);
 	return (quit(&vm));

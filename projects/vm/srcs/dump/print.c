@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:47:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:26:16 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/01 10:14:52 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ static void	add_hex_to_line(char *line, uint8_t val)
 	line[2] = ' ';
 }
 
-void		print_dump(void *mem)
-{
-	print_memory(mem);
-}
-
-void		print_memory(uint8_t *mem)
+void		print_memory(uint8_t *mem, uint8_t *heat_map)
 {
 	int		l;
 	int		c;

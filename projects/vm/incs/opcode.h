@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/30 21:31:34 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 09:53:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,7 @@ void		write_in_memory(
 		uint8_t *mem, uint8_t *content, size_t len, size_t at);
 void		write_in_registre(
 		t_process *process, uint16_t reg_idx, uint32_t value);
-void		write_in_memory_restrict(
-		uint8_t *mem, uint8_t *content, size_t len, size_t at);
 void		write_in_mem_wrapper(
-		t_vm *vm, t_process *proc, uint8_t *content, t_coord coord);
-void		write_in_mem_wrapper_restrict(
 		t_vm *vm, t_process *proc, uint8_t *content, t_coord coord);
 
 /*
