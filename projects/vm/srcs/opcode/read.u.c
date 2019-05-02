@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:24:36 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 11:04:58 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:37:32 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ uint32_t get_indirect_restrict(int16_t current, int16_t to_add, uint8_t *memory)
 	read_in_memory(
 		memory, (uint8_t *)&value, 4, get_restrict_address(current, to_add));
 	DEBUG_GET &&ft_dprintf(2,
-		GET_PREFIX "read restrict mem at(%hhx + %hhx = %hhx) get(%x)\n",
+		GET_PREFIX "read restrict mem at(%hd + %hd = 0x%hx) get(%x)\n",
 		current, to_add, get_restrict_address(current, to_add), value);
 	return (BSWAP_32(value));
 }
