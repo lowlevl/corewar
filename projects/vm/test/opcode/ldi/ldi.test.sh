@@ -6,7 +6,7 @@ function test_basic() {
 
 function test_neg() {
 	info "test ldi opcode basic"
-	$1 test_neg.cor --dump 100
+	$1 test_neg.cor --dump 155
 	info "done"
 }
 

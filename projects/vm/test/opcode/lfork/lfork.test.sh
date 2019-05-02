@@ -18,7 +18,7 @@ function test_loop1() {
 
 function test_neg() {
 	info "test loop for lfork"
-	$1 test_neg.cor
+	$1 test_neg.cor --dump 2020
 	info "done"
 }
 
