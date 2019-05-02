@@ -6,13 +6,13 @@ function test_basic() {
 
 function test_loop() {
 	info "test loop for lfork"
-	$1 test_loop.cor
+	$1 test_loop.cor --dump 5000
 	info "done"
 }
 
 function test_loop1() {
 	info "test loop for lfork"
-	$1 test_loop.1.cor
+	$1 test_loop.1.cor --dump 5000
 	info "done"
 }
 
