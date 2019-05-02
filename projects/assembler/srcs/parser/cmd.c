@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 20:34:07 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:20:57 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 13:46:31 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_bool	cmdquoted(t_asm *env, t_tok *ntok)
 	startpos = ctok->pos + 1;
 	shift(env, QUOTE);
 	shiftb(env, QUOTE);
-	if (tok(env)->type == EOF)
+	if (tok(env)->type == EOFTOK)
 	{
 		perr(7, env->sname, ctok->y, ctok->x, ctok->ll, ctok->ls, ctok->x, '^');
 		return (false);

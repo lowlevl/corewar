@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:26:19 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 13:45:18 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ t_node			*lexer(t_asm *env, char *name)
 	tok = ft_strtok(file, "\t\v\f\r ");
 	while (lextok(env, &toks, tok, false))
 		tok = ft_strtok(NULL, "\t\v\f\r ");
-	ll_add(&toks, newtok(env, EOF, file + ft_strlen(env->scstring) + 1, 3));
+	ll_add(&toks, newtok(env, EOFTOK, file + ft_strlen(env->scstring) + 1, 3));
 	((t_tok*)toks->prev->data)->ll = ((t_tok*)toks->prev->prev->data)->ll;
 	((t_tok*)toks->prev->data)->ls = ((t_tok*)toks->prev->prev->data)->ls;
 	((t_tok*)toks->prev->data)->x = ((t_tok*)toks->prev->prev->data)->x;
@@ -141,7 +141,7 @@ t_node			*lexer(t_asm *env, char *name)
 	((t_tok*)toks->prev->data)->pos = ((t_tok*)toks->prev->prev->data)->pos;
 	free(env->sstring);
 	env->sstring = NULL;
-	if ((toks && ((t_tok*)toks->data)->type == EOF) || env->isbinary)
+	if ((toks && ((t_tok*)toks->data)->type == EOFTOK) || env->isbinary)
 		env->isbinary = perr(22, env->sname);
 	return (toks);
 }

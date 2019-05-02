@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 17:27:59 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:32:47 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 13:46:12 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_bool	doparsearg(t_asm *env, t_ins *ins)
 
 static t_bool	parsearguments(t_asm *env, t_ins *ins)
 {
-	while (tok(env)->type != EOF)
+	while (tok(env)->type != EOFTOK)
 	{
 		++ins->ac;
 		if (!doparsearg(env, ins))
@@ -71,7 +71,7 @@ static t_bool	parsearguments(t_asm *env, t_ins *ins)
 		if (!accept(tok(env), SEP))
 			break ;
 		next(env);
-		if (accept(tok(env), EOF))
+		if (accept(tok(env), EOFTOK))
 			return (shouterror(env, tok(env)));
 	}
 	return (true);
