@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/07 13:03:13 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 15:00:51 by lroux            ###   ########.fr       */
+/*   Created: 2019/05/02 13:57:27 by lroux             #+#    #+#             */
+/*   Updated: 2019/05/02 13:57:31 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 			|| !(env.oname = ft_calloc(ft_strlen(av[1]) + 3, sizeof(char)))
 			|| env.isbinary)
 		return (cleanup(failure, &env));
-	if (((t_tok*)env.tokens->prev->data)->type != EOF)
+	if (((t_tok*)env.tokens->prev->data)->type != EOFTOK)
 		return (cleanup(failure, &env));
 	if (!parser(&env))
 		return (cleanup(failure, &env));

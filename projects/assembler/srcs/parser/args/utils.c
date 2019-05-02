@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:26:42 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/11 17:06:41 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 13:46:51 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_bool	isvalidnum(t_asm *env, size_t start)
 	size_t	invalid;
 	char	*end;
 
-	if (tok(env)->type == EOF)
+	if (tok(env)->type == EOFTOK)
 		return (shouterror(env, tok(env)));
 	if (!tok(env)->val[start])
 	{

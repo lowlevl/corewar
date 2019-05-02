@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 17:44:32 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/29 13:59:18 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 13:45:54 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_bool			parser(t_asm *env)
 	int errors;
 
 	errors = 0;
-	while (tok(env)->type != EOF)
+	while (tok(env)->type != EOFTOK)
 	{
 		env->skip = (env->skip != 0) ? env->skip - 1 : 0;
 		if (accept(tok(env), COMMNTMARK))
