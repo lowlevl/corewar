@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/02 14:49:33 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 15:04:11 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void		exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		adr = args[0] + args[1];
-		ft_printf("%hd %hd %hd\n", (int16_t)args[0], (int16_t)args[1], adr);
 		process->carry = adr == 0;
 		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "ldi :(%hd + %hd = 0x%hx) r%d\n",
 				pos, adr,
