@@ -8,7 +8,6 @@ obj
 packages
 code_resources*
 ipch
-champs
 
 # Ignore auto generated tag files
 tags

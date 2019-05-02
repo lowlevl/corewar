@@ -13,6 +13,7 @@ do
 	echo -ne "$file\n\t"
 	$1 $file
 	if ! [ $? -eq 0 ]; then
-		printf "\t\e[31mHere\e[0m\n\n"
+		printf "error on file \x1b[31m$file\x1b[0m\n"
+		exit 1
 	fi
 done
