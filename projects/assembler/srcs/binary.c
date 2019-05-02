@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/16 11:41:01 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:24:21 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_symref	*getsym(t_asm *env, char *name)
 
 	ok = false;
 	sr = env->syms;
-	while (true)
+	while (sr)
 	{
 		if (ft_strequ(name, ((t_symref*)sr->data)->name))
 		{
