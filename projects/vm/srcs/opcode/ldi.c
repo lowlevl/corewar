@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 09:50:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:49:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static int	read_args_exec(
 
 void		exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 {
-	size_t		pos;
+	int16_t		pos;
 	uint8_t		oc;
 	uint32_t	args[3];
-	uint32_t	adr;
+	int16_t	adr;
 
 	(void)op;
 	pos = get_idx_in_memory(process) - 1;
@@ -53,10 +53,11 @@ void		exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		adr = args[0] + args[1];
+		ft_printf("%hd %hd %hd\n", (int16_t)args[0], (int16_t)args[1], adr);
 		process->carry = adr == 0;
-		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "ldi :(%x + %x = %x) r%d\n",
-				args[0] % MEM_SIZE, args[1] % MEM_SIZE,
-				(args[0] + args[1]) % IDX_MOD, args[2]);
+		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "ldi :(%hd + %hd = 0x%hx) r%d\n",
+				pos, adr,
+				get_restrict_address(pos, adr), args[2]);
 		write_in_registre(
 			process, args[2], get_indirect_restrict(pos, adr, vm->memory));
 	}
