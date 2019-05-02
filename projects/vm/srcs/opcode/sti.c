@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/05/01 11:59:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:31:50 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int read_sti_arg(
 	if (get_argument_all_restrict(
 			(size_t[2]){type_arg, pos}, args + 1, memory, process))
 		return (-1);
+
 	type_arg = get_type_arg(oc, 2);
-	if (type_arg == T_IND)
-		args[2] = get_indirect_restrict(
-			pos, read_arg(process, memory, T_IND), memory);
+	if (type_arg == T_REG)
+		args[2] = get_reg(process, read_arg(process, memory, T_REG));
 	else if (type_arg == T_DIR)
 		args[2] = read_arg(process, memory, T_DIR);
 	else

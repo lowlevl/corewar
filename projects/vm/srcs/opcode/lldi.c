@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 13:40:09 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/02 16:38:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static int	read_args_exec(
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_DIR)
 		args[1] = read_arg(process, mem, T_DIR);
-	else if (type_arg == T_IND)
-		args[1] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
+	else if (type_arg == T_REG)
+		args[1] = get_reg(process, read_arg(process, mem, T_REG));
 	else
 		return (-1);
 	if (get_type_arg(oc, 2) == T_REG)
