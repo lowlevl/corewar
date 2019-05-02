@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/02 14:29:17 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:18:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define DEBUG_SOCKET_RECV 0
 # define DEBUG_SET_JUMP 0
 # define DEBUG_STEP 0
+# define DEBUG_ADR 1
 
 # define READ_PREFIX           "\e[31mREAD\e[0m       │ "
 # define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
@@ -56,6 +57,7 @@
 # define PROC_PRE         "\e[38;5;57mPROC\e[0m       │ "
 # define JUMP_PRE        "\e[38;5;127mJUMP\e[0m       │ "
 # define STEP_PRE         "\e[38;5;93mSTEP\e[0m       │ "
+# define ADR_PRE          "\e[38;5;87mADRESS\e[0m     │ "
 
 # define INTERNAL_1 "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
 # define CHECK_TEMPLATE CHECK_PREFIX INTERNAL_1

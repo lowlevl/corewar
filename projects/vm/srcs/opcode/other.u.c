@@ -6,13 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:58:40 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/02 08:55:44 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:19:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
-__attribute__((const)) uint16_t get_restrict_address(int16_t current, int16_t plus)
+__attribute__((const)) uint16_t get_restrict_address(
+	int16_t current, int16_t plus)
 {
 	// if (current + plus < 0)
 	// 	return (uint16_t)((current + plus % IDX_MOD + MEM_SIZE) % MEM_SIZE);
@@ -28,8 +29,8 @@ __attribute__((const)) uint16_t get_address(int16_t current, int16_t plus)
 	if (val < 0)
 		val += MEM_SIZE;
 	val %= MEM_SIZE;
-	ft_dprintf(2, "test %hd + %hd = %hd ret (%hd)\n", current, plus,
-		current + plus, val);
+	DEBUG_ADR &&ft_dprintf(2, ADR_PRE "test %hd + %hd = %hd ret (%hd)\n",
+		current, plus, current + plus, val);
 	return (val);
 }
 
