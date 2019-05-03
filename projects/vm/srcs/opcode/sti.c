@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/05/03 09:59:18 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 14:47:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	else
 	{
 		adr = args[1] + args[2];
-		process->carry = adr == 0;
+		// process->carry = adr == 0;
 		DEBUG_R_FC &&ft_dprintf(2,
 			FUNC_P "sti r(%x) :((%hd) + (%hd) = 0x%.2hx(%hd))\n",
 			args[0], pos, adr, get_restrict_address(pos, adr), get_restrict_address(pos, adr));
@@ -67,5 +67,5 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 		write_in_mem_wrapper(vm, process, (uint8_t *)args,
 			(t_coord){get_restrict_address(pos, adr), sizeof(*args)});
 	}
-	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
+	// DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

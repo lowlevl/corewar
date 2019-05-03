@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:30:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 14:49:20 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_exec(vm->memory, process, args, oc) == 0)
 	{
 		adr = args[0] + args[1];
-		process->carry = adr == 0;
+		// process->carry = adr == 0;
 		DEBUG_R_FC &&ft_dprintf(2, FUNC_P "ldi :(%hd + %hd = 0x%hx) r%d\n",
 			pos, adr, get_restrict_address(pos, adr), args[2]);
 		write_in_registre(
@@ -64,5 +64,5 @@ void exec_ldi(t_vm *vm, t_process *process, const t_op *op)
 		process->carry = 1;
 	}
 
-	DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
+	// DEBUG_CARRY &&ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
