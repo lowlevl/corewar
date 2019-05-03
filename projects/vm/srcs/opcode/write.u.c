@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/02 12:08:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:49:49 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	write_in_mem_wrapper(
 	}
 	send_mem_chunk(vm, at, coord.len);
 	send_map_chunk(vm, at, coord.len);
+	print_memory(vm->memory, vm->heat_map);
 }

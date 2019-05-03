@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 09:55:24 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:20:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:38:32 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void		exec_add(t_vm *vm, t_process *process, const t_op *op)
 	{
 		sum = args[0] + args[1];
 		DEBUG_R_FC && ft_dprintf(
-			2, FUNC_PREFIX "add %%%d %%%d r%d = %d\n",
+			2, FUNC_P "add %%%d %%%d r%d = %d\n",
 			args[0], args[1], args[2], sum);
 		process->carry = sum == 0;
 		write_in_registre(process, args[2], sum);
 	}
 	else
 	{
-		DEBUG_R_FC&&ft_dprintf(2, "add" BAD_ARG);
+		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "add" BAD_ARG);
 		process->carry = 1;
 	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);

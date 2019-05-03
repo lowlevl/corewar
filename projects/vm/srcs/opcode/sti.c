@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/05/03 09:24:27 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:59:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_sti_arg(vm->memory, process, args, oc) == -1)
 	{
-		DEBUG_R_FC&&ft_dprintf(2, "sti" BAD_ARG);
+		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "sti" BAD_ARG);
 		process->carry = 1;
 	}
 	else
@@ -61,7 +61,7 @@ void exec_sti(t_vm *vm, t_process *process, const t_op *op)
 		adr = args[1] + args[2];
 		process->carry = adr == 0;
 		DEBUG_R_FC &&ft_dprintf(2,
-			FUNC_PREFIX "sti r(%d) :((%hd) + (%hd) = 0x%.2hx(%hd))\n",
+			FUNC_P "sti r(%x) :((%hd) + (%hd) = 0x%.2hx(%hd))\n",
 			args[0], pos, adr, get_restrict_address(pos, adr), get_restrict_address(pos, adr));
 		args[0] = BSWAP_32(args[0]);
 		write_in_mem_wrapper(vm, process, (uint8_t *)args,

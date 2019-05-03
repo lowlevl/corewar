@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:19:58 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:35:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define DEBUG_WRITE 0
 # define DEBUG_GET   0
 # define DEBUG_TYPE  0
-# define DEBUG_R_FC  0
+# define DEBUG_R_FC  1
 # define DEBUG_CR_P  0
 # define DEBUG_EXE   0
 # define DEBUG_CYCLE 0
@@ -43,7 +43,7 @@
 # define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
 # define GET_PREFIX            "\e[33mGET\e[0m        │ "
 # define TYPE_PREFIX           "\e[34mTYPE\e[0m       │ "
-# define FUNC_PREFIX           "\e[35mFUNC\e[0m       │ "
+# define FUNC_P           "\e[35mFUNC\e[0m       │ "
 # define CURSOR_PREFIX         "\e[36mCURSOR\e[0m     │ "
 # define EXE_PREFIX            "\e[37mEXE\e[0m        │ "
 # define CYCLE_PREFIX          "\e[91mCYCLE\e[0m      │ "
@@ -111,5 +111,6 @@
 
 # define D_STEP STEP_PRE "cycle(%d)\n"
 
-# define BAD_ARG  "bad argument -> pass\n"
+# define BAD_ARG  " bad argument -> pass\n"
+# define BAD_ARG_OC " bad argument oc(%.8b)-> pass\n"
 #endif

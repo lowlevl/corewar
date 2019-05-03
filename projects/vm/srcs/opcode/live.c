@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 11:14:22 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:29:53 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	player = find_player(vm->players, vm->players_count, player_id);
 	process->have_live = 1;
 	vm->nb_live_for_cycle++;
-	DEBUG_R_FC &&ft_dprintf(2, FUNC_PREFIX "live %%%d\n", player_id);
+	DEBUG_R_FC &&ft_dprintf(2, FUNC_P "live %%%d\n", player_id);
 	if (vm->print_live == 0)
 		return ;
 	if (player)
