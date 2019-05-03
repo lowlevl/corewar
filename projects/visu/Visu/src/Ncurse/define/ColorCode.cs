@@ -12,7 +12,7 @@ namespace Ncurse
         BLUE_1 = 0x2d,
         MAGENTA = 0x5,
         CYAN = 0x6,
-        WHITE = 0x7,
+        WHITE = 0xf,
         DARK_GREY = 0xef,
         DARK_GREY_1 = 0xf4,
     }

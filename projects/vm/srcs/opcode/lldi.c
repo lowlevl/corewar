@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:38:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 12:08:09 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void		exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 	else
 	{
 		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "lldi" BAD_ARG_OC, oc);
-		ft_dprintf(2, "cursor pos %hx\n", get_idx_in_memory(process));
-		print_memory(vm->memory, vm->heat_map);
+		// ft_dprintf(2, "cursor pos %hx\n", get_idx_in_memory(process));
+		// print_memory(vm->memory, vm->heat_map);
 		process->carry = 1;
 	}
 

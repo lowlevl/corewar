@@ -73,6 +73,7 @@ public class CorewarVisu
 
         if (!command.ParsedOption.ContainsKey("proc"))
         {
+            Log.WriteLine("add proc event");
             parser.ProcUpdate += dump.OnProcUpdate;
             parser.DeadProcEvent += players.OnDeadProc;
         }

@@ -80,7 +80,7 @@ namespace Display
             {
                 chunk.CopyTo(dump, at);
             }
-            DumpMem();
+            // DumpMem();
             OnChange(at, len);
         }
 
@@ -160,7 +160,7 @@ namespace Display
                 ProcessusList.Add(e.Id, proc);
                 OnNewProc(ref proc);
             }
-            Logger.Log.WriteLine("proc id({0}) pos({1})", e.Id, e.Pos);
+            // Logger.Log.WriteLine("proc id({0}) pos({1})", e.Id, e.Pos);
         }
     }
 }

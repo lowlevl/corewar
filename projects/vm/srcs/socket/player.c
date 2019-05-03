@@ -6,16 +6,16 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 11:53:07 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 11:49:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 12:00:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "socket.h"
 
-#define FUCK_1 "<player> <id>%d</id> <name>%s</name> </player>"
+#define FUCK_1 "<player> <id>%d</id> <size>%d</size> <name>%s</name> </player>"
 #define FORMAT_PLAYER HEADER_SOCKET FUCK_1
-#define FUU2 "<winner noWinner=\"false\"> <id>%d</id> <name>%s</name> </winner>"
+#define FUU2 "<winner noWinner=\"false\"> <id>%d</id> <size>%d</size> <name>%s</name> </winner>"
 #define FORMAT_WINNER HEADER_SOCKET FUU2
 
 static void do_stuff(t_player *player, t_socket *socket)
@@ -27,7 +27,7 @@ static void do_stuff(t_player *player, t_socket *socket)
 
 	encoded_name = encode_base64(
 		player->header.prog_name, ft_strlen(player->header.prog_name), &olen);
-	len = ft_asprintf(&s, FORMAT_PLAYER, player->id, encoded_name);
+	len = ft_asprintf(&s, FORMAT_PLAYER, player->id, olen, encoded_name);
 	if (s && len > 0)
 	{
 		ft_memcpy(s, &len, sizeof(len));
@@ -63,7 +63,7 @@ int send_winner(t_player *player, t_socket *socket)
 		return (0);
 	encoded_name = encode_base64(
 		player->header.prog_name, ft_strlen(player->header.prog_name), &olen);
-	len = ft_asprintf(&s, FORMAT_WINNER, player->id, encoded_name);
+	len = ft_asprintf(&s, FORMAT_WINNER, player->id, olen, encoded_name);
 	if (s && len > 0)
 	{
 		ft_memcpy(s, &len, sizeof(len));

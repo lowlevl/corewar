@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 11:48:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 12:00:43 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "vm.h"
 
 #define NO_WIN                                                                 \
-	"<winner noWinner=\"true\"><id>-1</id><name>Tk9ORQ==</name></winner>"
+	"<winner noWinner=\"true\"> <id>-1</id> <size>8</size> "                   \
+	"<name>Tk9ORQ==</name> </winner>"
 #define FORMAT_NO_WINNER HEADER_SOCKET NO_WIN
 #define TEMPLATE_BASE "WINNER - nº%d / %s :: "
 #define TEMPLATE_COUNT sizeof(g_templates) / sizeof(char *)

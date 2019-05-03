@@ -65,6 +65,7 @@ namespace Display
             {
                 p.NbProc++;
                 p.RenderProc();
+                p.RefreshPanel();
             }
             else
             {
@@ -89,6 +90,7 @@ namespace Display
             {
                 p.NbProc--;
                 p.RenderProc();
+                p.RefreshPanel();
             }
         }
 

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:29:53 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 13:15:40 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ static int print_live(int random, int player_id, char *player_name)
 	return (ft_printf(template, player_id, player_name));
 }
 
-static void report_as_live(t_vm *vm, t_player *player)
+static void report_as_live(t_vm *vm, t_player *player, int id, int live)
 {
-	vm->last_player_report_as_live = player->id;
-	player->total_live_count++;
-	send_live(&vm->socket, player->id);
-	print_live(
-		vm->random_talk, player->id, player->header.prog_name);
+	if (player)
+	{
+		player->total_live_count++;
+		vm->last_player_report_as_live = player->id;
+		send_live(&vm->socket, player->id);
+		if (live)
+			print_live(vm->random_talk, player->id, player->header.prog_name);
+	}
+	else if (live)
+		ft_printf(
+			"LIVE - Un champion inconnu (%d) a été signalé en vie.\n", id);
 }
 
 void exec_live(t_vm *vm, t_process *process, const t_op *op)
@@ -71,11 +77,5 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	process->have_live = 1;
 	vm->nb_live_for_cycle++;
 	DEBUG_R_FC &&ft_dprintf(2, FUNC_P "live %%%d\n", player_id);
-	if (vm->print_live == 0)
-		return ;
-	if (player)
-		report_as_live(vm, player);
-	else
-		ft_printf("LIVE - Un champion inconnu (%d) a été signalé en vie.\n",
-			player_id);
+	report_as_live(vm, player, player_id, vm->print_live);
 }
