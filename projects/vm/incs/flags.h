@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 11:31:00 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 11:41:10 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
 # define GET_PREFIX            "\e[33mGET\e[0m        │ "
 # define TYPE_PREFIX           "\e[34mTYPE\e[0m       │ "
-# define FUNC_P           "\e[35mFUNC\e[0m       │ "
+# define FUNC_P                "\e[35mFUNC\e[0m       │ "
 # define CURSOR_PREFIX         "\e[36mCURSOR\e[0m     │ "
 # define EXE_PREFIX            "\e[37mEXE\e[0m        │ "
 # define CYCLE_PREFIX          "\e[91mCYCLE\e[0m      │ "
