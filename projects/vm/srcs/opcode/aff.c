@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:27:38 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:01:43 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/03 09:20:14 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void		exec_aff(t_vm *vm, t_process *process, const t_op *op)
 		}
 	}
 	else
+	{
+		DEBUG_R_FC && ft_dprintf(2, "aff" BAD_ARG);
 		process->carry = 1;
+	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

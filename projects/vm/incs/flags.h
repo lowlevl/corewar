@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/02 16:24:13 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:19:58 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,6 @@
 # define JUMP JUMP_PRE "to(%d)\n"
 
 # define D_STEP STEP_PRE "cycle(%d)\n"
+
+# define BAD_ARG  "bad argument -> pass\n"
 #endif

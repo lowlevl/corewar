@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 09:48:24 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:20:43 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void		exec_and(t_vm *vm, t_process *process, const t_op *op)
 	DEBUG_TYPE && ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_and_arg(vm->memory, process, args, oc) == -1)
+	{
+		DEBUG_R_FC&&ft_dprintf(2, "and" BAD_ARG);
 		process->carry = 1;
+	}
 	else
 	{
 		logic = args[0] & args[1];

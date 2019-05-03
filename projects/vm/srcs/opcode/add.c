@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 09:55:24 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 16:47:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:20:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void		exec_add(t_vm *vm, t_process *process, const t_op *op)
 		write_in_registre(process, args[2], sum);
 	}
 	else
+	{
+		DEBUG_R_FC&&ft_dprintf(2, "add" BAD_ARG);
 		process->carry = 1;
+	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

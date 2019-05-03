@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 13:29:04 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 09:48:40 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:24:04 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ void		exec_st(t_vm *vm, t_process *process, const t_op *op)
 	if (read_args_st(vm->memory, process, args, oc) == 0)
 	{
 		exec_st_in(process, args, (size_t[2]){oc, pos}, vm);
+	}
+	else
+	{
+		DEBUG_R_FC&&ft_dprintf(2, "st" BAD_ARG);
+		process->carry = 1;
 	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }
