@@ -70,6 +70,11 @@ namespace Display
             int x, y, owner, style;
             byte value;
 
+            if (at <= 0 || at >= dump.Memory.Length)
+            {
+                Logger.Log.WriteLine("case out of bound {0}", at);
+                return ;
+            }
             x = getX(at);
             y = getY(at);
             owner = dump.getOwner(at);
@@ -82,6 +87,7 @@ namespace Display
 
         public void PrintMemoryChunk(int at, int len)
         {
+            Logger.Log.WriteLine("print chunk at {0} len {1}", at, len);
             for (int i = 0; i < len; i++)
             {
                 PrintCase(i + at);

@@ -110,9 +110,13 @@ namespace Display
 
         public void SetOwnerZone(int at, byte[] heatMap)
         {
-            if (heatMap == null)
+            if (this.heatMap == null)
                 InitDump(heatMap.Length);
-            heatMap.CopyTo(this.heatMap, at);
+            Logger.Log.WriteLine("Set Heat map at {0} len {1}", at, heatMap.Length);
+            if (this.heatMap.Length - at >= heatMap.Length)
+                heatMap.CopyTo(this.heatMap, at);
+            else
+                Logger.Log.WriteLine("heat map too small");
             // DumpHeatMap();
             OnChange(at, heatMap.Length);
         }
