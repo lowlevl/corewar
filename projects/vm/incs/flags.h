@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 13:43:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 14:29:56 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define DEBUG_HEAT_MAP 0
 # define DEBUG_SOCKET_RECV 0
 # define DEBUG_SET_JUMP 0
-# define DEBUG_STEP 0
+# define DEBUG_STEP 1
 # define DEBUG_ADR 0
 # define DEBUG_CHANGE 1
 
@@ -65,7 +65,7 @@
 
 # define CARRY_TEMPLATE CARRY_PREFIX "carry(%d)\n"
 
-# define CURSOR_TEMPLATE CURSOR_PREFIX "pos(%x) opc(%hhx)\n"
+# define CURSOR_TEMPLATE CURSOR_PREFIX "pos(%hx) opc(%hhx)\n"
 
 # define EXE_TEMPLATE EXE_PREFIX "proc(%#hhx)(%s) at(%u)(%x)\n"
 # define EXE_NEXT_TEMPLATE EXE_PREFIX "next_exec(%#hhx)(%s) at(%u)\n"
