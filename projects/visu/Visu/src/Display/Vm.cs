@@ -116,7 +116,23 @@ namespace Display
             if (this.heatMap.Length - at >= heatMap.Length)
                 heatMap.CopyTo(this.heatMap, at);
             else
-                Logger.Log.WriteLine("heat map too small");
+            {
+                int left = this.heatMap.Length - at;
+                StringBuilder hm = new StringBuilder();
+
+                for (int i = 0; i < left; i++)
+                {
+                    this.heatMap[at + i] = heatMap[i];
+                    hm.AppendFormat("{0} ", heatMap[i]);
+                }
+                for (int i = 0; i < heatMap.Length - left; i++)
+                {
+                    this.heatMap[i] = heatMap[i + left - 1];
+                    hm.AppendFormat("{0} ", heatMap[i + left - 1]);
+                }
+                // heatMap.Slice(left, heatMap.Length - left).CopyTo(this.heatMap, at);
+                Logger.Log.WriteLine("heat map too small {0} [{1}]", left, hm.ToString());
+            }
             // DumpHeatMap();
             OnChange(at, heatMap.Length);
         }

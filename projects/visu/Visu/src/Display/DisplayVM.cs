@@ -70,11 +70,8 @@ namespace Display
             int x, y, owner, style;
             byte value;
 
-            if (at <= 0 || at >= dump.Memory.Length)
-            {
-                Logger.Log.WriteLine("case out of bound {0}", at);
-                return ;
-            }
+            if (at >= dump.Memory.Length)
+                at -= dump.Memory.Length;
             x = getX(at);
             y = getY(at);
             owner = dump.getOwner(at);
