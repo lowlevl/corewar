@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 16:26:13 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/06 10:36:25 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/06 11:14:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void write_in_mem_wrapper(
 	{
 		player = find_player(vm->players, vm->players_count, proc->player_id);
 		if (player)
-			// assign_player_to_area(
-			// 		vm->heat_map, player - vm->players, at, coord.len);
-			assign_player_to_area(vm->heat_map,
-				get_rank_player_id(vm->sorted_players_idx, vm->players, player,
-					vm->players_count),
-				at, coord.len);
+			assign_player_to_area(
+					vm->heat_map, player - vm->players, at, coord.len);
+			// assign_player_to_area(vm->heat_map,
+			// 	get_rank_player_id(vm->sorted_players_idx, vm->players, player,
+					// vm->players_count),
+				// at, coord.len);
 	}
 	send_mem_chunk(vm, at, coord.len);
 	send_map_chunk(vm, at, coord.len);

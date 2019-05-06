@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 13:15:40 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/06 11:02:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void report_as_live(t_vm *vm, t_player *player, int id, int live)
 		player->total_live_count++;
 		vm->last_player_report_as_live = player->id;
 		send_live(&vm->socket, player->id);
+		// send_live(&vm->socket, );
 		if (live)
 			print_live(vm->random_talk, player->id, player->header.prog_name);
 	}
@@ -75,6 +76,7 @@ void exec_live(t_vm *vm, t_process *process, const t_op *op)
 	player_id = read_arg(process, vm->memory, T_DIR_4);
 	player = find_player(vm->players, vm->players_count, player_id);
 	process->have_live = 1;
+	// ft_dprintf(2, ">>>>>> live %d %d\n", player_id, player ? player->id : -1);
 	vm->nb_live_for_cycle++;
 	DEBUG_R_FC &&ft_dprintf(2, FUNC_P "live %%%d\n", player_id);
 	report_as_live(vm, player, player_id, vm->print_live);
