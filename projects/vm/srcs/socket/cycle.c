@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 16:32:12 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/06 11:35:36 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/06 11:36:16 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "socket.h"
 
 #define FU1 "<cycle> <current>%d</current> <check>%d</check> "
-#define FU2 "<die>%d</die> <check>%d</check> <live>%d</live> </cycle>"
+#define FU2 "<die>%d</die> <ncheck>%d</ncheck> <live>%d</live> </cycle>"
 #define CYCLE_FORMAT HEADER_SOCKET FU1 FU2
 
 int	send_cycle(t_socket *socket, t_vm *vm)
