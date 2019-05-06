@@ -42,8 +42,8 @@ namespace XmlParser
                             break;
                         case "name":
                             buffer = new byte[size];
-                            reader.ReadElementContentAsBase64(buffer, 0, size);
-                            name = Encoding.ASCII.GetString(buffer, 0, size);
+                            int s = reader.ReadElementContentAsBase64(buffer, 0, size);
+                            name = Encoding.ASCII.GetString(buffer, 0, s);
                             break;
                     }
                 }

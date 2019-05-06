@@ -13,6 +13,11 @@ namespace XmlParser
             this.Id = id;
             this.Name = name;
         }
+
+        public override string ToString()
+        {
+            return '{' + string.Format(".Id: {0}, .Name: {1}", Id, Name) + '}';
+        }
     }
 
     public partial class Parser
@@ -36,8 +41,8 @@ namespace XmlParser
                             break;
                         case "name":
                             buffer = new byte[size];
-                            reader.ReadElementContentAsBase64(buffer, 0, size);
-                            name = Encoding.ASCII.GetString(buffer, 0, size);
+                            int s = reader.ReadElementContentAsBase64(buffer, 0, size);
+                            name = Encoding.ASCII.GetString(buffer, 0, s);
                             break;
                     }
                 }
