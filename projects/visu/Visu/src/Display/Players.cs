@@ -99,7 +99,7 @@ namespace Display
         {
             Player p;
 
-            Logger.Log.WriteLine("live {0}", e);
+            // Logger.Log.WriteLine("live {0}", e);
             if (players.TryGetValue(e.PlayerId, out p))
             {
                 p.live();

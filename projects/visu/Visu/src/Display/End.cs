@@ -9,6 +9,7 @@ namespace Display
     public class End
     {
         const string qToQuit = "Press 'q' to quit";
+        Window view = null;
 
         Symbol trophy = new Symbol(new string[] {
             "  ___________  ",
@@ -50,32 +51,32 @@ namespace Display
         {
             string winner = string.Format("And the winner is ... {0}({1})", id, Name);
 
-            trophy.DrawSymbol(Window.Standar, Curse.Cols / 2, Curse.Lines / 2 - trophy.Height / 2 - 2);
-            Window.Standar.Mvprintw(Curse.Lines / 2, Curse.Cols / 2 - winner.Length / 2, winner);
-            PrintQ();
+            trophy.DrawSymbol(view, view.Width / 2, trophy.Height / 2);
+            view.Mvprintw(view.Height - 2, view.Width / 2 - winner.Length / 2, winner);
         }
 
         void PrintLoser()
         {
             string loser = "Everyone die";
-            death.DrawSymbol(Window.Standar, Curse.Cols / 2, Curse.Lines / 2 - death.Height / 2 - 2);
-            Window.Standar.Mvprintw(Curse.Lines / 2, Curse.Cols / 2 - loser.Length / 2, loser);
-            PrintQ();
+            death.DrawSymbolAt(view, 0, 0);
+            view.Mvprintw(view.Height - 2, view.Width / 2 - loser.Length / 2, loser);
         }
 
-        void PrintQ() => Window.Standar.Mvprintw(Curse.Lines / 2 + 2, Curse.Cols / 2 - qToQuit.Length / 2, qToQuit);
+        void PrintQ() => view.Mvprintw(view.Height - 1, view.Width / 2 - qToQuit.Length / 2, qToQuit);
 
         public void OnWinner(object _source, WinnerResultEventArgs e)
         {
             Log.WriteLine("print winner {0} {1} {2}", e.HaveWinner, e.Name, e.Id);
             Thread.Sleep(1000);
-            Window.Standar.Clear();
-            Window.Standar.SetColor(4);
+            view = Window.CreateSubWindowCentered(Window.Standar, death.Height + 3, death.Width, Window.Standar.Width / 2, Window.Standar.Height / 2);
+            view.Clear();
+            view.SetColor(4);
             if (e.HaveWinner)
                 PrintWinner(e.Name, e.Id);
             else
                 PrintLoser();
-            Window.Standar.Refresh();
+            PrintQ();
+            view.Refresh();
         }
     }
 }
