@@ -108,6 +108,7 @@ public class CorewarVisu
         {
             ch = Curse.getch();
         } while (ch != 'q');
+        Logger.Log.WriteLine("user whant to quit");
     }
 
     static void ParseCommand(string[] argv)

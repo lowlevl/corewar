@@ -55,28 +55,31 @@ namespace Display
         void renderCycle()
         {
             cycleWin.Mvprintw(1, 0, "cycle: " + cycle);
-            // cycleWin.RedrawLine(1);
+            cycleWin.RedrawLine(1);
         }
 
         void renderNextCycle()
         {
             cycleWin.Mvprintw(2, 0, "next check: " + nextCycle);
-            // cycleWin.RedrawLine(2);
+            cycleWin.RedrawLine(2);
         }
 
         void renderLive()
         {
             cycleWin.Mvprintw(0, 0, "live: " + nbLive);
+            cycleWin.RedrawLine(0);
         }
 
         void renderToDie()
         {
             cycleWin.Mvprintw(3, 0, "To Die: " + toDie);
+            cycleWin.RedrawLine(3);
         }
 
         void renderNbCheck()
         {
             cycleWin.Mvprintw(4, 0, "Nb Check: " + nbCheck);
+            cycleWin.RedrawLine(4);
         }
 
         void printTitle()
