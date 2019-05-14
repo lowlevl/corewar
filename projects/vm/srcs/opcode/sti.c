@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:27:51 by glodi             #+#    #+#             */
-/*   Updated: 2019/05/14 12:08:32 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/14 14:59:33 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		exec_sti(t_vm *vm, t_process *process, const t_op *op)
 	uint8_t		oc;
 	uint16_t	pos;
 	uint32_t	args[3];
-	uint16_t	adr;
+	int16_t		adr;
 
 	(void)op;
 	ft_bzero(args, sizeof(args));
