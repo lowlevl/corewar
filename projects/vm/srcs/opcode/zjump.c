@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:49:37 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:29:53 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 12:00:59 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_zjump(t_vm *vm, t_process *process, const t_op *op)
 {
-	int16_t	move_to;
+	int16_t		move_to;
 	uint16_t	pos;
 
 	(void)op;
@@ -27,7 +27,5 @@ void	exec_zjump(t_vm *vm, t_process *process, const t_op *op)
 		process_set_cursor_pos(process, get_address(pos, move_to));
 	}
 	else
-	{
-		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "zjump skip\n");
-	}
+		DEBUG_R_FC && ft_dprintf(2, FUNC_P "zjump skip\n");
 }

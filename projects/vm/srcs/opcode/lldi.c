@@ -6,14 +6,14 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/06 09:42:38 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 13:08:37 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "opcode.h"
 
 static int	read_args_exec(
-	uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
+		uint8_t *mem, t_process *process, uint32_t *args, uint8_t oc)
 {
 	size_t	pos;
 	uint8_t	type_arg;
@@ -25,7 +25,6 @@ static int	read_args_exec(
 	else if (type_arg == T_DIR)
 		args[0] = read_arg(process, mem, T_DIR);
 	else if (type_arg == T_IND)
-		// args[0] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
 		args[0] = get_indirect(0, read_arg(process, mem, T_IND), mem);
 	else
 		return (-1);
@@ -65,11 +64,8 @@ void		exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 	{
-		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "lldi" BAD_ARG_OC, oc);
-		// ft_dprintf(2, "cursor pos %hx\n", get_idx_in_memory(process));
-		// print_memory(vm->memory, vm->heat_map);
+		DEBUG_R_FC && ft_dprintf(2, FUNC_P "lldi" BAD_ARG_OC, oc);
 		process->carry = 1;
 	}
-
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

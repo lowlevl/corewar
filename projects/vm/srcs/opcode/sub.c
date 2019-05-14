@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 09:55:24 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:30:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:59:40 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		exec_sub(t_vm *vm, t_process *process, const t_op *op)
 	}
 	else
 	{
-		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "sub" BAD_ARG);
+		DEBUG_R_FC && ft_dprintf(2, FUNC_P "sub" BAD_ARG);
 		process->carry = 1;
 	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);

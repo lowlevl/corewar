@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:07:53 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/01 11:11:01 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 13:23:39 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct	s_vm
 	uint64_t	nb_live_for_cycle;
 
 	t_socket	socket;
-	unsigned random_talk: 1;
-	unsigned print_live: 1;
+	unsigned	random_talk: 1;
+	unsigned	print_live: 1;
 }				t_vm;
 
 typedef struct	s_op

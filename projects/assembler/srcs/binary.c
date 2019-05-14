@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   binary.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/01 10:16:30 by fbenneto         ###   ########.fr       */
+/*   Created: 2019/05/14 13:39:55 by glodi             #+#    #+#             */
+/*   Updated: 2019/05/14 13:40:13 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 #ifndef O_EXLOCK
 # ifdef F_EXLCK
 #  define O_EXLOCK F_EXLCK
-# endif // DEBUG
-#endif // !O_EXLOCK
+# endif
+#endif
+
 t_op	g_op[17] =
 {
 	{"live", 0x01,
