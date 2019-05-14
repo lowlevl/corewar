@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/05/01 09:53:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 13:26:17 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void		write_in_mem_wrapper(
 ** utils other
 */
 
-uint16_t		get_restrict_address(int16_t current, int16_t plus);
-uint16_t		get_address(int16_t current, int16_t plus);
+uint16_t	get_restrict_address(int16_t current, int16_t plus);
+uint16_t	get_address(int16_t current, int16_t plus);
 /*
 ** command
 */
