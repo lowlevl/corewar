@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/14 13:08:37 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/14 14:55:42 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 	size_t		pos;
 	uint8_t		oc;
 	uint32_t	args[3];
-	uint32_t	adr;
+	int16_t	adr;
 
 	(void)op;
 	pos = get_idx_in_memory(process) - 1;

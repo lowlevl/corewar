@@ -1,6 +1,6 @@
 function test_basic() {
 	info "test ldi opcode basic"
-	$1 test_basic.cor --dump 100
+	$1 test_basic.cor --dump 125
 	info "done"
 }
 
