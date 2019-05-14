@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:56:38 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/30 19:14:17 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:17:54 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@
 # define GNL_READ 1
 # define GNL_EOF 0
 # define GNL_ERR -1
-
-// # undef stdin
-// # undef stdout
-// # undef stderr
 
 enum {
 	STDIN = 0,
