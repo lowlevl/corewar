@@ -73,6 +73,7 @@ public class CorewarVisu
 
         if (!command.ParsedOption.ContainsKey("proc"))
         {
+            Log.WriteLine("add proc event");
             parser.ProcUpdate += dump.OnProcUpdate;
             parser.DeadProcEvent += players.OnDeadProc;
         }
@@ -107,6 +108,7 @@ public class CorewarVisu
         {
             ch = Curse.getch();
         } while (ch != 'q');
+        Logger.Log.WriteLine("user whant to quit");
     }
 
     static void ParseCommand(string[] argv)

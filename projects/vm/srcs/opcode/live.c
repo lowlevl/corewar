@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:01:28 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/24 13:53:05 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/06 11:02:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,26 @@ static char *g_templates[] = {
 	"LIVE - Champ nº%d (%s)\n",
 	TEMPLATE_BASE "Je suis en vie!\"\n",
 	TEMPLATE_BASE "Toi, tu refuses de me tuer par principe. Et moi, je refuse"
-	"de te tuer parce que tu es tellement amusant.\"\n",
+				  "de te tuer parce que tu es tellement amusant.\"\n",
 	TEMPLATE_BASE "La vie est un mystère qu'il faut vivre, et non un problème"
-	"à résoudre.\"\n",
+				  "à résoudre.\"\n",
 	TEMPLATE_BASE "La vie, c'est comme une bicyclette, il faut avancer pour "
-	"ne pas perdrel'équilibre.\"\n",
+				  "ne pas perdrel'équilibre.\"\n",
 	TEMPLATE_BASE "Que serait la vie, sans notre Maman.\"\n",
 	TEMPLATE_BASE "Quand on ne sait pas ce qu'est la vie, comment "
-	"pourrait-on savoir ce qu'est la mort ?\"\n",
+				  "pourrait-on savoir ce qu'est la mort ?\"\n",
 	TEMPLATE_BASE "Qui suis-je? Où vais-je? Qu'est-ce qu'on mange à midi?\"\n",
 	TEMPLATE_BASE "La bible ne fait pas le moine\"\n",
 	TEMPLATE_BASE "Un clavier azerty en vaut deux\"\n",
-	TEMPLATE_BASE "C'est en forgeant qu'on devient forgeron, mais ce n'est "
+	TEMPLATE_BASE
+	"C'est en forgeant qu'on devient forgeron, mais ce n'est "
 	"pas en se mouchant que l'on devient moucheron, ni en sciant que "
 	"Léonard devint scie.\"\n",
 	TEMPLATE_BASE "Jésus crie, la caravane passe.\"\n",
 	TEMPLATE_BASE "Canicule en été, mamie va y passer\"\n",
 };
 
-static void	print_live(int random, int player_id, char *player_name)
+static int print_live(int random, int player_id, char *player_name)
 {
 	const char *template;
 
@@ -47,31 +48,36 @@ static void	print_live(int random, int player_id, char *player_name)
 		template = g_templates[(rand() % (TEMPLATE_COUNT - 1)) + 1];
 	else
 		template = g_templates[0];
-	ft_printf(template, player_id, player_name);
+	return (ft_printf(template, player_id, player_name));
 }
 
-static void	report_as_live(t_vm *vm, t_player *player)
+static void report_as_live(t_vm *vm, t_player *player, int id, int live)
 {
-	vm->last_player_report_as_live = player->id;
-	vm->nb_live_for_cycle++;
-	player->total_live_count++;
-	send_live(&vm->socket, player->id);
-	print_live(vm->random_talk, player->id, player->header.prog_name);
+	if (player)
+	{
+		player->total_live_count++;
+		vm->last_player_report_as_live = player->id;
+		send_live(&vm->socket, player->id);
+		// send_live(&vm->socket, );
+		if (live)
+			print_live(vm->random_talk, player->id, player->header.prog_name);
+	}
+	else if (live)
+		ft_printf(
+			"LIVE - Un champion inconnu (%d) a été signalé en vie.\n", id);
 }
 
-void		exec_live(t_vm *vm, t_process *process, const t_op *op)
+void exec_live(t_vm *vm, t_process *process, const t_op *op)
 {
-	int32_t		player_id;
-	t_player	*player;
+	int32_t   player_id;
+	t_player *player;
 
 	(void)op;
 	player_id = read_arg(process, vm->memory, T_DIR_4);
 	player = find_player(vm->players, vm->players_count, player_id);
 	process->have_live = 1;
-	DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "live %%%d\n", player_id);
-	if (player)
-		report_as_live(vm, player);
-	else
-		ft_printf("LIVE - Un champion inconnu (%d) a été signalé en vie.\n",
-				player_id);
+	// ft_dprintf(2, ">>>>>> live %d %d\n", player_id, player ? player->id : -1);
+	vm->nb_live_for_cycle++;
+	DEBUG_R_FC &&ft_dprintf(2, FUNC_P "live %%%d\n", player_id);
+	report_as_live(vm, player, player_id, vm->print_live);
 }

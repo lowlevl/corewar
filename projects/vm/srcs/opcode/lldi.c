@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 10:50:02 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 13:40:09 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/06 09:42:38 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ static int	read_args_exec(
 	else if (type_arg == T_DIR)
 		args[0] = read_arg(process, mem, T_DIR);
 	else if (type_arg == T_IND)
-		args[0] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
+		// args[0] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
+		args[0] = get_indirect(0, read_arg(process, mem, T_IND), mem);
 	else
 		return (-1);
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_DIR)
 		args[1] = read_arg(process, mem, T_DIR);
-	else if (type_arg == T_IND)
-		args[1] = get_indirect(pos, read_arg(process, mem, T_IND), mem);
+	else if (type_arg == T_REG)
+		args[1] = get_reg(process, read_arg(process, mem, T_REG));
 	else
 		return (-1);
 	if (get_type_arg(oc, 2) == T_REG)
@@ -58,9 +59,17 @@ void		exec_lldi(t_vm *vm, t_process *process, const t_op *op)
 	{
 		adr = args[0] + args[1];
 		process->carry = adr == 0;
-		DEBUG_R_FC && ft_dprintf(2, FUNC_PREFIX "lldi (%x + %x = %x), r%d\n",
+		DEBUG_R_FC && ft_dprintf(2, FUNC_P "lldi (%x + %x = %x), r%d\n",
 				pos, adr, pos + adr, args[2]);
 		write_in_registre(process, args[2], get_indirect(pos, adr, vm->memory));
 	}
+	else
+	{
+		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "lldi" BAD_ARG_OC, oc);
+		// ft_dprintf(2, "cursor pos %hx\n", get_idx_in_memory(process));
+		// print_memory(vm->memory, vm->heat_map);
+		process->carry = 1;
+	}
+
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);
 }

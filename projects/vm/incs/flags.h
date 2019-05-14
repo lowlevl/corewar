@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 16:20:03 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 11:21:37 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/06 11:54:59 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@
 # define DEBUG_SOCKET_RECV 0
 # define DEBUG_SET_JUMP 0
 # define DEBUG_STEP 0
+# define DEBUG_ADR 0
+# define DEBUG_CHANGE 0
 
 # define READ_PREFIX           "\e[31mREAD\e[0m       │ "
 # define WRITE_PREFIX          "\e[32mWRITE\e[0m      │ "
 # define GET_PREFIX            "\e[33mGET\e[0m        │ "
 # define TYPE_PREFIX           "\e[34mTYPE\e[0m       │ "
-# define FUNC_PREFIX           "\e[35mFUNC\e[0m       │ "
+# define FUNC_P                "\e[35mFUNC\e[0m       │ "
 # define CURSOR_PREFIX         "\e[36mCURSOR\e[0m     │ "
 # define EXE_PREFIX            "\e[37mEXE\e[0m        │ "
 # define CYCLE_PREFIX          "\e[91mCYCLE\e[0m      │ "
@@ -56,13 +58,14 @@
 # define PROC_PRE         "\e[38;5;57mPROC\e[0m       │ "
 # define JUMP_PRE        "\e[38;5;127mJUMP\e[0m       │ "
 # define STEP_PRE         "\e[38;5;93mSTEP\e[0m       │ "
+# define ADR_PRE          "\e[38;5;87mADRESS\e[0m     │ "
 
 # define INTERNAL_1 "current(%zd) next(%zd) die(%zd) check(%d) live(%zu)\n"
 # define CHECK_TEMPLATE CHECK_PREFIX INTERNAL_1
 
 # define CARRY_TEMPLATE CARRY_PREFIX "carry(%d)\n"
 
-# define CURSOR_TEMPLATE CURSOR_PREFIX "pos(%x) opc(%hhx)\n"
+# define CURSOR_TEMPLATE CURSOR_PREFIX "pos(%hx) opc(%hhx)\n"
 
 # define EXE_TEMPLATE EXE_PREFIX "proc(%#hhx)(%s) at(%u)(%x)\n"
 # define EXE_NEXT_TEMPLATE EXE_PREFIX "next_exec(%#hhx)(%s) at(%u)\n"
@@ -108,4 +111,7 @@
 # define JUMP JUMP_PRE "to(%d)\n"
 
 # define D_STEP STEP_PRE "cycle(%d)\n"
+
+# define BAD_ARG  " bad argument -> pass\n"
+# define BAD_ARG_OC " bad argument oc(%.8b)-> pass\n"
 #endif

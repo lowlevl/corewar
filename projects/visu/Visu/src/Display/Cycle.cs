@@ -6,8 +6,7 @@ namespace Display
 {
     public class CycleDisplay
     {
-        int cycle;
-        int nextCycle;
+        int cycle, nextCycle, nbLive, nbCheck, toDie;
         Window titleWin;
         Window cycleWin;
 
@@ -21,17 +20,33 @@ namespace Display
         };
         static readonly int titleWidth = title[0].Length;
         static readonly int titleHeight = title.Length;
-        static readonly int cycleHeight = 2;
+        static readonly int cycleHeight = 5;
         static readonly int titleYStart = Math.Min(Curse.Lines / 3, Players.EndAt);
         static readonly public int EndAt = titleYStart + titleHeight + cycleHeight + 1;
 
         public void OnCycleUpdate(object _source, CycleUpdateEventArgs e)
         {
+            Logger.Log.WriteLine("cycle: {0}", e);
             cycle = e.CurrentCycle;
             if (nextCycle != e.NextCheckCycle)
             {
                 nextCycle = e.NextCheckCycle;
                 renderNextCycle();
+            }
+            if (nbLive != e.NbLive)
+            {
+                nbLive = e.NbLive;
+                renderLive();
+            }
+            if (toDie != e.CycleToDie)
+            {
+                toDie = e.CycleToDie;
+                renderToDie();
+            }
+            if (nbCheck != e.NbCheck)
+            {
+                nbCheck = e.NbCheck;
+                renderNbCheck();
             }
             renderCycle();
             cycleWin.Refresh();
@@ -39,14 +54,36 @@ namespace Display
 
         void renderCycle()
         {
-            cycleWin.Mvprintw(0, 0, string.Format("cycle: {0}", cycle));
-            cycleWin.RedrawLine(0);
+            cycleWin.Mvprintw(1, 0, "cycle: " + cycle);
+            cycleWin.RedrawLine(1);
         }
 
         void renderNextCycle()
         {
-            cycleWin.Mvprintw(1, 0, string.Format("next check: {0}", nextCycle));
-            cycleWin.RedrawLine(1);
+            cycleWin.Mvprintw(2, 0, "next check: " + nextCycle);
+            cycleWin.RedrawLine(2);
+        }
+
+        void renderLive()
+        {
+            cycleWin.Move(0, 0);
+            cycleWin.ClearToEol();
+            cycleWin.Mvprintw(0, 0, "live: " + nbLive);
+            cycleWin.RedrawLine(0);
+        }
+
+        void renderToDie()
+        {
+            cycleWin.Move(3, 0);
+            cycleWin.ClearToEol();
+            cycleWin.Mvprintw(3, 0, "To Die: " + toDie);
+            cycleWin.RedrawLine(3);
+        }
+
+        void renderNbCheck()
+        {
+            cycleWin.Mvprintw(4, 0, "Nb Check: " + nbCheck);
+            cycleWin.RedrawLine(4);
         }
 
         void printTitle()

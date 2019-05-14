@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/24 11:48:40 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/02 00:11:49 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:15:47 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int			ft_printf(const char *format, ...)
 
 int			ft_vprintf(const char *format, va_list ap)
 {
-	return (ft_vdprintf(stdout, format, ap));
+	return (ft_vdprintf(STDOUT, format, ap));
 }

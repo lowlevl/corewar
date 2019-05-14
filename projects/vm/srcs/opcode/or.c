@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/25 09:57:11 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/03 09:30:39 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	read_arg_or(
 	pos = get_idx_in_memory(process) - 2;
 	type_arg = get_type_arg(oc, 0);
 	if (get_argument_all_restrict_4(
-		(size_t[2]){ type_arg, pos}, args, memory, process))
+		(size_t[2]){ type_arg, pos }, args, memory, process))
 		return (-1);
 	type_arg = get_type_arg(oc, 1);
 	if (type_arg == T_REG)
@@ -52,13 +52,16 @@ void		exec_or(t_vm *vm, t_process *process, const t_op *op)
 	DEBUG_TYPE && ft_dprintf(2, TYPE_TEMPLATE_3, get_type_arg(oc, 0),
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_arg_or(vm->memory, process, args, oc) == -1)
+	{
+		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "or" BAD_ARG);
 		process->carry = 1;
+	}
 	else
 	{
 		logic = args[0] | args[1];
 		process->carry = logic == 0;
 		DEBUG_R_FC && ft_dprintf(
-			2, FUNC_PREFIX "or %%%b %%%b r%d\n", args[0], args[1], args[2]);
+			2, FUNC_P "or %%%b %%%b r%d\n", args[0], args[1], args[2]);
 		write_in_registre(process, args[2], logic);
 	}
 	DEBUG_CARRY && ft_dprintf(2, CARRY_TEMPLATE, process->carry);

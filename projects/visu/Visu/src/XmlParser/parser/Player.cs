@@ -1,5 +1,6 @@
 using System;
 using System.Xml;
+using System.Text;
 
 namespace XmlParser
 {
@@ -12,6 +13,11 @@ namespace XmlParser
             this.Id = id;
             this.Name = name;
         }
+
+        public override string ToString()
+        {
+            return '{' + string.Format(".Id: {0}, .Name: {1}", Id, Name) + '}';
+        }
     }
 
     public partial class Parser
@@ -20,7 +26,8 @@ namespace XmlParser
         public event NewPlayerHandler NewPlayer = null;
 
         public void ReadPlayerXml(XmlReader reader) {
-            int id = 0;
+            int id = 0, size = 0;
+            byte[] buffer = null;
             string name = "";
 
             while (reader.Read()) {
@@ -29,8 +36,13 @@ namespace XmlParser
                         case "id":
                             id = reader.ReadElementContentAsInt();
                             break;
+                        case "size":
+                            size = reader.ReadElementContentAsInt();
+                            break;
                         case "name":
-                            name = reader.ReadElementContentAsString();
+                            buffer = new byte[size];
+                            int s = reader.ReadElementContentAsBase64(buffer, 0, size);
+                            name = Encoding.ASCII.GetString(buffer, 0, s);
                             break;
                     }
                 }

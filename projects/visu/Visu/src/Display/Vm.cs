@@ -80,7 +80,7 @@ namespace Display
             {
                 chunk.CopyTo(dump, at);
             }
-            DumpMem();
+            // DumpMem();
             OnChange(at, len);
         }
 
@@ -110,9 +110,29 @@ namespace Display
 
         public void SetOwnerZone(int at, byte[] heatMap)
         {
-            if (heatMap == null)
+            if (this.heatMap == null)
                 InitDump(heatMap.Length);
-            heatMap.CopyTo(this.heatMap, at);
+            Logger.Log.WriteLine("Set Heat map at {0} len {1}", at, heatMap.Length);
+            if (this.heatMap.Length - at >= heatMap.Length)
+                heatMap.CopyTo(this.heatMap, at);
+            else
+            {
+                int left = this.heatMap.Length - at;
+                StringBuilder hm = new StringBuilder();
+
+                for (int i = 0; i < left; i++)
+                {
+                    this.heatMap[at + i] = heatMap[i];
+                    hm.AppendFormat("{0} ", heatMap[i]);
+                }
+                for (int i = 0; i < heatMap.Length - left; i++)
+                {
+                    this.heatMap[i] = heatMap[i + left - 1];
+                    hm.AppendFormat("{0} ", heatMap[i + left - 1]);
+                }
+                // heatMap.Slice(left, heatMap.Length - left).CopyTo(this.heatMap, at);
+                Logger.Log.WriteLine("heat map too small {0} [{1}]", left, hm.ToString());
+            }
             // DumpHeatMap();
             OnChange(at, heatMap.Length);
         }
@@ -160,7 +180,7 @@ namespace Display
                 ProcessusList.Add(e.Id, proc);
                 OnNewProc(ref proc);
             }
-            Logger.Log.WriteLine("proc id({0}) pos({1})", e.Id, e.Pos);
+            // Logger.Log.WriteLine("proc id({0}) pos({1})", e.Id, e.Pos);
         }
     }
 }

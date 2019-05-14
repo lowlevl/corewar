@@ -6,13 +6,13 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 11:59:17 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/16 18:39:00 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/06 11:07:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <debug.h>
 
-#define ONE "\tid: %hhu\n\tcarry: %hhu\n\texec_cycle: %d\n\tcursor_start: "
+#define ONE "proc\tid: %hhu\n\tcarry: %hhu\n\texec_cycle: %d\n\tcursor_start: "
 #define TWO "%x\n\tcursor_pos: %hx\n\tplayer_id: %hu\n\thave_live: %hu\n"
 #define PROC ONE TWO
 

@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:36:29 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:56:51 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/06 10:35:18 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_player	*find_player(
 	t_player *players, size_t player_count, int32_t player_id);
 void		clean_vm(t_vm *vm);
 int			quit(t_vm *vm);
-
+int get_rank_player_id(
+	uint8_t *sorted_player_idx, t_player *list, t_player *tofind, uint8_t count);
 #endif

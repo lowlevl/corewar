@@ -1,5 +1,6 @@
 using System;
 using System.Xml;
+using System.Text;
 
 namespace XmlParser
 {
@@ -22,8 +23,9 @@ namespace XmlParser
         public event WinnerResultHandler WinnerResult = null;
 
         public void ReadWinnerXml(XmlReader reader) {
-            int id = 0;
+            int id = 0, size = 0;
             string name = "";
+            byte[] buffer = null;
             bool haveWinner = true;
 
             while (reader.Read()) {
@@ -35,8 +37,13 @@ namespace XmlParser
                         case "id":
                             id = reader.ReadElementContentAsInt();
                             break;
+                        case "size":
+                            size = reader.ReadElementContentAsInt();
+                            break;
                         case "name":
-                            name = reader.ReadElementContentAsString();
+                            buffer = new byte[size];
+                            int s = reader.ReadElementContentAsBase64(buffer, 0, size);
+                            name = Encoding.ASCII.GetString(buffer, 0, s);
                             break;
                     }
                 }

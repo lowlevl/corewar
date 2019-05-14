@@ -10,6 +10,11 @@ namespace XmlParser
         public LiveEventArgs(int playerId) {
             this.PlayerId = playerId;
         }
+
+        public override string ToString()
+        {
+            return "{.PlayerId: " + PlayerId + '}';
+        }
     }
 
     public partial class Parser

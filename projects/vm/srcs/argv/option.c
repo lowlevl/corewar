@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 09:34:52 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 15:03:31 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/01 11:11:39 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void		handle_option_3(t_vm *vm, const int argc, char **argv, int *index)
 		vm->disable_jump = 1;
 	else if (ft_strcmp(RANDOM_OPT, argv[*index]) == 0)
 		vm->random_talk = 1;
+	else if (ft_strcmp(LIVE_OPT, argv[*index]) == 0)
+		vm->print_live = 1;
 	else
 		unknow_option(vm, argv, argv[*index]);
 }

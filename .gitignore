@@ -6,6 +6,8 @@ bin
 *.log
 obj
 packages
+code_resources*
+ipch
 
 # Ignore auto generated tag files
 tags

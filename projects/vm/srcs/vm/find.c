@@ -6,16 +6,15 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:57:23 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/17 14:35:44 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/06 10:35:07 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm_utils.h"
 
-t_player	*find_player(
-		t_player *players, size_t player_count, int32_t player_id)
+t_player *find_player(t_player *players, size_t player_count, int32_t player_id)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (i < player_count)
@@ -25,4 +24,19 @@ t_player	*find_player(
 		i++;
 	}
 	return (NULL);
+}
+
+int get_rank_player_id(
+	uint8_t *sorted_player_idx, t_player *list, t_player *tofind, uint8_t count)
+{
+	uint8_t i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (list[sorted_player_idx[i]].id == tofind->id)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

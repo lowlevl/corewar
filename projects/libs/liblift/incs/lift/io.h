@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:56:38 by lroux             #+#    #+#             */
-/*   Updated: 2019/02/24 22:09:41 by lroux            ###   ########.fr       */
+/*   Updated: 2019/04/30 19:14:17 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@
 # define GNL_EOF 0
 # define GNL_ERR -1
 
-# undef stdin
-# undef stdout
-# undef stderr
+// # undef stdin
+// # undef stdout
+// # undef stderr
 
 enum {
-	stdin = 0,
-	stdout = 1,
-	stderr = 2
+	STDIN = 0,
+	STDOUT = 1,
+	STDERR = 2
 };
 
 int	gnl(const int fd, char **line);

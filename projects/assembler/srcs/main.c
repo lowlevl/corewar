@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:57:27 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/02 13:57:31 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/02 14:08:02 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int	cleanup(int r, t_asm *env)
 {
 	t_tok	*tok;
 
+	(void)env;
 	free(env->oname);
 	free(env->sstring);
 	free((void*)env->scstring);
-	free(strerror(0));
+	#ifndef __linux__
+		free(strerror(0));
+	#endif // !__linux__
 	while ((tok = ll_pop(&env->syms, 0)))
 		free(tok);
 	while ((tok = ll_pop(&env->refs, 0)))

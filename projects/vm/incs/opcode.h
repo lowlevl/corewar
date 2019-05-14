@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 13:28:31 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/25 09:49:04 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/01 09:53:37 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void		read_in_memory(
 
 int			get_type_arg(uint8_t octet_code, uint8_t arg_number);
 uint32_t	get_reg(t_process *process, uint8_t reg_idx);
-uint32_t	get_indirect(size_t current, size_t relative, uint8_t *memory);
+uint32_t	get_indirect(int16_t current, int16_t relative, uint8_t *memory);
 uint32_t	get_indirect_restrict(
-		size_t current, size_t to_add, uint8_t *memory);
+		int16_t current, int16_t to_add, uint8_t *memory);
 int			get_argument_all_restrict_4(
 	size_t info[2], uint32_t *save, uint8_t *mem, t_process *proc);
 int			get_argument_all_restrict(
@@ -55,19 +55,15 @@ void		write_in_memory(
 		uint8_t *mem, uint8_t *content, size_t len, size_t at);
 void		write_in_registre(
 		t_process *process, uint16_t reg_idx, uint32_t value);
-void		write_in_memory_restrict(
-		uint8_t *mem, uint8_t *content, size_t len, size_t at);
 void		write_in_mem_wrapper(
-		t_vm *vm, t_process *proc, uint8_t *content, t_coord coord);
-void		write_in_mem_wrapper_restrict(
 		t_vm *vm, t_process *proc, uint8_t *content, t_coord coord);
 
 /*
 ** utils other
 */
 
-size_t		get_restrict_address(size_t current, size_t plus);
-
+uint16_t		get_restrict_address(int16_t current, int16_t plus);
+uint16_t		get_address(int16_t current, int16_t plus);
 /*
 ** command
 */

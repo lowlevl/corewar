@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   binary.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 18:55:18 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/30 19:24:21 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/01 10:16:30 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 #include <fcntl.h>
 #include "assembler.h"
 
+#ifndef O_EXLOCK
+# ifdef F_EXLCK
+#  define O_EXLOCK F_EXLCK
+# endif // DEBUG
+#endif // !O_EXLOCK
 t_op	g_op[17] =
 {
 	{"live", 0x01,

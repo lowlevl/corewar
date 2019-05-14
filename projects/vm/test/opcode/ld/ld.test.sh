@@ -22,6 +22,18 @@ function test_ind() {
 	info "done"
 }
 
+function test_neg() {
+	info "test to load to indirect\n"
+	$1 test_neg.cor --dump 1500
+	info "done"
+}
+
+function test_carry() {
+	info "test to load to indirect\n"
+	$1 test_carry.cor
+	info "done"
+}
+
 function run() {
 	title "\nTest ld opcode\n"
 	warning "corewar should be compiled with DEBUG_WRITE to 1"
@@ -29,4 +41,6 @@ function run() {
 	test_load_all $1
 	test_outside $1
 	test_ind $1
+	test_neg $1
+	test_carry $1
 }

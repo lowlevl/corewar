@@ -51,6 +51,7 @@ namespace Display
 
             if (nbPlayer >= maxPlayer)
                 return;
+            Logger.Log.WriteLine("New player {0}", e);
             newPlayer = new Player(e.Id, e.Name, nbPlayer,
                 Window.CreateSubWindow(playersWin, Player.Height, Player.Width, 1, y));
             players.Add(e.Id, newPlayer);
@@ -65,6 +66,7 @@ namespace Display
             {
                 p.NbProc++;
                 p.RenderProc();
+                p.RefreshPanel();
             }
             else
             {
@@ -89,6 +91,7 @@ namespace Display
             {
                 p.NbProc--;
                 p.RenderProc();
+                p.RefreshPanel();
             }
         }
 
@@ -96,6 +99,7 @@ namespace Display
         {
             Player p;
 
+            // Logger.Log.WriteLine("live {0}", e);
             if (players.TryGetValue(e.PlayerId, out p))
             {
                 p.live();
