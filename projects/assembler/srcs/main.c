@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:57:27 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/02 14:08:02 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 13:37:27 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	cleanup(int r, t_asm *env)
 	free(env->oname);
 	free(env->sstring);
 	free((void*)env->scstring);
-	#ifndef __linux__
+	if (__APPLE__)
 		free(strerror(0));
-	#endif // !__linux__
 	while ((tok = ll_pop(&env->syms, 0)))
 		free(tok);
 	while ((tok = ll_pop(&env->refs, 0)))
