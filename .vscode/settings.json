@@ -1,0 +1,24 @@
+{
+	"files.associations": {
+		"vm.h": "c",
+		"libft.h": "c",
+		"error.h": "c",
+		"argv.h": "c",
+		"debug.h": "c",
+		"cursor.h": "c",
+		"proc.h": "c",
+		"struct.h": "c",
+		"dump.h": "c",
+		"g_op.h": "c",
+		"opcode.h": "c",
+		"op.h": "c",
+		"cycle.h": "c",
+		"vm_utils.h": "c",
+		"flags.h": "c",
+		"libpf.h": "c",
+		"socket.h": "c",
+		"socket_inc.h": "c",
+		"heat_map.h": "c",
+		"errno.h": "c"
+	}
+}

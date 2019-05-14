@@ -5,24 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: glodi <glodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/06 14:23:48 by lroux             #+#    #+#              #
-#    Updated: 2019/03/05 17:05:13 by glodi            ###   ########.fr        #
+#    Created: 2019/03/07 13:27:44 by lroux             #+#    #+#              #
+#    Updated: 2019/04/30 14:40:29 by glodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT	:= corewar
-NAME	:= corewar
+NAME	:= project
 
-OBJDIR	:= objs
-INCDIR	:= incs
+SUBDIR	:= projects
+LIBDIR	:= $(SUBDIR)/libs
 
-SRCDIR	:= srcs
-SRCS	:= vm/main.c vm/debug.c vm/errors.c vm/file_utils.c
+PROJS			+= asm
+PATHS.asm		+= assembler
 
-LIBDIR	:= libs
-LIBS	:= libft libpf
+PROJS			+= corewar
+PATHS.corewar	+= vm
 
-DEBUG	:= 1
+PROJS			+= libft
+PATHS.libft		+= libs/liblift
 
 # Include core
-include $(LIBDIR)/project.mk
+include $(LIBDIR)/multi.mk

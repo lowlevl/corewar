@@ -4,15 +4,18 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "build",
+			"label": "build vm",
 			"type": "shell",
 			"command": "make",
 			"args": [
-				"corewar"
+				"vm",
+				"DEBUG=1"
 			],
-			"group": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"presentation": {
-				// Reveal the output only if unrecognized errors occur.
 				"reveal": "always"
 			},
 		},

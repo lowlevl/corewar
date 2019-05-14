@@ -1,0 +1,13 @@
+{
+    "port": 8080,
+    "host": "127.0.0.1",
+    "socketSync": true,
+    "optionXmlParser": {
+        "attributeNamePrefix": "",
+	    "attrNodeName": false,
+	    "textNodeName": "_content",
+	    "ignoreAttributes": false,
+	    "allowBooleanAttributes": true,
+	    "trimValues": false
+    }
+}
