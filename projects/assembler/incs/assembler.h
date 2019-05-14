@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/29 13:42:47 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/14 14:44:37 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct	s_ins {
 ** Error management
 */
 int				perr(int e, ...);
+int				perrfree(void *ptr, int e, ...);
 
 /*
 ** Lexer & Parser

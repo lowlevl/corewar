@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/04/30 19:35:42 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 14:46:05 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,17 @@ int					perr(int e, ...)
 {
 	va_list ap;
 
+	va_start(ap, e);
+	ft_vdprintf(STDERR, g_err[e], ap);
+	va_end(ap);
+	return (1);
+}
+
+int					perrfree(void *ptr, int e, ...)
+{
+	va_list ap;
+
+	free(ptr);
 	va_start(ap, e);
 	ft_vdprintf(STDERR, g_err[e], ap);
 	va_end(ap);

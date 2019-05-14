@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/02 13:45:18 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/14 14:42:57 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char		*getfile(t_asm *env, char *name)
 	if (!(content = ft_calloc(filelen + 5, sizeof(*content))))
 		return (NULL);
 	if (read(fd, content, filelen) != filelen)
-		return ((void*)(long)!perr(5, name, strerror(errno)));
+		return ((void*)(long)!perrfree(content, 5, name, strerror(errno)));
 	close(fd);
 	ft_strcpy(content + filelen + 1, "EOF");
 	if (!(env->scstring = ft_strndup(content, filelen)))
