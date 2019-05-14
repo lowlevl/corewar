@@ -6,15 +6,15 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 13:14:46 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/14 11:49:44 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/14 13:52:44 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdlib.h"
 #include "vm.h"
 
-#define YOLO "<winner noWinner=\"true\"> <id>-1</id> <size>8</size> "
-#define NO_WIN YOLO "<name>Tk9ORQ==</name> </winner>"
+#define YOLO_123 "<winner noWinner=\"true\"> <id>-1</id> <size>8</size> "
+#define NO_WIN YOLO_123 "<name>Tk9ORQ==</name> </winner>"
 #define FORMAT_NO_WINNER HEADER_SOCKET NO_WIN
 #define TEMPLATE_BASE "WINNER - nº%d / %s :: "
 #define TEMPLATE_COUNT sizeof(g_templates) / sizeof(char *)
