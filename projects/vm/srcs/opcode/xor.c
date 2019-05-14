@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 11:44:00 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/03 09:30:39 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:58:41 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		exec_xor(t_vm *vm, t_process *process, const t_op *op)
 		get_type_arg(oc, 1), get_type_arg(oc, 2));
 	if (read_arg_xor(vm->memory, process, args, oc) == -1)
 	{
-		DEBUG_R_FC&&ft_dprintf(2, FUNC_P "xor" BAD_ARG);
+		DEBUG_R_FC && ft_dprintf(2, FUNC_P "xor" BAD_ARG);
 		process->carry = 1;
 	}
 	else
