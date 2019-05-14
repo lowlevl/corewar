@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 14:27:38 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/05/06 13:49:24 by fbenneto         ###   ########.fr       */
+/*   Updated: 2019/05/14 13:22:55 by glodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@ void		exec_aff(t_vm *vm, t_process *process, const t_op *op)
 	{
 		ch = get_reg(process, read_arg(process, vm->memory, T_REG)) % 256;
 		DEBUG_R_FC && ft_dprintf(2, FUNC_P "aff %%%d\n", ch);
-		// process->carry = ch == 0;
 		if (ch == 0 || ch == '\n')
 			print(vm, process);
 		else
 		{
-			process->taunt_buffer[process->taunt_size] = ch;
-			process->taunt_size++;
+			process->taunt_buffer[process->taunt_size++] = ch;
 			if (process->taunt_size >= TAUNT_BUFFER_SIZE - 1)
 				print(vm, process);
 		}
