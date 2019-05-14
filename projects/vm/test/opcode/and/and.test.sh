@@ -10,7 +10,7 @@ function test_direct() {
 }
 function test_ind() {
 	info "test basic and"
-	$1 test_ind.cor
+	$1 test_ind.cor --dump 250
 	info "done"
 }
 
