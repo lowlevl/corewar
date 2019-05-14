@@ -66,12 +66,16 @@ namespace Display
 
         void renderLive()
         {
+            cycleWin.Move(0, 0);
+            cycleWin.ClearToEol();
             cycleWin.Mvprintw(0, 0, "live: " + nbLive);
             cycleWin.RedrawLine(0);
         }
 
         void renderToDie()
         {
+            cycleWin.Move(3, 0);
+            cycleWin.ClearToEol();
             cycleWin.Mvprintw(3, 0, "To Die: " + toDie);
             cycleWin.RedrawLine(3);
         }
