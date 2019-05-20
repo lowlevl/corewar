@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:04:46 by glodi             #+#    #+#             */
-/*   Updated: 2019/04/30 15:35:37 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/20 15:09:35 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ off_t		get_file_size(int fd)
 	file_size = lseek(fd, 0, SEEK_END);
 	lseek(fd, 0, SEEK_SET);
 	if_errno_printerr_exit(NULL);
+	if (file_size > MAX_FILE_SIZE)
+		set_errno_exit(EFBIG, "file too large");
 	return (file_size);
 }
 

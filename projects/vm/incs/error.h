@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodi <glodi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:56 by fbenneto          #+#    #+#             */
-/*   Updated: 2019/04/30 15:29:03 by glodi            ###   ########.fr       */
+/*   Updated: 2019/05/20 15:10:45 by fbenneto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <errno.h>
 # include <stdlib.h>
 # include <string.h>
+
+# define MAX_FILE_SIZE 128000
 
 # define ERR_DUMP "Missing number for -dump"
 # define ERR_N "Missing argument for '-n'"
