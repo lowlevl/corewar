@@ -6,7 +6,7 @@
 /*   By: fbenneto <fbenneto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 17:54:48 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/14 14:46:05 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/20 13:47:55 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static const char	*g_err[128] = {
 	[2] = "{bold}%s: {red}error:{eoc} %s\n",
 	[3] = "{bold}%s: {red}error:{eoc} Wrong extension. "
 	"See usage => {bold}%s{eoc}.\n",
-	[4] = "{bold}%s: {red}error:{eoc} No support for infinite/empty/special "
-	"files {shrug}.\n",
+	[4] = "{bold}%s: {red}error:{eoc} The file is either infinite, "
+	"empty or too large {shrug}.\n",
 	[5] = "{bold}%s: {red}error:{eoc} I/O Error: %s.\n",
 	[6] = "{bold}%s:%d:%d: {red}error:{eoc} Unexpected token '%s':\n"
 	"%.*s\n"
