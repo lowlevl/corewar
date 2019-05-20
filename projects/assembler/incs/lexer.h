@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:42:29 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/02 13:44:26 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/20 13:55:27 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,16 @@ typedef struct	s_lexmap {
 	int		type;
 }				t_lexmap;
 
-enum {
-	CMDMARK,
-	COMMNTMARK,
-	LBLMARK,
-	DIRMARK,
-	QUOTE,
-	SEP,
-	NL,
-	EOFTOK,
-	UNKNOWN,
-	LITTERAL
-};
+# define CMDMARK	1
+# define COMMNTMARK	2
+# define LBLMARK	3
+# define DIRMARK	4
+# define QUOTE		5
+# define SEP		6
+# define NL			7
+# define EOFTOK		8
+# define UNKNOWN	9
+# define LITTERAL	10
 
 # ifdef INSIDE
 

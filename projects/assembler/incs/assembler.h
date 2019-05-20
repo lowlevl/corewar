@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:54:47 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/14 14:44:37 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/20 13:52:39 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 ** # define MAX_FILEOUT (sizeof(t_head) + CHAMP_MAX_SIZE)
 */
 # define MAX_FILEOUT 2874
+# define MAX_FILEIN 128000
 
 typedef struct __attribute__((__packed__))	s_binary {
 	t_head	head;
@@ -41,6 +42,7 @@ typedef struct	s_symref {
 typedef struct	s_asm {
 	char		*self;
 
+	size_t		slen;
 	char		*sname;
 	char		*sstring;
 	const char	*scstring;

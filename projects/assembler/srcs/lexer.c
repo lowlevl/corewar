@@ -6,7 +6,7 @@
 /*   By: lroux <lroux@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 14:52:04 by lroux             #+#    #+#             */
-/*   Updated: 2019/05/14 14:42:57 by lroux            ###   ########.fr       */
+/*   Updated: 2019/05/20 13:53:02 by lroux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ static const t_lexmap	g_lexmap[128] = {
 static char		*getfile(t_asm *env, char *name)
 {
 	ssize_t	filelen;
-	size_t	namelen;
 	char	*content;
 	int		fd;
 
-	namelen = ft_strlen(name);
-	if (namelen < 3 || !ft_strequ(&name[namelen - 2], ".s"))
+	env->slen = ft_strlen(name);
+	if (env->slen < 3 || !ft_strequ(&name[env->slen - 2], ".s"))
 		return ((void*)(long)!perr(3, name, env->self));
 	env->sname = name;
 	if ((fd = open(env->sname, O_RDONLY)) == -1)
 		return ((void*)(long)!perr(2, name, strerror(errno)));
-	if ((filelen = lseek(fd, 0, SEEK_END)) < 1 || lseek(fd, 0, SEEK_SET) != 0)
+	if ((filelen = lseek(fd, 0, SEEK_END)) < 1 || lseek(fd, 0, SEEK_SET) != 0
+			|| filelen > MAX_FILEIN)
 		return ((void*)(long)!perr(4, name));
 	if (!(content = ft_calloc(filelen + 5, sizeof(*content))))
 		return (NULL);
